@@ -1,0 +1,15 @@
+So what is Cisco HyperFlex?  Fully engineered and optimized HCI.
+When Cisco decided it was time to get into the HCI market, we observed the shortcomings of the HCI solutions available at the time, and set out to introduce a product that would redefine the space by addressing the shortcuts in networking integration and scalable performance that first-generation HCI vendors made then and continue to carry over now.
+We engineered HyperFlex to provide a seamless experience by deeply engineering hardware and software together in order to deliver the performance and scalability to power any app, in any cloud, anywhere.  Each node ships from the factory with fully integrated hardware, software, and networking, making HyperFlex solutions ready to be deploy in minutes
+UCS Foundation - Cisco UCS, the foundation for Cisco HyperFlex Systems, is built with a single point of management and connectivity for the entire system. Cisco UCS provides a single point of connectivity and hardware management that integrates Cisco HyperFlex nodes into a single unified cluster. The system is built to be self-aware and self-integrating so that when the system’s fabric interconnects notice a new component attached, that component is automatically incorporated into the cluster.
+* Fabric Centric - High performance fully integrated unified fabric that integrates smoothly with the Cisco Application Centric Infrastructure (Cisco ACI™) solution
+* Software Defined Compute - Abstracts hardware from the operational plane to easily adapt to multiple workloads
+* Intent-Based - Automate configurations and tasks to business objectives and application experiences
+HX Data Platform - The Cisco HyperFlex HX Data Platform combines the cluster’s storage devices into a single distributed, multitier, object-based data store.
+* Purpose Built for HCI - High performance, log-structured, scale-out file system that is designed for hyperconverged environments
+* Fast and Flexible - Supports multiple hypervisors and containerized applications
+* Enterprise Grade Storage - A full set of enterprise-class data management features are built in: for example, snapshots, thin provisioning, replication for disaster recovery and backup, data encryption, integration with third-party backup tools, and instant and space-efficient cloning.
+Cloud Innovations -  The Cisco HyperFlex multicloud platform is an adaptive system engineered for speed and simplicity. Capable of powering more workloads with deployment on premises or in the cloud.
+* Cisco Intersight - Cloud based management and AI driven analytics
+* Cisco CloudCenter - Hybrid/Multicloud
+* Cisco Workload Optimization Mgr. - Intelligent workload placement across cloud and on-prem environments to optimize cost

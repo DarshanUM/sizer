@@ -1,0 +1,65 @@
+{
+ "models" : [
+		  {
+			"vendor"           : "MAPLE",
+			"model"            : "MPL-1000",
+			"type"             : "configurable",
+			"ssd_slots"        : [2,4],
+			"ssd_options"      : ["200_GB_SSD","400_GB_SSD","800_GB_SSD"],
+			"hdd_slots"        : [4,6,8],
+			"hdd_options"      : ["1TB_1"],
+			"cpu_socket_count"      : [2],
+			"cpu_options"      : ["E5-2620v3","E5-2630v3","E5-2680v3","E5-2690v3","E5-2698v3"],	
+			"ram_slots"        : [4,8,12,16,24],
+			"ram_options"      : ["16GB_DDR4","32GB_DDR4"],
+			"clock_speed"      : 1800,
+			"avg_iops"     : 25000,
+			"base_price"       : 30650,
+			"power"            : 120,
+			"rack_space"       : 1,
+			"btu"              : 2200
+
+             },
+		  {
+			"vendor"           : "MAPLE",
+			"model"            : "MPL-2000",
+			"type"             : "configurable",
+			"ssd_slots"        : [2,4],
+			"ssd_options"      : ["200_GB_SSD","400_GB_SSD","800_GB_SSD"],
+			"hdd_slots"        : [4,6,8,10],
+			"hdd_options"      : ["2TB_1"],
+			"cpu_socket_count"      : [2],
+			"cpu_options"      : ["E5-2620v3","E5-2630v3","E5-2680v3"],	
+			"ram_slots"        : [4,8,12,16,24],
+			"ram_options"      : ["16GB_DDR4","32GB_DDR4"],
+			"clock_speed"      : 2000,
+			"avg_iops"     : 25000,
+			"base_price"       : 76750,
+			"power"            : 140,
+			"rack_space"       : 2,
+			"btu"              : 3400
+
+             },
+		   {
+			"vendor"           : "MAPLE",
+			"model"            : "MPL-3000",
+			"type"             : "configurable",
+			"ssd_slots"        : [2,4],
+			"ssd_options"      : ["200_GB_SSD","400_GB_SSD","800_GB_SSD"],
+			"hdd_slots"        : [4,6,8,10,12,14,16,18,20],
+			"hdd_options"      : ["1TB_1"],
+			"cpu_socket_count"      : [2],
+			"cpu_options"      : ["E5-2690v3","E5-2698v3"],	
+			"ram_slots"        : [4,8,12,16,24],
+			"ram_options"      : ["16GB_DDR4","32GB_DDR4"],
+			"clock_speed"      : 2400,
+			"avg_iops"     : 25000,
+			"base_price"       : 145950,
+			"power"            : 150,
+			"rack_space"       : 2,
+			"btu"              : 2750
+
+             }
+             
+        ]
+}

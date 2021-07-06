@@ -1,0 +1,28 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: "sizercronjob"
+spec:
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  schedule: "0 8 * * 0"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            parent: "cronjob"
+        spec:
+          containers:
+          - name: "sizercronjob"
+            image: "containers.cisco.com/savramap/analytics_cronjob"
+            command: ["python3.6", "/sizer/export_analytics.py"]
+            #command: ["ls", "-ltr"]
+            resources:
+              limits:
+                memory: 10Gi
+              requests:
+                cpu: 100m
+                memory: 8Gi
+ 
+          restartPolicy: Never

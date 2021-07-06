@@ -1,0 +1,42 @@
+#!/bin/bash
+# This deploy hook gets executed after dependencies are resolved and the
+# build hook has been run but before the application has been started back
+# up again.  This script gets executed directly, so it could be python, php,
+# ruby, etc.
+
+
+echo "Untar files"
+cd app-root/runtime/repo/wsgi
+tar -zxvf hyperflexsizer.tar.gz
+mv sizer sizer.tmp
+mv sizer.tmp/sizer .
+rm -rf sizer.tmp
+cd sizer/sizer
+echo "Copy solvers.py started"
+cp lae/lib/python2.7/site-packages/PuLP-1.6.1-py2.7.egg/pulp/solvers.py ~/app-root/runtime/dependencies/python/virtenv/lib/python2.7/site-packages/PuLP-1.6.1-py2.7.egg/pulp/solvers.py
+echo "copy is done"
+cp lae/lib/python2.7/site-packages/PuLP-1.6.1-py2.7.egg/pulp/solvers.py /var/lib/openshift/hyperflexsizer-g1ph863xstg-1/app-root/runtime/dependencies/python/virtenv/lib/python2.7/site-packages/PuLP-1.6.1-py2.7.egg/pulp/solvers.py
+cp lae_settings.py local_settings.py
+cp lae_wsgi.py wsgi.py
+
+cd ../webapps/dist
+echo "Downloading Videos.tar.gz from Cisco box folder and untar.."
+#For Stage use below line
+#python "$OPENSHIFT_REPO_DIR"wsgi/sizer/help/getvideos.py stage
+
+#For Production use below line
+python "$OPENSHIFT_REPO_DIR"wsgi/sizer/help/getvideos.py production
+tar -zxvf videos.tar.gz
+rm -rf videos.tar.gz
+
+cd
+
+source $OPENSHIFT_HOMEDIR/python/virtenv/bin/activate
+
+echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/sizer/manage.py makemigrations'"
+#python "$OPENSHIFT_REPO_DIR"wsgi/openshift/manage.py syncdb --noinput
+python "$OPENSHIFT_REPO_DIR"wsgi/sizer/manage.py makemigrations
+python "$OPENSHIFT_REPO_DIR"wsgi/sizer/manage.py migrate
+
+echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/sizer/manage.py collectstatic --noinput'"
+python "$OPENSHIFT_REPO_DIR"wsgi/sizer/manage.py collectstatic --noinput

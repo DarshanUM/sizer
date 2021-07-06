@@ -1,0 +1,2209 @@
+{
+  "data": {
+    "workloadTypes": [
+      {
+        "val": "VDI",
+        "label": "VDI"
+      },
+      {
+        "val": "VM",
+        "label": "VM"
+      },
+      {
+        "val": "DB",
+        "label": "Database"
+      }
+    ],
+    "userTypes": {
+      "VDI": {
+        "wldAllowedValues": [
+          {
+            "value": "Task Worker",
+            "key": 1
+          },
+          {
+            "value": "Knowledge Worker",
+            "key": 3
+          },
+          {
+            "value": "Power User",
+            "key": 4
+          },
+          {
+            "value": "Custom User",
+            "key": 5
+          }
+        ],
+        "wldDisplayName": "User Type",
+        "wldUnitOfMeasure": "{null}",
+        "wldId": 9,
+        "wldShortName": "vdiUserType",
+        "wldDisplayOrder": 10,
+        "wldState": "EDIT",
+        "wldDefaultValue": "5",
+        "wldMaxLimit": "{null}",
+        "wldActionUri": "workloadVdiUsers",
+        "wldDescription": "",
+        "wldMinLimit": "{null}",
+        "wldIncrementBy": "",
+        "wldUiComponent": "DROPDOWN"
+      },
+      "VM": {
+        "wldAllowedValues": [
+          {
+            "value": "Small",
+            "key": 100
+          },
+          {
+            "value": "Medium",
+            "key": 110
+          },
+          {
+            "value": "Large",
+            "key": 120
+          },
+          {
+            "value": "Custom",
+            "key": 130
+          }
+        ],
+        "wldDisplayName": "VM Type",
+        "wldUnitOfMeasure": "{null}",
+        "wldId": 106,
+        "wldShortName": "vdiUserType",
+        "wldDisplayOrder": 10,
+        "wldState": "EDIT",
+        "wldDefaultValue": "100",
+        "wldMaxLimit": "{null}",
+        "wldActionUri": "workloadVMUsers",
+        "wldDescription": "",
+        "wldMinLimit": "{null}",
+        "wldIncrementBy": "",
+        "wldUiComponent": "DROPDOWN"
+      },
+      "DB": {
+        "wldAllowedValues": [
+          {
+            "value": "Extra small",
+            "key": 200
+          },
+          {
+            "value": "Small",
+            "key": 210
+          },
+          {
+            "value": "Medium",
+            "key": 220
+          },
+          {
+            "value": "Large",
+            "key": 230
+          },
+          {
+            "value": "Custom",
+            "key": 240
+          }
+        ],
+        "wldDisplayName": "Database Type",
+        "wldUnitOfMeasure": "{null}",
+        "wldId": 211,
+        "wldShortName": "vdiUserType",
+        "wldDisplayOrder": 10,
+        "wldState": "EDIT",
+        "wldDefaultValue": "200",
+        "wldMaxLimit": "{null}",
+        "wldActionUri": "workloadDB",
+        "wldDescription": "",
+        "wldMinLimit": "{null}",
+        "wldIncrementBy": "",
+        "wldUiComponent": "DROPDOWN"
+      }
+    },
+    "clusterConfig": [
+      {
+        "ccAllowedValues": "NUMBER",
+        "ccDisplayName": "Compression factor (%)",
+        "ccUnitOfMeasure": "%",
+        "ccId": 8,
+        "ccShortName": "compression_factor",
+        "ccDisplayOrder": 110,
+        "ccState": "EDIT",
+        "ccDefaultValue": "0",
+        "ccMaxLimit": "99",
+        "ccActionUri": "",
+        "ccDescription": "",
+        "ccMinLimit": "0",
+        "ccIncrementBy": "",
+        "ccUiComponent": "NUMBER"
+      },
+      {
+        "ccAllowedValues": "NUMBER",
+        "ccDisplayName": "Replication factor",
+        "ccUnitOfMeasure": "{null}",
+        "ccId": 9,
+        "ccShortName": "replication_factor",
+        "ccDisplayOrder": 120,
+        "ccState": "EDIT",
+        "ccDefaultValue": "2",
+        "ccMaxLimit": "3",
+        "ccActionUri": "",
+        "ccDescription": "",
+        "ccMinLimit": "1",
+        "ccIncrementBy": "",
+        "ccUiComponent": "NUMBER"
+      }
+    ],
+    "otherFields": {
+      "VDI": [
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Desktop",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 2,
+              "wldShortName": "vcpus_per_desktop",
+              "wldDisplayOrder": 50,
+              "wldState": "READONLY",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "20",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 3,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 60,
+              "wldState": "READONLY",
+              "wldDefaultValue": "10",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM (GB)",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 4,
+              "wldShortName": "ram_per_desktop",
+              "wldDisplayOrder": 70,
+              "wldState": "READONLY",
+              "wldDefaultValue": "2",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Average IOPS",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 5,
+              "wldShortName": "avg_iops_per_desktop",
+              "wldDisplayOrder": 100,
+              "wldDefaultValue": "30",
+              "wldState": "READONLY",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "10",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "User Data Capacity (GB)",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 6,
+              "wldShortName": "disk_per_desktop",
+              "wldDisplayOrder": 80,
+              "wldState": "READONLY",
+              "wldDefaultValue": "5",
+              "wldMaxLimit": "200",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Gold Image (GB)",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 7,
+              "wldShortName": "gold_image_size",
+              "wldDisplayOrder": 90,
+              "wldState": "READONLY",
+              "wldDefaultValue": "20",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "2",
+              "wldUiComponent": "NUMBER"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": [
+                {
+                  "value": "View Linked Clones",
+                  "key": "View Linked Clones"
+                },
+                {
+                  "value": "View Full Clones",
+                  "key": "View Full Clones"
+                },
+                {
+                  "value": "XenDesktop MCS",
+                  "key": "XenDesktop MCS"
+                },
+                {
+                  "value": "XenDesktop PVS",
+                  "key": "XenDesktop PVS"
+                },
+                {
+                  "value": "XenDesktop Full Clones",
+                  "key": "XenDesktop Full Clones"
+                }
+              ],
+              "wldDisplayName": "Provision Type",
+              "wldUnitOfMeasure": "",
+              "wldId": 10,
+              "wldShortName": "provisioning_type",
+              "wldDisplayOrder": 20,
+              "wldState": "EDIT",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "",
+              "wldActionUri": "workloadVdiUsers",
+              "wldDescription": "",
+              "wldMinLimit": "",
+              "wldIncrementBy": "",
+              "wldUiComponent": "DROPDOWN"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Number of Desktops",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 1,
+              "wldShortName": "num_desktops",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "100000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "VDI",
+          "userTypeId": 1,
+          "techDetailsShow": false,
+          "userTypeName": "Task Worker"
+        },
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Desktop",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 2,
+              "wldShortName": "vcpus_per_desktop",
+              "wldDisplayOrder": 50,
+              "wldState": "READONLY",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "20",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 3,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 60,
+              "wldState": "READONLY",
+              "wldDefaultValue": "10",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM (GB)",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 4,
+              "wldShortName": "ram_per_desktop",
+              "wldDisplayOrder": 70,
+              "wldState": "READONLY",
+              "wldDefaultValue": "2",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Average IOPS",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 5,
+              "wldShortName": "avg_iops_per_desktop",
+              "wldDisplayOrder": 100,
+              "wldState": "READONLY",
+              "wldDefaultValue": "40",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "User Data Capacity (GB)",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 6,
+              "wldShortName": "disk_per_desktop",
+              "wldDisplayOrder": 80,
+              "wldState": "READONLY",
+              "wldDefaultValue": "10",
+              "wldMaxLimit": "200",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Gold Image (GB)",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 7,
+              "wldShortName": "gold_image_size",
+              "wldDisplayOrder": 90,
+              "wldState": "READONLY",
+              "wldDefaultValue": "20",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": [
+                {
+                  "value": "View Linked Clones",
+                  "key": "View Linked Clones"
+                },
+                {
+                  "value": "View Full Clones",
+                  "key": "View Full Clones"
+                },
+                {
+                  "value": "XenDesktop MCS",
+                  "key": "XenDesktop MCS"
+                },
+                {
+                  "value": "XenDesktop PVS",
+                  "key": "XenDesktop PVS"
+                },
+                {
+                  "value": "XenDesktop Full Clones",
+                  "key": "XenDesktop Full Clones"
+                }
+              ],
+              "wldDisplayName": "Provision Type",
+              "wldUnitOfMeasure": "",
+              "wldId": 10,
+              "wldShortName": "provisioning_type",
+              "wldDisplayOrder": 20,
+              "wldState": "EDIT",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "",
+              "wldActionUri": "workloadVdiUsers",
+              "wldDescription": "",
+              "wldMinLimit": "",
+              "wldIncrementBy": "",
+              "wldUiComponent": "DROPDOWN"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Number of Desktops",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 1,
+              "wldShortName": "num_desktops",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "100000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "VDI",
+          "userTypeId": 3,
+          "techDetailsShow": false,
+          "userTypeName": "Knowledge Worker"
+        },
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Desktop",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 2,
+              "wldShortName": "vcpus_per_desktop",
+              "wldDisplayOrder": 50,
+              "wldState": "READONLY",
+              "wldDefaultValue": "2",
+              "wldMaxLimit": "20",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 3,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 60,
+              "wldState": "READONLY",
+              "wldDefaultValue": "8",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM (GB)",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 4,
+              "wldShortName": "ram_per_desktop",
+              "wldDisplayOrder": 70,
+              "wldState": "READONLY",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Average IOPS",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 5,
+              "wldShortName": "avg_iops_per_desktop",
+              "wldDisplayOrder": 100,
+              "wldState": "READONLY",
+              "wldDefaultValue": "60",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "User Data Capacity (GB)",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 6,
+              "wldShortName": "disk_per_desktop",
+              "wldDisplayOrder": 80,
+              "wldState": "READONLY",
+              "wldDefaultValue": "25",
+              "wldMaxLimit": "200",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Gold Image (GB)",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 7,
+              "wldShortName": "gold_image_size",
+              "wldDisplayOrder": 90,
+              "wldState": "READONLY",
+              "wldDefaultValue": "20",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": [
+                {
+                  "value": "View Linked Clones",
+                  "key": "View Linked Clones"
+                },
+                {
+                  "value": "View Full Clones",
+                  "key": "View Full Clones"
+                },
+                {
+                  "value": "XenDesktop MCS",
+                  "key": "XenDesktop MCS"
+                },
+                {
+                  "value": "XenDesktop PVS",
+                  "key": "XenDesktop PVS"
+                },
+                {
+                  "value": "XenDesktop Full Clones",
+                  "key": "XenDesktop Full Clones"
+                }
+              ],
+              "wldDisplayName": "Provision Type",
+              "wldUnitOfMeasure": "",
+              "wldId": 10,
+              "wldShortName": "provisioning_type",
+              "wldDisplayOrder": 20,
+              "wldState": "EDIT",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "",
+              "wldActionUri": "workloadVdiUsers",
+              "wldDescription": "",
+              "wldMinLimit": "",
+              "wldIncrementBy": "",
+              "wldUiComponent": "DROPDOWN"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Number of Desktops",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 1,
+              "wldShortName": "num_desktops",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "100000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "VDI",
+          "userTypeId": 4,
+          "techDetailsShow": false,
+          "userTypeName": "Power User"
+        },
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Desktop",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 2,
+              "wldShortName": "vcpus_per_desktop",
+              "wldDisplayOrder": 50,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "20",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 3,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 60,
+              "wldState": "EDIT",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "4",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM (GB)",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 4,
+              "wldShortName": "ram_per_desktop",
+              "wldDisplayOrder": 70,
+              "wldState": "EDIT",
+              "wldDefaultValue": "2",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "2",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Average IOPS",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 5,
+              "wldShortName": "avg_iops_per_desktop",
+              "wldDisplayOrder": 100,
+              "wldState": "EDIT",
+              "wldDefaultValue": "10",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "5",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "User Data Capacity ",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 6,
+              "wldShortName": "disk_per_desktop",
+              "wldDisplayOrder": 80,
+              "wldState": "EDIT",
+              "wldDefaultValue": "5",
+              "wldMaxLimit": "200",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "5",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Gold Image (GB)",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 7,
+              "wldShortName": "gold_image_size",
+              "wldDisplayOrder": 90,
+              "wldState": "EDIT",
+              "wldDefaultValue": "10",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": [
+                {
+                  "value": "View Linked Clones",
+                  "key": "View Linked Clones"
+                },
+                {
+                  "value": "View Full Clones",
+                  "key": "View Full Clones"
+                },
+                {
+                  "value": "XenDesktop MCS",
+                  "key": "XenDesktop MCS"
+                },
+                {
+                  "value": "XenDesktop PVS",
+                  "key": "XenDesktop PVS"
+                },
+                {
+                  "value": "XenDesktop Full Clones",
+                  "key": "XenDesktop Full Clones"
+                }
+              ],
+              "wldDisplayName": "Provision Type",
+              "wldUnitOfMeasure": "",
+              "wldId": 10,
+              "wldShortName": "provisioning_type",
+              "wldDisplayOrder": 20,
+              "wldState": "EDIT",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "",
+              "wldActionUri": "workloadVdiUsers",
+              "wldDescription": "",
+              "wldMinLimit": "",
+              "wldIncrementBy": "",
+              "wldUiComponent": "DROPDOWN"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Number of Desktops",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 1,
+              "wldShortName": "num_desktops",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "100000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "VDI",
+          "userTypeId": 5,
+          "techDetailsShow": false,
+          "userTypeName": "Custom User"
+        }
+      ],
+      "VM": [
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per VM",
+              "wldUnitOfMeasure": "",
+              "wldId": 101,
+              "wldShortName": "vcpus_per_vm",
+              "wldDisplayOrder": 500,
+              "wldState": "READONLY",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "16",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 102,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 510,
+              "wldState": "READONLY",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "6",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM per VM (GB)",
+              "wldUnitOfMeasure": "K",
+              "wldId": 103,
+              "wldShortName": "ram_per_vm",
+              "wldDisplayOrder": 515,
+              "wldState": "READONLY",
+              "wldDefaultValue": "2",
+              "wldMaxLimit": "256",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Avg IOPS per VM",
+              "wldUnitOfMeasure": "MBps",
+              "wldId": 104,
+              "wldShortName": "avg_iops_per_vm",
+              "wldDisplayOrder": 520,
+              "wldState": "READONLY",
+              "wldDefaultValue": "100",
+              "wldMaxLimit": "6000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Total Capacity per VM (GB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 105,
+              "wldShortName": "disk_per_vm",
+              "wldDisplayOrder": 530,
+              "wldState": "READONLY",
+              "wldDefaultValue": "50",
+              "wldMaxLimit": "500",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Number of VMs",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 107,
+              "wldShortName": "num_vms",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "5000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "VM",
+          "userTypeId": 100,
+          "techDetailsShow": false,
+          "userTypeName": "Small"
+        },
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per VM",
+              "wldUnitOfMeasure": "",
+              "wldId": 101,
+              "wldShortName": "vcpus_per_vm",
+              "wldDisplayOrder": 500,
+              "wldState": "READONLY",
+              "wldDefaultValue": "2",
+              "wldMaxLimit": "16",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 102,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 510,
+              "wldState": "READONLY",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "6",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM per VM (GB)",
+              "wldUnitOfMeasure": "K",
+              "wldId": 103,
+              "wldShortName": "ram_per_vm",
+              "wldDisplayOrder": 515,
+              "wldState": "READONLY",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "256",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Avg IOPS per VM",
+              "wldUnitOfMeasure": "MBps",
+              "wldId": 104,
+              "wldShortName": "avg_iops_per_vm",
+              "wldDisplayOrder": 520,
+              "wldState": "READONLY",
+              "wldDefaultValue": "200",
+              "wldMaxLimit": "6000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Total Capacity per VM (GB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 105,
+              "wldShortName": "disk_per_vm",
+              "wldDisplayOrder": 530,
+              "wldState": "READONLY",
+              "wldDefaultValue": "50",
+              "wldMaxLimit": "500",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Number of VMs",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 107,
+              "wldShortName": "num_vms",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "5000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "VM",
+          "userTypeId": 110,
+          "techDetailsShow": false,
+          "userTypeName": "Medium"
+        },
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per VM",
+              "wldUnitOfMeasure": "",
+              "wldId": 101,
+              "wldShortName": "vcpus_per_vm",
+              "wldDisplayOrder": 500,
+              "wldState": "READONLY",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "16",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 102,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 510,
+              "wldState": "READONLY",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "6",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM per VM (GB)",
+              "wldUnitOfMeasure": "K",
+              "wldId": 103,
+              "wldShortName": "ram_per_vm",
+              "wldDisplayOrder": 515,
+              "wldState": "READONLY",
+              "wldDefaultValue": "8",
+              "wldMaxLimit": "256",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Avg IOPS per VM",
+              "wldUnitOfMeasure": "MBps",
+              "wldId": 104,
+              "wldShortName": "avg_iops_per_vm",
+              "wldDisplayOrder": 520,
+              "wldState": "READONLY",
+              "wldDefaultValue": "300",
+              "wldMaxLimit": "6000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Total Capacity per VM (GB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 105,
+              "wldShortName": "disk_per_vm",
+              "wldDisplayOrder": 530,
+              "wldState": "READONLY",
+              "wldDefaultValue": "50",
+              "wldMaxLimit": "500",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Number of VMs",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 107,
+              "wldShortName": "num_vms",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "5000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "VM",
+          "userTypeId": 120,
+          "techDetailsShow": false,
+          "userTypeName": "Large"
+        },
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per VM",
+              "wldUnitOfMeasure": "",
+              "wldId": 101,
+              "wldShortName": "vcpus_per_vm",
+              "wldDisplayOrder": 500,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "16",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "COUNTER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 102,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 510,
+              "wldState": "EDIT",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "6",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM per VM (GB)",
+              "wldUnitOfMeasure": "K",
+              "wldId": 103,
+              "wldShortName": "ram_per_vm",
+              "wldDisplayOrder": 515,
+              "wldState": "EDIT",
+              "wldDefaultValue": "2",
+              "wldMaxLimit": "256",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "4",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Avg IOPS per VM",
+              "wldUnitOfMeasure": "MBps",
+              "wldId": 104,
+              "wldShortName": "avg_iops_per_vm",
+              "wldDisplayOrder": 530,
+              "wldState": "EDIT",
+              "wldDefaultValue": "10",
+              "wldMaxLimit": "6000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "10",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Total Capacity per VM (GB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 105,
+              "wldShortName": "disk_per_vm",
+              "wldDisplayOrder": 520,
+              "wldState": "EDIT",
+              "wldDefaultValue": "50",
+              "wldMaxLimit": "500",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "5",
+              "wldUiComponent": "NUMBER"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Number of VMs",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 107,
+              "wldShortName": "num_vms",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldMaxLimit": "5000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "VM",
+          "userTypeId": 130,
+          "techDetailsShow": false,
+          "userTypeName": "Custom"
+        }
+      ],
+      "DB": [
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs",
+              "wldUnitOfMeasure": "",
+              "wldId": 201,
+              "wldShortName": "vcpus_per_db",
+              "wldDisplayOrder": 600,
+              "wldState": "READONLY",
+              "wldDefaultValue": "2",
+              "wldMaxLimit": "16",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 202,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 601,
+              "wldState": "READONLY",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "4",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM(GB)",
+              "wldUnitOfMeasure": "K",
+              "wldId": 203,
+              "wldShortName": "ram_per_db",
+              "wldDisplayOrder": 602,
+              "wldState": "READONLY",
+              "wldDefaultValue": "32",
+              "wldMaxLimit": "256",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Avg IOPS",
+              "wldUnitOfMeasure": "MBps",
+              "wldId": 204,
+              "wldShortName": "avg_iops_per_db",
+              "wldDisplayOrder": 603,
+              "wldState": "READONLY",
+              "wldDefaultValue": "500",
+              "wldMaxLimit": "10000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "DB Size(GB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 205,
+              "wldShortName": "db_size",
+              "wldDisplayOrder": 604,
+              "wldState": "READONLY",
+              "wldDefaultValue": "250",
+              "wldMaxLimit": "4000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Working Set (%)",
+              "wldUnitOfMeasure": "",
+              "wldId": 206,
+              "wldShortName": "working_set",
+              "wldDisplayOrder": 605,
+              "wldState": "READONLY",
+              "wldDefaultValue": "40",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Block Size (KB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 207,
+              "wldShortName": "block_size",
+              "wldDisplayOrder": 606,
+              "wldState": "READONLY",
+              "wldDefaultValue": "8",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "% Read",
+              "wldUnitOfMeasure": "",
+              "wldId": 208,
+              "wldShortName": "Read_db",
+              "wldDisplayOrder": 607,
+              "wldState": "READONLY",
+              "wldDefaultValue": "50",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "BOOLEAN",
+              "wldDisplayName": "Business Critical",
+              "wldUnitOfMeasure": "",
+              "wldId": 209,
+              "wldShortName": "business_critical",
+              "wldDisplayOrder": 605,
+              "wldState": "EDIT",
+              "wldDefaultValue": "0",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "0",
+              "wldIncrementBy": "",
+              "wldUiComponent": "CHECKBOX"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": [
+                {
+                  "value": "OLTP",
+                  "key": "OLTP"
+                },
+                {
+                  "value": "OLAP",
+                  "key": "OLAP"
+                }
+              ],
+              "wldDisplayName": "DB Server Type",
+              "wldUnitOfMeasure": "",
+              "wldId": 212,
+              "wldShortName": "db_server_type",
+              "wldDisplayOrder": 20,
+              "wldState": "EDIT",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "",
+              "wldActionUri": "workloadDB",
+              "wldDescription": "",
+              "wldMinLimit": "",
+              "wldIncrementBy": "",
+              "wldUiComponent": "DROPDOWN"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Num of DB Instances",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 213,
+              "wldShortName": "num_db_instances",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "5",
+              "wldMaxLimit": "25",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "Database",
+          "workloadTypeId": 3,
+          "userTypeId": 200,
+          "techDetailsShow": false,
+          "workloadTypeName": "Extra Small"
+        },
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs",
+              "wldUnitOfMeasure": "",
+              "wldId": 201,
+              "wldShortName": "vcpus_per_db",
+              "wldDisplayOrder": 600,
+              "wldState": "READONLY",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "16",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 202,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 601,
+              "wldState": "READONLY",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "4",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM(GB)",
+              "wldUnitOfMeasure": "K",
+              "wldId": 203,
+              "wldShortName": "ram_per_db",
+              "wldDisplayOrder": 602,
+              "wldState": "READONLY",
+              "wldDefaultValue": "64",
+              "wldMaxLimit": "256",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Avg IOPS",
+              "wldUnitOfMeasure": "MBps",
+              "wldId": 204,
+              "wldShortName": "avg_iops_per_db",
+              "wldDisplayOrder": 603,
+              "wldState": "READONLY",
+              "wldDefaultValue": "1000",
+              "wldMaxLimit": "10000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "DB Size(GB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 205,
+              "wldShortName": "db_size",
+              "wldDisplayOrder": 604,
+              "wldState": "READONLY",
+              "wldDefaultValue": "1000",
+              "wldMaxLimit": "4000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Working Set (%)",
+              "wldUnitOfMeasure": "",
+              "wldId": 206,
+              "wldShortName": "working_set",
+              "wldDisplayOrder": 605,
+              "wldState": "READONLY",
+              "wldDefaultValue": "40",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Block Size (KB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 207,
+              "wldShortName": "block_size",
+              "wldDisplayOrder": 606,
+              "wldState": "EDIT",
+              "wldDefaultValue": "8",
+              "wldMaxLimit": "64",
+              "wldValueArray": [
+                2,
+                4,
+                8,
+                16,
+                32,
+                64
+              ],
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "% Read",
+              "wldUnitOfMeasure": "",
+              "wldId": 208,
+              "wldShortName": "Read_db",
+              "wldDisplayOrder": 607,
+              "wldState": "READONLY",
+              "wldDefaultValue": "50",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "BOOLEAN",
+              "wldDisplayName": "Business Critical",
+              "wldUnitOfMeasure": "",
+              "wldId": 209,
+              "wldShortName": "business_critical",
+              "wldDisplayOrder": 605,
+              "wldState": "EDIT",
+              "wldDefaultValue": "0",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "0",
+              "wldIncrementBy": "",
+              "wldUiComponent": "CHECKBOX"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": [
+                {
+                  "value": "OLTP",
+                  "key": "OLTP"
+                },
+                {
+                  "value": "OLAP",
+                  "key": "OLAP"
+                }
+              ],
+              "wldDisplayName": "DB Server Type",
+              "wldUnitOfMeasure": "",
+              "wldId": 212,
+              "wldShortName": "db_server_type",
+              "wldDisplayOrder": 20,
+              "wldState": "EDIT",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "",
+              "wldActionUri": "workloadDB",
+              "wldDescription": "",
+              "wldMinLimit": "",
+              "wldIncrementBy": "",
+              "wldUiComponent": "DROPDOWN"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Num of DB Instances",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 213,
+              "wldShortName": "num_db_instances",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "5",
+              "wldMaxLimit": "25",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "Database",
+          "workloadTypeId": 3,
+          "userTypeId": 210,
+          "techDetailsShow": false,
+          "workloadTypeName": "Small"
+        },
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs",
+              "wldUnitOfMeasure": "",
+              "wldId": 201,
+              "wldShortName": "vcpus_per_db",
+              "wldDisplayOrder": 600,
+              "wldState": "READONLY",
+              "wldDefaultValue": "8",
+              "wldMaxLimit": "16",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 202,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 601,
+              "wldState": "READONLY",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "4",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM(GB)",
+              "wldUnitOfMeasure": "K",
+              "wldId": 203,
+              "wldShortName": "ram_per_db",
+              "wldDisplayOrder": 602,
+              "wldState": "READONLY",
+              "wldDefaultValue": "128",
+              "wldMaxLimit": "256",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Avg IOPS",
+              "wldUnitOfMeasure": "MBps",
+              "wldId": 204,
+              "wldShortName": "avg_iops_per_db",
+              "wldDisplayOrder": 603,
+              "wldState": "READONLY",
+              "wldDefaultValue": "4000",
+              "wldMaxLimit": "10000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "DB Size(GB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 205,
+              "wldShortName": "db_size",
+              "wldDisplayOrder": 604,
+              "wldState": "READONLY",
+              "wldDefaultValue": "2000",
+              "wldMaxLimit": "4000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Working Set (%)",
+              "wldUnitOfMeasure": "",
+              "wldId": 206,
+              "wldShortName": "working_set",
+              "wldDisplayOrder": 605,
+              "wldState": "READONLY",
+              "wldDefaultValue": "40",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Block Size (KB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 207,
+              "wldShortName": "block_size",
+              "wldDisplayOrder": 606,
+              "wldState": "READONLY",
+              "wldDefaultValue": "8",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "% Read",
+              "wldUnitOfMeasure": "",
+              "wldId": 208,
+              "wldShortName": "Read_db",
+              "wldDisplayOrder": 607,
+              "wldState": "READONLY",
+              "wldDefaultValue": "50",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "BOOLEAN",
+              "wldDisplayName": "Business Critical",
+              "wldUnitOfMeasure": "",
+              "wldId": 209,
+              "wldShortName": "business_critical",
+              "wldDisplayOrder": 605,
+              "wldState": "EDIT",
+              "wldDefaultValue": "0",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "0",
+              "wldIncrementBy": "",
+              "wldUiComponent": "CHECKBOX"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": [
+                {
+                  "value": "OLTP",
+                  "key": "OLTP"
+                },
+                {
+                  "value": "OLAP",
+                  "key": "OLAP"
+                }
+              ],
+              "wldDisplayName": "DB Server Type",
+              "wldUnitOfMeasure": "",
+              "wldId": 212,
+              "wldShortName": "db_server_type",
+              "wldDisplayOrder": 20,
+              "wldState": "EDIT",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "",
+              "wldActionUri": "workloadDB",
+              "wldDescription": "",
+              "wldMinLimit": "",
+              "wldIncrementBy": "",
+              "wldUiComponent": "DROPDOWN"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Num of DB Instances",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 213,
+              "wldShortName": "num_db_instances",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "5",
+              "wldMaxLimit": "25",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "Database",
+          "workloadTypeId": 3,
+          "userTypeId": 220,
+          "techDetailsShow": false,
+          "workloadTypeName": "Medium"
+        },
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs",
+              "wldUnitOfMeasure": "",
+              "wldId": 201,
+              "wldShortName": "vcpus_per_db",
+              "wldDisplayOrder": 600,
+              "wldState": "READONLY",
+              "wldDefaultValue": "16",
+              "wldMaxLimit": "16",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 202,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 601,
+              "wldState": "READONLY",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "4",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM(GB)",
+              "wldUnitOfMeasure": "K",
+              "wldId": 203,
+              "wldShortName": "ram_per_db",
+              "wldDisplayOrder": 602,
+              "wldState": "READONLY",
+              "wldDefaultValue": "256",
+              "wldMaxLimit": "256",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Avg IOPS",
+              "wldUnitOfMeasure": "MBps",
+              "wldId": 204,
+              "wldShortName": "avg_iops_per_db",
+              "wldDisplayOrder": 603,
+              "wldState": "READONLY",
+              "wldDefaultValue": "10000",
+              "wldMaxLimit": "10000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "DB Size(GB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 205,
+              "wldShortName": "db_size",
+              "wldDisplayOrder": 604,
+              "wldState": "READONLY",
+              "wldDefaultValue": "4000",
+              "wldMaxLimit": "4000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Working Set (%)",
+              "wldUnitOfMeasure": "",
+              "wldId": 206,
+              "wldShortName": "working_set",
+              "wldDisplayOrder": 605,
+              "wldState": "READONLY",
+              "wldDefaultValue": "40",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Block Size (KB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 207,
+              "wldShortName": "block_size",
+              "wldDisplayOrder": 606,
+              "wldState": "READONLY",
+              "wldDefaultValue": "8",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "% Read",
+              "wldUnitOfMeasure": "",
+              "wldId": 208,
+              "wldShortName": "Read_db",
+              "wldDisplayOrder": 607,
+              "wldState": "READONLY",
+              "wldDefaultValue": "50",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "BOOLEAN",
+              "wldDisplayName": "Business Critical",
+              "wldUnitOfMeasure": "",
+              "wldId": 209,
+              "wldShortName": "business_critical",
+              "wldDisplayOrder": 605,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "0",
+              "wldIncrementBy": "",
+              "wldUiComponent": "CHECKBOX"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": [
+                {
+                  "value": "OLTP",
+                  "key": "OLTP"
+                },
+                {
+                  "value": "OLAP",
+                  "key": "OLAP"
+                }
+              ],
+              "wldDisplayName": "DB Server Type",
+              "wldUnitOfMeasure": "",
+              "wldId": 212,
+              "wldShortName": "db_server_type",
+              "wldDisplayOrder": 20,
+              "wldState": "EDIT",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "",
+              "wldActionUri": "workloadDB",
+              "wldDescription": "",
+              "wldMinLimit": "",
+              "wldIncrementBy": "",
+              "wldUiComponent": "DROPDOWN"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Num of DB Instances",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 213,
+              "wldShortName": "num_db_instances",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "5",
+              "wldMaxLimit": "25",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "Database",
+          "workloadTypeId": 3,
+          "userTypeId": 230,
+          "techDetailsShow": false,
+          "workloadTypeName": "Large"
+        },
+        {
+          "techDetails": [
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs",
+              "wldUnitOfMeasure": "",
+              "wldId": 201,
+              "wldShortName": "vcpus_per_db",
+              "wldDisplayOrder": 600,
+              "wldState": "EDIT",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "16",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "COUNTER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "vCPUs per Core",
+              "wldUnitOfMeasure": "GB",
+              "wldId": 202,
+              "wldShortName": "vcpus_per_core",
+              "wldDisplayOrder": 601,
+              "wldState": "EDIT",
+              "wldDefaultValue": "4",
+              "wldMaxLimit": "4",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "RAM(GB)",
+              "wldUnitOfMeasure": "K",
+              "wldId": 203,
+              "wldShortName": "ram_per_db",
+              "wldDisplayOrder": 602,
+              "wldState": "EDIT",
+              "wldDefaultValue": "64",
+              "wldMaxLimit": "256",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "4",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Avg IOPS",
+              "wldUnitOfMeasure": "MBps",
+              "wldId": 204,
+              "wldShortName": "avg_iops_per_db",
+              "wldDisplayOrder": 603,
+              "wldState": "EDIT",
+              "wldDefaultValue": "1000",
+              "wldMaxLimit": "10000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "100",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "DB Size(GB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 205,
+              "wldShortName": "db_size",
+              "wldDisplayOrder": 604,
+              "wldState": "EDIT",
+              "wldDefaultValue": "250",
+              "wldMaxLimit": "4000",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "50",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Working Set (%)",
+              "wldUnitOfMeasure": "",
+              "wldId": 206,
+              "wldShortName": "working_set",
+              "wldDisplayOrder": 605,
+              "wldState": "EDIT",
+              "wldDefaultValue": "40",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Block Size (KB)",
+              "wldUnitOfMeasure": "",
+              "wldId": 207,
+              "wldShortName": "block_size",
+              "wldDisplayOrder": 606,
+              "wldState": "EDIT",
+              "wldDefaultValue": "8",
+              "wldMaxLimit": "64",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "8",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "% Read",
+              "wldUnitOfMeasure": "",
+              "wldId": 208,
+              "wldShortName": "Read_db",
+              "wldDisplayOrder": 607,
+              "wldState": "EDIT",
+              "wldDefaultValue": "50",
+              "wldMaxLimit": "100",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "1",
+              "wldUiComponent": "NUMBER"
+            },
+            {
+              "wldAllowedValues": "BOOLEAN",
+              "wldDisplayName": "Business Critical",
+              "wldUnitOfMeasure": "",
+              "wldId": 209,
+              "wldShortName": "business_critical",
+              "wldDisplayOrder": 605,
+              "wldState": "EDIT",
+              "wldDefaultValue": "0",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "0",
+              "wldIncrementBy": "",
+              "wldUiComponent": "CHECKBOX"
+            }
+          ],
+          "workloadFieldDet": [
+            {
+              "wldAllowedValues": [
+                {
+                  "value": "OLTP",
+                  "key": "OLTP"
+                },
+                {
+                  "value": "OLAP",
+                  "key": "OLAP"
+                }
+              ],
+              "wldDisplayName": "DB Server Type",
+              "wldUnitOfMeasure": "",
+              "wldId": 212,
+              "wldShortName": "db_server_type",
+              "wldDisplayOrder": 20,
+              "wldState": "EDIT",
+              "wldDefaultValue": "6",
+              "wldMaxLimit": "",
+              "wldActionUri": "workloadDB",
+              "wldDescription": "",
+              "wldMinLimit": "",
+              "wldIncrementBy": "",
+              "wldUiComponent": "DROPDOWN"
+            },
+            {
+              "wldAllowedValues": "NUMBER",
+              "wldDisplayName": "Num of DB Instances",
+              "wldUnitOfMeasure": "{null}",
+              "wldId": 213,
+              "wldShortName": "num_db_instances",
+              "wldDisplayOrder": 40,
+              "wldState": "EDIT",
+              "wldDefaultValue": "5",
+              "wldMaxLimit": "25",
+              "wldActionUri": "",
+              "wldDescription": "",
+              "wldMinLimit": "1",
+              "wldIncrementBy": "",
+              "wldUiComponent": "COUNTER"
+            }
+          ],
+          "workloadName": "Database",
+          "workloadTypeId": 3,
+          "userTypeId": 240,
+          "techDetailsShow": false,
+          "workloadTypeName": "Database"
+        }
+      ]
+    }
+  },
+  "success": true
+}

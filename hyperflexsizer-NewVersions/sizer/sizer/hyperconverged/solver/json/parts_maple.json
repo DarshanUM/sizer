@@ -1,0 +1,59 @@
+{
+ "parts" : [
+  
+{ "id" : "E5-2620v3", "capacity" : 6, "unit_price" : 422,"frequency":2.40,"l3_cache":15,"tdp":85, "speclnt":0, "description" : "Intel Xeon Processor E5-2620 v3, 6 cores, 2.40GHz"},
+
+{ "id" : "E5-2680v3", "capacity" : 12, "unit_price" : 1749,"frequency":2.50,"l3_cache":30,"tdp":120, "speclnt":0, "description" : "Intel Xeon Processor E5-2680 v3, 12 cores, 2.50GHz"},
+
+{ "id" : "E5-2690v3", "capacity" : 12, "unit_price" :2090, "frequency":2.60,"l3_cache":30,"tdp":135, "speclnt":0, "description" : "Intel Xeon Processor E5-2690 v3, 12 cores, 2.60GHz"},
+
+{ "id" : "E5-2698v3", "capacity" : 16, "unit_price" : 3400,"frequency":2.30,"l3_cache":40,"tdp":135, "speclnt":0, "description" : "Intel Xeon Processor E5-2698 v3, 16 cores, 2.30GHz"},
+
+{ "id" : "E5-2699v3", "capacity" : 18, "unit_price" : 4375 ,"frequency":2.30,"l3_cache":45,"tdp":145, "speclnt":0, "description" : "Intel Xeon Processor E5-2699 v3, 18 cores, 2.30GHz" },
+
+{ "id" : "E5-2697v3", "capacity" : 14, "unit_price" : 2639 ,"frequency":2.60,"l3_cache":35,"tdp":145, "speclnt":0, "description" : "Intel Xeon Processor E5-2697 v3, 14 cores, 2.60GHz" },
+
+{ "id" : "E5-2660v3", "capacity" : 10, "unit_price" : 1449 ,"frequency":2.60,"l3_cache":25,"tdp":105, "speclnt":0, "description" : "Intel Xeon Processor E5-2660 v3, 10 cores, 2.60GHz" },
+
+{ "id" : "E5-2640v3", "capacity" : 8, "unit_price" : 944 ,"frequency":2.60,"l3_cache":20,"tdp":90, "speclnt":0, "description" : "Intel Xeon Processor E5-2640 v3, 8 cores, 2.60GHz" },
+
+{ "id" : "E5-2643v3", "capacity" : 6, "unit_price" : 1552 ,"frequency":3.40,"l3_cache":20,"tdp":135, "speclnt":0, "description" : "Intel Xeon Processor E5-2643 v3, 6 cores, 3.40GHz" },
+
+{ "id" : "E5-2623v3", "capacity" : 4, "unit_price" : 439 ,"frequency":3.00,"l3_cache":10,"tdp":105, "speclnt":0, "description" : "Intel Xeon Processor E5-2623 v3, 4 cores, 3.00GHz" },
+
+{ "id" : "E5-2630v3", "capacity" : 8, "unit_price" : 651 ,"frequency":2.40,"l3_cache":20,"tdp":85, "speclnt":0, "description" : "Intel Xeon Processor E5-2630 v3, 8 cores, 2.40GHz" },
+
+
+{ "id" : "16GB_DDR3", "capacity" : 16, "unit_price" : 153,"description" : "DDR3 RAM" },
+
+{ "id" : "32GB_DDR3", "capacity" : 32, "unit_price" : 367 ,"description" : "DDR3 RAM" },
+
+{ "id" : "16GB_DDR4", "capacity" : 16, "unit_price" : 185 ,"description" : "DDR4 RAM" },
+
+{ "id" : "32GB_DDR4", "capacity" : 32, "unit_price" : 390 ,"description" : "DDR4 RAM" },
+
+
+{ "id" : "1TB_1", "capacity" : 1000, "unit_price" : 199.00, "encryption" : "No" ,"description" : "Seagate Constellation 1 TB 2.5in SATA 6 Gb/s HDD" },
+
+{ "id" : "1TB_2", "capacity" : 1000, "unit_price" : 220.00, "encryption" : "Yes" ,"description" : "Seagate Constellation 1 TB 2.5in SATA 6 Gb/s HDD"  },
+
+{ "id" : "2TB_1", "capacity" : 2000, "unit_price" : 378.00, "encryption" : "No" ,"description" : "Seagate Constellation 2 TB 2.5in SATA 6 Gb/s HDD"  },
+
+{ "id" : "2TB_2", "capacity" : 2000, "unit_price" : 399.00, "encryption" : "Yes" ,"description" : "Seagate Constellation 2 TB 2.5in SATA 6 Gb/s HDD"  },
+
+
+{ "id" : "200_GB_SSD", "capacity" : 200, "unit_price" : 209 ,"description" : "Intel SSD DC S3500 Series(200GB, 1.8in SATA 6Gb/s, 20nm, MLC)" },
+
+{ "id" : "400_GB_SSD", "capacity" : 400, "unit_price" : 419 ,"description" : "Intel SSD DC S3500 Series(400GB, 1.8in SATA 6Gb/s, 20nm, MLC)" },
+
+{ "id" : "480_GB_SSD", "capacity" : 480, "unit_price" : 509 ,"description" : "Intel SSD DC S3500 Series (480GB, 2.5in SATA 6Gb/s, 20nm, MLC)" },
+
+{ "id" : "800_GB_SSD", "capacity" : 800, "unit_price" : 839 ,"description" : "Intel SSD DC S3500 Series (800GB, 2.5in SATA 6Gb/s, 20nm, MLC)" },
+
+{ "id" : "1200_GB_SSD", "capacity" : 1200 , "unit_price" : 1289 ,"description" : "Intel SSD DC S3500 Series (1.2TB, 2.5in SATA 6Gb/s, 20nm, MLC)" },
+
+{ "id" : "1600_GB_SSD", "capacity" : 1600 , "unit_price" : 1719 ,"description" : "Intel SSD DC S3500 Series (1.6TB, 2.5in SATA 6Gb/s, 20nm, MLC)" }
+
+
+ ]
+}

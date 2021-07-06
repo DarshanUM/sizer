@@ -1,0 +1,104 @@
+Hyperflex Sizer deployment to Cisco LAE.
+---------------------------------------
+
+Pre-requisites:
+          Build from release-10 branch is deployed to Maplelabs stage server (port 8080).
+          Build is sanity tested on MapleLabs stage server. If there are any database schema changes, these are verified and noted down.
+
+
+Deployment Steps:
+	1. Deploy to LAE stage server.
+		Make database schema changes.
+		Deploy the build.
+		Sanity test the build.
+
+	2. Deploy to LAE production server.
+		Make database schema changes.
+		Deploy the build.
+		Sanity test the build.
+
+
+Hyperflex sizer deployment to lae is done by two steps
+
+STEP1: Upload build for deployment.
+-> Make sure stage server is running with stable code
+-> In jenkins we have a job called Bitbucketupload-Hyperflex, this will need hyperflex stable build number
+-> build this job with the stable build number of hyperflexsizer(it will show in dropdown)
+-> this job will check-in hyperflexsizer.tar.gz to bitbucket
+
+
+STEP2: Pull build to LAE gateway server and deploy build.
+	 from cisco environment
+	 Login to laeusr-prod2-01.cisco.com   using anushree login details
+  	rhc apps : This will display 3 apps. lae stage and production, Each contains SSH url and accessible URL and database details.
+
+
+Pull Build to LAE development machine/gateway server.
+----------------------------------------------------
+
+	There is a directory: old  (intermediate war files from bit bubket are kept here.)
+	remove huyperflexwar folder.
+        There is lae_depaloy.sh.   This has Bit bucket clone url. 
+	clone the hyperflexsizer.tar.gz using bitbucket clone url in any temp directory(out side the lae git repo)
+		git clone --depth=1 https://mapleguest-new:mapleguest@bitbucket.org/maplelabsadmin/hyperflexwar.git
+
+	You will clone only once for a build. Same build files will be copied to Stage and production. NO need to repeat for production.
+
+
+
+there is production   directory, here lae-git repo is cloned
+
+
+Database changes (If any):
+-----------------------
+	Take database dump:
+		on cisco laptop there is LAE folder. Run batch script. It will take dump of database to laptop.
+
+	SSH into instance.
+        env   mysql :  Get mysql credential or same is available in rhc apps. Make sure you are connecting to right mysql server.
+         mysql -u <user name> -p              (all available with rhc apps)
+         use <database name>
+		Modification of node/parts.
+			There are two tables. hyperconverged nodes and hyper converged parts,.
+			truncate these two tables.
+			Copy maplecisco.sql into temp.sql in temp directory.  (Use copy paste text). NO need to transfer files. Verify copy/paste is proper.
+		mysql -u username -p dbname < newsql.sql
+
+
+Stage deployment:
+Directory Stage:
+           goto wsgi folder.remove tar and copy old directory to here.  Do git push.
+	   After this (modify requirement.txt add a new line/delete new line so that git recognizes) git add, git commit, git push.
+
+
+Production deployment:
+	copy this tar file to production/yjl9ox4xprd/wsgi/
+	(yjl9ox4xprd is the  production lae app name)
+	then do git add, commit, push
+	then we can see deploy logs 
+
+Debugging deployment
+--------------------
+In case if needs to debug/change the code on lae
+	then type rhc apps  
+	it will show available apps under the cisco id
+
+	There is an ssh ulr to login to the server machine
+	there are database username and password detials available
+	
+	eg:
+		ssh hyperflexsizer-yjl9ox4xprd-1@yjl9ox4xprd-hyperflexsizer.cloudapps.cisco.com
+
+	After ssh to production app
+	
+home dir will be   /var/lib/openshift/hyperflexsizer-yjl9ox4xprd-1
+from here, move to app-root/runtime/repo/ at this directory our code is available
+Logs are available at app-root/logs/python.log
+In case if we want to restart app, from laeusr-prod2-01.cisco.com  this machine, 
+run rhc app-restart yjl9ox4xprd
+
+
+NOTE: WE ARE COPYING ONLY tar.gz FILE, WE HAVE deploy SCRIPT WHICH WILL UNTAR AND COPY lae_settings, lae_wsgi files to local_settings and wsgi.py files 
+RESPECTIVELY ON THE INSTANCES
+
+THIS DEPLOY SCRIPT IS AVAILABLE IN REPO AT .openshift_dir/action_hooks/deploy

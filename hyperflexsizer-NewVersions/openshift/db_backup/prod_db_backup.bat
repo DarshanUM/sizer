@@ -1,0 +1,2 @@
+plink -v -ssh -2 agurudut@laeusr-prod2-01.cisco.com -pw 123!Anuguru cd scripts;python prod_db_backup.py
+pscp -pw 123!Anuguru agurudut@laeusr-prod2-01.cisco.com:/users/agurudut/scripts/prod_database_backup.sql .

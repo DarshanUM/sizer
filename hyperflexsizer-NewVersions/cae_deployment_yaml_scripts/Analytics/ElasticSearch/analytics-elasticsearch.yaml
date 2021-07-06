@@ -1,0 +1,103 @@
+kind: "Service"
+apiVersion: "v1"
+metadata:
+  name: "analytics-elasticsearch-svc"
+spec:
+  ports:
+    -
+      name: "web"
+      protocol: "TCP"
+      port: 9200
+  selector:
+    name: "analytics-elasticsearch"
+  type: "ClusterIP"
+  sessionAffinity: "None"
+---
+kind: "Deployment"
+apiVersion: "apps/v1beta1"
+metadata:
+  name: "analytics-elasticsearch"
+spec:
+  template:
+    metadata:
+      labels:
+        name: "analytics-elasticsearch"
+      annotations:
+        app_version: 'latest'
+    spec:
+      containers:
+        -
+          name: "analytics-elasticsearch"
+          image: "containers.cisco.com/savramap/analytics_elasticsearch:latest"
+          ports:
+            -
+              containerPort: 9200
+              protocol: "TCP"
+          env:
+            -
+              name: "OPENSHIFT_APP_NAME"
+              value: "hxsizeranalytics"
+          resources:
+            limits:
+              memory: 4Gi
+            requests:
+              cpu: 0.20
+
+          volumeMounts:
+            -
+              name: podinfo
+              mountPath: /etc/metadata
+              readOnly: false
+
+            - mountPath: /usr/share/elasticsearch/data
+              name: es-data-volume
+
+
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            capabilities: {}
+            privileged: false
+          #readinessProbe:
+          #  httpGet:
+          #    path: "/"
+          #    port: 8080
+          #  initialDelaySeconds: 15
+          #  timeoutSeconds: 1
+          #livenessProbe:
+          #  exec:
+          #    command:
+          #      - "/bin/true"
+          #  initialDelaySeconds: 15
+          #  timeoutSeconds: 1
+      volumes:
+        -
+          name: podinfo
+          downwardAPI:
+            items:
+              -
+                path: "labels"
+                fieldRef:
+                  fieldPath: metadata.labels
+              -
+                path: "annotations"
+                fieldRef:
+                  fieldPath: metadata.annotations
+        - name: "analytics-elasticsearch"
+          emptydir: {}
+
+        - name: es-data-volume
+          persistentVolumeClaim:
+            claimName: elasticsearch-pvc
+
+      restartPolicy: "Always"
+      dnsPolicy: "ClusterFirst"
+  replicas: 1
+  triggers:
+    -
+      type: "ConfigChange"
+  strategy:
+    type: "RollingUpdate"
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 300

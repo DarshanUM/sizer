@@ -1,0 +1,119 @@
+
+/* SQL CHANGES for RELEASE 10.1.0 */
+
+/* Shared scenario table security toggle button */
+ALTER TABLE hyperconverged_sharedscenario ADD COLUMN is_secure BOOLEAN DEFAULT FALSE;
+
+
+/* ========================================================================= */
+
+/* SQL CHANGES for RELEASE 10.0.0 */
+
+/* auth_user table changes */
+alter table auth_user add column theme VARCHAR(20) DEFAULT 'light';
+	
+alter table auth_user add column banner_version VARCHAR(20) DEFAULT '9.8.0';	
+
+
+/* new table - hyperconverged_fixedresults */ 
+
+CREATE TABLE `hyperconverged_fixedresults` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `result_json` JSON NULL,
+  `error_json` JSON NULL,
+  `cluster_name` VARCHAR(45) NULL,
+  `scenario_id` INT NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+/* Adding extra column to hyperconverged_fixedresults */
+
+ALTER TABLE `hyperconverged_fixedresults` ADD COLUMN `settings_json` json NOT NULL AFTER `scenario_id`;
+
+
+/* Shared Scenario changes */
+
+ALTER TABLE `hyperconverged_sharedscenario` ADD COLUMN `email` VARCHAR(250) NOT NULL AFTER `acl`;
+
+SET SQL_SAFE_UPDATES =0;
+UPDATE hyperconverged_sharedscenario sd
+LEFT JOIN auth_user au ON
+sd.userid = au.username
+SET  sd.email = IFNULL(au.email,'NA');
+
+
+/* Update name column for fixed sizing in results table */
+
+SET SQL_SAFE_UPDATES =0;
+UPDATE hyperconverged_results SET name ='Fixed_Config' WHERE name = 'Fixed Config';
+
+
+/* Entry the value for Full Capacity in IOPS table
+-------------------------------------------------
+insert into hyperconverged_iopsconvfactor ( threshold, iops_conv_factor,replication_factor, workload_type, part_name, hypervisor)
+Select 3 as threshold, iops_conv_factor,replication_factor, workload_type, part_name, hypervisor
+from hyperconverged_iopsconvfactor WHERE threshold =2;
+
+
+-- insert the Threshold value for Full capacity
+---------------------------------------------------
+insert into hyperconverged_thresholds (threshold_key, workload_type, threshold_value, threshold_category)
+select threshold_key, workload_type, threshold_value, 3
+from hyperconverged_thresholds
+where threshold_category = 2  AND threshold_key  IN ('ALL_FLASH_HDD','HDD','LFF_HDD');
+
+insert into hyperconverged_thresholds (threshold_key, workload_type, threshold_value, threshold_category)
+select threshold_key, workload_type, 100, 3
+from hyperconverged_thresholds
+where threshold_category = 2  AND threshold_key NOT IN ('ALL_FLASH_HDD','HDD','LFF_HDD');
+
+-- validate -- all total 160 records must insert
+-----------------------------------------------------
+SELECT  distinct threshold_value FROM hyperconverged_thresholds 
+WHERE threshold_category = 3  AND threshold_key IN ('ALL_FLASH_HDD','HDD','LFF_HDD');
+SELECT  distinct threshold_value FROM hyperconverged_thresholds 
+WHERE threshold_category = 3  AND threshold_key NOT IN ('ALL_FLASH_HDD','HDD','LFF_HDD');
+
+/* END - SQL CHANGES for RELEASE 10.0.0 */
+
+/* ========================================================================= */
+
+/* SQL CHANGES for RELEASE 10.2 */
+-----------------------------------------------------------------------
+
+save anthos -- release 10.2
+-----------------------------
+insert into hyperconverged_thresholds ( threshold_key, workload_type,threshold_value, threshold_category)
+SELECT threshold_key, 'ANTHOS', threshold_value, threshold_category FROM hyperconverged_thresholds WHERE workload_type = 'CONTAINER';
+
+
+ALTER TABLE `hyperconverged_iopsconvfactor` add COLUMN `iscsi_iops` int(11) NOT NULL;
+
+UPDATE hyperconverged_iopsconvfactor set iscsi_iops=iops_conv_factor;
+
+/* END - SQL CHANGES for RELEASE 10.2.0 */
+
+
+/* SQL CHANGES for RELEASE 10.3.3 */
+-----------------------------------------------------------------------
+
+CREATE TABLE `hyperconverged_estimatedetails` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scenario_id` int(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `estimate_id` varchar(70) NOT NULL,
+  `estimate_name` varchar(100) NOT NULL,
+  `estimate_response` varchar(200) NOT NULL,
+  `is_updated` tinyint(1) DEFAULT '0',
+  `created_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+
+alter table auth_user add column price_list varchar(15) DEFAULT '';
+
+/* END - SQL CHANGES for RELEASE 10.3.3 */

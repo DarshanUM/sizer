@@ -1,0 +1,103 @@
+kind: "Service"
+apiVersion: "v1"
+metadata:
+  name: "analytics-grafana-svc"
+spec:
+  ports:
+    -
+      name: "web"
+      protocol: "TCP"
+      port: 3000
+  selector:
+    name: "analytics-grafana"
+  type: "ClusterIP"
+  sessionAffinity: "None"
+---
+kind: "Deployment"
+apiVersion: "apps/v1beta1"
+metadata:
+  name: "analytics-grafana"
+spec:
+  template:
+    metadata:
+      labels:
+        name: "analytics-grafana"
+      annotations:
+        app_version: 'latest'
+    spec:
+      containers:
+        -
+          name: "analytics-grafana"
+          image: "containers.cisco.com/savramap/analytics_grafana:latest"
+          ports:
+            -
+              containerPort: 3000
+              protocol: "TCP"
+          env:
+            -
+              name: "OPENSHIFT_APP_NAME"
+              value: "hxsizeranalytics"
+          resources:
+            limits:
+              memory: 4Gi
+            requests:
+              cpu: 0.20
+
+          volumeMounts:
+            -
+              name: podinfo
+              mountPath: /etc/metadata
+              readOnly: false
+
+            - mountPath: /var/lib/grafana
+              name: grafana-volume
+
+
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            capabilities: {}
+            privileged: false
+          #readinessProbe:
+          #  httpGet:
+          #    path: "/"
+          #    port: 8080
+          #  initialDelaySeconds: 15
+          #  timeoutSeconds: 1
+          #livenessProbe:
+          #  exec:
+          #    command:
+          #      - "/bin/true"
+          #  initialDelaySeconds: 15
+          #  timeoutSeconds: 1
+      volumes:
+        -
+          name: podinfo
+          downwardAPI:
+            items:
+              -
+                path: "labels"
+                fieldRef:
+                  fieldPath: metadata.labels
+              -
+                path: "annotations"
+                fieldRef:
+                  fieldPath: metadata.annotations
+        - name: "analytics-grafana"
+          emptydir: {}
+
+        - name: grafana-volume
+          persistentVolumeClaim:
+            claimName: grafana-pvc
+
+      restartPolicy: "Always"
+      dnsPolicy: "ClusterFirst"
+  replicas: 1
+  triggers:
+    -
+      type: "ConfigChange"
+  strategy:
+    type: "RollingUpdate"
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 300

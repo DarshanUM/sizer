@@ -1,0 +1,43 @@
+
+
+FIXED = 'fixed'
+
+
+VDI = ['VDI']
+RDSH = ['RDSH']
+VSI = ['VSI']
+VM = ['VM']
+DB = ['DB']
+RAW = ['RAW']
+RAW_FILE = ['RAW_FILE']
+EXCHANGE = ['EXCHANGE']
+OLTP = ['OLTP']
+OLAP = ['OLAP']
+ROBO = ['ROBO']
+ORACLE = ['ORACLE']
+OOLTP = ['OOLTP']
+OOLAP = ['OOLAP']
+AWR_FILE = ['AWR_FILE']
+VDI_INFRA = ['VDI_INFRA']
+EPIC = ['EPIC']
+VEEAM = ['VEEAM']
+SPLUNK = ['SPLUNK']
+CONTAINER = ['CONTAINER']
+AIML = ['AIML']
+
+UNITS = ["GB", "TB", "GiB", "TiB"]
+BYTE_UNITS = ["GiB", "TiB"]
+SIZING_TYPES = ['optimal', 'fixed','hybrid']
+CLUSTER_TYPES = ['normal', 'stretch']
+VDI_INFRA_TYPES = ['citrix', 'horizon']
+
+ROBO_LAN = ['10G', 'DUAL', 'SINGLE', 'ANY']
+SUPPORTED_CLUSTERS = [VDI + RDSH + VDI_INFRA, VSI + DB + ORACLE + AWR_FILE, RAW + RAW_FILE, EXCHANGE, ROBO, EPIC, VEEAM,
+                      SPLUNK, CONTAINER, AIML]
+
+# Supported Workloads for nodes based on type
+ROBO_WL = ROBO
+AF_WL = DB + ORACLE + AWR_FILE + VDI + VSI + RAW + RAW_FILE + EXCHANGE + VDI_INFRA + SPLUNK + RDSH + CONTAINER
+HYPER_WL = VDI + VSI + RAW + RAW_FILE + EXCHANGE + VDI_INFRA + RDSH
+EPIC_WL = EPIC
+VEEAM_WL = VEEAM

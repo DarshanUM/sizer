@@ -1,0 +1,64 @@
+{
+ "models" : [
+		  {
+			"vendor"           : "DELL",
+			"model"            : "XC630-10",
+			"type"             : "configurable",
+			"ssd_slots"        : [2,4],
+			"ssd_options"      : ["SSD_1","SSD_2","SSD3"],
+			"hdd_slots"        : [4,6,8],
+			"hdd_options"      : ["HDD_1"],
+			"cpu_socket_count"      : [2],
+			"cpu_options"      : ["E5-2620v3","E5-2630v3","E5-2650v3","E5-2680v3","E5-2690v3","E5-2698v3"],	
+			"ram_slots"        : [4,8,12,16,20,24],
+			"ram_options"      : ["RAM_1","RAM_2"],
+			"clock_speed"      : 1800,
+			"avg_iops"     : 10000,
+			"base_price"       : 15000,
+			"power"            : 120,
+			"rack_space"       : 10,
+			"btu"              : 2200
+
+             },
+		  {
+			"vendor"           : "DELL",
+			"model"            : "XC730xd-12",
+			"type"             : "configurable",
+			"ssd_slots"        : [2,4],
+			"ssd_options"      : ["SSD_1","SSD_2","SSD3"],
+			"hdd_slots"        : [4,6,8,10],
+			"hdd_options"      : ["HDD_2","HDD_3"],
+			"cpu_socket_count"      : [2],
+			"cpu_options"      : ["E5-2620v3","E5-2630v3","E5-2650v3","E5-2680v3"],	
+			"ram_slots"        : [4,8,12,16,20,24],
+			"ram_options"      : ["RAM_1","RAM_2"],
+			"clock_speed"      : 2000,
+			"avg_iops"     : 20000,
+			"base_price"       : 25000,
+			"power"            : 140,
+			"rack_space"       : 12,
+			"btu"              : 3400
+
+             },
+		   {
+			"vendor"           : "DELL",
+			"model"            : "XC730xd-24",
+			"type"             : "configurable",
+			"ssd_slots"        : [2,4],
+			"ssd_options"      : ["SSD_1","SSD_2","SSD3"],
+			"hdd_slots"        : [4,6,8,10,12,14,16,18,20],
+			"hdd_options"      : ["HDD_1"],
+			"cpu_socket_count"      : [2],
+			"cpu_options"      : ["E5-2690v3","E5-2698v3"],	
+			"ram_slots"        : [4,8,12,16,20,24],
+			"ram_options"      : ["RAM_1","RAM_2"],
+			"clock_speed"      : 2400,
+			"avg_iops"     : 30000,
+			"base_price"       : 35000,
+			"power"            : 150,
+			"rack_space"       : 24,
+			"btu"              : 2750
+
+             }
+        ]
+}
