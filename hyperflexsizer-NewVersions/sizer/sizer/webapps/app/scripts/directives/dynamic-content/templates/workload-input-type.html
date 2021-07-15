@@ -1,0 +1,21 @@
+<div class="clear  form-group" ng-hide="field.hidden">
+	<!-- <label class="col-lg-6" ng-show="workload.wl_type==='RAW_FILE'"> {{field.title || field.displayName}}</label>
+	<div class="col-lg-6"  ng-show="workload.wl_type==='RAW_FILE'">
+		<div class="hper-rgt" ng-click="onFileInputClick($event)">
+		  <input class="radio-custom" name="wl-input-type" type="radio" 
+		  	ng-checked="workload[field.modelName] === false" ng-value="false">
+		  <label class="radio-custom-label"> Manual </label>
+		</div> 
+		<div class="hper-lft margin_left10" ng-click="onFileInputClick($event)">
+		  <input class="radio-custom" name="wl-input-type" type="radio" 
+		  	ng-checked="workload[field.modelName] === true" ng-value="true">
+		  <label class="radio-custom-label"> File </label>
+		</div>
+	</div> -->
+	<file-upload on-upload-success="onFileUploaded(data)" ng-if="workload[field.modelName] && (workload.wl_type==='RAW_FILE')" is-provisioned="workload.provisioned">	</file-upload>
+	<file-upload-awr on-upload-success="onFileUploaded(data)" ng-if="workload[field.modelName] && workload.wl_type==='AWR_FILE'" is-provisioned="workload.provisioned">	</file-upload-awr>
+	<file-upload-exchange on-upload-success="onFileUploaded(data)" ng-if="workload[field.modelName] && workload.wl_type==='EXCHANGE'">	</file-upload-exchange>
+	<file-upload-bulk on-upload-success="onFileUploaded(data)" ng-if="workload[field.modelName] && workload.wl_type==='BULK'">	</file-upload-bulk>
+	<file-upload-oracle on-upload-success="onFileUploaded(data)" ng-if="workload[field.modelName] && workload.wl_type==='ORACLE'">	</file-upload-oracle>
+
+</div>

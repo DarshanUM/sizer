@@ -1,0 +1,299 @@
+<div>
+    <!-- header start-->
+    <div ng-include="'views/header/header.html'"></div>
+    <!-- header end-->
+    <div class="appendFilter scenario_tab_list">
+        <a href="javascript:void(0)" ng-click="scenarioCtrl.toggleOwnership('ACTIVE')" class="addFilter"
+            ng-class="{'activeAddFilter':(scenarioCtrl.currentOwnership==='ACTIVE')}">Active</a>
+        <a href="javascript:void(0)" ng-click="scenarioCtrl.toggleOwnership('FAVORITE')" class="addFilter"
+            ng-class="{'activeAddFilter':(scenarioCtrl.currentOwnership==='FAVORITE')}">Favorite</a>
+        <a href="javascript:void(0)" ng-click="scenarioCtrl.toggleOwnership('ARCHIVE')" class="addFilter"
+            ng-class="{'activeAddFilter':(scenarioCtrl.currentOwnership==='ARCHIVE' && 'arch' === scenarioCtrl.currentTab)}">Archive</a>
+        <a href="javascript:void(0)" ng-click="scenarioCtrl.toggleOwnership('SHARED')" class="addFilter"
+            ng-class="{'activeAddFilter':scenarioCtrl.currentOwnership==='SHARED'}">Shared
+            with me</a>
+
+    </div>
+
+    <section ng-show="!scenarioCtrl.areScenariosLoading && !scenarioCtrl.lengthHide" class="positionRelative">
+        <h4 class="col-lg-12 page_tiitle" style="background: #f9f9f9; padding: 7px 38px;">
+            <!--  <span class="pull-left">All Scenarios </span> -->
+
+
+
+            <div class="icon-list pull-right fav_class" ng-if="'SHARED' !== scenarioCtrl.currentOwnership">
+                <span class="dropdown">
+
+
+                    <span class="dropdown " ng-show="scenarioCtrl.currentOwnership==='ACTIVE'">
+                        <button class="dropdown-toggle" data-toggle="dropdown"><img
+                                src="images/auto-archive-icon.png" /> Auto Archive</button>
+                        <!-- <input type="image" src="images/auto-archive-icon.png" style="padding: 6px 7px 5px 7px" name="" class="dropdown-toggle" data-toggle="dropdown" title="Auto Archive" /> -->
+
+
+                        <!-- <span class="fa fa-archive dropdown-toggle" data-toggle="dropdown" title="Auto Archive></span> -->
+                        <div class="dropdown-menu  dropdown_box" ng-click="scenarioCtrl.stopAction($event)">
+                            <lable>Choose Date </lable>
+                            <div class="positionRelative"><input type="text" name="" ng-model="scenarioCtrl.archiveDate"
+                                    class="form-control" id="achiveDate">
+                                <!-- <i ng-click="scenarioCtrl.archiveClick()" class="fa fa-calendar calender_icon" aria-hidden="true"></i> -->
+                            </div>
+                            <div ng-show="scenarioCtrl.archiveDate" style="font-size: 9px"><b>Do you want to archive
+                                    scenarios older than {{scenarioCtrl.archiveDate}} ?</b></div>
+                            <div class="pull-right"><input type="button" class="btn btn-primary margin_top5" name=""
+                                    value="OK" ng-disabled="!scenarioCtrl.archiveDate"
+                                    ng-click="scenarioCtrl.submitArchive($event)"></div>
+                        </div>
+                    </span>
+
+                    <button
+                        ng-show="'arch' !== scenarioCtrl.currentTab && scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] > 0"
+                        ng-click="scenarioCtrl.confirmArchive(true)"> <img
+                            src="images/archive--icon1.png">Archive</button>
+                    <button
+                        ng-show="'arch' === scenarioCtrl.currentTab && scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] > 0"
+                        ng-click="scenarioCtrl.archiveScene(false)"> <img
+                            src="images/un-archive--icon1.png">Un-Archive</button>
+                    <button
+                        ng-show="'arch' !== scenarioCtrl.currentTab && scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] < 1"
+                        class="disabled"> <img src="images/archive--icon2.png">Archive</button>
+                    <button
+                        ng-show="'arch' === scenarioCtrl.currentTab && scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] < 1"
+                        class="disabled"> <img src="images/un-archive--icon2.png">Un-Archive</button>
+
+
+
+                    <button ng-show="scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] < 1"
+                        class="dropdown-toggle disabled"> <img src="images/favourite-icon2.png">Favorite</button>
+
+
+                    <!--   <input type="image" src="images/favourite-icon2.png" name="" class="dropdown-toggle disabled" data-toggle="dropdown"
+            title="Favorite" ng-show="scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] < 1" /> -->
+                    <button ng-show="scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] > 0"
+                        class="dropdown-toggle" data-toggle="dropdown"> <img
+                            src="images/favourite-icon1.png">Favorite</button>
+
+
+                    <!--    <input type="image" src="images/favourite-icon1.png" name="" class="dropdown-toggle" data-toggle="dropdown"
+            title="Favorite" ng-show="scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] > 0" /> -->
+                    <ul class="dropdown-menu faviDropdown">
+                        <li><a href="javascript:void(0)" ng-click="scenarioCtrl.toggleFav(true)"
+                                ng-disabled="'arch' !== scenarioCtrl.currentTab && ('fav' === scenarioCtrl.currentTab || !scenarioCtrl.markFavActive)">Mark
+                                as Favorite</a></li>
+                        <li><a href="javascript:void(0)" ng-click="scenarioCtrl.toggleFav(false)"
+                                ng-disabled="'fav' !== scenarioCtrl.currentTab && ('arch' === scenarioCtrl.currentTab || !scenarioCtrl.unmarkFavActive)">Unmark
+                                as Favorite</a></li>
+                    </ul>
+
+                    <button ng-show="scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] > 0"
+                        ng-click="scenarioCtrl.bulkDelete()"> <img src="images/bulk_delete-active.png">Delete</button>
+                    <!--       <input type="image" src="images/bulk_delete-active.png" name="" title="Delete" ng-show="scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] > 0"
+            ng-click="scenarioCtrl.bulkDelete()" /> -->
+
+                    <button ng-show="scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] < 1" class="disabled">
+                        <img src="images/bulk_delete.png">Delete</button>
+
+                    <!--    
+          <input type="image" src="images/bulk_delete.png" name="" title="Delete" class="disabled" ng-show="scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] < 1" />-->
+
+
+
+                    <!--           <input type="image" src="images/archive--icon1.png" name="" title="Archive" ng-show="'arch' !== scenarioCtrl.currentTab && scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] > 0"
+            ng-click="scenarioCtrl.confirmArchive(true)" /> -->
+                    <!--  <input type="image" src="images/un-archive--icon1.png" name="" title="Un-Archive" ng-show="'arch' === scenarioCtrl.currentTab && scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] > 0"
+            ng-click="scenarioCtrl.archiveScene(false)" /> -->
+                    <!--  <input type="image" src="images/archive--icon2.png" name="" title="Archive" ng-show="'arch' !== scenarioCtrl.currentTab && scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] < 1"
+            class="disabled" /> -->
+                    <!--  <input type="image" src="images/un-archive--icon2.png" name="" title="Un-Archive" ng-show="'arch' === scenarioCtrl.currentTab && scenarioCtrl.tabSelected[scenarioCtrl.currentTab]['total'] < 1"
+            class="disabled" /> -->
+                </span>
+
+            </div>
+            <div class="pull-right margin_right15 add_scenation_button" style="position: relative; z-index: 110"
+                ng-if="'ACTIVE' === scenarioCtrl.currentOwnership">
+                <a href="javascript:void(0)" class="primaryBtn" ng-hide="scenarioCtrl.addScenario_Sizing"
+                    ng-click="scenarioCtrl.addScenarioPopup()">
+                    Add Scenario</a>
+                <!-- <a href="#/reverse_sizing" class="primaryBtn" ng-show="scenarioCtrl.addScenario_Sizing"> Add Scenario </a> -->
+            </div>
+            <div class="dropsearchBox pull-right"  ng-class="{'avtiveSearch':(scenarioCtrl.currentOwnership==='ACTIVE'),'favoriteSearch':(scenarioCtrl.currentOwnership==='FAVORITE'),'archiveSearch':(scenarioCtrl.currentOwnership==='ARCHIVE'),'sharedSearch':(scenarioCtrl.currentOwnership==='SHARED')}">
+                <input type="text" class="scenario-search form-control ng-pristine ng-valid ng-touched"
+                    id="scenarioSearch" name="scenarioSearch" placeholder="Search" aria-invalid="false"
+                    ng-model="scenarioCtrl.searchStr" ng-keyup="scenarioCtrl.searchList($event)">
+                    <i class="fa fa-close" aria-hidden="true" ng-show="'' !== scenarioCtrl.searchStr" ng-click="scenarioCtrl.clearSearch()"></i>
+                    <input type="button" value="GO" class="go_btn go_btn_position"  ng-click="scenarioCtrl.searchList()"/>
+            </div>
+
+
+        </h4>
+        <div class="divided_shadow" style="z-index: 100;"></div>
+
+
+
+        <div class="col-lg-12 inner_Container bodyScroll padleft0 padRight0"
+            style="margin-top: 12px; background: #f9f9f9;" ng-style="{height:scenarioCtrl.mainContainerHeight}"
+            id="inner_position">
+
+            <div style="padding: 0px 35px 0px 40px" ng-show="scenarioCtrl.currentOwnership==='ACTIVE' && scenarioCtrl.scenarios.length > 0">
+                <h4 class="page_tiitle">
+                    <img src="images/recent-scenarios-icon.png" /> &nbsp;Recent Scenarios
+                </h4>
+
+                <div class="clear">
+                    <div class="slider slide_carousel" id="recent_scenario_slider">
+                        <scenario-widget model-data="{{scenario}}"
+                        ng-repeat="scenario in scenarioCtrl.recentScenario"
+                        on-view="scenarioCtrl.viewScenarioDetails(id)"
+                        on-delete="scenarioCtrl.deleteScenarioPopup(scenario)"
+                        on-clone="scenarioCtrl.cloneScenarioPopup(scenario)"
+                        on-edit="scenarioCtrl.editScenarioPopup(scenario)"
+                        on-share="scenarioCtrl.shareScenarioPopup(scenario)" on-resize="scenarioCtrl.onResize()"
+                        on-click="scenarioCtrl.activePanel(scenario);"
+                        on-heart-click="scenarioCtrl.toggleFav(flag, scenario)"
+                        on-archive="scenarioCtrl.confirmArchive(flag, scenario)"> Scenario </scenario-widget>
+                    </div>
+                </div>
+            </div>
+            <div class="clear secnario_section_2">
+                <h4 class="page_tiitle">
+                    <span class="pull-left"> <img src="images/all-scenarios-icon.png" /> &nbsp; All Scenarios </span>
+                    
+                    <span class="pull-right" style="opacity: 0.7;margin-right: 10px;" ng-show="scenarioCtrl.currentOwnership !== 'SHARED'"> Scenario per page: 
+                            <select class="page_count" ng-model="scenarioCtrl.scenPerPage" ng-change="scenarioCtrl.scenarioPerPageChange()">
+                                    <option value=10>10</option>
+                                    <option value=20>20</option>
+                                    <option value=30>30</option>
+                            </select>
+                    </span>
+                </h4>
+
+                <div class="clear scenario_container" >
+                    <scenario-widget model-data="{{scenario}}"
+                        ng-repeat="scenario in scenarioCtrl.scenarioUI"
+                        on-view="scenarioCtrl.viewScenarioDetails(id)"
+                        on-delete="scenarioCtrl.deleteScenarioPopup(scenario)"
+                        on-clone="scenarioCtrl.cloneScenarioPopup(scenario)"
+                        on-edit="scenarioCtrl.editScenarioPopup(scenario)"
+                        on-share="scenarioCtrl.shareScenarioPopup(scenario)" on-resize="scenarioCtrl.onResize()"
+                        on-click="scenarioCtrl.activePanel(scenario);"
+                        on-heart-click="scenarioCtrl.toggleFav(flag, scenario)"
+                        ng-show="scenarioCtrl.currentOwnership!=='SHARED'"
+                        on-archive="scenarioCtrl.confirmArchive(flag, scenario)"> Scenario </scenario-widget>
+                    <!-- <scenario-widget model-data="{{scenario}}" ng-repeat="scenario in scenarioCtrl.favScenarios | scenariofilter:scenarioCtrl.searchStr"
+          on-view="scenarioCtrl.viewScenarioDetails(id)" on-delete="scenarioCtrl.deleteScenarioPopup(scenario)"
+          on-clone="scenarioCtrl.cloneScenarioPopup(scenario)" on-edit="scenarioCtrl.editScenarioPopup(scenario)"
+          on-share="scenarioCtrl.shareScenarioPopup(scenario)" on-resize="scenarioCtrl.onResize()" ng-show="scenarioCtrl.currentOwnership==='OWNED' && 'fav' === scenario.scen_label  && 'fav' === scenarioCtrl.currentTab"
+          on-click="scenarioCtrl.activePanel(scenario);" on-heart-click="scenarioCtrl.toggleFav(flag, scenario)"
+          on-archive="scenarioCtrl.confirmArchive(flag, scenario)"> Scenario </scenario-widget>
+        <scenario-widget model-data="{{scenario}}" ng-repeat="scenario in scenarioCtrl.archScenarios | scenariofilter:scenarioCtrl.searchStr"
+          on-view="scenarioCtrl.viewScenarioDetails(id)" on-delete="scenarioCtrl.deleteScenarioPopup(scenario)"
+          on-clone="scenarioCtrl.cloneScenarioPopup(scenario)" on-edit="scenarioCtrl.editScenarioPopup(scenario)"
+          on-share="scenarioCtrl.shareScenarioPopup(scenario)" on-resize="scenarioCtrl.onResize()" ng-show="scenarioCtrl.currentOwnership==='ARCHIVE'"
+          on-click="scenarioCtrl.activePanel(scenario);" on-heart-click="scenarioCtrl.toggleFav(flag, scenario)"
+          on-archive="scenarioCtrl.archiveScene(flag, scenario)"> Scenario </scenario-widget> -->
+                    <scenario-widget model-data="{{scenario}}"
+                        ng-repeat="scenario in scenarioCtrl.sharedScenarios | scenariofilter:scenarioCtrl.searchStr"
+                        on-view="scenarioCtrl.viewScenarioDetails(id)"
+                        on-delete="scenarioCtrl.deleteScenarioPopup(scenario)"
+                        on-clone="scenarioCtrl.cloneScenarioPopup(scenario)"
+                        on-edit="scenarioCtrl.editScenarioPopup(scenario)"
+                        on-share="scenarioCtrl.shareScenarioPopup(scenario)" on-resize="scenarioCtrl.onResize()"
+                        ng-show="scenarioCtrl.currentOwnership==='SHARED'">
+                        Scenario </scenario-widget>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="paginationStructure" ng-if="'SHARED' !== scenarioCtrl.currentOwnership">
+        <ul>
+            <li>Jump to page:</li>
+            <li> <input type="number" class="page_count" name="" ng-model="scenarioCtrl.jumpToPage" ng-keyup="scenarioCtrl.keypress($event)"></li>
+            <li><input type="button" class="go_btn" value="GO" name="" ng-click="scenarioCtrl.paginationJump()"
+                    ng-disabled="scenarioCtrl.jumpToPage < 1 || scenarioCtrl.jumpToPage > scenarioCtrl.numPages"></li>
+            <li>{{scenarioCtrl.currentPage + 1}} of {{scenarioCtrl.numPages}}</li>
+            <li>
+                <i class="fa fa-angle-left cursor" ng-class="{'nxtDisable': scenarioCtrl.currentPage === 0}"
+                    ng-click="scenarioCtrl.prevClick()"></i>
+                <i class="fa fa-angle-right cursor"
+                    ng-class="{'nxtDisable': scenarioCtrl.currentPage >= (scenarioCtrl.numPages-1)}"
+                    ng-click="scenarioCtrl.nextClick()"></i>
+            </li>
+        </ul>
+    </div>
+
+    <section ng-show="!scenarioCtrl.areScenariosLoading && scenarioCtrl.lengthHide" class="text-center">
+        <div class="noscenario-content"
+            ng-if="scenarioCtrl.currentOwnership=='ACTIVE' && scenarioCtrl.scenarios.length===0">
+            <div class="heading-1">No Scenarios.</div>
+            <div class="heading-2">Please Click here to add new Scenario</div>
+            <button type="button" class="btn btn-primary" ng-disabled="ctrl.isWorkloadFormInvalid"
+                ng-click="scenarioCtrl.addScenarioPopup()">Add
+                Scenario</button>
+        </div>
+
+        <div class="noscenario-content"
+            ng-if="scenarioCtrl.currentOwnership=='SHARED' && scenarioCtrl.sharedScenarios.length===0">
+            <div class="heading-2">No one shared scenario with you</div>
+        </div>
+
+        <div class="noscenario-content"
+            ng-if="scenarioCtrl.currentOwnership==='FAVORITE' && 'fav' === scenarioCtrl.currentTab && scenarioCtrl.favScenarios.length===0">
+            <div class="heading-2">No favorite scenario</div>
+        </div>
+
+        <div class="noscenario-content"
+            ng-if="scenarioCtrl.currentOwnership=='ARCHIVE' && scenarioCtrl.archScenarios.length===0">
+            <div class="heading-2">No archived scenario</div>
+        </div>
+
+
+    </section>
+
+    <div mpl-progress id="scenario-request-query"></div>
+    <div mpl-progress id="scenario-resize-request"></div>
+    <div mpl-progress id="scenario-request-get"></div>
+    <div mpl-progress id="scenario-request-update"></div>
+    <div mpl-progress id="scenario-request-save"></div>
+    <div mpl-progress id="scenario-request-delete"></div>
+    <div mpl-progress id="clone-scenario-request-query"></div>
+    <div mpl-progress id="get-users-request"></div>
+    <div mpl-progress id="share-scenario-request"></div>
+    <div mpl-progress id="profiler-ova-download" error-message="Erorr in downloading ova file"></div>
+    <div mpl-progress id="hxbench-ova-download" error-message="Erorr in downloading ova file"></div>
+    <!-- footer start-->
+    <div ng-include="'views/footer/footer.html'"></div>
+    <!-- footer end-->
+</div>
+<div class="showMask" ng-if="scenarioCtrl.homeScreenDisp">
+    <div class="man_view"><img src="images/man.svg" /></div>
+    <div class="add_scenation_text" ng-show="scenarioCtrl.currentOwnership==='ACTIVE'">
+        <!--  <a href="javascript:void(0)" class="primaryBtn margin_left20" style="pointer-events: none;">
+             Add Scenario
+           </a> -->
+        <img src="images/arrow_height2.svg" class="margin_top5" />
+        <div>Start a workload based sizing by adding a sizing scenario.</div>
+    </div>
+    <div class="sizing_cal">
+        <div class="pull-left" style="position: absolute"><img src="images/splash-info_icon.png" /></div>
+        <div class="pull-left textLeft" style="padding-left: 60px;">The Sizing calculator is merged into Fixing config sizing</div>
+    </div>
+<!-- 
+    <div class="sizing_text">
+        <img src="images/arrow_height1.svg" />
+        <div>Start a hardware based sizing by using the sizing calculator.</div>
+    </div> -->
+
+    <div class="hx_text">
+        <img src="images/arrow_height2.svg" />
+        <div>Download the other HxTools via the HxTools menu on the top right.</div>
+    </div>
+
+
+    <div class="process_section">
+        <div> <label><input type="checkbox" name="" style="position: relative; top: 3px;"
+                    ng-model="scenarioCtrl.noShowFlag" /> Don't show this message again.</label></div>
+        <button class="btn btn-primary" ng-click="scenarioCtrl.noShowPost()">Close and Process <i
+                class="fa fa-arrow-right"></i></button>
+    </div>
+</div>

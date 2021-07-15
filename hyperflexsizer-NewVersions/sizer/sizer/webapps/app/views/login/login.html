@@ -1,0 +1,17 @@
+<div ng-if="!hasNotAuthorized">
+  <div class="loader-container" ng-hide="loginError">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    <div>Please wait, loading your content </div>
+  </div>
+  <div class="loader-container" ng-show="loginError">
+    <div class="text-danger"><i class="fa fa-warning"></i> {{ errorMessage }}</div>
+    <a ng-click="login()" style="cursor:pointer;"> Try Again </a>
+  </div>
+</div>
+
+<div ng-if="hasNotAuthorized">
+	<ng-include src="'views/login/forbidden_message.html'"/>	
+</div>
+
+
+<!-- <div mpl-progress id="login-request"></div> -->

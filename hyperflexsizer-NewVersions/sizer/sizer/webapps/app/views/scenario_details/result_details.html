@@ -1,0 +1,206 @@
+<div class="result_container">
+	<div class="col-lg-7 col-md-7 padLeft0">
+		<div class="col-md-6 result_innerBox">
+			<img src="images/info.png" popover-placement="bottom" popover-trigger="'mouseenter'"
+				uib-popover-template="'views/reverse_sizing/total_effective_cores.html'">
+			<label class="big_value  "> {{scenario.sizing_calculator.cores.pre_spec}}</label>
+			<div>&nbsp;</div>
+			<div class="sub_text"> Total Available Physical Cores </div>
+			<div> <small class="ng-binding"> [equivalent to {{scenario.sizing_calculator.cores.post_spec}} Intel
+					Platinum 8164
+					cores] </small> </div>
+		</div>
+		<div class="col-md-6 result_innerBox">
+			<img src="images/info.png" popover-placement="bottom" popover-trigger="'mouseenter'"
+				uib-popover-template="'views/reverse_sizing/total_effective_ram.html'" />
+			<label class="big_value">
+				&nbsp;{{scenario.sizing_calculator.ram}}
+				<span class="small_text" ng-show="scenario.sizing_calculator.ram !== '-'">GiB</span>
+			</label>
+			<div>&nbsp;</div>
+			<div class="sub_text">Total Available Memory</div>
+			<div>&nbsp;</div>
+		</div>
+		<div class="col-md-6 result_innerBox ">
+			<img src="images/info.png" popover-placement="left" popover-trigger="'mouseenter'"
+				uib-popover="This capacity reflects the total capacity visible in HX Connect. This accounts for a metadata reserve of {{scenario.sizing_calculator.thresholds.RAM ? (100-scenario.sizing_calculator.thresholds.RAM) : 'x'}}% and replication factor." />
+			<label class="big_value">
+				&nbsp;{{scenario.sizing_calculator.disk_capacity.usable}}
+				<span class="small_text">
+					{{scenario.sizing_calculator.disk_capacity.usable_unit}}
+				</span>
+			</label>
+			<div class="TB_value" ng-show="scenario.sizing_calculator.disk_capacity.usable_binarybyte">
+				[{{scenario.sizing_calculator.disk_capacity.usable_binarybyte}}
+				{{scenario.sizing_calculator.disk_capacity.usable_binaryunit}}]
+			</div>
+
+			<div class="sub_text">Total Usable Capacity</div>
+			<div>&nbsp;</div>
+		</div>
+		<div class="col-md-6 result_innerBox">
+			<img src="images/info.png" popover-placement="left" popover-trigger="'mouseenter'"
+				uib-popover-template="'views/reverse_sizing/total_effective_capacity.html'" />
+			<label class="big_value">
+				&nbsp;{{scenario.sizing_calculator.disk_capacity.effective}}
+				<span class="small_text">
+					{{scenario.sizing_calculator.disk_capacity.effective_unit}}
+				</span>
+			</label>
+			<div class="TB_value" ng-show="scenario.sizing_calculator.disk_capacity.effective_binarybyte">
+				[{{scenario.sizing_calculator.disk_capacity.effective_binarybyte}}
+				{{scenario.sizing_calculator.disk_capacity.effective_binaryunit}}]
+			</div>
+			<div class="sub_text">Total Effective Capacity</div>
+			<div class="subTxt">(With dedupe and compression)</div>
+		</div>
+		<div class="col-md-6 result_innerBox">
+			<img src="images/info.png" popover-placement="bottom" popover-trigger="'mouseenter'"
+				uib-popover="This count accounts for replication factor and in addition a {{scenario.sizing_calculator.thresholds.DISK ? (100-scenario.sizing_calculator.thresholds.DISK) : 'x'}}% additional reserve for the best availability and performance." />
+			<label class="big_value">
+				&nbsp;{{scenario.sizing_calculator.disk_capacity.available}}
+				<span class="small_text">
+					{{scenario.sizing_calculator.disk_capacity.available_unit}}
+				</span>
+			</label>
+			<div class="TB_value" ng-show="scenario.sizing_calculator.disk_capacity.available_binarybyte">
+				[{{scenario.sizing_calculator.disk_capacity.available_binarybyte}}
+				{{scenario.sizing_calculator.disk_capacity.available_binaryunit}}]
+			</div>
+
+			<div class="sub_text">Best Practice Threshold</div>
+			<div>&nbsp;</div>
+		</div>
+
+	</div>
+	<div class="col-lg-5 col-md-5 padLeft0 padRight0 globalSettingContainer">
+		<div style="border-bottom: 1px solid #ddd;" class="modal-open margin_bottom10">
+			<h5 class="pull-left">Global Setting</h5>
+			<div class="margin_top15 pull-right">
+				<span class="custom_btn width80 " style="background: #fff;" ng-show="scenario.sizing_type!=='optimal'"
+					ng-click="showFixedPopup()">Customize</span>
+			</div>
+		</div>
+		<div class="clear">
+			<div class=" margin_bottom0 background_white brd_top0 nodes_property">
+				<div class="row">
+					<div class="col-md-6">
+						<div class=" thresholdCls dropdown_label">
+							<span> Threshold </span>
+						</div>
+						<div class="clear ">
+							<div>
+								{{scenario.aggregate.settings.threshold===0? 'Conservative': (scenario.aggregate.settings.threshold===1? 'Standard':'Aggressive')}}
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class=" thresholdCls dropdown_label">Hypervisor</div>
+						<div class="clear ">
+							<div>{{scenario.aggregate.settings.hypervisor === 'esxi'? 'ESXi': 'Hyper-V'}}</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class=" thresholdCls dropdown_label">
+							<span> Hardware Acceleration </span>
+						</div>
+						<div class="clear ">
+							<div>
+								{{scenario.aggregate.settings.hercules_conf === 'disabled'? 'Off' : 'On'}}
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class=" thresholdCls dropdown_label">HyperFlex Boost</div>
+						<div class="clear ">
+							<div>{{scenario.aggregate.settings.hx_boost_conf === 'disabled'? 'Off' : 'On'}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="clear row ">
+					<div class="col-md-6">
+						<div class=" thresholdCls dropdown_label">Replication Factor</div>
+						<div>{{scenario.aggregate.settings.cluster_properties.rf === 2? 'RF 2': 'RF 3'}}</div>
+					</div>
+					<div class="col-md-6">
+						<div class=" thresholdCls dropdown_label">Performance Headroom</div>
+						<div>{{scenario.aggregate.settings.cluster_properties.ft}}</div>
+					</div>
+
+
+					<div class="col-md-6">
+						<div class=" thresholdCls dropdown_label"> Compression Savings (%)</div>
+						<div class="">
+							{{scenario.aggregate.settings.cluster_properties.compression_factor}}
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class=" thresholdCls dropdown_label"> Dedupe Savings (%)</div>
+						<div class="">
+							{{scenario.aggregate.settings.cluster_properties.dedupe_factor}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class=" ">
+				<div class="thresholdCls dropdown_label" style="left: 0px;">Node Properties</div>
+				<div class="clear ">
+					<div>{{scenario.aggregate.settings.node_properties.nodeType === 'cto'? 'CTO': 'Bundle'}}</div>
+					<div class="row margin_top10 nodes_property">
+						<div class="clear">
+							<div class="col-md-6">
+								<div class="dropdown_label">HyperFlex Node Type</div>
+								<div>{{scenario.aggregate.settings.node_properties.node}}</div>
+							</div>
+							<div class="col-md-6">
+								<div class="dropdown_label">No. of HyperFlex Nodes</div>
+								<div>{{scenario.aggregate.settings.node_properties.no_of_nodes}}</div>
+							</div>
+						</div>
+						<div class="clear">
+							<div class="col-md-6">
+								<div class="dropdown_label">Compute Node Type</div>
+								<div>{{scenario.aggregate.settings.node_properties.compute_node}}</div>
+							</div>
+							<div class="col-md-6">
+								<div class="dropdown_label">No. of Compute Nodes</div>
+								<div>{{scenario.aggregate.settings.node_properties.no_of_computes}}</div>
+							</div>
+						</div>
+						<div class="clear">
+							<div class="col-md-6">
+								<div class="dropdown_label">CPU Type (Cores, GHz)</div>
+								<div>{{scenario.aggregate.settings.node_properties.cpu_label}}</div>
+							</div>
+							<div class="col-md-6">
+								<div class="dropdown_label">RAM per Node (GiB)</div>
+								<div>{{scenario.aggregate.settings.node_properties.ram_label}}</div>
+							</div>
+						</div>
+						<div class="clear">
+							<div class="col-md-6">
+								<div class="dropdown_label">No. of Disk Drives per Node</div>
+								<div>{{scenario.aggregate.settings.node_properties.disks_per_node}}</div>
+							</div>
+							<div class="col-md-6">
+								<div class="dropdown_label">Disk Drive Size (GB)</div>
+								<div>{{scenario.aggregate.settings.node_properties.disk_capacity[0]}}</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="dropdown_label">Cache Size</div>
+							<div>{{scenario.aggregate.settings.node_properties.cache_size[0]}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+
+</div>

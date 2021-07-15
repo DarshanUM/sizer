@@ -1,0 +1,8 @@
+<div class="form-group">
+  <label class="col-lg-6"> {{field.displayName}} </label>
+  <div class="col-lg-5">
+    <input ng-model="workload[field.modelName]" placeholder="{{field.placeholder}}" type="text" class="form-control" ng-blur="onBlur()" uib-tooltip="{{::field.tooltip.message}}" tooltip-placement="right"> 
+    <div class="text-danger" style="font-size: 10px" ng-show="field.isNameEmpty">Name should not be empty</div>
+    <div class="text-danger" ng-show="field.isDuplicateName">Duplicate Name</div>
+  </div>
+</div>

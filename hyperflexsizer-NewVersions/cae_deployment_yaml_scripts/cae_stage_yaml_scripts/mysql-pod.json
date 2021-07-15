@@ -1,0 +1,47 @@
+{
+  "apiVersion":"v1",
+  "kind":"Pod",
+  "metadata":{
+    "name":"mysqldbstg",
+    "labels":{
+        "name":"mysqldbstg"
+      }
+    },
+"spec":{
+  "containers":[
+  {
+    "name":"mysqldbstg",
+    "image":"containers.cisco.com/aws_managed/mysql-5.7",
+    "ports":[
+    {
+        "containerPort":3306
+    }
+  ],
+    "env":[
+    {
+        "name":"MYSQL_USER",
+        "value":"adminX1WERfE"
+    },
+  {
+        "name":"MYSQL_PASSWORD",
+        "value":"39Xn7h-mayJF"
+    },
+  {
+        "name":"MYSQL_DATABASE",
+        "value":"sizerstg"
+}],
+    "volumeMounts": [
+     {
+        "mountPath": "/var/lib/mysql/data",
+        "name": "pvol"
+      }
+     ]
+  }],
+  "volumes": [{
+      "name": "pvol",
+      "persistentVolumeClaim": {
+         "claimName": "dbstg"
+       }
+    }
+  ]
+}}

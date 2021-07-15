@@ -1,0 +1,18 @@
+<div class="filterColumn" ng-class="{'flter-selection-error':modelData.isNoneSelected}">
+  <p class="paddingLeft10"> {{modelData.title}} </p>
+  <ul class="filter_list" >
+    <li ng-if="modelData.includeSelectAll && modelData.options.length">
+      <input type="checkbox" id="{{prefix}}-chkbx-0" ng-model="data.selectAll" 
+      ng-click="toggleSelectAll()" class="fancycheckbox" ng-disabled="disabled"/>
+      <label for="{{prefix}}-chkbx-0" class="fancycheckbox"> 
+      {{ modelData.selectAllText || "All" }}</label>
+    </li>
+    <li ng-repeat="option in modelData.options" ng-hide="data.options[option].isHidden">
+      <input type="checkbox" id="{{prefix}}-chkbx-{{$index+1}}" 
+      	ng-model="data.options[option].isChecked" class="fancycheckbox"
+      	ng-change="onChange(option, true)" ng-disabled="disabled || data.options[option].isDisabled"/>
+      <label for="{{prefix}}-chkbx-{{$index+1}}" class="fancycheckbox"> {{option}} {{modelData.optionSuffix}} </label>
+    </li> 
+  </ul>
+ <div ng-show="modelData.isNoneSelected" class="flter-selection-error-text"> Select at least one</div>
+</div>

@@ -1,0 +1,145 @@
+.mpl-progress-bar-container {
+  position: absolute;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  z-index: 31000;
+}
+
+.mpl-progress-bar {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  text-align: center;
+  text-align: center;
+  font-family: monospace;
+}
+
+.mpl-content {
+    background-color: #fff;
+    display: inline-block;
+    position: relative;
+    box-shadow: 1px 1px 8px #C8C8C8;
+    pointer-events: all;
+    padding: 0px 0px 25px 0px;
+    max-width: auto;
+    font-size: 12px;
+    border-radius: 5px;
+    font-family: OpenSans-Regular;
+    letter-spacing: 0.7px;
+}
+.ok_btn input[type="button"]{
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 5px 30px;
+    outline: none;
+    border-radius: 5px;
+}
+.mpl-error .close_icon{
+  padding:15px; 
+}
+.progress_load{
+  padding:10px 70px 5px 70px;
+  border-radius: 5px;
+}
+.mpl-error  .close_icon a{
+  color: #fff !important;
+  opacity: 1;
+}
+.mpl-header{
+  padding:10px 14px;
+  background: #3E4A59;
+  color: #fff;
+  text-align: left;
+  display: none;
+  font-size: 14px;
+}
+.mpl-error .mpl-header{
+  display: block;
+}
+.mpl-error .ok_btn{
+  display: block;
+  clear: both;
+  padding-top: 10px;
+  }
+.ok_btn{ 
+  display: none;
+}
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #ccc;
+  pointer-events: all;
+  opacity: 0.9;
+}
+
+.close {
+  color: #111;
+  text-decoration: none;
+  position: relative;
+  right: -18px;
+  top: -18px;
+  font-size: 14px;
+}
+
+.pull-right {
+  float: right;
+}
+
+.transform-center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.transform-vcenter {
+  top: 50%;
+  transform: translate(-0%, -50%);
+}
+
+.mpl-progress-bar .mpl-progress,
+.mpl-progress-bar .mpl-success,
+.mpl-progress-bar .mpl-error {
+  display: none;
+  text-align: center;
+  background: none;
+  height: auto;
+  border: 0px;
+}
+
+.mpl-progress .mpl-progress-bar,
+.mpl-success .mpl-progress-bar,
+.mpl-error .mpl-progress-bar,
+.mpl-progress .mpl-progress-bar .mpl-progress,
+.mpl-success .mpl-progress-bar .mpl-success,
+.mpl-error .mpl-progress-bar .mpl-error {
+  display: block; 
+}
+.mpl-error .mpl-progress-bar .mpl-error{
+  padding: 20px 10px 20px 20px; 
+  text-align: left; 
+}
+.txt-progress {
+  color: #717171; 
+  font-size: 14px;
+}
+
+.txt-error {
+  color: #727272;
+  /*BROWN*/
+}
+.pull-left{
+  float: left
+}
+.wid75{
+  width: 75px;
+}
+.txt-success {
+  color: #6f787e;
+  /*DARK GREEN*/
+}

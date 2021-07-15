@@ -1,0 +1,117 @@
+# Pull base image.
+FROM ubuntu:16.04
+
+#ENV DEBIAN_FRONTEND noninteractive
+
+USER root
+
+# Install Python.
+RUN apt-get update && \
+  apt-get install -y tzdata && \
+  apt-get install -y software-properties-common && \
+  add-apt-repository ppa:deadsnakes/ppa && \
+  apt-get update && \
+  apt-get -y upgrade && \
+  apt-get install -y python3.6 python3.6-dev python-setuptools build-essential && \
+  apt-get install -y python3-pip python3.6-venv && \
+  apt-get install -y libxml2-dev libxslt-dev libffi-dev libssl-dev pkg-config
+
+RUN apt-get install -y libmysqlclient-dev mysql-client && \
+  #apt-get install -y libpng12-dev && \
+  apt-get install -y libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk && \
+  apt-get install -y libsasl2-dev libldap2-dev libxml2-dev libxslt1-dev && \
+  apt-get install -y apache2 apache2-utils libexpat1 libapache2-mod-wsgi-py3 && \
+  apt-get install -y vim curl wget && \
+  rm -rf /var/lib/apt/lists/*
+
+# update pip
+RUN python3.6 -m pip install pip --upgrade && \
+    python3.6 -m pip install wheel
+
+
+WORKDIR /
+
+# #Install package requirements
+ADD requirements.txt .
+RUN pip install -r requirements.txt
+
+
+RUN apt-get update && \
+    apt-get remove -y libapache2-mod-wsgi-py3 && \
+    apt-get install -y apache2-dev
+
+RUN pip install mod_wsgi
+
+ADD sizer sizer
+RUN chmod 777 sizer
+
+RUN cp /sizer/sizer/stage_conf.py /sizer/sizer/conf.py
+
+# #Downloading Videos.tar.gz from Cisco box folder and untar.."
+WORKDIR /sizer/webapps/dist
+RUN python3.6 /sizer/help/getvideos.py production
+RUN tar -zxvf videos.tar.gz
+RUN rm -rf videos.tar.gz
+
+# #Apache Config
+WORKDIR /
+ADD ./apache_config/000-default.conf /etc/apache2/sites-available/000-default.conf
+ADD ./apache_config/ports.conf /etc/apache2/ports.conf
+ADD ./apache_config/apache2.conf /etc/apache2/apache2.conf
+ADD ./apache_config/wsgi.load /etc/apache2/mods-available/wsgi.load
+
+# #Adding Environment Variable for Stage Instance for Access restriction and Share scenario Mail
+ENV SIZER_INSTANCE='STAGE'
+ADD ./apache_config/envvars_stage /etc/apache2/envvars
+
+# #EXPOSE 80
+EXPOSE 8080
+
+RUN chmod -R 777 /var
+RUN chmod -R 777 /run
+RUN chmod -R 777 /var/run
+RUN chmod -R 777 /run/lock
+RUN chmod -R 777 /var/lock
+RUN chmod -R 777 /etc
+RUN chmod -R 777 /etc/passwd
+RUN chown -R www-data:www-data /var/run
+RUN chown -R www-data:www-data /var/lock
+RUN chown -R www-data:www-data /run
+RUN chown -R www-data:www-data /run/lock
+#RUN chown -R root:www-data /run/lock/apache2
+#RUN chown -R root:www-data /var/lock/apache2
+#RUN chown -R root:www-data /var/run/apache2
+#RUN chown -R root:www-data /run/apache2
+RUN chmod -R 777 /sizer
+RUN chmod -R 777 /sizer/logs
+
+RUN chown -R www-data:www-data /sizer
+
+RUN echo "ServerName localhost" | tee /etc/apache2/conf-available/servername.conf
+RUN a2enconf servername
+RUN a2enmod lbmethod_byrequests
+RUN a2enmod wsgi
+
+# # setup entrypoint
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+# # https://github.com/moby/moby/issues/31243#issuecomment-406879017
+RUN ln -s /usr/local/bin/docker-entrypoint.sh / && \
+     chmod 777 /usr/local/bin/docker-entrypoint.sh && \
+     chgrp -R 0 /usr/local/bin/docker-entrypoint.sh
+
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+# #CMD sudo service apache2 restart
+# #CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+
+# RUN adduser default www-data
+
+WORKDIR /
+ADD python_test.py /.
+
+#CMD service apache2 restart && python3.6 python_test.py
+
+CMD service apache2 restart && python3.6 python_test.py
+

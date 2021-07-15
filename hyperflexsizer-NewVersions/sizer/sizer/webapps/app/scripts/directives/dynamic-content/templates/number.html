@@ -1,0 +1,24 @@
+<div class="form-group" ng-hide="field.hidden" ng-class="{'has-error':field.hasError || field.hasReplAmntError}">
+  <label class="col-lg-6"> {{field.displayName}} 
+		<div>{{field.subDisplayName}}</div>
+	</label>
+  <!-- <span class="col-lg-6"> hasReplAmntError : {{field.hasReplAmntError}} </span> -->
+  <div class="col-lg-5">
+		<input ng-model="workload[field.modelName]" type="number" ng-readonly="field.readonly" 
+		class="form-control pull-left" uib-tooltip="{{::field.tooltip.message}}" 
+		tooltip-placement="right" min="{{field.min}}" max="{{field.max}}" 
+		ng-change="onChange()" ng-keyup="onChange()" ng-blur="onBlur()">
+    <!-- <tooltip ng-if="::field.tooltip" message="{{::field.tooltip.message}}"></tooltip> -->
+  </div>
+ 	<!-- <p class="help-block"> Allowed integer values are {{field.min}} To {{field.max}} </p> -->
+ 	<p class="help-block" ng-if="field.hasReplAmntError">
+ 		{{field.errorMessage}}
+ 	</p>
+ 	<p class="help-block" ng-if="outOfRangeError">
+ 		Allowed values are from {{field.min}} To {{field.max}} 
+ 	</p>
+ 	<p class="help-block" ng-if="!outOfRangeError && isInvalidDecimal"> 
+ 		Invalid Input. {{ field.isDecimal ? "Only one decimal is allowed" : "Only integers are allowed" }}
+ 	</p>
+ 	
+</div>

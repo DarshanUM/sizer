@@ -1,0 +1,10 @@
+<div class="col-md-6">
+	<div class="dropdown_label">{{label}}</div>
+	<div class="dropdown"> 
+	    <input type="text" readonly value="{{displayVal}}" class="dropdown-toggle form-control"  data-toggle="dropdown">
+	    <i class="fa fa-caret-down arrow_position" data-toggle="dropdown"></i>
+	    <ul class="dropdown-menu menuItm">
+	        <li ng-repeat="option in options" ng-class="{'disabled': option.disabled}" ng-click="onOptionSelected(option)"> {{option.label}}</li>
+	    </ul>
+	</div>
+</div>

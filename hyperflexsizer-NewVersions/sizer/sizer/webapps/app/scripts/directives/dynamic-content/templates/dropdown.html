@@ -1,0 +1,14 @@
+<div class="form-group" ng-hide="field.hidden" ng-class="{'has-error':field.hasError, 'has-info':field.hasInfo}"> 
+  <label class="col-lg-6"> {{field.displayName}} </label>
+  <div class="col-lg-5 select-style"> 
+  <select ng-disabled="field.readonly" ng-readonly="field.readonly" class='form-control pull-left' name="field.modelName" ng-model="workload[field.modelName]" required ng-options='option.key as option.value for option in field.options' ng-change="onChange()" uib-tooltip="{{tooltipMessage}}" tooltip-placement="right">
+  </select>     
+  </div>
+  <p class="help-block"> 
+  	<!-- <span class="glyphicon glyphicon-alert" style="font-size: 14px;"></span>  -->
+  	RF3 is recommended for performance headroom 2
+  </p>
+  <p class="help-block info-block text-info no-padding text-center" ng-if="field.hasInfo"> 
+  	<img src="images/info_msg.png" /> &nbsp;Choosing RF3 and Performance Headroom 2 will result in minimum 5-node cluster
+  </p>
+</div>

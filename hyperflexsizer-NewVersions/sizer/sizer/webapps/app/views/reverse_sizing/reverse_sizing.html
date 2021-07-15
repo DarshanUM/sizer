@@ -1,0 +1,246 @@
+<div>
+  <!-- header start-->
+  <div ng-include="'views/header/header.html'"></div> 
+  <section class="sectionContainer">  
+  	<div class="reverseContainer">
+  	<div class="appendFilter">
+  		<h4>Sizing Calculator</h4>
+  	</div>
+    <div class="col-lg-12 padLeft0 reverseSizer">
+    	<div class="col-lg-7 col-md-7 ">
+    		<div class="bodyScroll" ng-style="{height: reverseCtrl.reverseSizingHeight}">
+    			
+
+    		 <fieldset>
+    				 <div class="fieldset_title margin_bottom10">Threshold</div>
+    				<div class="clear">	    				
+	    				 <div class="col-lg-4 col-md-4 pad0">
+	    				 	  <input id="radio-1" class="radio-custom" name="radio1" type="radio" ng-model="reverseCtrl.inputs.scenario_settings.threshold" ng-value="0">
+                   			  <label for="radio-1" class="radio-custom-label">Conservative</label>
+	    				 </div>
+	    				 <div class="col-lg-4 col-md-4 ">
+	    				 	  <input id="radio-2" class="radio-custom" name="radio1" type="radio" ng-model="reverseCtrl.inputs.scenario_settings.threshold" ng-value="1">
+                   			  <label for="radio-2" class="radio-custom-label">Standard</label> 
+	    				 </div>
+	    				 <div class="col-lg-4 col-md-4 pad0">
+	    				 	<input id="radio-3" class="radio-custom" name="radio1" type="radio" ng-model="reverseCtrl.inputs.scenario_settings.threshold" ng-value="2">
+                   			<label for="radio-3" class="radio-custom-label">Aggressive</label>  
+	    				 </div>
+	    			</div> 
+	    			 
+	    			 
+    			</fieldset>
+    				<fieldset ng-show="{{reverseCtrl.FEATURES.isHypervisorEnabled}}">
+    				 <div class="fieldset_title margin_bottom10">Hypervisor</div>
+    				  <div class="clear modal-open">
+                       
+                        <div class="col-lg-4 col-md-4">
+                          <input id="hypervisor-esxi" class="radio-custom" name="hypervisor-radio-group" type="radio" 
+                          ng-value="'esxi'" ng-model="reverseCtrl.inputs.scenario_settings.hypervisor" ng-change="reverseCtrl.onHypervisorChanged()">
+                          <label for="hypervisor-esxi" class="radio-custom-label">ESXi</label>
+                        </div> 
+                        <div class="col-lg-4 col-md-4">
+                          <input id="hypervisor-hyperv" class="radio-custom" name="hypervisor-radio-group" type="radio"  ng-value="'hyperv'" ng-model="reverseCtrl.inputs.scenario_settings.hypervisor" ng-change="reverseCtrl.onHypervisorChanged()">
+                          <label for="hypervisor-hyperv" class="radio-custom-label">Hyper-V</label>
+                        </div> 
+                  </div> 
+	    			 
+    			</fieldset>
+				<fieldset>
+    				 <div class="fieldset_title">Cluster Properties</div> 
+    				<div class="clear">
+	    				
+
+
+	    				<mpl-dropdown label="Replication Factor" options="reverseCtrl.options.rf" value="reverseCtrl.inputs.scenario_settings.rf" on-change="reverseCtrl.onRFChanged(selectedOption)" >
+	    				</mpl-dropdown>
+
+	    				<mpl-dropdown label="Performance Headroom" 
+	    					on-change="reverseCtrl.onFTChanged(selectedOption)"
+	    					options="reverseCtrl.options.headroom"
+	    					value="reverseCtrl.inputs.scenario_settings.ft">
+	    				</mpl-dropdown>
+
+
+	    				
+						<div class="col-md-6">
+							<div class="dropdown_label"> Compression Savings (%)</div>
+							<div class=""> 
+								<input type="number" class="form-control"  ng-model="reverseCtrl.inputs.scenario_settings.compression_factor" min="0" max="100" ng-keyup="reverseCtrl.onCompressionInputChange($event)">
+								<span ng-if="reverseCtrl.compressionError" class="inputError"> Allowed values are 0 to 99 </span>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="dropdown_label"> Dedupe Savings (%)</div>
+							<div class=""> 
+								<input type="number" class="form-control" ng-model="reverseCtrl.inputs.scenario_settings.dedupe_factor" min="0" max="100" ng-keyup="reverseCtrl.onDedupeInputChange($event)">
+								<span ng-if="reverseCtrl.dedupeError" class="inputError"> Allowed values are 0 to 99 </span>
+							</div>
+						</div>
+	    				 
+	    			</div>
+	    			 
+    			</fieldset>
+
+
+    			<fieldset>
+    				<div class="showNotification" ng-if="reverseCtrl.showNodeCountChangeNotification">Choosing RF3 and Performance Headroom 2 will result in minimum 5-node cluster</div> 
+
+    				 <div class="fieldset_title">Node Properties</div> 
+    				<div class="clear padTop15">
+    					<div>
+	    				 <div class="col-lg-3 padLeft0 col-md-3">
+	    				 	  <input id="cto" class="radio-custom" name="node-type-group" type="radio" ng-value="'cto'" ng-model="reverseCtrl.inputs.node_properties.nodeType" ng-change="reverseCtrl.onNodeTypeChanged()">
+                  				<label for="cto" class="radio-custom-label">CTO</label>
+	    				 </div>
+	    				  <div class="col-lg-4 col-md-4">
+	    				 	  <input id="bundle" class="radio-custom" name="node-type-group" type="radio" ng-value="'bundle'" ng-model="reverseCtrl.inputs.node_properties.nodeType" ng-change="reverseCtrl.onNodeTypeChanged()" >
+                  <label for="bundle" class="radio-custom-label">Bundle</label>
+	    				 </div>
+	    				</div>
+	    				<mpl-dropdown label="HyperFlex Node Type"	options="reverseCtrl.options.hxNodeTypes"
+	    					on-change="reverseCtrl.onHXNodeTypeChanged(selectedOption)" value="reverseCtrl.inputs.node_properties.node">
+	    				</mpl-dropdown>
+
+	    				<mpl-dropdown label="No. of HyperFlex Nodes" options="reverseCtrl.options.hxNumNodes" value="reverseCtrl.inputs.node_properties.no_of_nodes" 
+	    				on-change="reverseCtrl.onHxNodeCountChanged(selectedOption)" >
+	    				</mpl-dropdown>
+	    				
+	    				<mpl-dropdown label="Compute Node Type"	options="reverseCtrl.options.computeNodeTypes"
+	    					on-change="reverseCtrl.onComputeNodeTypeChanged(selectedOption)" 
+							value="reverseCtrl.inputs.node_properties.compute_node" ng-class="{'disabled':reverseCtrl.inputs.node_properties.compute_node.length === 0}">
+							<!-- 
+	    					ng-class="{'disabled':reverseCtrl.inputs.scenario_settings.hypervisor==='hyperv'}" -->
+	    				</mpl-dropdown>
+
+	    				<mpl-dropdown label="No. of Compute Nodes" options="reverseCtrl.options.computeNumNodes" 
+	    				value="reverseCtrl.inputs.node_properties.no_of_computes" 
+	    				on-change="reverseCtrl.onInputChanged(selectedOption)" ng-class="{'disabled':reverseCtrl.inputs.node_properties.compute_node.length === 0}">
+	    				</mpl-dropdown>
+
+	    				<mpl-dropdown label="CPU Type (Cores, GHz)" options="reverseCtrl.options.cpu" value="reverseCtrl.inputs.node_properties.cpu" on-change="reverseCtrl.onInputChanged(selectedOption)">
+	    				</mpl-dropdown>
+
+	    				<mpl-dropdown label="RAM per Node (GiB)" options="reverseCtrl.options.ram" value="reverseCtrl.inputs.node_properties.ram" on-change="reverseCtrl.onInputChanged(selectedOption)">
+	    				</mpl-dropdown>
+
+	    				<mpl-dropdown label="Disk Drive Size (GB)" options="reverseCtrl.options.diskSizes" value="reverseCtrl.inputs.node_properties.disk_capacity" on-change="reverseCtrl.onDiskDriveChange(selectedOption)">
+	    				</mpl-dropdown>
+	    				<mpl-dropdown label="No. of Disk Drives per Node" options="reverseCtrl.options.diskDrives" value="reverseCtrl.inputs.node_properties.disks_per_node" on-change="reverseCtrl.onInputChanged(selectedOption)">
+	    				</mpl-dropdown>
+
+	    				<!-- <div class="col-md-6">&nbsp;</div> -->
+	    				<mpl-dropdown label="Cache Size" options="reverseCtrl.options.ssdOptions" value="reverseCtrl.inputs.node_properties.cache_size" on-change="reverseCtrl.onInputChanged(selectedOption)">
+	    				</mpl-dropdown>
+	    			 
+	    				
+	    			</div>
+    			</fieldset>
+    			
+    		
+
+
+    			
+
+    			<div class="padTop15" align="center">
+	    			<input type="button" class="primaryBtn" value="Calculate" name="" 
+	    				ng-disabled="!reverseCtrl.canEnableApply" ng-click="reverseCtrl.onApply()" />
+	    		</div>
+
+    		</div>
+    			
+    	</div>
+    	<div class="col-lg-5 col-md-5 padding-right0 padLeft0 positionRelative">
+
+    		<div >
+			<h5>Results</h5>
+			<hr/>
+			<!-- <div class="resultColumn">
+			<div class="col-md-12 chart_width">
+				<canvas id="doughnut" class="chart chart-doughnut" chart-colors="colors" chart-data="data" chart-labels="labels">
+				</canvas> 
+			</div> 
+			</div> -->
+			<div class="col-md-12 legendChart padding-right0 padLeft0" ng-style="{height: reverseCtrl.resultSizingHeight}"><!--bodyScroll-->
+				<div class="col-md-6 iconPosition">
+					 <img src="images/info.png"  popover-placement="left" popover-trigger="'mouseenter'" uib-popover-template="'views/reverse_sizing/total_effective_cores.html'"/> 
+					<div class="big_value">
+					&nbsp;{{reverseCtrl.result.cores.pre_spec}}</div>
+					<div>
+						Total Available Physical Cores 						
+					</div>
+					<div>
+						<small>
+						[equivalent to {{reverseCtrl.result.cores.post_spec}} Intel Platinum 8164 cores]
+						</small>
+					</div>
+				</div>
+				<div class="col-md-6 iconPosition" >
+						 <img src="images/info.png" popover-placement="left" popover-trigger="'mouseenter'" uib-popover-template="'views/reverse_sizing/total_effective_ram.html'"/> 
+						<div class="big_value">
+							&nbsp;{{reverseCtrl.result.ram}} 
+							<span class="small_text" ng-show="reverseCtrl.result.ram !== '-'">GiB</span>
+						</div>
+						<div>Total Available Memory</div>
+						<div>&nbsp;</div>
+				</div>
+				  <div class="col-md-6 iconPosition ">
+					<img src="images/info.png"   popover-placement="left" popover-trigger="'mouseenter'" uib-popover="This capacity reflects the total capacity visible in HX Connect. This accounts for a metadata reserve of {{reverseCtrl.result.thresholds.RAM ? (100-reverseCtrl.result.thresholds.RAM) : 'x'}}% and replication factor."/>
+					<div class="big_value">
+						&nbsp;{{reverseCtrl.result.disk_capacity.usable}}
+						<span class="small_text">
+                            {{reverseCtrl.result.disk_capacity.usable_unit}} 
+                        </span>
+					</div>
+					<div class="TB_value" ng-show="reverseCtrl.result.disk_capacity.usable_binarybyte">
+						[{{reverseCtrl.result.disk_capacity.usable_binarybyte}} {{reverseCtrl.result.disk_capacity.usable_binaryunit}}]
+					</div>
+					<div>Total Usable Capacity</div>
+					<div>&nbsp;</div>
+                </div>
+				<div class="col-md-6 iconPosition" >
+						 <img src="images/info.png"   popover-placement="left" popover-trigger="'mouseenter'" uib-popover="This count accounts for replication factor and in addition a {{reverseCtrl.result.thresholds.DISK ? (100-reverseCtrl.result.thresholds.DISK) : 'x'}}% additional reserve for the best availability and performance."/> 
+						 <div class="big_value">
+						 	&nbsp;{{reverseCtrl.result.disk_capacity.available}} 
+						 	<span class="small_text">
+                                {{reverseCtrl.result.disk_capacity.available_unit}}  
+                            </span>
+						 </div>
+						 <div class="TB_value" ng-show="reverseCtrl.result.disk_capacity.available_binarybyte">
+						 	  [{{reverseCtrl.result.disk_capacity.available_binarybyte}} {{reverseCtrl.result.disk_capacity.available_binaryunit}}]
+						 </div>
+						<div>Total Available Capacity</div>
+						<div>&nbsp;</div>						
+				</div>
+				<div class="col-md-6 iconPosition clear" >
+					<img src="images/info.png"   popover-placement="left" popover-trigger="'mouseenter'" uib-popover-template="'views/reverse_sizing/total_effective_capacity.html'"/> 
+					<div class="big_value"> 
+						&nbsp;{{reverseCtrl.result.disk_capacity.effective}} 
+						<span class="small_text">
+                            {{reverseCtrl.result.disk_capacity.effective_unit}}  
+                        </span>
+					</div>
+					<div class="TB_value" ng-show="reverseCtrl.result.disk_capacity.effective_binarybyte">
+						  [{{reverseCtrl.result.disk_capacity.effective_binarybyte}} {{reverseCtrl.result.disk_capacity.effective_binaryunit}}]
+					</div>
+					<div>Total Effective Capacity</div>
+					<div class="subTxt">(With dedupe and compression)</div>
+			    </div>
+              
+			</div>
+             <div class="pull-right downloadReport" ng-show="reverseCtrl.result.enableDownload">
+                    <input type="button" ng-click="reverseCtrl.downloadReport()" value="Download Report" class="primaryBtn" name="" />
+            </div>
+		</div>
+
+
+    	</div>
+    </div>
+
+    <div mpl-progress id="reverse-size-node-options-request"></div>
+    <div mpl-progress id="reverse-size-request"></div>
+    <div mpl-progress id="fixed-config-sizing-scenario-report-download"></div>
+   </div>
+ </section>
+</div>

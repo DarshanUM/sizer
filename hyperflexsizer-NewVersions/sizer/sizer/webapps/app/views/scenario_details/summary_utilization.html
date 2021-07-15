@@ -1,0 +1,123 @@
+<div class="col-lg-3 col-md-3 col-sm-12 paddingDtl">
+  <div class="row">
+    <div class="scenarioDetails_box_title">
+      <span>Aggregate Summary</span>
+    </div>
+    <div class="box_container">
+      <div class="clear summaryDetails summaryDetailsView">
+        <ul>
+          <li>
+            <div class="pull-left wid50">
+
+              <div>
+                <div class="summaryVal">{{scenario.aggregate.wlLength || 0}}</div>
+                <div>Workloads</div>
+              </div>
+
+            </div>
+            <div class="pull-left wid50">
+
+              <div>
+                <div class="summaryVal">
+                  {{ scenario.totalClusters.length || 0 }}
+                </div>
+                <div>Clusters</div>
+              </div>
+
+            </div>
+          </li>
+
+
+          <li>
+            <div class="pull-left wid50">
+              <div>
+                <div class="summaryVal">
+                  {{ scenario.aggregate.totalNodesCount ?
+                  ( (scenario.aggregate.totalNodesCount - scenario.aggregate.numOfFTNodes) +
+                  '+' + scenario.aggregate.numOfFTNodes + ' (FT)' ) :
+                  0
+                  }}
+                </div>
+                <div>Nodes</div>
+              </div>
+
+            </div>
+            <div class="pull-left wid50">
+              <div>
+                <div class="summaryVal">
+                  {{ scenario.aggregate.rackUnits || 0 }}
+                </div>
+                <div>Rack Units</div>
+              </div>
+
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="col-lg-9 col-md-9 col-sm-12 padding_inner utilInner padding-right0">
+  <div class="scenarioDetails_box_title thresholdCls" id="utilization_popup">
+    <span> Utilization-{{ clusterDisplayName }} </span>
+    <label class="infoIcon" uib-tooltip="For all the fields, the percentages are based on total usable"
+      tooltip-placement="bottom"></label>
+    <span class="pull-right margin_right10" style="margin-top: -5px;">
+      <label class="healty_Legend"></label>
+      <label>With no failures</label>
+      <label class="utlization_Legend margin_left5"></label>
+      <label>With local failures</label>
+      <label ng-show="scenario.aggregate.settings.dr_enabled" class="site_Legend margin_left5"></label>
+      <label ng-show="scenario.aggregate.settings.dr_enabled">With DR partner failure + local failures</label>
+      <label class="un_used_Legend margin_left5"></label>
+      <label>Unused / Free</label>
+      <label class="infoIcon" style="position: relative; top: 5px" aria-hidden="true" popover-placement="left"
+        popover-trigger="'mouseenter'" uib-popover-template="'views/scenario_details/modals/utilization-tooltip.html'"></label>
+      <!-- uib-tooltip="For all the fields, the percentages are based on total usable" tooltip-placement="bottom" -->
+    </span>
+  </div>
+
+  <div class="box_container" style="height:167px;">
+    <!-- <div class="infoIcon" uib-tooltip="For all the fields, the percentages are based on total usable" tooltip-placement="bottom"></div> -->
+    <div class="clear height167">
+      <dl class="chartStatistics" ng-if="totalWorkloads.length > 0">
+        <dd ng-repeat="node in viewObject.utilization | limitTo:5  track by $index" ng-hide=" node.tag_name==='Cache'"
+          ng-class="{'dr-enabled': scenario.aggregate.settings.dr_enabled, 'empty_donut': node.status === false}">
+          <div class="utilize_count">
+            <div class="chartPercentage wl_util">{{!node.status === false? (node.wl_util | number : 0) + '%' : 'N/A'}}</div>
+            <div class="chartPercentage ft_util">{{!node.status === false? (node.ft_util | number : 0) + '%' : 'N/A' }}</div>
+            <div ng-if="scenario.aggregate.settings.dr_enabled" class="chartPercentage site_ft_util">{{!node.status ===
+              false? (node.site_ft_util | number : 0) + '%' : 'N/A' }}</div>
+          </div>
+          <div uib-tooltip="{{node.status === false? 'This dimension is not used in Sizing this workload': ''}}"
+            tooltip-placement="bottom">
+            <canvas id="Chart1" class="chart chart-doughnut doughnutSize" chart-colors="node.chartColors" chart-options="utilizationChartConfig.options"
+              chart-data="node.chartData" chart-labels="utilizationChartConfig.labels" chart-dataset-override="utilizationChartConfig.dataset"
+              ng-if="node.tag_name === 'Storage Capacity' || ('Storage IOPS' === node.tag_name && viewObject.herculesConf)" popover-placement="bottom" popover-trigger="'mouseenter'"
+              uib-popover-template="'views/scenario_details/modals/utilization-failure-tooltip.html'"></canvas>
+
+            <canvas id="Chart1" class="chart chart-doughnut doughnutSize" chart-colors="node.chartColors" chart-options="utilizationChartConfig.options"
+              chart-data="node.chartData" chart-labels="utilizationChartConfig.labels" chart-dataset-override="utilizationChartConfig.dataset"
+              ng-if="!(node.tag_name === 'Storage Capacity' || 'Storage IOPS' === node.tag_name && viewObject.herculesConf)"></canvas>
+          </div>
+          <div class="margin_top_10">{{node.tag_name}}</div>
+        </dd>
+      </dl>
+      <div class="noinfo-msg" ng-if="totalWorkloads.length === 0">Please add a workload to begin the sizing.</div>
+
+      <!-- <ul class="chart-legends-container">
+        <li ng-repeat="color in utilizationChartConfig.colors"> 
+          <span class="chart-legend" ng-style="{'background': '{{color}}' }"></span> {{utilizationChartConfig.labels[$index]}}
+        </li>
+      </ul> -->
+      
+    </div>
+    <!-- <div class="clear  legend_position">
+      <label class="healty_Legend"></label>
+      <label>Healthy Utilization</label>
+      <label class="utlization_Legend margin_left10"></label>
+      <label>Utilization on Failure</label>
+    </div> -->
+  </div>
+</div>

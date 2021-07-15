@@ -1,0 +1,48 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add Scenario <span class="pull-right cursor" ng-click="$dismiss()"><i class="fa fa-remove" aria-hidden="true"></i></span></h4>
+</div>
+<div class="modal-body">
+  <form name="addScenarioForm" ng-submit="popupCtrl.addScenario(popupCtrl.scenarioObject)" novalidate mpl-form-validation>
+    <div class="padding-15">
+      <div class="">
+              <input id="optimal_1" class="radio-custom "  checked="checked" name="addScenario" ng-model="popupCtrl.scenarioObject.sizing_type" type="radio"   value="optimal">
+              <label for="optimal_1" class="radio-custom-label">Optimal</label>
+
+               <input id="fixed_2" class="radio-custom" name="addScenario"   ng-model="popupCtrl.scenarioObject.sizing_type" type="radio" value="fixed">
+              <label for="fixed_2" class="radio-custom-label">Fixed</label>
+     </div>
+    <section ng-show="!popupCtrl.optimalOption">
+    <div class="form-group name_section padTop10" >
+      <label>Name </label> 
+      <input type="text" class="form-control" ng-class="{'error_name':!popupCtrl.scenarioObject.name}" name="username" placeholder="Define a name for your scenario here" ng-required="true" ng-model="popupCtrl.scenarioObject.name" ng-pattern="/^\w(\w|-|\+)*$/" >
+      <p class="help-block">{{ (
+        addScenarioForm.username.$error.pattern ? 
+          "Only alphanumeric, underscore, hyphen & plus are allowed" : 
+          addScenarioForm.username.$error.required ? "Enter valid scenario name" : "") }}</p>
+    </div>
+    <div class="form-group">
+      <label>Account</label>
+      <input type="text" class="form-control" name="account" placeholder="Account" ng-model="popupCtrl.scenarioObject.settings_json.account">
+      <p class="help-block">Enter Account Name</p>
+    </div>
+    </section>
+  <!--   <div class="form-group">
+      <label>SFDC Deal Id</label>
+      <input type="text" class="form-control" name="sfdc_deal_id" placeholder="SFDC Deal Id" ng-model="popupCtrl.scenarioObject.settings_json.deal_id">
+      <p class="help-block">Enter Deal Id</p>
+    </div>  -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+      <button type="submit" ng-disabled="!addScenarioForm.$valid" class="btn btn-primary">Save</button>
+    </div>
+  </form>
+</div>
+ 
+<!-- 
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+  <button type="button" class="btn btn-primary" ng-click="addScenarioForm.submit()">Save</button>
+</div> -->
+
+<!-- <div mpl-progress id="scenario-request-save"></div> -->

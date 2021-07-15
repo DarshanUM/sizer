@@ -1,0 +1,51 @@
+.mpl-pagination {
+  padding: 2px;
+}
+
+.mpl-pagination ul{
+  border: 1px solid #cdcdcd;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.mpl-pagination .page-btn {
+  cursor: pointer;
+}
+
+.mpl-pagination .page-btn:hover {
+  font-weight: bold;
+}
+
+.mpl-pagination li {
+    display: inline-block;
+    color: #049fd9;
+    border-right: 1px solid #cdcdcd;
+    padding: 5px 18px 5px 2px;
+    margin: 0px;
+    border-radius: 0px;
+    float: left;
+    text-align: left !important;
+    vertical-align: middle;
+    border-bottom: none !important;
+    margin-bottom: 0px;
+    line-height: 20px;
+    height: 30px;
+}
+.mpl-pagination li:nth-child(3){
+    padding-right: 32px;
+    padding-left: 0px;
+}
+.mpl-pagination li:last-child{
+  border-right: 0px;
+}
+.mpl-pagination li.disabled {
+  pointer-events: none;
+  color: #ddd;
+} 
+
+.mpl-pagination input {
+  border: 0px;
+  width: 35px;
+  text-align: right;
+
+}

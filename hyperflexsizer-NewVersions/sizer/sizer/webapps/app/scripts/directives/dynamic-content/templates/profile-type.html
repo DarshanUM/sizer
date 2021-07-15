@@ -1,0 +1,17 @@
+<div class="workload_popupTitle">
+  <p ng-if="workload.wl_type=='VDI'"> 
+  	User Type - {{workload.profile_type}} 
+  		| {{workload.provisioning_type}} 
+  		| {{workload.os_type}}
+  </p>
+  <p ng-if="workload.wl_type=='VSI'"> App Type - {{workload.profile_type}}</p> 
+  <p ng-if="workload.wl_type=='DB'"> 
+  	DB Profile - {{workload.db_type}}
+  	| {{workload.profile_type}}
+  </p>
+  <p ng-if="workload.wl_type=='ORACLE'"> 
+    DB Profile - {{workload.db_type}}
+    | {{workload.profile_type}}
+  </p> 
+  <p ng-if="workload.wl_type=='ROBO'"> App Type - {{workload.profile_type}}</p>  
+</div>

@@ -1,0 +1,19 @@
+---
+kind: "Route"
+apiVersion: "v1"
+metadata:
+  name: "hyperflexsizer-prod-ext-alln-test-gslb"
+  labels:
+     component: "hyperflexsizer-prod-ext-alln-test-gslb"
+  annotations: 
+    haproxy.router.openshift.io/timeout: 60s
+spec:
+   host: "cae-hyperflexsizer.cisco.com"
+   to:
+     kind: "Service"
+     name: "hyperflexsizer-prod-ext-alln-svc"
+   port:
+     targetPort: "web"
+   tls:
+     insecureEdgeTerminationPolicy: Allow
+     termination: edge

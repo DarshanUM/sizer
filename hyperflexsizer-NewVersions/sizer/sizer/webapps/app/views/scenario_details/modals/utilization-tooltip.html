@@ -1,0 +1,27 @@
+<!--  
+<div class="clr"> 
+       <p style="color: #565656;">Utilization is computed as </p>
+       <div class="modal-open">
+          <div class="pull-left">Total Workload Capacity  
+          <span style="font-size:18px; position:relative; left:3px; top: 3px;">/</span>
+        </div>  
+          <div class="pull-left" style="position:relative; top: 9px; left: 8px;">Total Node Usable Capacity</div>
+        </div>
+       <p class="clear margin_top_10">Utilization shown is for the aggregate cluster or an individual cluster based on selection</p>
+</div>
+  -->
+
+  <div class="clr pad10">
+    Expected Resource Utilization shown has 3 components:
+    <ul>
+      <li>
+      <b>With no failures</b>: Resource utilization when there are no failures in the cluster. For workloads that have replication enabled – this includes the replication overhead.
+      </li>
+      <li>
+      <b>With local failures</b>: Resource utilization when there are local node failures in the cluster. The number of failures assumed match the sizing parameter used for specifying the “Performance Headroom” parameter. For replicated workloads it includes the replication overhead.
+      </li>
+      <li>
+      <b>With DR partner failure + local failures</b>: This shows the resource utilization when DR partner cluster has failed and workloads running on that cluster have moved over. This is only applicable if the workloads being sized have replication enabled.
+      </li>
+    </ul>
+  </div>

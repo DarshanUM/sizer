@@ -1,0 +1,120 @@
+
+<div class="clear" style="margin-bottom: 0px;">
+ <div class="error_overlay" ng-if="scenario.aggregate.error"></div>
+  <div class="scenario_node_title ">
+    <span>Node Results</span>
+
+    <!-- <span class="pull-right font12">
+        <span>Aggregate</span> 
+         <label class="switch" style="margin-bottom: -1px">
+             <input type="checkbox" checked id="slideToggle"  ng-model="root.currentView" ng-true-value="'CLUSTER_VIEW'" ng-false-value="'AGGREGATE_VIEW'"  ng-click="toggleView($event)">
+             <div class="slider"></div>
+          </label>
+          <span>Clusterwise</span>
+    </span> -->
+  </div>
+  <div class="clear  nodeResult">
+    <!-- <table class="table brd aggClr" ng-show="root.currentView=='AGGREGATE_VIEW'" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr> 
+          <th class="part-col">Part</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th nowrap class="count-col">Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="node in viewObject.nodesList"> 
+          <td nowrap>{{node.name}}</td>
+          <td nowrap>{{node.type}}</td>
+          <td ng-bind-html="node.description"></td>
+          <td >{{node.numOfNodes}}</td>
+        </tr>
+      </tbody>
+    </table> -->
+    
+    <table class="table brd clusterTable" cellspacing="0" cellpadding="0" ng-show="root.currentView=='CLUSTER_VIEW'">
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th class="cluster-col"> Cluster </th>
+          <th width="5%" ng-show="scenario.aggregate.settings.dr_enabled || scenario.isHavingEpicWorkload">Site {{scenario.isHavingEpicWorkload? '/DC': ''}}</th>
+          <th>Settings</th>
+          <th class="part-col">Part</th>
+          <th>Type</th>
+          <th>Description <!--<small> ( <span>*</span> indicates this part is currently not orderable but will be available soon )</small>--></th>
+          <th nowrap class="count-col">Count</sth>
+        </tr>
+      </thead>
+
+      <tbody>   
+        <tr ng-repeat-start="cluster in scenario.totalClusters track by $index" ng-class="{activeNode:cluster._uiDisplayName == viewObject._uiDisplayName}" ng-click="selectCluster(cluster, cluster.clusterIndex, true)">
+          <td class="valign textCenter bgWhiteColor" 
+            rowspan="{{ ( cluster.nodesList.length + ( 
+            (scenario.totalClusters[$index+1] && !scenario.totalClusters[$index+1].isFirtsClusterInGroup) ? scenario.totalClusters[$index+1].nodesList.length : 0)  ) }}" 
+            ng-if="cluster.isFirtsClusterInGroup && !cluster.isEpicCluster">
+            {{ cluster.clustersLengthInGroup>1 ? (cluster.isStretchCluster ? "Stretch Pair" : "Replication Pair") : "" }}
+          </td>
+          <td class="whiteSpace valign textCenter bgWhiteColor"
+            rowspan="{{ cluster._groupLength }}" 
+            ng-if="cluster.isFirtsClusterInGroup && cluster.isEpicCluster">
+            {{ cluster.isEpicCluster? "EPIC ": ''}}
+          </td>
+          <td nowrap  class="brd_right" rowspan="{{cluster.nodesList.length}}" style="vertical-align: middle;"> {{cluster._uiDisplayName}}  
+            <label ng-if="versionInfo.hx_version < cluster.required_hxdp" class="infoIcon pull-right" style="margin-top: -2px" tooltip-placement="right" uib-tooltip="The configuration recommended for this cluster is not supported with HXDP v{{versionInfo.hx_version_str}} but will be orderable soon with HXDP v{{cluster.required_hxdp}}"></label>
+        </td>
+          <td nowrap rowspan="{{cluster.nodesList.length}}" style="vertical-align: middle;"
+             ng-show="scenario.aggregate.settings.dr_enabled || scenario.isHavingEpicWorkload"> 
+            {{cluster.isEpicCluster? cluster.dc_name: (cluster.isPartOfReplicationPair?(cluster.isRemoteCluster?"B":"A"):"")}}
+          </td>
+          <td  class="valign" rowspan="{{cluster.nodesList.length}}"> {{cluster.rfLabel}} <br> {{cluster.nplusLabel}} </td>
+          <td nowrap>{{cluster.nodesList[0].name}}</td>
+          <td nowrap>{{cluster.nodesList[0].type}}</td>
+          <td ng-bind-html="cluster.nodesList[0].description"> 
+         <!--    <div ng-if="hasAsterisk(cluster.nodesList[0].description)">
+              <div ng-bind-html="cluster.nodesList[0].description"></div>
+            </div>
+            <div ng-if="!hasAsterisk(cluster.nodesList[0].description)">
+              <div ng-bind-html="cluster.nodesList[0].description"></div>
+            </div> -->
+            
+          </td> 
+          <td>{{cluster.nodesList[0].numOfNodes}}</td>
+        </tr>
+
+        <tr ng-class="{activeNode:cluster._uiDisplayName==viewObject._uiDisplayName}" ng-repeat="node in cluster.nodesList | limitTo:10000:1" ng-if="cluster.nodesList.length>2" ng-click="selectCluster(cluster, cluster.clusterIndex, true)">
+  <!--       <td nowrap  class="brd_right valign" rowspan="{{cluster.nodesList.length}}">Cluster {{cluster.clusterIndex+1}}</td> -->
+          
+          <td>{{node.name}}</td>
+          <td>{{node.type}}</td>
+          <td nowrap ng-bind-html="node.description">
+          <!--   <div>
+              <div ng-bind-html="node.description" uib-tooltip="Indicates this part will shortly be available, but not orderable as of yet" tooltip-placement="top"></div>  
+            </div>
+            <div ng-if="!hasAsterisk(node.description)">
+              <div ng-bind-html="node.description"></div>
+            </div>  -->           
+          </td>
+          <td >{{node.numOfNodes}}</td>
+        </tr>
+
+
+        <tr ng-class="{activeNode:cluster._uiDisplayName==viewObject._uiDisplayName}" ng-repeat-end ng-show="cluster.nodesList.length==2" ng-click="selectCluster(cluster, cluster.clusterIndex, true)">
+       <!--  <td nowrap  class="brd_right valign" rowspan="{{cluster.nodesList.length}}">Cluster {{cluster.clusterIndex+1}}</td> -->
+          <td nowrap>{{cluster.nodesList[cluster.nodesList.length-1].name}}</td>
+          <td nowrap>{{cluster.nodesList[cluster.nodesList.length-1].type}}</td>
+          <td ng-bind-html="cluster.nodesList[cluster.nodesList.length-1].description">
+           <!--  <div ng-if="hasAsterisk(cluster.nodesList[cluster.nodesList.length-1].description)">
+              <div ng-bind-html="cluster.nodesList[cluster.nodesList.length-1].description" uib-tooltip="Indicates this part will shortly be available, but not orderable as of yet" tooltip-placement="top"></div>
+            </div>
+            <div ng-if="!hasAsterisk(cluster.nodesList[cluster.nodesList.length-1].description)">
+              <div ng-bind-html="cluster.nodesList[cluster.nodesList.length-1].description"></div>
+            </div> -->
+            
+          </td>
+          <td >{{cluster.nodesList[cluster.nodesList.length-1].numOfNodes}}</td>
+        </tr>
+    </tbody> 
+    </table>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+ <div class="modal-header">
+  <h4 class="modal-title"> Browser Support <span class="pull-right cursor" ng-click="$dismiss()"><i class="fa fa-remove" aria-hidden="true"></i></span></h4>
+</div>
+<div class="modal-body delPopup_padding">  
+	<p> Hyperflex Sizer does not support <strong>{{root.browserName}}</strong>. Please use one of the supported browsers mentioned below </p>
+  	<ul>
+  		<li ng-repeat="browser in root.supportedBrowsers" >{{browser}}</li>
+  	</ul>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default width80" ng-click="$dismiss()">Close</button> 
+</div> 

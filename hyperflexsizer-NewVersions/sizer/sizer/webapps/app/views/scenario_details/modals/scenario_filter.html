@@ -1,0 +1,497 @@
+<div class="modal-header ng-scope">
+  <h4 class="modal-title ng-binding"> Customize {{scenario.currentResult}} Option <span class="pull-right cursor"
+      ng-click="hideFilterNodesPopup()"><i class="fa fa-remove" aria-hidden="true"></i></span></h4>
+</div>
+<!--  <ul class="nav nav-tabs scenario_tabs">
+      <li ng-repeat="tab in customTabs" >
+        <a ng-class="{'activeTabs': currentCustomTab===tab.value}" ng-click="setCurrentCustomTab(tab)">
+          <div class="stepsList">{{tab.label}}</div>
+        </a>
+      </li>
+    </ul>  -->
+<div style="overflow-y:auto;" ng-style="{'height': globalSettingHeight+'px'}">
+  <h4 class="panel_sub_title">Global Setting</h4>
+  <div class="box_container margin_bottom0 filterSec background_white paddingLeft15 brd_top0"
+    style="border-right: 0px;">
+    <div class="clear">
+      <!-- ng-show="currentCustomTab===customTabs[0].value"-->
+      <div class="sub_col-divided pull-left">
+        <div class="filterContainer">
+          <div class="innerFont thresholdCls">
+            <span> Threshold <input type="image" class="infoPosition" src="images/info.png" name=""
+                uib-tooltip="The threshold setting controls the target utilization of clusters being sized."
+                tooltip-placement="bottom" /></span>
+          </div>
+          <div class="clear modal-open">
+
+            <div class="pad_right10">
+              <input id="radio-21" class="radio-custom" name="threshold-radio-group2" type="radio"
+                ng-model="tempScenario.aggregate.settings.threshold" ng-value="0">
+              <label for="radio-21" class="radio-custom-label">Conservative</label>
+            </div>
+            <div class="pad_right10">
+              <input id="radio-22" class="radio-custom" name="threshold-radio-group2" type="radio"
+                ng-model="tempScenario.aggregate.settings.threshold" ng-value="1">
+              <label for="radio-22" class="radio-custom-label">Standard</label>
+            </div>
+            <div class="pad_right10">
+              <input id="radio-23" class="radio-custom" name="threshold-radio-group2" type="radio"
+                ng-model="tempScenario.aggregate.settings.threshold" ng-value="2">
+              <label for="radio-23" class="radio-custom-label">Aggressive</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub_col-divided pull-left" ng-show="{{FEATURES.isHypervisorEnabled}}">
+        <div class="filterContainer">
+          <div class="innerFont"> Hypervisor</div>
+          <div class="clear modal-open">
+
+            <div class="" ng-click="onHypervisorOptionClickedInCustomize($event, 'esxi')">
+              <input class="radio-custom" name="hypervisor-radio-group" type="radio"
+                ng-checked="tempScenario.aggregate.settings.hypervisor=='esxi'">
+              <label class="radio-custom-label">ESXi</label>
+            </div>
+            <div class="" ng-click="isHyperVSelectionAllowed && onHypervisorOptionClickedInCustomize($event, 'hyperv')"
+              ng-class="{'disabled':!isHyperVSelectionAllowed}"
+              uib-tooltip="{{isHyperVSelectionAllowed ? '' : tooltips.hypervDisabled}}" tooltip-placement="bottom">
+              <input class="radio-custom" name="hypervisor-radio-group" type="radio"
+                ng-checked="tempScenario.aggregate.settings.hypervisor=='hyperv'">
+              <label class="hyperv radio-custom-label">Hyper-V</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="sub_col-divided pull-left">
+        <div class="filterContainer">
+          <div class="innerFont"> Discount % </div>
+          <div class="clear modal-open padLeft5">
+            <div class="">
+              <div class="radio-custom-label pull-left margin_right10">Bundle</div>
+              <div>
+                <input type="number" ng-value="0" min="{{minDiscountValue}}" max="{{maxDiscountValue}}"
+                  class="editNumber" ng-keyup="discountBundleChanged($event)"
+                  ng-model="tempScenario.aggregate.settings.bundle_discount_percentage" />
+              </div>
+              <span ng-if="numDiscountBundleError" class="inputError"> Allowed values are {{minDiscountValue}} to
+                {{maxDiscountValue}}</span>
+            </div>
+            <div class="clear margin_top5">
+              <div class="radio-custom-label pull-left" style="margin-right: 28px">CTO</div>
+              <div>
+                <input type="number" ng-value="0" min="{{minDiscountValue}}" max="{{maxDiscountValue}}"
+                  class="editNumber" ng-model="tempScenario.aggregate.settings.cto_discount_percentage"
+                  ng-keyup="discountCtoChanged($event)" />
+              </div>
+              <span ng-if="numDiscountCtoError" class="inputError"> Allowed values are {{minDiscountValue}} to
+                {{maxDiscountValue}}</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="sub_col-divided pull-left">
+        <div class="filterContainer">
+          <div class="innerFont">Software Costs <input type="image" class="infoPosition" src="images/info.png" name=""
+              uib-tooltip="Includes HX Software License and Hypervisor License" tooltip-placement="bottom" /></div>
+          <div class="clear modal-open">
+            <div class="">
+              <input id="license_yrs_0" class="radio-custom" type="radio"
+                ng-model="tempScenario.aggregate.settings.license_yrs" name="license_yrs" ng-value="0" />
+              <label for="license_yrs_0" class="radio-custom-label">N/A</label>
+            </div>
+            <div class="">
+              <input id="license_yrs_1" class="radio-custom" type="radio"
+                ng-model="tempScenario.aggregate.settings.license_yrs" name="license_yrs" ng-value="1" />
+              <label for="license_yrs_1" class="radio-custom-label">1 Year</label>
+            </div>
+            <div class=" ">
+              <input id="license_yrs_3" class="radio-custom" type="radio"
+                ng-model="tempScenario.aggregate.settings.license_yrs" name="license_yrs" ng-value="3" />
+              <label for="license_yrs_3" class="radio-custom-label">3 Years</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub_col-divided pull-left">
+        <div class="filterContainer">
+          <div class="innerFont">Hardware Acceleration</div> <!-- (aka Hercules)-->
+          <div class="clear modal-open">
+            <div class="">
+              <input id="enable_0" class="radio-custom" type="radio" ng-disabled="tempScenario.aggregate.settings.hypervisor === 'hyperv'" 
+                ng-model="tempScenario.aggregate.settings.hercules_conf" name="hercules_conf" ng-value="'enabled'" ng-change="onHwAccelChangedInCustomize()"/>
+              <label for="enable_0" class="radio-custom-label">Auto</label>
+            </div>
+            <div class="">
+              <input id="disable_1" class="radio-custom" type="radio" ng-disabled="tempScenario.aggregate.settings.hypervisor === 'hyperv'" 
+                ng-model="tempScenario.aggregate.settings.hercules_conf" name="hercules_conf" ng-value="'forced'" ng-change="onHwAccelChangedInCustomize()"/>
+              <label for="disable_1" class="radio-custom-label">On</label>
+            </div>
+            <div class="">
+              <input id="disable_2" class="radio-custom" type="radio" ng-disabled="tempScenario.aggregate.settings.hypervisor === 'hyperv'" 
+                ng-model="tempScenario.aggregate.settings.hercules_conf" name="hercules_conf" ng-value="'disabled'" ng-change="onHwAccelChangedInCustomize()"/>
+              <label for="disable_2" class="radio-custom-label">Off</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sub_col-divided pull-left">
+        <div class="filterContainer">
+          <div class="innerFont">HyperFlex Boost</div> <!-- (aka Hercules)-->
+          <div class="clear modal-open">
+            <div class="">
+              <input id="HyperFlex_0" class="radio-custom" type="radio" ng-disabled="tempScenario.aggregate.settings.hypervisor === 'hyperv'" 
+                ng-model="tempScenario.aggregate.settings.hx_boost_conf" name="hx_boost_conf" ng-value="'enabled'"  ng-change="onHyperflexBoostInCustomize()"/>
+              <label for="HyperFlex_0" class="radio-custom-label">Auto</label>
+            </div>
+            <div class="">
+              <input id="HyperFlex_1" class="radio-custom" type="radio" ng-disabled="tempScenario.aggregate.settings.hypervisor === 'hyperv'" 
+                ng-model="tempScenario.aggregate.settings.hx_boost_conf" name="hx_boost_conf" ng-value="'forced'"  ng-change="onHyperflexBoostInCustomize()"/>
+              <label for="HyperFlex_1" class="radio-custom-label">On</label>
+            </div>
+            <div class="">
+              <input id="HyperFlex_2" class="radio-custom" type="radio" ng-disabled="tempScenario.aggregate.settings.hypervisor === 'hyperv'" 
+                ng-model="tempScenario.aggregate.settings.hx_boost_conf" name="hx_boost_conf" ng-value="'disabled'"  ng-change="onHyperflexBoostInCustomize()"/>
+              <label for="HyperFlex_2" class="radio-custom-label">Off</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub_col-divided pull-left">
+        <div class="filterContainer">
+          <div class="innerFont">Single Cluster </div>
+          <div class="clear modal-open">
+            <div class="">
+              <input id="single_clust1" class="radio-custom" type="radio"
+                ng-model="tempScenario.aggregate.settings.single_cluster" name="singleCluster" ng-value="true" />
+              <label for="single_clust1" class="radio-custom-label">Yes</label>
+            </div>
+            <div class=" ">
+              <input id="single_clust2" class="radio-custom" type="radio"
+                ng-model="tempScenario.aggregate.settings.single_cluster" name="singleCluster" ng-value="false" />
+              <label for="single_clust2" class="radio-custom-label">No</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- <h4 class="panel_sub_title brd-top">Node Filter</h4> -->
+
+
+  <div class="clear brd-top filter_mainSection filterSec background_white">
+    <div class="clear">
+      <div class="col-md-3 rightBorder">
+        <h4 class="panel_sub_title">Cluster Setting</h4>
+        <div class="col-divided  pull-left">
+          <div class="filterContainer filter-options-category">
+            <div class="innerFont"> Node Choice </div>
+            <div class="clear modal-open">
+
+              <div class="hper-rgt">
+                <input id="radio-25" class="radio-custom" name="heterogenous-radio-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.heterogenous" ng-value="false"
+                  ng-change="onNodeChoiceChangedInCustomize()">
+                <label for="radio-25" class="radio-custom-label">HyperFlex
+                  only</label>
+              </div>
+              <div class="hper-lft">
+                <input id="radio-24" class="radio-custom" name="heterogenous-radio-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.heterogenous" ng-value="true"
+                  ng-change="onNodeChoiceChangedInCustomize()">
+                <label for="radio-24" class="radio-custom-label">HyperFlex & Compute</label>
+              </div>
+            </div>
+            <!--  <div class="col-lg-4 col-md-4"> Node Choice </div>
+                  <div class="col-lg-8 col-md-8">
+                      <div class="select-style">
+                          <select class='form-control'
+                            ng-model="scenario.aggregate.settings.heterogenous"
+                            ng-options='option.key as option.value for option in nodeChoiceOtions'
+                            ng-change="onHeterogenousChanged()">
+                          </select>
+                      </div>
+                  </div> -->
+          </div>
+        </div>
+        <div class="col-divided pull-left">
+          <div class="filterContainer">
+            <div class="innerFont"> Sizing Option </div>
+            <div class="clear modal-open">
+              <div class="">
+                <input id="radio-31" class="radio-custom" name="sizing-radio-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.bundle_only" ng-value="'ALL'"
+                  ng-change="onSizingOptionChangedInCustomize()">
+                <label for="radio-31" class="radio-custom-label">Bundle & CTO</label>
+              </div>
+              <div class="">
+                <input id="radio-32" class="radio-custom" name="sizing-radio-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.bundle_only" ng-value="'bundle'"
+                  ng-change="onSizingOptionChangedInCustomize()">
+                <label for="radio-32" class="radio-custom-label">Bundle Only</label>
+              </div>
+              <div class="">
+                <input id="radio-332" class="radio-custom" name="sizing-radio-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.bundle_only" ng-value="'cto'"
+                  ng-change="onSizingOptionChangedInCustomize()">
+                <label for="radio-332" class="radio-custom-label">CTO Only</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-divided pull-left">
+          <div class="filterContainer">
+            <div class="innerFont"> CPU Generation </div>
+            <div class="clear modal-open">
+              <div class="">
+                  <input id="radio-59" class="radio-custom" name="cpu-generation-group2" type="radio"
+                    ng-model="tempScenario.aggregate.settings.cpu_generation" ng-value="'ALL'" ng-change="onCPUGenerationChangedInCustomize()">
+                  <label for="radio-59" class="radio-custom-label">All</label>
+              </div>
+              <div class="" ng-class="{'disabled': tempScenario.aggregate.settings.bundle_only === 'bundle'}">
+                <input id="radio-56" class="radio-custom" name="cpu-generation-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.cpu_generation" ng-value="'recommended'" ng-change="onCPUGenerationChangedInCustomize()">
+                <label for="radio-56" class="radio-custom-label">Recommended</label>
+              </div>
+              <div class="">
+                <input id="radio-57" class="radio-custom" name="cpu-generation-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.cpu_generation" ng-value="'sky'" ng-change="onCPUGenerationChangedInCustomize()">
+                <label for="radio-57" class="radio-custom-label">Skylake</label>
+              </div>
+               <div class="" >
+                <input id="radio-58" class="radio-custom" name="cpu-generation-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.cpu_generation" ng-value="'cascade'" ng-change="onCPUGenerationChangedInCustomize()">
+                <label for="radio-58" class="radio-custom-label">Cascade Lake</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  <div class="col-divided  pull-left">
+              <div class="filterContainer filter-options-category">
+                  <div class="innerFont"> Server Type </div>
+                  <div class="clear modal-open">
+                    <div ng-class="{'disabled':tempScenario.aggregate.settings.hypervisor==='hyperv'}">
+                      <input id="server_radio-33" class="radio-custom" checked="checked" name="server-option-group" type="radio" ng-model="tempScenario.aggregate.settings.server_type" ng-value="'ALL'" ng-change="onServerTypeChangedInCustomize()">
+                      <label for="server_radio-33" class="radio-custom-label">All</label>
+                    </div>
+                    <div ng-class="{'disabled':(tempScenario.aggregate.settings.hypervisor==='hyperv' || tempScenario.aggregate.settings.bundle_only || tempScenario.aggregate.settings.disk_option === 'COLDSTREAM' || tempScenario.aggregate.settings.disk_option === 'LFF')}">
+                      <input id="server_radio-34" class="radio-custom" name="server-option-group" type="radio" ng-model="tempScenario.aggregate.settings.server_type" ng-value="'M4'" ng-change="onServerTypeChangedInCustomize()">
+                      <label for="server_radio-34" class="radio-custom-label">M4 Server</label>
+                    </div>
+                    <div ng-class="{'disabled':tempScenario.aggregate.settings.hypervisor==='hyperv'}">
+                      <input id="server_radio-35" class="radio-custom" name="server-option-group" type="radio" ng-model="tempScenario.aggregate.settings.server_type" ng-value="'M5'" ng-change="onServerTypeChangedInCustomize()">
+                      <label for="server_radio-35" class="radio-custom-label">M5 Server</label>
+                    </div>
+                  </div>
+                </div>
+                </div> -->
+
+        <div class="col-divided  pull-left">
+          <div class="filterContainer filter-options-category">
+            <div class="innerFont"> Disk Option </div>
+            <div class="clear modal-open">
+              <div>
+                <input id="radio-33" class="radio-custom" name="disk-option-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.disk_option" ng-value="'ALL'"
+                  ng-change="onDiskOptionChangedInCustomize()">
+                <label for="radio-33" class="radio-custom-label">All</label>
+              </div>
+              <div ng-class="{'disabled':tempScenario.aggregate.settings.hypervisor==='hyperv' || tempScenario.aggregate.settings.hercules_conf === 'forced'}">
+                <input id="radio-38" class="radio-custom" name="disk-option-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.disk_option" ng-value="'NON-SED'"
+                  ng-change="onDiskOptionChangedInCustomize()">
+                <label for="radio-38" class="radio-custom-label">Non SED Only</label>
+              </div>
+              <div ng-class="{'disabled':tempScenario.aggregate.settings.hypervisor==='hyperv' || tempScenario.aggregate.settings.hercules_conf === 'forced'}">
+                <input id="radio-34" class="radio-custom" name="disk-option-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.disk_option" ng-value="'SED'"
+                  ng-change="onDiskOptionChangedInCustomize()">
+                <label for="radio-34" class="radio-custom-label">SED Only</label>
+              </div>
+              <div class="clear"
+                ng-class="{'disabled':tempScenario.aggregate.settings.hypervisor==='hyperv' || tempScenario.aggregate.settings.bundle_only==='bundle' || tempScenario.aggregate.settings.hercules_conf === 'forced'}">
+                <input id="radio-52" class="radio-custom" name="disk-option-group2" type="radio" ng-value="'FIPS'"
+                  ng-model="tempScenario.aggregate.settings.disk_option" ng-change="onDiskOptionChangedInCustomize()">
+                <label for="radio-52" class="radio-custom-label">FIPS Only</label>
+              </div>
+              <!--  <div ng-class="{'disabled':tempScenario.aggregate.settings.hypervisor==='hyperv'}">
+                          <input id="radio-35" class="radio-custom" name="disk-option-group2" type="radio" ng-model="tempScenario.aggregate.settings.disk_option" ng-value="'FIPS'" ng-change="onDiskOptionChangedInCustomize()">
+                          <label for="radio-35" class="radio-custom-label">FIPS Only</label>
+                        </div>
+                        <div class="nvme-filter-option" ng-class="{'disabled': (tempScenario.aggregate.settings.bundle_only)}">
+                          <input id="radio-36" class="radio-custom" name="disk-option-group2" type="radio" ng-model="tempScenario.aggregate.settings.disk_option" ng-value="'NVME'" ng-change="onDiskOptionChangedInCustomize()">
+                          <label for="radio-36" class="radio-custom-label">NVMe Only</label>
+                        </div>
+                        <div class="coldstream-filter-option" ng-class="{'disabled': (tempScenario.aggregate.settings.bundle_only || tempScenario.aggregate.settings.server_type==='M4' || tempScenario.aggregate.settings.hypervisor==='hyperv')}">
+                          <input id="radio-37" class="radio-custom" name="disk-option-group2" type="radio" ng-model="tempScenario.aggregate.settings.disk_option" ng-value="'COLDSTREAM'" ng-change="onDiskOptionChangedInCustomize()">
+                          <label for="radio-37" class="radio-custom-label">Optane Only</label>
+                        </div>
+     -->
+              <div class="lff-filter-option"
+                ng-class="{'disabled': (tempScenario.aggregate.settings.server_type==='M4' || tempScenario.currentResult === 'All-Flash')}">
+                <input id="radio-39" class="radio-custom" name="disk-option-group2" type="radio"
+                  ng-model="tempScenario.aggregate.settings.disk_option" ng-value="'LFF'"
+                  ng-change="onDiskOptionChangedInCustomize()">
+                <label for="radio-39" class="radio-custom-label">LFF Only</label>
+              </div>
+              <!-- <div class="fips-filter-option" ng-class="{'disabled': (tempScenario.aggregate.settings.hypervisor==='hyperv')}">
+                          <input id="radio-38" class="radio-custom" name="disk-option-group2" type="radio" ng-model="tempScenario.aggregate.settings.disk_option" ng-value="'FIPS'" ng-change="onDiskOptionChangedInCustomize()">
+                          <label for="radio-38" class="radio-custom-label">FIPS only</label>
+                        </div> -->
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-divided  pull-left">
+          <div class="filterContainer filter-options-category">
+            <div class="innerFont"> Cache Options </div>
+            <div class="clear modal-open">
+              <div class="clear">
+                <input id="radio-55" class="radio-custom" name="catch-option-group2" type="radio" ng-value="'ALL'"
+                  ng-model="tempScenario.aggregate.settings.cache_option" ng-change="onCacheOptionChangedInCustomize()">
+                <label for="radio-55" class="radio-custom-label">All</label>
+              </div>
+              <div class="clear"
+                ng-class="{'disabled':tempScenario.aggregate.settings.hypervisor==='hyperv' || tempScenario.aggregate.settings.disk_option === 'NON-SED' || tempScenario.aggregate.settings.disk_option === 'LFF' || tempScenario.aggregate.settings.hercules_conf === 'forced'}">
+                <input id="radio-51" class="radio-custom" name="catch-option-group2" type="radio" ng-value="'SED'"
+                  ng-model="tempScenario.aggregate.settings.cache_option" ng-change="onCacheOptionChangedInCustomize()">
+                <label for="radio-51" class="radio-custom-label">SED Only</label>
+              </div>
+              <div class="clear"
+                ng-class="{'disabled': (tempScenario.aggregate.settings.disk_option === 'FIPS' || tempScenario.aggregate.settings.disk_option === 'SED' || tempScenario.aggregate.settings.disk_option === 'LFF')}">
+                <input id="radio-53" class="radio-custom" name="catch-option-group2" type="radio" ng-value="'NVMe'"
+                  ng-model="tempScenario.aggregate.settings.cache_option" ng-change="onCacheOptionChangedInCustomize()">
+                <label for="radio-53" class="radio-custom-label">NVMe Only</label>
+              </div>
+              <div class="clear"
+                ng-class="{'disabled':(tempScenario.aggregate.settings.disk_option === 'FIPS' || tempScenario.aggregate.settings.hypervisor==='hyperv' || tempScenario.aggregate.settings.disk_option === 'SED' || tempScenario.aggregate.settings.disk_option === 'LFF' || tempScenario.aggregate.settings.bundle_only==='bundle')}">
+                <input id="radio-54" class="radio-custom" name="catch-option-group2" type="radio" ng-value="'Optane'"
+                  ng-model="tempScenario.aggregate.settings.cache_option" ng-change="onCacheOptionChangedInCustomize()">
+                <label for="radio-54" class="radio-custom-label">Optane Only</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-9 brd-left">
+        <h4 class="panel_sub_title">Node Setting</h4>
+        <div class="clear background_white">
+          <!--   <div  class="filter_title"> </div> -->
+          <div class="filterBox">
+
+            <div class="col-md-3">
+              <multi-select model-data="filterDetails.nodeTypeData"></multi-select>
+            </div>
+            <div class="col-md-3">
+              <multi-select model-data="filterDetails.cpuTypeData"></multi-select>
+            </div>
+            <div class="col-md-3">
+              <multi-select model-data="filterDetails.ramSlotsData"></multi-select>
+            </div>
+            <div class="col-md-3">
+              <multi-select model-data="filterDetails.diskCapacity"></multi-select>
+            </div>
+
+            <div class="col-md-3">
+              <multi-select model-data="filterDetails.gpuData"
+                disabled="tempScenario.aggregate.settings.hypervisor=='hyperv'"></multi-select>
+            </div>
+            <div class="col-md-3">
+              <multi-select model-data="filterDetails.computeNodesData"
+                disabled="tempScenario.aggregate.settings.heterogenous!=true"></multi-select>
+            </div>
+
+
+            <div class="col-md-3">
+              <multi-select model-data="filterDetails.cpuClockData"
+                on-selection-changed="onClockSelectionChanged($event)"></multi-select>
+            </div>
+            <div class="col-md-3">
+              <multi-select model-data="filterDetails.ramMemoryData"></multi-select>
+            </div>
+            <div class="col-md-3">
+              <multi-select model-data="filterDetails.capacityData"></multi-select>
+            </div>
+
+
+
+            <!-- <div class="flter-selection-error-text text-danger" ng-show="filterDetails.nodeTypeData.isNoneSelected || filterDetails.cpuTypeData.isNoneSelected || filterDetails.ramSlotsData.isNoneSelected || filterDetails.ramMemoryData.isNoneSelected"> Please select altease one option per group </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- <div class="col-divided  pull-left">
+              <div class="filterContainer" ng-class="{'disabled': tempScenario.aggregate.settings.bundle_only}">
+                  <div class="innerFont"> Modular LAN </div>
+                  <div class="clear modal-open">
+                    <div class="">
+                      <input id="radio-43" class="radio-custom" name="modular-lan-group2" type="radio" ng-model="tempScenario.aggregate.settings.modular_lan" ng-value="'ALL'" ng-change="onModularOptionChangedInCustomize()">
+                      <label for="radio-43" class="radio-custom-label">All</label>
+                    </div>
+                    <div class="">
+                      <input id="radio-44" class="radio-custom" name="modular-lan-group2" type="radio" ng-model="tempScenario.aggregate.settings.modular_lan" ng-value="'40G_VIC'" ng-change="onModularOptionChangedInCustomize()">
+                      <label for="radio-44" class="radio-custom-label">40G VIC</label>
+                    </div>
+                  </div>
+                </div>
+                </div> -->
+
+    <!--  <div class="col-lg-2">
+                <div class=" txtCenter">
+                <div class="clear btn btn-default wid100" ng-hide="selectionCancel" ng-click="onClosingCustomResultsPopup()">
+                   Close
+                </div>
+                </div>
+              </div>  -->
+
+    <!-- <div ng-if="tempScenario.aggregate.error" style="position: relative;">
+                <div class="error_panel" >
+                  <div class="pull-left" >
+                  <img src="images/error.png" style="position: relative;top: -3px;" />
+                  </div>
+                  <div class="pull-left errorpopup_msg" ng-bind-html="tempScenario.aggregate.error.message"></div>
+                </div>
+              </div> -->
+
+  </div>
+</div>
+
+
+</div>
+
+
+
+
+<div class="modal-footer margin_top5" align="clear" style="padding-bottom:10px">
+  <input type="button" class="btn btn-default" value="Cancel" name="" ng-click="onClosingCustomResultsPopup()" />
+  <input type="button" value="Apply" class="btn btn-primary" ng-click="applyTempFilterNodes()"
+    ng-disabled="filterDetails.nodeTypeData.isNoneSelected || filterDetails.cpuTypeData.isNoneSelected || filterDetails.ramSlotsData.isNoneSelected || filterDetails.ramMemoryData.isNoneSelected || filterDetails.computeNodesData.isNoneSelected || filterDetails.diskCapacity.isNoneSelected || filterDetails.gpuData.isNoneSelected || numDiscountBundleError|| numDiscountCtoError" />
+</div>
+
+<div mpl-progress id="nodelist-request-query"></div>
+<div ng-if="isThereUnsavedResults && !tempScenario.aggregate.error"
+  ng-include="'views/scenario_details/scenario_temp_node_result.html'">
+</div>
+
+<div class="filter-footer" ng-if="isThereUnsavedResults && !tempScenario.aggregate.error">
+  <span class="pull-left">
+    <input type="button" value="Cancel" class="defaultBtn" ng-click="hideFilterNodesPopup()" />
+  </span>
+  <span class="pull-right">
+    <input type="button" value="Save" class="btn btn-primary" ng-click="saveReuslts()"
+      ng-disabled="filterDetails.nodeTypeData.isNoneSelected || filterDetails.cpuTypeData.isNoneSelected || filterDetails.ramSlotsData.isNoneSelected || filterDetails.ramMemoryData.isNoneSelected || filterDetails.computeNodesData.isNoneSelected || filterDetails.cpuClockData.isNoneSelected" />
+  </span>
+</div>

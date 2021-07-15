@@ -1,0 +1,9 @@
+<div class="form-group" ng-hide="field.hidden">
+	<div class="col-lg-12 radioTooltip">
+		<div>
+			<div class="col-md-6 label_content">{{field.displayName}}</div>
+			<div ng-if="field.model !== 'combined_compr_dedup'" class="tooltip_msg">{{field.dynamicMsg}}</div>
+			<div ng-if="field.model === 'combined_compr_dedup'" class="tooltip_msg_no pull-left">{{field.dynamicMsg}}</div>
+		</div>
+	</div>
+</div>

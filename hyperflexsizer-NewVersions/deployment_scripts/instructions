@@ -1,0 +1,29 @@
+CTO Nodes: Configure To Order Nodes -> Parts * slots can be selected based on WL requirements
+Bundle Nodes: Parts are fixed i.e. one CPU choice, one RAM etc. whereas slots can vary
+
+CTO Data entry instructions
+
+HyperFlex Nodes
+    > price is sum of chassis price after exclusion of service cost, mid-priced -> Power supply, RAID controller,
+      MicroSD card, PCIe Riser cards etc.
+    > filling up of parts doesn't require any modifications.
+    > slot count should start at minimum required slots and should consist of all possible number for CPU, RAM, VRAM,
+      SSD, For HDD it should represent a range of slots i.e. (minimum, maximum)
+
+All-Flash Nodes
+    > these nodes are priced in the same way as mentioned above.
+    > Cache parts that are used in AF nodes should have very high Cache capacity of 100000000 so that cache isn't a
+      constraint. Only IO/s should be considered.
+
+Compute Nodes
+    > Compute nodes' HDD/SSD i.e. Disk slots should be 0 as they don't have any storage capabilities.
+    > Pricing just consists of Chassis price excluding service cost
+
+Final Price of CTO nodes is base price of node + CTO price of all parts that we use.
+
+Bundle Data entry instructions
+
+Bundles nodes follow the same rules as CTO, except for pricing wherein we have to exclude the cost of base RAM
+i.e. [minimum no of slots in node * unit price of that part]
+
+Final Price of Bundle nodes is base price of node + Unit price of RAM * no of RAM slots used.

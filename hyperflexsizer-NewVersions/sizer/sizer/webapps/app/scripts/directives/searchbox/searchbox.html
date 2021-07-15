@@ -1,0 +1,23 @@
+<div class="shareScenario search-box" ng-click="cancelEvent($event)">  
+    <div class="form-group positionRelative " style="margin-bottom: 0px !important">
+        <input  ng-readonly="value && !hasFocus" type="text" tabindex="4" ng-click="onSearchFieldFocused()" 
+            class="scenario-search form-control searchFocus marBottom0" placeholder="{{value ? value : 'Type CPU'}}" ng-model="searchStr" />
+        <span class="glyphicon glyphicon-search searchIcon" aria-hidden="true"></span>
+    </div>
+    <div class="searchList" ng-show="showSearchList">
+        <div ng-if="searchStr.length<3" class="pad7 font12">
+            Enter atleast 3 characters
+        </div>
+        <div ng-if="options.length === 0" class="pad10">
+            No Data
+        </div>
+        <div ng-if="searchStr.length > 2 && options.length && filteredOptions.length === 0" class="pad10 font12">
+            No search results. Modify search key
+        </div>
+        <ul ng-if="searchStr.length>2">
+            <li  ng-repeat="option in filteredOptions track by option" ng-click="onSelectionDone(option)">
+                <div title="{{option}}">{{option}}</div>
+            </li>             
+        </ul>
+    </div>    
+</div>

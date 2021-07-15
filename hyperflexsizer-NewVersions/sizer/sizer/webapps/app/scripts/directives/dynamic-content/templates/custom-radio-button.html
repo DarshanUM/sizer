@@ -1,0 +1,16 @@
+<ul class="dbDetails tabs clear" id="tab1">
+  <li>
+    <dl>
+      <dt>VDI</dt>
+      <dd ng-repeat="option in ::field.options | limitTo:4:0 track by $index" ng-class="{'active':workload[field.modelName]==option.value, 'disabled': option.disabled  }" ng-click="setModelVal(option.value)" class="custom-radio-button"> <span>{{option.label}} </span></dd>
+
+      <dt>Database</dt>
+      <dd ng-repeat="option in ::field.options | limitTo:5:4 track by $index" ng-class="{'active':workload[field.modelName]==option.value, 'disabled': option.disabled  }" ng-click="setModelVal(option.value)" class="custom-radio-button"> <span>{{option.label}} </span></dd>
+
+      <dt>Others</dt>
+      <dd ng-repeat="option in ::field.options | limitTo: field.options.length-8:9 track by $index" ng-class="{'active':workload[field.modelName]==option.value, 'disabled': option.disabled  }" ng-click="setModelVal(option.value)" class="custom-radio-button"> <span>{{option.label}} </span></dd>
+
+    </dl>
+  </li>
+</ul>
+

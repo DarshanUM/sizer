@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h4 class="modal-title">Clone Scenario <span class="pull-right cursor" ng-click="$dismiss()"><i class="fa fa-remove" aria-hidden="true"></i></span></h4>
+</div>
+<div class="modal-body">
+  <form name="cloneScenarioForm" ng-submit="popupCtrl.cloneScenario(popupCtrl.scenarioObject)" novalidate mpl-form-validation>
+  <div class="padding-15">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" name="username" placeholder="Scenario Name" required ng-model="popupCtrl.scenarioObject.name" ng-pattern="/^[a-zA-Z](\w|-)*$/" >
+      <p class="help-block">{{ (
+        cloneScenarioForm.username.$error.pattern ? 
+          "Only alphanumeric, underscore & hyphen are allowed" : 
+          cloneScenarioForm.username.$error.required ? "Enter valid scenario name" : "") }}</p>
+    </div>
+    <div class="form-group">
+      <label>Account</label>
+      <input type="text" class="form-control" name="account" placeholder="Account" ng-model="popupCtrl.scenarioObject.settings_json.account">
+      <p class="help-block">Enter Account Name</p>
+    </div>
+    <!-- <div class="form-group">
+      <label>SFDC Deal Id</label>
+      <input type="text" class="form-control" name="sfdc_deal_id" placeholder="SFDC Deal Id" ng-model="popupCtrl.scenarioObject.settings_json.deal_id">
+      <p class="help-block">Enter Deal Id</p>
+    </div>  -->
+    </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+      <input type="submit" value="Clone" class="btn btn-primary">
+    </div>
+  </form>
+</div>
+
+<!-- 
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+  <button type="button" class="btn btn-primary" ng-click="addScenarioForm.submit()">Save</button>
+</div> -->
+<!-- <div mpl-progress id="clone-scenario-request-query"></div> -->

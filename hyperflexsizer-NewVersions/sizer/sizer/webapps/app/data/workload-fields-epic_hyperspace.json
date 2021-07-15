@@ -1,0 +1,315 @@
+{
+  "steps": [
+    {
+      "name": "Workload Type",
+      "title": "Choose workload type",
+      "fields": [
+        {
+          "modelName": "wl_type",
+          "value": "EPIC",
+          "type": "custom-radio-button",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+      "options": [
+            {
+              "label": "VDI",
+              "value": "VDI"
+            },
+            {
+              "label": "Epic Hyperspace",
+              "value": "EPIC"
+            },
+            {
+              "label": "VDI Infrastructure VMs",
+              "value": "VDI_INFRA"
+            }, 
+            {
+              "label": "RDSH Workload",
+              "value": "RDSH"
+            },
+             {
+              "label": "Microsoft SQL",
+              "value": "DB"
+            }, 
+            {
+              "label": "Oracle",
+              "value": "ORACLE"
+            },
+            {
+              "label": "Splunk Workload",
+              "value": "SPLUNK"
+            }, 
+            {
+              "label": "Bulk Database Input",
+              "value": "BULK"
+            },
+            {
+              "label": "Oracle AWR File Upload",
+              "value": "AWR_FILE"
+            },
+            {
+              "label": "General Server Virtualized Environment (VSI)",
+              "value": "VSI"
+            }, 
+            {
+              "label": "Microsoft Exchange Server",
+              "value": "EXCHANGE"
+            },
+             {
+              "label": "HX Edge (ROBO)",
+              "value": "ROBO"
+            },
+            {
+              "label": "Compute and Capacity Sizer",
+              "value": "RAW"
+            }, 
+            {
+              "label": "File Upload on HX",
+              "value": "RAW_FILE"
+            },
+            {
+              "label": "Veeam Availability Solution on HX",
+              "value": "VEEAM"
+            },
+            {
+                "label": "Kubernetes Container",
+                "value": "CONTAINER"
+            },
+            {
+                "label": "Artificial Intelligence/Machine Learning",
+                "value": "AIML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hyperspace Profile",
+      "title": "Epic Hyperspace",
+      "fields": [
+        {
+          "type": "warning",
+          "className": "info-content",
+          "message": "Please populate all fields below based on the Epic Capacity Assessment document, and any high availability requirements of the customer."
+        },
+        {
+          "displayName": "Datacenter",
+          "modelName": "datacentres",
+          "type": "epic_hyper",
+          "fields": [
+            {
+              "displayName": "Datacenter 1",
+              "modelName": "dc_name",
+              "name": "DC1",
+              "column": [
+                {
+                  "displayName": "",
+                  "modelName": "concurrent_user_pcnt",
+                  "value": 1,
+                  "type": "number"
+                },
+                {
+                  "displayName": "",
+                  "modelName": "num_clusters",
+                  "value": 1,
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "displayName": "Datacenter 2",
+              "modelName": "dc_name",
+              "name": "DC2",
+              "column": [
+                {
+                  "displayName": "",
+                  "modelName": "concurrent_user_pcnt",
+                  "value": 1,
+                  "type": "number"
+                },
+                {
+                  "displayName": "",
+                  "modelName": "num_clusters",
+                  "value": 1,
+                  "type": "number"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "displayName": "Total Users",
+          "modelName": "total_users",
+          "value": 2,
+          "type": "number",
+          "className": "vdiResiliency"
+        },
+        {
+          "displayName": "CPU SKU",
+          "modelName": "cpu",
+          "value": "Intel Gold 6150",
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency dataFactor",
+          "options": [
+            {
+              "key": "Intel Platinum 8168",
+              "value": "Intel Platinum 8168"
+            },
+            {
+              "key": "Intel Gold 6150",
+              "value": "Intel Gold 6150"
+            },
+            {
+              "key": "Intel Platinum 8268",
+              "value": "Intel Platinum 8268"
+            },
+            {
+              "key": "Intel Gold 6254",
+              "value": "Intel Gold 6254"
+            }
+          ]
+        },
+        {
+          "displayName": "Users Per Host",
+          "modelName": "users_per_host",
+          "value": 0,
+          "type": "number",
+          "className": "vdiResiliency"
+        },
+        {
+          "displayName": "RAM Per Guest",
+          "modelName": "ram_per_guest",
+          "value": 30,
+          "type": "number",
+          "readonly": true,
+          "className": "vdiResiliency dataFactor"
+        },
+        {
+          "displayName": "VM Guests per Host",
+          "modelName": "guests_per_host",
+          "value": 1,
+          "type": "number",
+          "readonly": true,
+          "className": "vdiResiliency dataFactor"
+        },
+        {
+          "displayName": "Expected Number of Hosts",
+          "modelName": "expected_hosts",
+          "value": 1,
+          "type": "number",
+          "className": "vdiResiliency dataFactor"
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure Configuration",
+      "title": "Epic Hyperspace",
+      "fields": [
+        {
+          "displayName": "Performance Headroom (nodes)",
+          "modelName": "fault_tolerance",
+          "value": 0,
+          "type": "number",
+          "readonly": true,
+          "className": "vdiResiliency" 
+        },
+         {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "Please modify \"Total Users Supported\" for failover capacity"
+        },
+        {
+          "displayName": "Replication Factor",
+          "modelName": "replication_factor",
+          "value": 3,
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "key": 2,
+              "value": "RF 2"
+            },
+            {
+              "key": 3,
+              "value": "RF 3"
+            }
+          ],
+          "className": "vdiResiliency"
+        },
+        {
+          "type": "warning",
+          "className": "info-content",
+          "model": "warning_cont",
+          "hidden": true,
+          "message": "A replication factor of three is highly recommended for all environments except HyperFlex Edge. A replication factor of two has a lower level of availability and resiliency."
+        },
+        {
+          "displayName": "Compression Savings",
+          "subDisplayName": " without Hardware Acceleration",
+          "modelName": "compression_factor",
+          "value": 0,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency text_wrap"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "compression_saved",
+          "diskModel": "db_size",
+          "factorModel": "compression_factor",
+          "tooltip": "Eg: dynamicText effective capacity, with dynamicText1% compression savings will require dynamicText2 of usable space"
+        },
+        {
+          "type": "infomessage",
+          "message": "These compression savings can be increased by using the HyperFlex Acceleration Engine."
+        },
+        {
+          "displayName": "Dedupe Savings",
+          "modelName": "dedupe_factor",
+          "value": 0,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "dedupe_saved",
+          "diskModel": "compression_saved",
+          "factorModel": "dedupe_factor",
+          "tooltip": "Eg: dynamicText of capacity post compression, with dynamicText1% dedupe will require dynamicText2 usable space"
+        },
+        {
+          "displayName": "Net Savings",
+          "type": "dynamic-text",
+          "model": "combined_compr_dedup",
+          "diskModel": "db_size",
+          "factorModel": "dedupe_saved"
+        }
+      ]
+    },
+     {
+      "name": "Backup Target",
+      "title": "EPIC",
+      "fields": [ 
+        { 
+          "className": "msg-content",
+          "model": "msg_cont", 
+          "type": "backup_target"
+        }   
+      ]
+    }
+  ]
+}
+

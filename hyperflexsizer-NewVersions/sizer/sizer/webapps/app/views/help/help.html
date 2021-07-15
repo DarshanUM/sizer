@@ -1,0 +1,91 @@
+<div>
+  <!-- header start-->
+  <div ng-include="'views/header/header.html'"></div>
+  <!-- header end-->
+  <section>  
+    <div class="col-lg-12"> 
+      <div class="row"> 
+        <!-- <div class=" page_tiitle">Sizer Overview</div> -->
+        <div class="inner_Container modal-open" style="padding-top: 0px;">
+        <div class="clear">
+
+          <!-- LEFT SECTION -->   
+          <div class="col-lg-8 col-md-8">
+
+            <!-- for pdf content-->   
+            <div id="pdf-container"> 
+              <div class="loader-container">
+                <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                <div>Please wait, loading pdf content </div>
+              </div> 
+              <div style="position: relative; z-index: 1;">
+                <object type="application/pdf" width="100%" ng-style="{height:helpCtrl.pdfContainerHeight}" >
+                  <!-- <embed type="application/pdf" width="100%" ng-style="{height:helpCtrl.pdfContainerHeight}" > -->
+                  </embed>
+                </object>
+              </div>  
+            </div>
+          
+            <!-- for video content-->   
+            <div id="video-container">
+              <video id="video-element" width="100%" height="400" controls>
+                <!-- <source ng-src="{{helpCtrl.selectedtrainingFile[helpCtrl.pathProp] | trustUrl}}" type="video/mp4"> -->
+              </video>               
+              <div class="innerPanel margin_top5">
+                <h5 class="inner_title">
+                  {{helpCtrl.selectedtrainingFile.title || helpCtrl.selectedtrainingFile.name}}
+                </h5>               
+                <div class="video_description">
+                  {{helpCtrl.selectedtrainingFile.long_desc}}
+                </div>
+              </div>   
+            </div>
+
+            <!-- for html content-->   
+            <div id="html-container"> 
+              <ng-include ng-src="helpCtrl.selectedtrainingFile[helpCtrl.pathProp] | trustUrl"></ng-include>
+            </div>
+
+          </div>
+
+
+          <!-- RIGHT SECTION -->
+          <div class="col-lg-4 col-md-4 padleft0" >
+            <div class="innerrightPanel">
+              <h5 class="inner_title">Training Materials</h5>
+              <div ng-style="{height:helpCtrl.helpContainerHeight}" class="overflow">
+              <ul>
+                <li ng-repeat="trainingFile in helpCtrl.trainingFilesList"
+                 ng-class="{'activeTrainingItem': trainingFile.name==helpCtrl.selectedtrainingFile.name}" >
+                  <div class="modal-open"  ng-click="helpCtrl.selectTrainingFile(trainingFile)"> 
+                    <div class="pull-left training_div1" >
+                      <img ng-src="{{trainingFile.thumbnail_url | trustUrl}}" />
+                    </div>
+                    <div class="pull-left training_div2">
+                      <h5 class="sub_title">{{trainingFile.title || trainingFile.name}}</h5>
+                      <p>
+                        {{trainingFile.short_desc}}
+                      </p>
+                    </div>
+                  </div>                  
+                </li>
+              </ul>
+              </div>
+            </div>
+          </div>
+
+
+
+         </div>
+        </div>
+      </div>
+    </div> 
+
+    
+
+  </section>
+  <div mpl-progress id="get-training-videos" progress-message="Please wait while loading playlist"></div>
+  <!-- footer start-->
+  <div ng-include="'views/footer/footer.html'"></div>
+  <!-- footer end-->
+</div>

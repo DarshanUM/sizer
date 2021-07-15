@@ -1,0 +1,61 @@
+<div class="form-group  clear popupTooltip"
+    ng-class="{'has-error':(!isFileSelected || !isFileHasPrased || isFileHasPrasingError || isInvalidFileFormat || isBeyondMaxSize)}">
+    <label class="col-lg-6" style="top:8px">AWR File upload</label>
+    <div class="col-lg-5" style="margin-top: 5px;">
+        <!-- <button class="btn btn-primary ng-hide" ng-disabled="!isFileSelected || disableUPpload" ng-click="uploadFile()">
+            Process File
+        </button> -->
+        <input class="uploadTextfield" type="file" id="file_input" name='file'
+            accept="{{filetypeInput==='txt' ? txtFileAccept : htmlFileAccept}}" ng-click="onClick($event)"
+            onchange="angular.element(this).scope().onFileSelectionChanged(this)" tooltip-placement="right" />
+    </div>
+    <!-- <p class="help-block" ng-if="!isFileSelected">
+        Please select {{ filetypeInput=="csv" ? "a CSV" : "an Excel" }} file to process workload inputs
+    </p> -->
+    <!-- <p class="help-block" ng-if="isFileSelected && !isFileHasPrased"> 
+        Please process the file to get the workload inputs 
+    </p> -->
+    <p class="help-block errorDetails details_fix" ng-if="isFileSelected && isFileHasPrasingError">
+        <span>
+            <span ng-if="hasWarning"> <img src="images/alert.png" style="padding-right: 2px;" /> <b>Warning </b> </span>
+            <span ng-if="hasError"> <img src="images/file-error.png" /> <b>Error :</b> </span>
+        </span>
+        <span ng-hide="hasWarning">Invalid file</span>
+        <p class="help-block errorDetails details_fix" popover-placement="right" popover-trigger="'click'"
+            uib-popover-template="'scripts/directives/file-upload/file-upload-tooltip.html'"
+            ng-if="fileUploadResponse && !isInvalidFileFormat && (hasError || hasWarning)">
+            Click here for Details <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </p>
+    </p>
+    <p class="help-block errorDetails details_fix" ng-if="isFileSelected && isInvalidFileFormat">
+        Invalid file. Please select Text/HTML file
+    </p>
+    <!-- <p class="help-block" ng-if="isFileSelected && isBeyondMaxSize" style="left: 31%;">
+        File size should be less than {{ filetypeInput=="csv" ? "50 MB" : "50 MB" }}
+    </p> -->
+
+    <div ng-if="fileUploadResponse && fileUploadResponse.status!=='error'">
+        <label class="col-md-6 wid45">Size for</label>
+        <div class="col-md-6 padBottom5" popover-placement="right" popover-trigger="'mouseenter'"
+            uib-popover-html="tooltipContent" style="position: relative; top: 0px; width:27%">
+            <!-- <label><input type="radio" name="">Provisioned </label>&nbsp;<label><input type="radio" name="">Used </label> -->
+            <input id="basis-sizing-provisioned" class="radio-custom" name="basis-sizing" type="radio"
+                ng-model="data.isProvisioned" ng-value="true" ng-change="onBasisSizingChanged($event)" />
+            <label for="basis-sizing-provisioned" class="radio-custom-label"> Provisioned </label>
+            <input id="basis-sizing-used" class="radio-custom" name="basis-sizing" type="radio"
+                ng-model="data.isProvisioned" ng-value="false" ng-change="onBasisSizingChanged($event)" />
+            <label for="basis-sizing-used" class="radio-custom-label"> Utilized </label>
+            <!-- <img src="images/info.png"   />  -->
+        </div>
+
+    </div>
+    <!-- <div class="clear positionRelative">
+        <div class="{{'clusterView ' + filetypeInput}}"
+            ng-if="fileUploadResponse && fileUploadResponse.status!=='error'">
+            <multi-select on-selection-changed="onClusterSelectionChanged($event)" model-data="clustersSelection">
+            </multi-select>
+        </div>
+    </div> -->
+</div>
+
+</div>

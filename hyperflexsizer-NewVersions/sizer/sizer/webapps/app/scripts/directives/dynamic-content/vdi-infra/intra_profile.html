@@ -1,0 +1,373 @@
+ 
+  <div class="field-title"> 
+  	<div class="pull-left" style="position: relative;top: -5px;">Broker Type &nbsp; &nbsp; &nbsp;</div>
+  	<div class="select-style wid15 pull-left">
+		<select class="form-control" ng-model="selectedItem" ng-change="selected()">
+			<option value="citrix">Citrix</option>
+			<option value="horizon">Horizon</option>
+		</select>
+	</div>
+	<span ng-if="countFlag" style="float: right; font-size: 12px">* The grayed out VMs will not be considered during sizing</span>
+  </div>  
+
+<div class="col-lg-12 vdiInfra">
+		<div class="Citrix"  id="citrix">
+			<table class="table brd">
+				<thead>
+					<tr>
+							<th>Citrix</th>
+							<th class="wid15">vCPUs</th>
+							<th class="wid15">RAM</th>
+							<th class="wid15">Storage (GB)</th>
+							<th class="wid15">Count</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in field.fields[selectedItem].rows"  ng-class="{'grey_background': workload[selectedItem][row.value]['num_vms'] === 0}">
+							<!-- <td>Broker VM</td> -->
+							<td>{{row.label}}</td>
+							<td ng-repeat="column in row.columns">
+									<!-- <dynamic-content workload="workload" field="column" type="{{column.type}}">          
+									</dynamic-content> -->
+								<div class="select-style" ng-if="column.type !== ''" uib-tooltip="{{column.tooltip}}" tooltip-placement="right">
+									<input type="{{column.type}}" ng-readonly="column.readonly" min="0" class="form-control" ng-model="workload[selectedItem][row.value][column.modelName]" name="" ng-change="onChange(column,row)">
+									<p class="help-block" ng-if="column.outOfRangeError">
+										Allowed values are from {{column.min}} To {{column.max}} 
+									</p>
+								</div>
+								<div ng-if="column.type === ''" class="emptyBox">Not Applicable</div>
+							</td>
+							<!-- <td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="8" name="">
+								</div>
+							</td>
+							<td class="emptyBox">
+								Not Applicable
+							</td>
+							<td >
+								<div uib-tooltip="Recommended : 1 broker per 1000 desktops" tooltip-placement="right">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td>  -->
+					</tr>
+						<!-- <tr>
+							<td>Provisioning VM</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="12" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="200" name="">
+								</div>
+							</td>
+							<td>
+								<div uib-tooltip="Recommended : 1 provisioning VM per 1000 desktops" tooltip-placement="right">
+									<div class="select-style">
+										<input type="number" min="0" class="form-control" value="0" name="">
+									</div>
+								</div>
+							</td> 
+					</tr>
+						<tr>
+							<td>License VM</td>
+								<td>
+								<div class="select-style">
+								<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td>
+							<td class="emptyBox">
+								 Not Applicable
+							</td>
+							<td>
+								<div class="select-style">
+								<input type="number" min="0" class="form-control" value="1" name="">
+								</div>
+							</td> 
+					</tr>
+						<tr>
+							<td>Profile Manager VM</td>
+								<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="200" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="0" name="">
+								</div>
+							</td> 
+					</tr>
+						<tr>
+							<td>Storefront VM</td>
+							 <td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td class="emptyBox">
+							 	Not Applicable
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td> 
+					</tr>
+						<tr>
+							<td>AD Server VM</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td class="emptyBox">
+							 	Not Applicable
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td> 
+					</tr>
+						<tr>
+							<td>SQL Server VM</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="8" name="">
+								</div>
+							</td>
+							<td>
+							 	<div class="select-style">
+									<input type="number" min="0" class="form-control" value="100" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td> 
+					</tr> -->
+
+				</tbody>
+			</table>
+		</div>
+		<div class="Horizon"  id="horizon" style="display: none"> 
+			<table class="table brd">
+				<thead>
+					<tr>
+							<th>Horizon</th>
+							<th class="wid15">vCPUs</th>
+							<th class="wid15">RAM</th>
+							<th class="wid15">Storage (GB)</th>
+							<th class="wid15">Count</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="row in field.fields.horizon.rows">
+							<td>{{row.label}}</td>
+							<td ng-repeat="column in row.columns">
+									<!-- <dynamic-content workload="workload" field="column" type="{{column.type}}">          
+									</dynamic-content> -->
+								<div class="select-style">
+									<input type="{{column.type}}" min="0" class="form-control" ng-model="column.value" name="" ng-change="onChange(column)">
+									<p class="help-block" ng-if="column.outOfRangeError">
+										Allowed values are from {{column.min}} To {{column.max}} 
+									</p>
+								</div>
+							</td>
+							<!-- <td>Connection VM</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="12" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+										<input type="number" min="0" class="form-control" value="60" name="">
+								</div>
+							</td>
+							<td>
+								<div uib-tooltip="Recommended : 1 connector per 1000 desktops" tooltip-placement="right">
+									<div class="select-style">
+										<input type="number" min="0" class="form-control" value="1" name="">
+									</div>
+								</div>
+							</td> 
+					</tr>
+						<tr>
+							<td>Replica VM</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="12" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="60" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="1" name="">
+								</div>
+							</td> 
+					</tr>
+						<tr>
+							<td>Composer VM</td>
+								<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="12" name="">
+								</div>
+							</td>
+							<td >
+								 <div class="select-style">
+									<input type="number" min="0" class="form-control" value="60" name="">
+								</div>
+							</td>
+							<td>
+								<div uib-tooltip="Recommended : 1 composer per 1000 desktops" tooltip-placement="right">
+									<div class="select-style">
+										<input type="number" min="0" class="form-control" value="0" name="">
+									</div>
+								</div>
+							</td> 
+					</tr>
+						<tr>
+							<td>Profile Manager VM</td>
+								<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="200" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="0" name="">
+								</div>
+							</td> 
+					</tr> 
+					<tr>
+							<td>AD Server VM</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td class="emptyBox">
+							 	Not Applicable
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td> 
+					</tr>
+						<tr>
+							<td>SQL Server VM</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="4" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="8" name="">
+								</div>
+							</td>
+							<td>
+							 <div class="select-style">
+									<input type="number" min="0" class="form-control" value="100" name="">
+								</div>
+							</td>
+							<td>
+								<div class="select-style">
+									<input type="number" min="0" class="form-control" value="2" name="">
+								</div>
+							</td>  -->
+					</tr>
+
+				</tbody>
+			</table> 
+		</div>
+</div>
+<!-- <script type="text/javascript">
+		var ctr = document.getElementById('citrix');
+		var hor = document.getElementById('horizon');
+			function selected(obj){
+				if(obj.options[obj.selectedIndex].text == "Citrix"){
+					ctr.style.display="block";
+					hor.style.display="none";
+				}else{
+					ctr.style.display="none";
+					hor.style.display="block";
+				}
+			}
+	 
+	</script> -->

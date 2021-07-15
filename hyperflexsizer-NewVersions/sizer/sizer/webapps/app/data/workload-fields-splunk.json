@@ -1,0 +1,520 @@
+{
+  "steps": [
+    {
+      "name": "Workload Type",
+      "title": "Choose workload type",
+      "fields": [
+        {
+          "modelName": "wl_type",
+          "value": "SPLUNK",
+          "type": "custom-radio-button",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "label": "VDI",
+              "value": "VDI"
+            },
+            {
+              "label": "Epic Hyperspace",
+              "value": "EPIC"
+            },
+            {
+              "label": "VDI Infrastructure VMs",
+              "value": "VDI_INFRA"
+            },
+            {
+              "label": "RDSH Workload",
+              "value": "RDSH"
+            },
+            {
+              "label": "Microsoft SQL",
+              "value": "DB"
+            },
+            {
+              "label": "Oracle",
+              "value": "ORACLE"
+            },
+            {
+              "label": "Splunk Workload",
+              "value": "SPLUNK"
+            },
+            {
+              "label": "Bulk Database Input",
+              "value": "BULK"
+            },
+            {
+              "label": "Oracle AWR File Upload",
+              "value": "AWR_FILE"
+          },
+            {
+              "label": "General Server Virtualized Environment (VSI)",
+              "value": "VSI"
+            },
+            {
+              "label": "Microsoft Exchange Server",
+              "value": "EXCHANGE"
+            },
+            {
+              "label": "HX Edge (ROBO)",
+              "value": "ROBO"
+            },
+            {
+              "label": "Compute and Capacity Sizer",
+              "value": "RAW"
+            },
+            {
+              "label": "File Upload on HX",
+              "value": "RAW_FILE"
+            },
+            {
+              "label": "Veeam Availability Solution on HX",
+              "value": "VEEAM"
+            },
+            {
+                "label": "Kubernetes Container",
+                "value": "CONTAINER"
+            },
+            {
+                "label": "Artificial Intelligence/Machine Learning",
+                "value": "AIML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Workload Profile",
+      "title": "Splunk",
+      "fields": [
+        {
+          "displayName": "Name",
+          "modelName": "wl_name",
+          "value": "",
+          "type": "text",
+          "placeholder": "Enter Name",
+          "events": {
+            "blur": "WORKLOAD_FIELD_BLUR"
+          }
+        },
+        {
+          "displayName": "Profile Type",
+          "modelName": "profile_type",
+          "value": "Enterprise Security",
+          "type": "dropdown",
+          "className": "workload_select",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "value": "Enterprise Security",
+              "key": "Enterprise Security"
+            },
+            {
+              "value": "IT Service Intelligence",
+              "key": "IT Service Intelligence"
+            },
+            {
+              "value": "ITOA (IT Operations Analytics)",
+              "key": "ITOA (IT Operations Analytics)"
+            }
+          ]
+        },
+        {
+          "displayName": "Daily data ingest",
+          "modelName": "daily_data_ingest",
+          "value": 1,
+          "type": "number",
+          "className": "unit_column_one",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          }
+        },
+        {
+          "modelName": "daily_data_ingest_unit",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "value": "GB",
+          "type": "dropdown",
+          "className": "no-label_unit",
+          "options": [
+            {
+              "key": "GB",
+              "value": "GB"
+            },
+            {
+              "key": "GiB",
+              "value": "GiB"
+            },
+            {
+              "key": "TB",
+              "value": "TB"
+            },
+            {
+              "key": "TiB",
+              "value": "TiB"
+            }
+          ]
+        },
+        {
+          "displayName": "Max Volume per Indexer",
+          "modelName": "max_vol_ind",
+          "value": 1,
+          "type": "number",
+          "className": "unit_column_two",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          }
+        },
+        {
+          "modelName": "max_vol_ind_unit",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "value": "GB",
+          "type": "dropdown",
+          "className": "no-label_unit1",
+          "options": [
+            {
+              "key": "GB",
+              "value": "GB"
+            },
+            {
+              "key": "GiB",
+              "value": "GiB"
+            }
+          ]
+        },
+        {
+          "title": "Storage Accumulation",
+          "type": "field-title",
+          "className": "storage_title"
+        },
+        {
+          "displayName": "",
+          "modelName": "acc_type",
+          "value": "hx+splunk",
+          "type": "dropdown",
+          "className": "storageAcc workload_select",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "value": "HX + Splunk",
+              "key": "hx+splunk"
+            },
+            {
+              "value": "HX + Splunk Smartstore",
+              "key": "hx+splunk_smartstore"
+            }
+          ]
+        },
+        {
+          "displayName": "Hot  Tier (in days)",
+          "modelName": "hot",
+          "value": 1,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          }
+        },
+        {
+          "displayName": "Warm  Tier (in days)",
+          "modelName": "warm",
+          "value": 3,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          }
+        },
+        {
+          "displayName": "Cold  Tier (in days)",
+          "modelName": "cold",
+          "value": 3,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          }
+        },
+        {
+          "displayName": "Frozen Tier (in days)",
+          "modelName": "frozen",
+          "value": 2,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          }
+        },
+        {
+          "type": "infomessage",
+          "modelName": "appRepInfo",
+          "message": "Replication factor at the Splunk level is assumed to be RF2 for the Hot Tier, and RF1 for the Warm Tier."
+        },
+        {
+          "displayName": "Splunk Level Replication",
+          "modelName": "app_rf",
+          "value": 2,
+          "type": "dropdown",
+          "className": "workload_select",
+          "options": [
+            {
+              "key": 2,
+              "value": "RF 2"
+            },
+            {
+              "key": 3,
+              "value": "RF 3"
+            }
+          ]
+        },
+        {
+          "displayName": "Splunk Level Replication",
+          "modelName": "app_rf_dup",
+          "value": "",
+          "type": "dropdown",
+          "className": "workload_select",
+          "options": [
+            {
+              "key": 2,
+              "value": "RF 2"
+            },
+            {
+              "key": 3,
+              "value": "RF 3"
+            }
+          ]
+        }
+      ],
+      "dependentFields": [
+        {
+          "title": "Customize",
+          "type": "edit_btn",
+          "events": {
+            "click": "WORKLOAD_FIELD_CLICKED"
+          }
+        },
+        {
+          "displayName": "",
+          "modelName": "vm_details",
+          "value": "",
+          "type": "splunk-table",
+          "rows": [
+            {
+              "label": "Indexer",
+              "value": "indexer",
+              "columns": [
+                {
+                  "displayName": "CPU Cores per VM",
+                  "modelName": "vcpus_per_vm",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                },
+                {
+                  "displayName": "RAM (GB) per VM",
+                  "modelName": "ram_per_vm",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                },
+                {
+                  "displayName": "IOPS per VM",
+                  "modelName": "avg_iops_per_vm",
+                  "unit": "GB",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                },
+                {
+                  "displayName": "VM Count",
+                  "modelName": "num_vms",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                }
+              ]
+            },
+            {
+              "label": "Admin",
+              "value": "admin",
+              "columns": [
+                {
+                  "displayName": "CPU Cores per VM",
+                  "modelName": "vcpus_per_vm",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                },
+                {
+                  "displayName": "RAM (GB) per VM",
+                  "modelName": "ram_per_vm",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                },
+                {
+                  "displayName": "IOPS per VM",
+                  "modelName": "avg_iops_per_vm",
+                  "unit": "GB",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                },
+                {
+                  "displayName": "VM Count",
+                  "modelName": "num_vms",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                }
+              ]
+            },
+            {
+              "label": "Search",
+              "value": "search",
+              "columns": [
+                {
+                  "displayName": "CPU Cores per VM",
+                  "modelName": "vcpus_per_vm",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                },
+                {
+                  "displayName": "RAM (GB) per VM",
+                  "modelName": "ram_per_vm",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                },
+                {
+                  "displayName": "IOPS per VM",
+                  "modelName": "avg_iops_per_vm",
+                  "unit": "GB",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                },
+                {
+                  "displayName": "VM Count",
+                  "modelName": "num_vms",
+                  "value": 1,
+                  "type": "number",
+                  "readonly": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure Configuration",
+      "title": "Splunk",
+      "fields": [
+        {
+          "displayName": "Replication Factor",
+          "modelName": "replication_factor",
+          "value": 2,
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "key": 2,
+              "value": "RF 2"
+            },
+            {
+              "key": 3,
+              "value": "RF 3"
+            }
+          ],
+          "className": "vdiResiliency dataFactor"
+        },
+        {
+          "type": "warning",
+          "className": "info-content",
+          "model": "warning_cont",
+          "hidden": true,
+          "message": "A replication factor of three is highly recommended for all environments except HyperFlex Edge. A replication factor of two has a lower level of availability and resiliency."
+        },
+        {
+          "displayName": "Performance Headroom (nodes)",
+          "modelName": "fault_tolerance",
+          "value": 0,
+          "type": "number",
+          "className": "vdiResiliency"
+        },
+        {
+          "type": "infomessage",
+          "message": "Splunk is assumed to provide net compression savings of 50%"
+        },
+        {
+          "displayName": "Compression Savings (%)",
+          "subDisplayName": " without Hardware Acceleration",
+          "modelName": "compression_factor",
+          "value": 0,
+          "type": "number",
+          "readonly": true,
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency text_wrap"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "compression_saved",
+          "diskModel": "db_size",
+          "factorModel": "compression_factor",
+          "tooltip": "Eg: dynamicText effective capacity, with dynamicText1% compression savings will require dynamicText2 of usable space"
+        },
+        {
+          "type": "infomessage",
+          "message": "These compression savings can be increased by using the HyperFlex Acceleration Engine."
+        },
+        {
+          "displayName": "Dedupe Savings (%)",
+          "modelName": "dedupe_factor",
+          "value": 0,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "dedupe_saved",
+          "diskModel": "compression_saved",
+          "factorModel": "dedupe_factor",
+          "tooltip": "Eg: dynamicText of capacity post compression, with dynamicText1% dedupe will require dynamicText2 usable space"
+        },
+        {
+          "displayName": "Net Savings",
+          "type": "dynamic-text",
+          "model": "combined_compr_dedup",
+          "diskModel": "db_size",
+          "factorModel": "dedupe_saved"
+        }
+      ]
+    },
+     {
+      "name": "Backup Target",
+      "title": "Splunk",
+      "fields": [ 
+        {
+         "className": "msg-content",
+          "model": "msg_cont", 
+          "type": "backup_target"        
+        }   
+      ]
+    }
+  ]
+}

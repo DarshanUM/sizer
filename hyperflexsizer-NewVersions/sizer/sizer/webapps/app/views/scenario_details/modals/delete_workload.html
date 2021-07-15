@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ctrl.modalTitle}}</h4>
+</div>
+<div class="modal-body delPopup_padding">
+  <span class=""> <img src="images/error-icon.png"  /> </span>
+  <span class=""> Do you want to delete workload <b>{{ctrl.workload.wl_name}}</b>?
+  </span>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default width80" ng-click="$dismiss()">No</button>
+  <button type="button" class="btn btn-primary width80" ng-click="ctrl.deleteWorkload(ctrl.workload)">Yes</button>
+</div>

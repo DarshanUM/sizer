@@ -1,0 +1,192 @@
+<div>
+  <!-- header start-->
+  <div ng-include="'views/header/header.html'"></div> 
+  <section>
+  		  <h4 class="col-lg-12 page_tiitle">
+		      <span class=" ">HX Bench </span> 
+            
+         </h4>
+   <div class="profile_action">
+        <label ng-click="hxtoolsCtrl.selectVcenter()"><input type="radio" checked name="profile"> vCenter</label>
+        <label ng-click="hxtoolsCtrl.selectHyper()"><input type="radio"  name="profile"> Hyper-V</label>
+      </div>
+ <div class="overflow clear padBottom20" ng-style="{height:hxtoolsCtrl.contentHeight}"> 
+        <div class="col-lg-12 versionList" ng-hide="hxtoolsCtrl.viewItems1">
+                 <div> 
+                 <p class="para_text">
+                 Cisco HxBench is a storage performance testing tool, which can be used to measure the storage infrastructure
+                performance using defined test scenarios and workloads. HxBench uses the industry standard Vdbench storage
+                performance benchmarking tool. HxBench is provided as a virtual appliance to deploy and run the tests.
+                HxBench simplifies performance benchmarking for virtualized environments. 
+                 </p>
+               </div>
+               <div class="downloadTxt">
+                   <u>Download Images </u>
+               </div>
+         <dl>
+              <dt><a href="https://cisco.box.com/shared/static/0m9x3pdfde0emuujqkccbwz8b3ov32ov.ova" >V 1.3.10</a></dt>
+                  <dd> 
+                      <ul>
+                          <li>Enhanced Elasticsearch exception handling and retry.</li> 
+                          <li>Minor bug fixes & Enhancements.</li> 
+                      </ul>
+                  </dd> 
+          </dl>
+        
+            
+             <div class="downloadTxt">
+                  <u>Previous Release</u>
+               </div>
+               <dl>
+                <!-- <dt><a href="https://cisco.box.com/shared/static/95sg8gvul12j62obym09el1gzajqy3vn.ova" >V 1.3.9</a></dt> -->
+                <dt><label>V 1.3.9</label></dt>
+                    <dd> 
+                        <ul>
+                            <li>Support for Non English vCenter.</li> 
+                            <li>vdbench 5.04.07 support.</li> 
+                            <li>Edit vCenter option.</li> 
+                            <li>Minor bug fixes, enhancements.</li> 
+                        </ul>
+                    </dd> 
+            </dl>
+               <dl>
+                <!-- <dt><a href="https://cisco.box.com/shared/static/n9ju6df2hfzj7xh2xfbh0ekgd521l9en.ova" >V 1.3.8</a></dt> -->
+                <dt><label>V 1.3.8</label></dt>
+                    <dd> 
+                        <ul>
+                            <li>Enhanced network configurations & Error handling.</li> 
+                            <li>UI enhancements.</li> 
+                            <li>Enhanced PDF report representing individual VM level data.</li> 
+                        </ul>
+                    </dd> 
+            </dl>
+               <dl>
+                <!-- <dt><a href="https://cisco.box.com/shared/static/ti0ciz2s3xs1far6nepxggxd1n7aa3rd.ova" >V 1.3.7</a></dt> -->
+                <dt><label>V 1.3.7</label></dt>
+                    <dd> 
+                        <ul>
+                            <li>Updated core_perf profile and version to 1.3.7</li> 
+                        </ul>
+                    </dd> 
+            </dl>
+               <dl>
+              <dt><label>V 1.3.6</label></dt>
+                  <dd> 
+                      <ul>
+                          <li>PDF Report changes – Cluster details, Deduplication %, Compression %, Priming status</li>
+                          <li>UI changes – Profile and VM Group information added to confirm popup</li>  
+                      </ul>
+                  </dd> 
+            </dl>
+            <dl>
+              <dt><label>V 1.3.5</label></dt>
+              <!-- https://cisco.box.com/shared/static/ar7uobm54j9aa1vkg0i4rbmuoe112cht.ova -->
+                  <dd> 
+                      <ul>
+                          <li>PDF summary report of test</li>
+                          <li>Curve test load distribution set as 10, 50, 75, 90, 100%</li> 
+                          <li>Server timezone shown in UI</li>
+                          <li>Graphs data axis enhanced to show date, time and timezone</li>
+                          <li>Fixed data query, where the graph was showing partial data, if the test duration is more than 3hours</li>
+                      </ul>
+                  </dd>
+                   
+            </dl> 
+        		<dl>
+    					<dt><label>V 1.3.4</label></dt>
+              <!-- https://cisco.box.com/shared/static/jyxgj1w1ihmqkat586ycw2lp4atkr0mj.ova -->
+        					<dd> 
+        							<ul>
+        									<li>PDF report download </li>
+        									<li>To show the test data and trends, when multiple run definitions present in the test Profile file </li> 
+        							</ul>
+        					</dd>
+        					 
+        		</dl> 
+            <dl>
+              <dt><label>V 1.3.3</label></dt>
+              <!-- https://cisco.box.com/shared/static/8kyqcxj6xdve40qngadwlripki1uqlzz.ova -->
+                  <dd> 
+                      <ul>
+                          <li>Ubuntu kernel of Controller VM and Test VM updated with required  security patches</li> 
+                      </ul>
+                  </dd>
+                   
+            </dl> 
+            <dl>
+              <dt><label>V 1.3.2</label></dt>
+              <!-- https://cisco.box.com/shared/static/5gaiwirgbbu9q9ty92z88n7a1f3751bp.ova -->
+                  <dd>  
+                              <ul>
+                                <li>Added dedup and comp ratio of 50% each for canned/default profiles</li> 
+                                <li>Enabling test sequence on the cluster/VM Infra, where a test is running </li>
+                                 <li>Error validation for individual fields in Profile creation tab</li> 
+                                <li>Browser refresh issue when priming in progress</li>
+                                <li>Priming failure or taking long time to complete</li>
+                            </ul> 
+                  </dd>
+                   
+            </dl> 
+        </div>
+
+
+        <div class="col-lg-12 versionList" ng-show="hxtoolsCtrl.viewItems2">
+            <div> 
+                 <p class="para_text">
+                  Cisco HxBench is a storage performance testing tool, which can be used to measure the storage infrastructure
+                performance using defined test scenarios and workloads. HxBench uses the industry standard Vdbench storage
+                performance benchmarking tool. HxBench is provided as a virtual appliance to deploy and run the tests.
+                HxBench simplifies performance benchmarking for virtualized environments. 
+                 </p>
+               </div>
+               <div class="downloadTxt">
+                  <u> Download Images </u>
+               </div>
+          <dl>
+              <dt><a href="https://cisco.box.com/shared/static/054q1mb8dtihzm4jusdrtazmpfl865wb.zip" >V 1.3.9</a></dt>
+                  <dd> 
+                      <ul>
+                          <li>Enhancement changes to copy file to FQDN enabled Network Datastore.</li> 
+                      </ul>
+                  </dd> 
+          </dl>
+           <div class="downloadTxt">
+                  <u>Previous Release</u>
+            </div>
+                <dl>
+                    <!-- <a href="https://cisco.box.com/shared/static/y5d9n0i3d87bpxjyahouo732ig5w9ta5.zip" >V 1.3.8</a> -->
+                    <dt><label>V 1.3.8</a></label>
+                        <dd> 
+                            <ul>
+                                <li>Disclaimer changes in UI and PDF report</li> 
+                                <li>Support for vdbench 5.04.07</li> 
+                                <li>Edit hyperV details option</li> 
+                            </ul>
+                        </dd> 
+                </dl>
+                <dl>
+                    <dt><label>V 1.3.7</label></dt>
+                        <dd> 
+                            <ul>
+                                <li>Updated core_perf profile and version to 1.3.7</li> 
+                            </ul>
+                        </dd> 
+                </dl>
+                  <dl>
+                    <dt><label>V 1.3.6</label></dt>
+                        <dd> 
+                            <ul>
+                                <li>Support HXBench Hyper-V on Windows</li>
+                               
+                            </ul>
+                        </dd>
+                         
+                  </dl> 
+        </div>
+         
+             
+
+
+</div>   
+  </section>
+</div>

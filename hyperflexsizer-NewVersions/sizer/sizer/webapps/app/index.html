@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- To load index.html page always from server, and not from cache -->
+  <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0" />
+  <meta http-equiv="cache-control" content="max-age=0" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+  <meta http-equiv="pragma" content="no-cache" />
+
+  <meta charset="utf-8">
+  <meta http-equiv="expires" content="0">
+  <meta name="viewport" content="width=device-width">
+  <title> Hyperflex Sizer</title>
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap-slider/slider.css" />
+  <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css" />
+  <link rel="stylesheet" href="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css" />
+  <link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->  
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/animation.css">
+  <link rel="stylesheet" href="views/login/login.css">
+  <link rel="stylesheet" href="views/scenario_details/scenario_details.css">
+  <link rel="stylesheet" href="views/reverse_sizing/reverse_sizing.css">
+  <link rel="stylesheet" href="views/iops_table/iops_table.css">
+  <link rel="stylesheet" href="views/hx_tools/hx_tools.css">
+  <link rel="stylesheet" href="views/settings/settings.css">
+  <link rel="stylesheet" href="scripts/directives/form-validation/form-validation.css">
+  <link rel="stylesheet" href="scripts/directives/progress-bar/progress-bar.css">
+  <link rel="stylesheet" href="scripts/directives/searchbox/searchbox.css" />
+  <link rel="stylesheet" href="scripts/directives/pagination/pagination.css" />
+  <link rel="stylesheet" href="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css"/>
+  <!-- <link rel="stylesheet" type="text/css" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"> -->
+  <link rel="stylesheet" href="bower_components/nkovacs-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+  <link rel="stylesheet" href="styles/slick.css" />
+
+  <!-- endbuild -->
+
+  <!-- Google Analytics -->
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-100000595-1', 'auto');
+    ga('send', 'pageview');
+
+
+    // Enabling the Google Analytics only for production version
+    // To do this we are replacing the ga function to a dummy function so that code will not  send any data to analytics API for tracking.
+    if( !(window.location.host === "hyperflexsizer.cloudapps.cisco.com" || window.location.hostname === "hyperflexsizer.cloudapps.cisco.com") ){
+      ga = function(){};
+    }
+
+  </script>
+
+</head>
+
+<body ng-app="hyperflex">
+  <!-- <div class="container" ng-controller="MainController" ng-cloak>TEST {{name}}</div> -->
+  <ui-view></ui-view>
+  <div mpl-progress id="feedback-submit-request" 
+      progress-message="Submitting your feedback....."
+      success-message="Thanks for your feedback / suggestions....."
+      timeout-on-success="1000" ></div>
+    
+   <div class="lightBoxPopup"  id="lightBox"></div>
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bowser/src/bowser.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/ngstorage/ngStorage.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/chart.js/dist/Chart.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+  <script src="bower_components/angular-svg-round-progressbar/build/roundProgress.js"></script>
+  <!-- <script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script> -->
+  <script src="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="bower_components/ng-scrollbars/dist/scrollbars.min.js"></script>
+  <!-- <script type="text/javascript" src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> -->
+  <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script> 
+  <script type="text/javascript" src="bower_components/nkovacs-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript" src="bower_components/slick-carousel/slick/slick.min.js"></script>
+
+  <!-- endbowe/ -->
+  <!-- endbuild -->
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  
+  <script src="scripts/app.js"></script>
+  <script src="scripts/app-environment.js"></script>  
+  <script src="scripts/configurations/xhr-config.js"></script>
+  <script src="scripts/configurations/scrollbar-config.js"></script>
+  <script src="scripts/configurations/routes-config.js"></script>
+  <script src="scripts/routes-controller.js"></script> 
+  <script src="scripts/main-controller.js"></script> 
+  <script src="scripts/constants/features.js"></script>
+  <script src="scripts/constants/request-types.js"></script>
+  <script src="scripts/constants/supported-browsers.js"></script>
+  <script src="scripts/constants/analytics-events.js"></script>
+  <script src="scripts/directives/scenario/scenario-widget.js"></script>
+  <script src="scripts/directives/version-indicator/version-indicator.js"></script>
+  <script src="scripts/directives/resize-scenario/resize-scenario-widget.js"></script>
+  <script src="scripts/directives/progress-bar/progress-bar.js"></script>
+  <script src="scripts/directives/form-validation/form-validation.js"></script>
+  <script src="scripts/directives/dynamic-content/dynamic-content.js"></script>
+  <script src="scripts/directives/dynamic-content/intra_profile.js"></script>
+  <script src="scripts/directives/multi-select/multi-select.js"></script>
+  <script src="scripts/directives/file-upload/file-upload.js"></script>
+  <script src="scripts/directives/file-upload-exchange/file-upload-exchange.js"></script>
+  <script src="scripts/directives/file-upload-bulk/file-upload-bulk.js"></script>
+  <script src="scripts/directives/file-upload-oracle/file-upload-oracle.js"></script>
+  <script src="scripts/directives/file-upload-awr/file-upload-awr.js"></script>
+  <script src="scripts/directives/searchbox/searchbox.js"></script>
+  <script src="scripts/directives/dropdown/dropdown.js"></script>
+  <script src="scripts/directives/dropdown/mselectdropdown.js"></script>
+  <script src="scripts/directives/pagination/pagination.js"></script>
+
+  <script src="views/header/header-controller.js"></script>
+  <script src="views/login/login-controller.js"></script>
+  <script src="views/help/help-controller.js"></script>  
+  <script src="views/iops_table/iops_controller.js"></script> 
+  <script src="views/reverse_sizing/reverse_sizing_controller.js"></script>  
+  <script src="views/reverse_sizing/fixed_sizing_controller.js"></script>  
+  <script src="views/hx_tools/hx_tools_controller.js"></script>  
+  <script src="views/settings/settings.js"></script>  
+  <script src="views/scenario/scenario-controller.js"></script>
+  <script src="views/scenario/scenario-popup-controller.js"></script>
+  <script src="views/scenario/scenario-share-controller.js"></script>
+  <script src="views/scenario_details/scenario_details_controller.js"></script>
+  <script src="views/scenario_details/modals/workload-modal-controller.js"></script>
+  
+  <script src="scripts/services/utils.js"></script>
+  <script src="scripts/services/app-service.js"></script>
+  <script src="scripts/services/authentication-service.js"></script>
+  <script src="scripts/services/scenario-service.js"></script>
+  <script src="scripts/services/filters-service.js"></script>
+  <script src="scripts/services/node-service.js"></script>
+  <script src="scripts/services/scenario-details-processor.js"></script>
+  <script src="scripts/services/threshold-definition-service.js"></script>
+  <script src="scripts/services/workload-service.js"></script>
+  <script src="scripts/services/share-scenario-service.js"></script>
+  <script src="scripts/services/reverse-sizer-service.js"></script>
+  <script src="scripts/services/iops-table-service.js"></script>
+  <script src="scripts/services/recommended-settings-service.js"></script>
+
+  <script src="scripts/filters/kilo-filter.js"></script>
+  <script src="scripts/filters/currency-filter.js"></script>
+  <script src="scripts/filters/scenario-filter.js"></script>
+  <script src="scripts/filters/storage-unit.filter.js"></script>
+  <!-- endbuild -->
+</body>
+
+</html>

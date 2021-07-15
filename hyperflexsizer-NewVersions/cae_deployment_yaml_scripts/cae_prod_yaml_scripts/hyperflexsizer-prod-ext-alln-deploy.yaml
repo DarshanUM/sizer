@@ -1,0 +1,106 @@
+kind: "Service"
+apiVersion: "v1"
+metadata:
+  name: "hyperflexsizer-prod-ext-alln-svc"
+spec:
+  ports:
+    -
+      name: "web"
+      protocol: "TCP"
+      port: 8080
+  selector:
+    name: "hyperflexsizer-prod-ext-alln"
+  type: "ClusterIP"
+  sessionAffinity: "None"
+---
+kind: "Deployment"
+apiVersion: "apps/v1beta1"
+metadata:
+  name: "hyperflexsizer-prod-ext-alln"
+spec:
+  template:
+    metadata:
+      labels:
+        name: "hyperflexsizer-prod-ext-alln"
+      annotations:
+        app_version: 'latest'
+    spec:
+      containers:
+        -
+          name: "hyperflexsizer-prod-ext-alln"
+          image: "containers.cisco.com/savramap/hxsizer_prod:latest"
+          ports:
+            -
+              containerPort: 8080
+              protocol: "TCP"
+          env:
+            - name: "OPENSHIFT_APP_NAME"
+              value: "hyperflexsizerprod"
+          resources:
+            limits:
+              memory: 8Gi
+            requests:
+              cpu: 2000m
+          volumeMounts:
+            -
+              name: podinfo
+              mountPath: /etc/metadata
+              readOnly: false
+            -
+              name: hyperflexsizer-prod-ext-alln-volume-1
+              mountPath: /var/log/httpd24
+            - 
+              name: hyperflexsizer-prod-ext-alln-volume-2
+              mountPath: /var/www
+
+          imagePullSecrets:
+            - name: savramap-hxsizer-robot-pull-secret
+
+          imagePullPolicy: "IfNotPresent"
+          securityContext:
+            capabilities: {}
+            privileged: false
+          #readinessProbe:
+          #  httpGet:
+          #    path: "/"
+          #    port: 8080
+          #  initialDelaySeconds: 15
+          #  timeoutSeconds: 1
+          #livenessProbe:
+          #  exec:
+          #    command:
+          #      - "/bin/true"
+          #  initialDelaySeconds: 15
+          #  timeoutSeconds: 1
+      volumes:
+        -
+          name: podinfo
+          downwardAPI:
+            items:
+              -
+                path: "labels"
+                fieldRef:
+                  fieldPath: metadata.labels
+              -
+                path: "annotations"
+                fieldRef:
+                  fieldPath: metadata.annotations
+        -
+          name: hyperflexsizer-prod-ext-alln-volume-1
+          emptyDir: {}
+        -
+          name: hyperflexsizer-prod-ext-alln-volume-2
+          emptyDir: {}
+   
+      restartPolicy: "Always"
+      dnsPolicy: "ClusterFirst"
+  replicas: 2
+  triggers:
+    -
+      type: "ConfigChange"
+  strategy:
+    type: "RollingUpdate"
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 120

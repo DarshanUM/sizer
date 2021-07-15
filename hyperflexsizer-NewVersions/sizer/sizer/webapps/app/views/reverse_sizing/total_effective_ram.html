@@ -1,0 +1,5 @@
+<p>
+	<p ng-if="reverseCtrl">This count accounts for the memory reserved by the controller VM and an additional {{reverseCtrl.result.thresholds.RAM ? (100-reverseCtrl.result.thresholds.RAM) : 'x'}}% reserve for hypervisor usage.</p>
+	<p ng-if="!reverseCtrl">This count accounts for the memory reserved by the controller VM and an additional {{scenario.sizing_calculator.thresholds.RAM ? (100-scenario.sizing_calculator.thresholds.RAM) : 'x'}}% reserve for hypervisor usage.</p>
+	<p>Does not assume any overprovisioning of memory.</p>
+</p>

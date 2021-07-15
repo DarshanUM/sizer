@@ -1,0 +1,527 @@
+{
+  "steps": [
+    {
+      "name": "Workload Type",
+      "title": "Choose workload type",
+      "fields": [
+        {
+          "modelName": "wl_type",
+          "value": "RDSH",
+          "type": "custom-radio-button",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "label": "VDI",
+              "value": "VDI"
+            },
+            {
+              "label": "Epic Hyperspace",
+              "value": "EPIC"
+            },
+            {
+              "label": "VDI Infrastructure VMs",
+              "value": "VDI_INFRA"
+            },
+            {
+              "label": "RDSH Workload",
+              "value": "RDSH"
+            },
+            {
+              "label": "Microsoft SQL",
+              "value": "DB"
+            },
+            {
+              "label": "Oracle",
+              "value": "ORACLE"
+            },
+            {
+              "label": "Splunk Workload",
+              "value": "SPLUNK"
+            },
+            {
+              "label": "Bulk Database Input",
+              "value": "BULK"
+            },
+            {
+              "label": "Oracle AWR File Upload",
+              "value": "AWR_FILE"
+            },
+            {
+              "label": "General Server Virtualized Environment (VSI)",
+              "value": "VSI"
+            },
+            {
+              "label": "Microsoft Exchange Server",
+              "value": "EXCHANGE"
+            },
+            {
+              "label": "HX Edge (ROBO)",
+              "value": "ROBO"
+            },
+            {
+              "label": "Compute and Capacity Sizer",
+              "value": "RAW"
+            },
+            {
+              "label": "File Upload on HX",
+              "value": "RAW_FILE"
+            },
+            {
+              "label": "Veeam Availability Solution on HX",
+              "value": "VEEAM"
+            },
+            {
+                "label": "Kubernetes Container",
+                "value": "CONTAINER"
+            },
+            {
+                "label": "Artificial Intelligence/Machine Learning",
+                "value": "AIML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desktop Profile",
+      "title": "RDSH",
+      "fields": [
+        {
+          "displayName": "Workload Name",
+          "modelName": "wl_name",
+          "value": "",
+          "type": "text",
+          "placeholder": "Enter Workload Name",
+          "events": {
+            "blur": "WORKLOAD_FIELD_BLUR"
+          }
+        },
+        {
+          "displayName": "User Type",
+          "modelName": "profile_type",
+          "value": "Task Worker",
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "tooltip": {
+            "message": "Templates with predefined resource consumption values. If these do not meet requirement, select Custom option and enter profile values in next screen"
+          },
+          "options": [
+            {
+              "value": "Task Worker",
+              "key": "Task Worker"
+            },
+            {
+              "value": "Knowledge Worker",
+              "key": "Knowledge Worker"
+            },
+            {
+              "value": "Power User",
+              "key": "Power User"
+            },
+            {
+              "value": "Custom User",
+              "key": "Custom User"
+            }
+          ]
+        },
+        {
+          "displayName": "Broker Type",
+          "modelName": "broker_type",
+          "value": "citrix",
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "value": "Citrix",
+              "key": "citrix"
+            },
+            {
+              "value": "Horizon",
+              "key": "horizon"
+            }
+          ]
+        },
+        {
+          "displayName": "Total User",
+          "modelName": "total_users",
+          "value": 1,
+          "min": 1,
+          "max": 30000,
+          "type": "number"
+        },
+        {
+          "displayName": "Do the desktops require GPU?",
+          "modelName": "gpu_users",
+          "value": 0,
+          "className": "gpu_class",
+          "type": "checkbox",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "tooltip": {
+            "readonly": "GPU is not supported for Hyper-V"
+          }
+        },
+        {
+          "displayName": "Video RAM Size per VM (MiB)",
+          "modelName": "video_RAM",
+          "value": "8192",
+          "type": "dropdown",
+          "hidden": true,
+          "options": [
+            {
+              "value": "8192",
+              "key": "8192"
+            },
+            {
+              "value": "12288",
+              "key": "12288"
+            },
+            {
+              "value": "16384",
+              "key": "16384"
+            },
+            {
+              "value": "24576",
+              "key": "24576"
+            },
+            {
+              "value": "32768",
+              "key": "32768"
+            }
+          ],
+          "className": "ram_size_padding"
+        },
+        {
+          "displayName": "Host User Home Directories on HX Cluster",
+          "value": 0,
+          "modelName": "rdsh_directory",
+          "type": "checkbox",
+          "className": "dir_class",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          }
+        },
+        {
+          "displayName": "Per User Home Directory IOPS",
+          "modelName": "user_iops",
+          "value": 0,
+          "min": 0,
+          "hidden": true,
+          "max": 5000,
+          "type": "number",
+          "isDecimal": true,
+          "tooltip": {
+            "message": "Assumes 70% 8k reads, 30% 16k writes, 100% random"
+          },
+          "className": "home_directory"
+        },
+        {
+          "displayName": "Per User Home Directory Capacity",
+          "modelName": "hdd_per_user",
+          "value": 0,
+          "min": 0,
+          "hidden": true,
+          "max": 1000,
+          "type": "number",
+          "className": "column_two help_error_message user_data home_directory",
+          "isDecimal": true
+        },
+        {
+          "displayName": "",
+          "modelName": "hdd_per_user_unit",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "value": "GB",
+          "type": "dropdown",
+          "hidden": true,
+          "className": "no-label disk_unit",
+          "options": [
+            {
+              "key": "GB",
+              "value": "GB"
+            },
+            {
+              "key": "GiB",
+              "value": "GiB"
+            },
+            {
+              "key": "TB",
+              "value": "TB"
+            },
+            {
+              "key": "TiB",
+              "value": "TiB"
+            }
+          ]
+        }
+      ],
+      "dependentFields": [
+        {
+          "title": "Customize",
+          "type": "edit_btn",
+          "events": {
+            "click": "WORKLOAD_FIELD_CLICKED"
+          }
+        },
+        {
+          "title": "VM Compute Profile",
+          "type": "field-title"
+        },
+        {
+          "displayName": "vCPUs",
+          "modelName": "vcpus_per_vm",
+          "value": 1,
+          "type": "number",
+          "readonly": true
+        },
+        {
+          "displayName": "Users per VM",
+          "modelName": "sessions_per_vm",
+          "value": 325,
+          "type": "number",
+          "readonly": true
+        },
+        {
+          "displayName": "Clock per Session",
+          "modelName": "clock_per_session",
+          "value": 225,
+          "type": "number",
+          "readonly": true
+        },
+        {
+          "displayName": "Max vCPU Overprovisioning Ratio",
+          "modelName": "max_vcpus_per_core",
+          "value": 225,
+          "type": "number",
+          "isDecimal": true,
+          "readonly": true
+        },
+        {
+          "displayName": "RAM per VM (GiB)",
+          "modelName": "ram_per_vm",
+          "value": 2,
+          "type": "number",
+          "readonly": true,
+          "isDecimal": true
+        },
+        {
+          "title": "VM Storage Profile",
+          "type": "field-title"
+        },
+        {
+          "displayName": "",
+          "modelName": "os_per_vm_unit",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "value": "GB",
+          "type": "dropdown",
+          "readonly": true,
+          "className": "no-label",
+          "options": [
+            {
+              "key": "GB",
+              "value": "GB"
+            },
+            {
+              "key": "GiB",
+              "value": "GiB"
+            }
+          ]
+        },
+        {
+          "displayName": "OS Image Size",
+          "modelName": "os_per_vm",
+          "value": 20,
+          "type": "number",
+          "readonly": true,
+          "tooltip": {
+            "message": "Persistant desktops maintain separate OS disk per desktop. Pooled desktop maintain 6GB of inflight OS disk per desktop"
+          },
+          "className": "column_two",
+          "isDecimal": true
+        },
+        {
+          "displayName": "Working set Size (%)",
+          "modelName": "working_set",
+          "value": 5,
+          "type": "number",
+          "readonly": true,
+          "hidden": true,
+          "className": ""
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure Configuration",
+      "title": "RDSH",
+      "fields": [
+        {
+          "displayName": "Cluster Type",
+          "modelName": "cluster_type",
+          "value": "normal",
+          "type": "radio",
+          "className": "rawFields cpuAttribute",
+          "readonly": true,
+          "hidden": true,
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "tooltip": {
+            "readonly": "Stretch Cluster is not supported with Fixed Config Sizing"
+          },
+          "options": [
+            {
+              "label": "Normal",
+              "value": "normal"
+            },
+            {
+              "label": "Stretch",
+              "value": "stretch"
+            }
+          ]
+        },
+        {
+          "displayName": "Data Replication Factor",
+          "modelName": "replication_factor",
+          "value": 3,
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency dataFactor",
+          "options": [
+            {
+              "key": 2,
+              "value": "RF 2"
+            },
+            {
+              "key": 3,
+              "value": "RF 3"
+            }
+          ]
+        },
+         {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "Data Replication Factor (RF) defines the number of redundant replicas of user's data maintained within a storage cluster. HX clusters support options of 2 or 3 redundant replicas. For RF=3, the cluster can sustain upto 2 failures on separate nodes (multiple failures on the same node count as a single failure) and still ensure data avilability. More than 2 failures result in cluster becoming unavailable to impacted VMs. RF3 is recommended for better availability."
+        },
+        {
+          "type": "warning",
+          "className": "info-content",
+          "model": "warning_cont",
+          "hidden": true,
+          "message": "A replication factor of three is highly recommended for all environments except HyperFlex Edge. A replication factor of two has a lower level of availability and resiliency."
+        },
+        {
+          "displayName": "Performance Headroom (nodes)",
+          "modelName": "fault_tolerance",
+          "value": 1,
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency dataFactor",
+           "options": [
+            {
+              "key": 0,
+              "value": "0"
+            },
+            {
+              "key": 1,
+              "value": "1"
+            },
+            {
+              "key": 2,
+              "value": "2"
+            }
+          ]
+        },
+         {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "Performance headroom adds additional nodes to the cluster to ensure there is enough performance bandwidth in case of node failure to satisfy the workload and minimize performance impact. This is also known as 'N+x' or 'Nodes for Fault Tolerance'."
+        },
+        {
+          "displayName": "Compression Savings for User Home Directories (%)",
+          "subDisplayName": " without Hardware Acceleration",
+          "modelName": "compression_factor",
+          "value": 0,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          
+          "className": "vdiResiliency text_wrap"
+        },
+         {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "Recommended values are based on performance tests and should be changed with care"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "compression_saved",
+          "diskModel": "disk_per_desktop",
+          "factorModel": "compression_factor",
+          "tooltip": "Eg: dynamicText effective capacity, with dynamicText1% compression savings will require dynamicText2 of usable space"
+        },
+        {
+          "type": "infomessage",
+          "message": "These compression savings can be increased by using the HyperFlex Acceleration Engine."
+        },
+        {
+          "displayName": "Dedupe Savings for User Home Directories (%)",
+          "modelName": "dedupe_factor",
+          "value": 20,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          }, 
+          "className": "vdiResiliency"
+        },
+         {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "Recommended values are based on performance tests and should be changed with care"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "dedupe_saved",
+          "diskModel": "compression_saved",
+          "factorModel": "dedupe_factor",
+          "tooltip": "Eg: dynamicText of capacity post compression, with dynamicText1% dedupe will require dynamicText2 usable space"
+        },
+        {
+          "displayName": "Net Savings",
+          "type": "dynamic-text",
+          "model": "combined_compr_dedup",
+          "diskModel": "disk_per_desktop",
+          "factorModel": "dedupe_saved"
+        }
+      ]
+    },
+     {
+      "name": "Backup Target",
+      "title": "RDSH",
+      "fields": [ 
+        {
+         "className": "msg-content",
+          "model": "msg_cont", 
+          "type": "backup_target"        
+        }   
+      ]
+    }
+  ]
+}
+

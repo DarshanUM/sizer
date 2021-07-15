@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="94.273" height="94.695" viewBox="0 0 94.273 94.695">
+  <g id="migration1" transform="translate(0 0)">
+    <g id="Group_1">
+      <rect id="Rectangle_1" width="22.349" height="20.317" transform="translate(36.571 67.064)" fill="#ccc"/>
+      <g id="Rectangle_2">
+        <path id="Path_1" data-name="Path 1" d="M8.127,0H86.146a8.151,8.151,0,0,1,8.127,8.127V58.921a8.151,8.151,0,0,1-8.127,8.127H8.127A8.151,8.151,0,0,1,0,58.921V8.127A8.151,8.151,0,0,1,8.127,0Z" fill="#fff"/>
+        <path id="Path_2" data-name="Path 2" d="M5.983.8H84a5.379,5.379,0,0,1,5.283,5.283V56.876A5.379,5.379,0,0,1,84,62.159H5.983A5.379,5.379,0,0,1,.7,56.876V5.676A5.3,5.3,0,0,1,5.983.8Z" transform="translate(2.144 2.451)" fill="none" stroke="#ccc" stroke-width="4"/>
+      </g>
+      <path id="Rectangle_3" d="M381.47,522.4h56.076a4.509,4.509,0,0,1,4.47,4.47h0a4.509,4.509,0,0,1-4.47,4.47H381.47a4.509,4.509,0,0,1-4.47-4.47h0A4.509,4.509,0,0,1,381.47,522.4Z" transform="translate(-360.746 -436.644)" fill="#ccc"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,58 @@
+<div class="modal-header">
+  <h4 class="modal-title">Share Scenario <span class="pull-right cursor" ng-click="shareCtrl.onCancelSharing()"><i class="fa fa-remove" aria-hidden="true"></i></span></h4>
+</div>
+<div class="modal-body">
+	<form name="cloneScenarioForm">
+		<div class="padding-15 shareScenario">
+			<div mpl-progress id="shared-users-list"></div>
+			
+			<!-- Search related code -->
+			<div class="search-box">			    
+		    	<div class="form-group positionRelative email_box">
+			        <!-- <label>Select User</label> -->
+			        <input type="text" tabindex="4" placeholder="Enter email id"
+			        	class="scenario-search form-control searchFocus" 
+			        	ng-class="{'flter-selection-error': (!shareCtrl.isValidEmailId && shareCtrl.isEnterPressed)}" 
+			        	ng-model="shareCtrl.searchString"
+			        	ng-keyup="shareCtrl.keyboardHander($event)" />
+			        <p class="text-danger" 
+		        		ng-if="(!shareCtrl.isValidEmailId && shareCtrl.isEnterPressed)">
+		        		Invalid email id 
+		        	</p>
+			        <!-- <span class="glyphicon glyphicon-search searchIcon" aria-hidden="true"></span> -->
+			        <span class="addShare">
+			        	<input type="button" value="Add" class="btn btn-primary" name="" ng-click="shareCtrl.addUserToShareList()" ng-disabled="!shareCtrl.isValidEmailId">
+			        </span>
+			    </div>
+			</div>
+
+			
+
+   			<!-- users related code -->
+	   		<div class="autoHeight" style="clear: both;">
+	   			<table class="table">
+	   				<thead>
+	   					<tr>
+	   						<th>Email</th>
+	   						<th>Read</th>
+	   						<th>Write</th>
+	   						<th></th>
+	   					</tr>
+	   				</thead>
+	   				<tbody>
+	   					<tr ng-repeat="user in shareCtrl.sharedUsers track by $index">
+	   						<td> <input class="email_editBox" ng-class="{'flter-selection-error': user.invalid}" type="text" ng-model="user.email" ng-readonly="!user.invalid"  name="" /></td>
+	   						<td><input type="checkbox" disabled="disabled" checked/></td>
+	   						<td><input type="checkbox" ng-model="user.acl" /></td>
+	   						<td ng-click="shareCtrl.deleteUserFromShareList(user)"><img src="images/delete.png" class="cursor" /></td>
+	   					</tr>
+	   				</tbody>
+	   			</table>
+	   		</div>
+   		</div> 
+   </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default width80" ng-click="shareCtrl.onCancelSharing()">Cancel</button>
+  <button type="button" class="btn btn-primary width80" ng-click="shareCtrl.shareScenario()">Save</button>
+</div> 

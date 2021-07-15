@@ -1,0 +1,279 @@
+<div>
+  <!-- header start-->
+  <div ng-include="'views/header/header.html'"></div>
+  <!-- header end-->
+  <section>
+
+    <div class="col-lg-12">
+      <!--  <h4 class="page_tiitle page_title_position">
+          <span class="pull-left"> <a href="#/scenario">Scenarios </a> > {{scenario.name}}</span> 
+          <verion-indicator ng-if="!root.isCurrentScenarioUptodate" tooltip-position="bottom"></verion-indicator>
+          <resize-scenario-widget scenario-id="{{scenario.id}}" 
+            loader-id="scenario-request-resize" ng-if="!root.isCurrentScenarioUptodate">
+          </resize-scenario-widget>
+          <div class="pull-right"> 
+             <span>Aggregate</span> 
+             <label class="switch" style="margin-bottom: -1px">
+                 <input type="checkbox" checked id="slideToggle"  ng-model="currentView" ng-true-value="'CLUSTER_VIEW'" ng-false-value="'AGGREGATE_VIEW'"  ng-click="toggleView($event)">
+                 <div class="slider"></div>
+              </label>
+              <span>Clusterwise</span>  |  
+
+              <span class="dropdown pull-right download download-Img">
+                        <a class="cursor-pointer dropdown-toggle" href="javascript:void(0);"   id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-if="root.currentState=='scenariodetails'">
+
+                              </a> 
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                  <div class="dropdown_arrow"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
+                                  <li>
+                                      <a class="cursor-pointer menu-item" href="javascript:void(0);"  
+                                   ng-click="downloadReport($event)">Download Sizing Report
+                                  </a>
+                                  </li>
+                                  <li>
+                                    <a class="cursor-pointer menu-item" href="javascript:void(0);"  
+                                    ng-click="downloadBOM($event)">Download BOM  </a> 
+                                  </li> 
+                                </ul>  
+                      </span>
+          </div>
+        </h4> -->
+      <div class="clear">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 col-sm-12 leftPanel_Position ">
+            <div class="row">
+              <div ng-include src="'views/scenario_details/scenario_workload.html'" class="padTop5"></div>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-6 col-sm-12" style="background: #f4f4f4;">
+
+            <div class="">
+              <div class="header_breadCrum">
+                <span ng-if="root.currentState=='scenariodetails'" class="pull-left">
+                  <span ng-if="isViewLoaded">
+                    <a ng-click="navigateToMain()" style="cursor: pointer">Scenarios </a> > {{scenario.name}} <span
+                      ng-if="scenario.sizing_type==='fixed'" uib-tooltip="Fixed Config" tooltip-placement="bottom"><img
+                        src="images/fixed-config.png" /></span>
+
+                    <!-- <a href="javascript:void(0)" ng-click="">Global</a> -->
+                    <verion-indicator ng-if="!root.isCurrentScenarioUptodate" tooltip-position="bottom">
+                    </verion-indicator>
+                    <resize-scenario-widget scenario-id="{{scenario.id}}" loader-id="scenario-request-resize"
+                      ng-if="!root.isCurrentScenarioUptodate">
+                    </resize-scenario-widget>
+                  </span>
+                </span>
+
+
+                <span class="dropdown pull-right download download-Img " style="top: -3px;">
+                  <span ng-if="scenario.sizing_type==='optimal' && totalWorkloads.length !== 0"
+                    uib-tooltip="{{(scenario.isHavingStretchCluster || scenario.aggregate.settings.dr_enabled || scenario.isHavingEpicWorkload) ? tooltips.fixedConfigDisabled : tooltips.fixedConfig}}"
+                    tooltip-placement="bottom">
+                    <a href="javascript:void(0)" class="btn btn-fixed"
+                      ng-disabled="scenario.isHavingStretchCluster || scenario.aggregate.settings.dr_enabled|| scenario.isHavingEpicWorkload"
+                      ng-click="fixedDialog()">
+                      <div class="fixed_text">I have a fixed config!<br /> <i style="font-size: 10px">(aka “Reverse
+                          Sizing”)</i></div>
+                    </a>
+                  </span>
+                  <span ng-if="scenario.sizing_type ==='fixed' && totalWorkloads.length !== 0">
+                    <a href="javascript:void(0)" class="btn btn-fixed"
+                      ng-disabled="scenario.isHavingStretchCluster || scenario.aggregate.settings.dr_enabled|| scenario.isHavingEpicWorkload"
+                      ng-click="optimalDialog()">
+                      <div class="fixed_text_optimal">Switch to Optimal Sizing</div>
+                    </a>
+
+                  </span>
+                  <a class="cursor-pointer dropdown-toggle" href="javascript:void(0);" id="dropdownMenu1"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+                    ng-if="root.currentState=='scenariodetails'"
+                    ng-hide="scenario.sizing_type==='optimal' && totalWorkloads.length === 0">
+                    <img src="images/download-icon.png" /> Download
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <div class="dropdown_arrow"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
+                    <li>
+                      <a class="cursor-pointer menu-item" href="javascript:void(0);"
+                        ng-click="onDownloadPopup('report',$event)">Download
+                        Sizing Report
+                      </a>
+                    </li>
+                    <li ng-hide="scenario.currentResult === 'Results'">
+                      <a class="cursor-pointer menu-item" href="javascript:void(0);"
+                        ng-click="onDownloadPopup('bom')">Download
+                        BOM for {{scenario.currentResult}} </a>
+                      <!--ng-click="downloadBOM($event)"-->
+                    </li>
+                  </ul>
+                </span>
+
+              </div>
+
+              <div class=" appendFilter clear">
+                <a href="javascript:void(0)" class="addFilter"
+                  ng-repeat="result in scenario.totalResults track by $index"
+                  ng-class="{'activeAddFilter': result===scenario.currentResult}" ng-click="selectResult(result)">
+                  <span>{{result}}</span>
+                </a>
+              </div>
+
+
+
+              <div class="scroll_container">
+                <div class="clear  bodyScroll" ng-scrollbars ng-style="{height:nodeContainerHeight}">
+                  <!-- ng-style="{height:mainContainerHeight}"-->
+
+                  <div ng-if="'Results' !== scenario.currentResult && totalWorkloads.length !== 0">
+                    <div class="innnerTabContainer">
+                      <div ng-include src="'views/scenario_details/more_selection.html'"></div>
+                    </div>
+
+                    <div class="innnerTabContainer" style="padding: 10px 20px; height: 238px;">
+
+                      <div ng-include src="'views/scenario_details/summary_utilization.html'"></div>
+                    </div>
+                    <div class="innnerTabContainer margin_top20">
+                      <div ng-include="'views/scenario_details/scenario_node_result.html'"></div>
+                    </div>
+                  </div>
+                  <!-- ng-style="{height:nodeContainerHeight}" -->
+                  <div ng-if="'Results' === scenario.currentResult" class="innnerTabContainer result_container">
+                    <div ng-include="'views/scenario_details/result_details.html'"></div>
+                  </div>
+
+
+                  <div class="col-lg-12 col-md-12 col-sm-12 scenario_no_data"
+                    ng-if="totalWorkloads.length === 0 && 'Results' !== scenario.currentResult">
+                    <!-- <div class="glyphicon glyphicon-remove remove_icon_position" ng-if="infoPageFlag" ng-click="closeMask()"></div> -->
+
+                    <div class="scenario_noData_container" ng-style="{'height':innerNoResultHeight}">
+
+                      <div class="result_message" ng-if="scenario.sizing_type==='fixed' && infoPageFlag">
+                        <h4>Results</h4>
+                        <div>View the Sizing Calculator result in Results tab
+                          <img src="images/guide-arrow.png" />
+                        </div>
+
+                      </div>
+                      <div class="noResult_customizeBtn noResultIndex">
+
+
+                        <span ng-if="scenario.sizing_type==='optimal'"
+                          uib-tooltip="{{(scenario.isHavingStretchCluster || scenario.aggregate.settings.dr_enabled || scenario.isHavingEpicWorkload) ? tooltips.fixedConfigDisabled : tooltips.fixedConfig}}"
+                          tooltip-placement="bottom">
+                          <a href="javascript:void(0)" class="btn btn-fixed"
+                            ng-disabled="scenario.isHavingStretchCluster || scenario.aggregate.settings.dr_enabled|| scenario.isHavingEpicWorkload"
+                            ng-click="fixedDialog()">
+                            <div class="fixed_text">I have a fixed config!<br /> <i style="font-size: 10px">(aka
+                                “Reverse
+                                Sizing”)</i></div>
+                          </a>
+                        </span>
+                        <div class="fixed_message" ng-if="scenario.sizing_type==='optimal' && infoPageFlag">
+                          <div>Click here to size for a <br />fixed node configuration
+                            <img src="images/guide-arrow.png" />
+                          </div>
+
+                        </div>
+                        <span ng-if="scenario.sizing_type ==='fixed'">
+                          <a href="javascript:void(0)" class="btn btn-fixed"
+                            ng-disabled="scenario.isHavingStretchCluster || scenario.aggregate.settings.dr_enabled|| scenario.isHavingEpicWorkload"
+                            ng-click="optimalDialog()">
+                            <div class="fixed_text_optimal">Switch to Optimal Sizing</div>
+                          </a>
+
+                        </span>
+
+
+                        <div class="fixed_message" ng-if="scenario.sizing_type==='fixed' && infoPageFlag">
+                          <div>Click here to allow <br />recommending a node configuration
+                            <img src="images/guide-arrow.png" />
+                          </div>
+
+                        </div>
+                        <span style="position: relative; top: 2px;" class="customizeBtn_position">
+
+                          <span class="custom_btn width80 " style=" ground: #fff;"
+                            ng-show="scenario.sizing_type==='optimal'" ng-click="showFilterNodesPopup()">
+                            Customize
+                          </span>
+
+                          <span class="custom_btn width80 " style="background: #fff;"
+                            ng-show="scenario.sizing_type!=='optimal'" ng-click="showFixedPopup()">
+                            Customize
+                          </span>
+
+                          <div class="custom_arrow_position" ng-if="infoPageFlag">
+                            <div><img src="images/guide-arrow.png" /></div>
+                            <p>Click here to change the sizing settings</p>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="noResult_text " ng-if="totalWorkloads.length === 0">
+                      <h5>No Results</h5>
+                      <p>Please add a workload to begin the sizing</p>
+                      <!-- <div>
+                          <a class="menu-item pull-left sizing_cal_btn" href="#/reverse_sizing">
+                             <span class="icon-elem">Sizing Calculator</span>
+                          </a>
+                        </div> -->
+                    </div>
+                    <div class="show_men">
+                      <img src="images/empty-box.png" />
+                    </div>
+                    <div ng-if="infoPageFlag">
+                      <label class="got_it_btn"
+                        style="bottom: 65px;padding: 0px;border: 0px;font-weight: 100;font-size: 14px !important;">
+                        <input type="checkbox" name="noShow" style="position: relative; top:2px;"
+                          ng-model="scenario.noShowFlag" />
+                        Don't show this message again.
+                      </label>
+                      <input type="button" class="got_it_btn" value="Got it!" name=""
+                        ng-click="closeMask(); noShowPost()">
+                    </div>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="clear filter_popup" ng-if="filterDetails.showFilterNodes">
+        <div ng-include="'views/scenario_details/modals/scenario_filter.html'"></div>
+      </div>
+      <!-- <div id="fixedFilter" class="clear filter_popup" ng-show="filterDetails.showFixedFilter">
+          <div ng-include="'views/scenario_details/modals/fixed_filter.html'"></div>
+        </div> -->
+    </div>
+</div>
+
+<div mpl-progress id="scenario-request-get"></div>
+<div mpl-progress id="scenario-request-update"></div>
+<div mpl-progress id="scenario-request-save"></div>
+<div mpl-progress id="scenario-request-resize"></div>
+<div mpl-progress id="save-results-request"></div>
+<div mpl-progress id="filters-get-request"></div>
+<div mpl-progress id="fi_packages-get-request"></div>
+
+<div mpl-progress progress-message="Please wait, Preparing report for download" id="scenario-report-download"></div>
+<div mpl-progress id="profiler-ova-download" error-message="Erorr in downloading ova file"></div>
+<div mpl-progress id="hxbench-ova-download" error-message="Erorr in downloading ova file"></div>
+
+</section>
+<!-- footer start-->
+<div ng-include="'views/footer/footer.html'"></div>
+<!-- footer end-->
+
+
+<div class="noResultBoxPopup" ng-if="totalWorkloads.length === 0 && infoPageFlag"></div>
+</div>
+

@@ -1,0 +1,57 @@
+{
+  "apiVersion":"v1",
+  "kind":"Pod",
+  "metadata":{
+    "name":"mysqldbprod",
+    "labels":{
+        "name":"mysqldbprod"
+      }
+    },
+"spec":{
+  "containers":[
+  {
+    "name":"mysqldbprod",
+    "image":"containers.cisco.com/aws_managed/mysql-5.7",
+    "ports":[
+    {
+        "containerPort":3306
+    }
+  ],
+  "resources": {
+    "limits": 
+    {
+	"memory": "4Gi"
+    },
+    "requests": 
+    {
+	"cpu": "100m"
+    }},
+    "env":[
+    {
+        "name":"MYSQL_USER",
+        "value":"adminex5VY5t"
+    },
+  {
+        "name":"MYSQL_PASSWORD",
+        "value":"9IyY5nwXn9tK"
+    },
+  {
+        "name":"MYSQL_DATABASE",
+        "value":"sizerprod"
+}],
+    "volumeMounts": [
+     {
+        "mountPath": "/var/lib/mysql/data",
+        "name": "pvol"
+      }
+     ]
+  }],
+  "volumes": [{
+      "name": "pvol",
+      "persistentVolumeClaim": {
+         "claimName": "dbprod"
+       }
+    }
+  ],
+  "restartPolicy": "Always"
+}}

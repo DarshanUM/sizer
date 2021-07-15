@@ -1,0 +1,193 @@
+ 
+<div class="modal-header ng-scope">
+  <h4 class="modal-title ng-binding">Fixed Config Sizing  <span class="pull-right cursor" ng-click="$dismiss(fixedCtrl.fixedConfingFilterData)"><i class="fa fa-remove" aria-hidden="true"></i></span></h4>
+</div> 
+   <h4 class="panel_sub_title">Global Setting</h4>
+   <div class="overflow"   style="max-height: 450px">
+   <div class=" margin_bottom0 filterSec  background_white paddingLeft15 brd_top0"> 
+          <div mpl-progress id="reverse-size-node-options-request"></div>
+          <div class="clear">  
+                  <div>
+                      <div class="filterContainer">
+                          <div class="col-md-12 padLeft0 ">
+                               <div class="innerFont thresholdCls">
+                                <span> Threshold </span> 
+                                </div> 
+                            <div class="clear padBottom20 modal-open" >
+                                
+                                <div class="pad_right10 pull-left">
+                                  <input id="radio-21" class="radio-custom" name="threshold-radio-group2" type="radio"  ng-model="fixedCtrl.threshold" ng-value="0">
+                                  <label for="radio-21" class="radio-custom-label">Conservative</label>
+                                </div>
+                                <div class="pad_right10 pull-left">
+                                  <input id="radio-22" class="radio-custom" name="threshold-radio-group2" type="radio" ng-model="fixedCtrl.threshold" ng-value="1">
+                                  <label for="radio-22" class="radio-custom-label">Standard</label>
+                                </div>
+                                <div class=" pull-left">
+                                  <input id="radio-23" class="radio-custom" name="threshold-radio-group2" type="radio"  ng-model="fixedCtrl.threshold" ng-value="2">
+                                  <label for="radio-23" class="radio-custom-label">Aggressive</label>
+                                </div> 
+                            </div> 
+                          </div>
+                          <div class="col-md-12 padLeft0 padRight0 fconf_btns" ng-show="{{fixedCtrl.FEATURES.isHypervisorEnabled}}">
+                            <div class="subdiv-col ">
+                              <div class="innerFont thresholdCls">Hypervisor</div>
+                              <div class="clear modal-open"> 
+                                     <div class="pull-left pad_right10">
+                                       <input id="hypervisor-esxi" class="radio-custom" name="hypervisor-radio-group" type="radio" ng-model="fixedCtrl.hypervisor" ng-value="'esxi'" 
+                                       ng-change="fixedCtrl.onHypervisorChanged()">
+                                       <label for="hypervisor-esxi" class="radio-custom-label">ESXi</label>
+                                     </div> 
+                                     <div class="pull-left">
+                                       <input id="hypervisor-hyperv" class="radio-custom" name="hypervisor-radio-group" type="radio" ng-model="fixedCtrl.hypervisor" ng-value="'hyperv'" 
+                                       ng-change="fixedCtrl.onHypervisorChanged()">
+                                       <label for="hypervisor-hyperv" class="radio-custom-label">Hyper-V</label>
+                                     </div> 
+                               </div> 
+                            </div>
+                            <div class="subdiv-col  ">
+                              <div class="innerFont thresholdCls">Hardware Acceleration</div>
+                              <div class="clear modal-open"> 
+                                     <div class="pull-left pad_right10">
+                                       <input id="hwareAcc1" class="radio-custom" type="radio" name="hwareAcc" 
+                                       ng-disabled="fixedCtrl.hypervisor === 'hyperv'"
+                                       ng-model="fixedCtrl.hercules_conf" ng-value="'forced'" ng-change="fixedCtrl.onHypervisorChanged()">
+                                       <label for="hwareAcc1" class="radio-custom-label">On</label>
+                                     </div> 
+                                     <div class="pull-left">
+                                       <input id="hwareAcc2" class="radio-custom" name="hwareAcc" type="radio" 
+                                       ng-disabled="fixedCtrl.hypervisor === 'hyperv'"
+                                       ng-model="fixedCtrl.hercules_conf" ng-value="'disabled'" ng-change="fixedCtrl.onHypervisorChanged()">
+                                       <label for="hwareAcc2" class="radio-custom-label">Off</label>
+                                     </div> 
+                               </div> 
+                            </div>
+                            <div class="subdiv-col">
+                              <div class="innerFont thresholdCls">HyperFlex Boost</div>
+                              <div class="clear modal-open"> 
+                                     <div class="pull-left pad_right10">
+                                       <input id="HyperFlex1" class="radio-custom" name="HyperFlex" type="radio" 
+                                       ng-disabled="fixedCtrl.hypervisor === 'hyperv'"
+                                       ng-model="fixedCtrl.hx_boost_conf" ng-value="'forced'" ng-change="fixedCtrl.onHypervisorChanged()">
+                                       <label for="HyperFlex1" class="radio-custom-label">On</label>
+                                     </div> 
+                                     <div class="pull-left">
+                                       <input id="HyperFlex2" class="radio-custom" name="HyperFlex" type="radio" 
+                                       ng-disabled="fixedCtrl.hypervisor === 'hyperv'"
+                                       ng-model="fixedCtrl.hx_boost_conf" ng-value="'disabled'" ng-change="fixedCtrl.onHypervisorChanged()">
+                                       <label for="HyperFlex2" class="radio-custom-label">Off</label>
+                                     </div> 
+                               </div> 
+                            </div>
+                           
+                          </div>
+
+                           <div class="col-md-12 margin_top10 padLeft0"  >
+                             <div class="innerFont thresholdCls">Cluster Properties</div>
+                             <div class="clear row"> 
+                                  <!--   <mpl-dropdown label="Replication Factor" >
+                                  </mpl-dropdown>
+                                   <mpl-dropdown label="Performance Headroom"  >
+                                  </mpl-dropdown>
+                                   <mpl-dropdown label="Compression Saving (%)"  >
+                                  </mpl-dropdown>
+                                   <mpl-dropdown label="Dedupe Saving (%)"  >
+                                  </mpl-dropdown> -->
+                                  <div class="clear paddingLeft5">  
+                                    <mpl-dropdown label="Replication Factor" options="fixedCtrl.options.rf" value="fixedCtrl.inputs.cluster_properties.rf" on-change="fixedCtrl.onRFChanged(selectedOption)" >
+                                    </mpl-dropdown>
+
+                                    <mpl-dropdown label="Performance Headroom" 
+                                      on-change="fixedCtrl.onFTChanged(selectedOption)"
+                                      options="fixedCtrl.options.headroom"
+                                      value="fixedCtrl.inputs.cluster_properties.ft">
+                                    </mpl-dropdown>
+
+
+                                    
+                                  <div class="col-md-6">
+                                    <div class="dropdown_label"> Compression Savings (%)</div>
+                                    <div class=""> 
+                                      <input type="number" class="form-control"  ng-model="fixedCtrl.inputs.cluster_properties.compression_factor" min="0" max="100" ng-keyup="fixedCtrl.onCompressionInputChange($event)">
+                                      <span ng-if="fixedCtrl.compressionError" class="inputError"> Allowed values are 0 to 99 </span>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <div class="dropdown_label"> Dedupe Savings (%)</div>
+                                    <div class=""> 
+                                      <input type="number" class="form-control" ng-model="fixedCtrl.inputs.cluster_properties.dedupe_factor" min="0" max="100" ng-keyup="fixedCtrl.onDedupeInputChange($event)">
+                                      <span ng-if="fixedCtrl.dedupeError" class="inputError"> Allowed values are 0 to 99 </span>
+                                    </div>
+                                  </div> 
+                              </div>
+                              </div> 
+                          </div>
+                    </div>
+                    </div> 
+                </div> 
+            </div>  
+         <div class=" margin_top10 innerFont col-md-12"> 
+            <div class="thresholdCls innerFont" style="left: 0px;">Node Properties</div>
+            <div class="clear node_property">
+              
+              <div class="modal-open row padBottom10">
+               <div class="col-lg-2 col-md-2">
+                  <input id="cto" class="radio-custom" name="node-type-group" type="radio" ng-value="'cto'" ng-model="fixedCtrl.inputs.node_properties.nodeType" ng-change="fixedCtrl.onNodeTypeChanged()">
+                  <label for="cto" class="radio-custom-label">CTO</label>
+               </div>
+               <div class="col-lg-3 col-md-3">
+                  <input id="bundle" class="radio-custom" name="node-type-group" type="radio" ng-value="'bundle'" ng-model="fixedCtrl.inputs.node_properties.nodeType" ng-change="fixedCtrl.onNodeTypeChanged()" >
+                  <label for="bundle" class="radio-custom-label">Bundle</label>
+               </div>                
+              </div>
+              <div class="row">
+              <mpl-dropdown label="HyperFlex Node Type" options="fixedCtrl.options.hxNodeTypes"
+                on-change="fixedCtrl.onHXNodeTypeChanged(selectedOption)" value="fixedCtrl.inputs.node_properties.node">
+              </mpl-dropdown>
+
+              <mpl-dropdown label="No. of HyperFlex Nodes" options="fixedCtrl.options.hxNumNodes" value="fixedCtrl.inputs.node_properties.no_of_nodes" 
+              on-change="fixedCtrl.onHxNodeCountChanged(selectedOption)" >
+              </mpl-dropdown>
+              
+              <mpl-dropdown label="Compute Node Type" options="fixedCtrl.options.computeNodeTypes"
+                on-change="fixedCtrl.onComputeNodeTypeChanged(selectedOption)" 
+                ng-class="{'disabled':fixedCtrl.inputs.node_properties.compute_node.length === 0}"
+                value="fixedCtrl.inputs.node_properties.compute_node">
+              </mpl-dropdown>
+
+              <mpl-dropdown label="No. of Compute Nodes" options="fixedCtrl.options.computeNumNodes" 
+                value="fixedCtrl.inputs.node_properties.no_of_computes" 
+                ng-class="{'disabled':fixedCtrl.inputs.node_properties.compute_node.length === 0}"
+                on-change="fixedCtrl.onInputChanged(selectedOption)">
+              </mpl-dropdown>
+
+              <mpl-dropdown label="CPU Type (Cores, GHz)" options="fixedCtrl.options.cpu" value="fixedCtrl.inputs.node_properties.cpu" on-change="fixedCtrl.onCpuInputChanged(selectedOption)">
+              </mpl-dropdown>
+
+              <mpl-dropdown label="RAM per Node (GiB)" options="fixedCtrl.options.ram" ng-if="fixedCtrl.isCPUValueSet" value="fixedCtrl.inputs.node_properties.ram" on-change="fixedCtrl.onInputChanged(selectedOption)">
+              </mpl-dropdown>
+
+              <mpl-dropdown label="Disk Drive Size (GB)" options="fixedCtrl.options.diskSizes" value="fixedCtrl.inputs.node_properties.disk_capacity" on-change="fixedCtrl.onDiskDriveChange(selectedOption)">
+              </mpl-dropdown> 
+
+              <mpl-dropdown label="No. of Disk Drives per Node" options="fixedCtrl.options.diskDrives" value="fixedCtrl.inputs.node_properties.disks_per_node" on-change="fixedCtrl.onInputChanged(selectedOption)">
+              </mpl-dropdown>
+              
+              <!-- <div class="col-md-6">&nbsp;</div> -->
+              <mpl-dropdown label="Cache Size" options="fixedCtrl.options.ssdOptions" value="fixedCtrl.inputs.node_properties.cache_size" on-change="fixedCtrl.onInputChanged(selectedOption)">
+              </mpl-dropdown> 
+            </div>
+          </div>
+               
+          </div> 
+    </div>
+ <div class="filter-footer">
+   <span class="pull-left">
+        <input type="button" value="Cancel" class="defaultBtn" ng-click="$dismiss(fixedCtrl.fixedConfingFilterData)" />
+   </span>
+   <span class="pull-right">
+        <input type="button" value="Apply" class="btn btn-primary" 
+         ng-disabled="!fixedCtrl.canEnableApply" ng-click="fixedCtrl.onApply()" />
+    </span>
+</div>

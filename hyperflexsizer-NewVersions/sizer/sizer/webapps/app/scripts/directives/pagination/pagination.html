@@ -1,0 +1,17 @@
+<div class="mpl-pagination">
+	<ul>
+		<li class="first page-btn" ng-class="{'disabled': currentPage <= 1}"
+			ng-click="setPage(1)"> {{config.labels.first}} </li>
+		<li class="prev page-btn"  ng-class="{'disabled': currentPage <= 1}"
+			ng-click="setPage(currentPage-1)"> {{config.labels.previous}} </li>
+		<li class="input"> 
+			<input type="" name="" ng-model="currentPage" ng-keydown="onPageChanged($event)"/>
+			/
+			<span> {{config.totalPages}} </span>
+		</li>
+		<li class="next page-btn" ng-class="{'disabled': currentPage >= config.totalPages}" 
+			ng-click="setPage(currentPage+1)"> {{config.labels.next}} </li>
+		<li class="last page-btn" ng-class="{'disabled': currentPage >= config.totalPages}"
+			ng-click="setPage(config.totalPages)"> {{config.labels.last}} </li>
+	</ul>
+</div>

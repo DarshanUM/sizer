@@ -1,0 +1,28 @@
+.form-group .help-block {
+    display: none;
+}
+
+.form-group .info-block{
+	color: #31708f;
+	font-size: 11px;
+	position: relative;
+    left: -1px;
+}
+.form-group.has-error .help-block,
+.form-group.has-warning .help-block,
+.form-group.has-info .help-block.info-block {
+    display: block;
+}
+.has-warning .form-control{
+	 border-color: #daa608 !important;
+}
+.has-error .form-control {
+    border-color: #a94442 !important;
+}
+.steps-content.has-warning{
+	    color: #daa608 !important;
+}
+
+.has-success .form-control {
+    border-color: #3c763d !important;
+}

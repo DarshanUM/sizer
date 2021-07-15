@@ -1,0 +1,87 @@
+.versionList{
+	padding: 20px;
+}
+ 
+.versionList dl dt{
+	font-size: 15px;
+}
+.versionList dl dd{
+	padding: 7px 8px; 
+}
+.versionList dl dd span{
+	font-family: OpenSans-Semibold;
+}
+.versionList dl dd ul{
+	padding-left: 30px;
+}
+.versionList dl dd ul li{
+	list-style-type: disc;
+	line-height: 25px;
+}
+.downloadTxt{
+	clear: both; 
+    padding: 10px 15px 10px 0px;
+    font-family: OpenSans-Semibold;
+    color: #333;
+    /*border-bottom: 1px solid #ddd;*/
+    margin-bottom: 10px;
+}
+.page_tiitle{
+	font-family: OpenSans-Semibold;
+	font-size: 14px;
+}
+.para_text{
+	padding: 5px 13px 10px 0px !important;
+    clear: both;
+    text-indent: 25px;
+}
+.font14{
+	font-size: 14px !important;
+	font-family: OpenSans-Semibold;
+}
+.page_tiitle .dropdown{
+	font-size: 12px;
+    border: 1px solid #d5d5d5;
+    border-radius: 5px;
+    line-height: 23px;
+    padding: 3px 10px;
+    top: 5px;
+    font-weight: normal;
+    position: relative;
+    /* cursor: pointer; */
+    width: 145px;
+    font-family: OpenSans-Regular;
+}
+.arrow_up{
+    color: #606060;
+    position: absolute; 
+  	font-size: 14px !important;
+    top: 8px;
+    right: 8px;
+}
+.page_tiitle .dropdown-menu{
+	font-size: 11px;
+	min-width: 145px;
+}
+.page_tiitle .dropdown-menu li {
+    border-bottom: 1px solid #dbdee0;
+    border-top: 0px;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+.page_tiitle .dropdown-menu li:last-child{
+	border-bottom: 0px;
+}
+.profile_action{
+    padding: 10px 0px 0px 10px;
+    clear:both;
+}
+.profile_action label{
+    font-weight: normal;
+    margin: 0px 5px;
+}
+.profile_action label input[type="radio"]{
+    position: relative;
+    top: 2px;
+}

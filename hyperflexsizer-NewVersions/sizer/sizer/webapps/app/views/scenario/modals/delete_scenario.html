@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <h4 class="modal-title">Delete Scenario <span class="pull-right cursor" ng-click="$dismiss()"><i class="fa fa-remove" aria-hidden="true"></i></span></h4>
+</div>
+<div class="modal-body delPopup_padding">
+  <div class="pull-left"><img src="images/error-icon.png"  /> </div>
+  <div class="pull-left wid90 padLeft5">Do you want to delete scenario <b>{{popupCtrl.scenarioObject.name}}</b>?</div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default width80" ng-click="$dismiss()">No</button>
+  <button type="button" class="btn btn-primary width80" ng-click="popupCtrl.deleteScenario(popupCtrl.scenarioObject)">Yes</button>
+</div>
+<!-- <div mpl-progress id="scenario-request-delete"></div> -->

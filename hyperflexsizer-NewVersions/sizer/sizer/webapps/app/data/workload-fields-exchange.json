@@ -1,0 +1,426 @@
+{
+  "steps": [
+    {
+      "name": "Workload Type",
+      "title": "Choose workload type",
+      "fields": [
+        {
+          "modelName": "wl_type",
+          "value": "EXCHANGE",
+          "type": "custom-radio-button",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "label": "VDI",
+              "value": "VDI"
+            },
+            {
+              "label": "Epic Hyperspace",
+              "value": "EPIC"
+            },
+            {
+              "label": "VDI Infrastructure VMs",
+              "value": "VDI_INFRA"
+            },
+            {
+              "label": "RDSH Workload",
+              "value": "RDSH"
+            },
+            {
+              "label": "Microsoft SQL",
+              "value": "DB"
+            },
+            {
+              "label": "Oracle",
+              "value": "ORACLE"
+            },
+            {
+              "label": "Splunk Workload",
+              "value": "SPLUNK"
+            },
+            {
+              "label": "Bulk Database Input",
+              "value": "BULK"
+            },
+            {
+              "label": "Oracle AWR File Upload",
+              "value": "AWR_FILE"
+            },
+            {
+              "label": "General Server Virtualized Environment (VSI)",
+              "value": "VSI"
+            },
+            {
+              "label": "Microsoft Exchange Server",
+              "value": "EXCHANGE"
+            },
+            {
+              "label": "HX Edge (ROBO)",
+              "value": "ROBO"
+            },
+            {
+              "label": "Compute and Capacity Sizer",
+              "value": "RAW"
+            },
+            {
+              "label": "File Upload on HX",
+              "value": "RAW_FILE"
+            },
+            {
+              "label": "Veeam Availability Solution on HX",
+              "value": "VEEAM"
+            },
+            {
+              "label": "Kubernetes Container",
+              "value": "CONTAINER"
+            },
+            {
+              "label": "Artificial Intelligence/Machine Learning",
+              "value": "AIML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Workload Profile",
+      "title": "Microsoft Exchange Server",
+      "fields": [
+        {
+          "displayName": "Workload Name",
+          "modelName": "wl_name",
+          "value": "",
+          "type": "text",
+          "placeholder": "Enter Workload Name",
+          "events": {
+            "blur": "WORKLOAD_FIELD_BLUR"
+          },
+          "className": "raw-workloadName"
+        },
+        {
+          "displayName": "Workload Input Type",
+          "modelName": "isFileInput",
+          "value": true,
+          "type": "workload-input-type",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "rawFields workloadInput",
+          "dependantFields": [
+            "vcpus",
+            "vcpus_per_core",
+            "ram_size",
+            "hdd_size",
+            "EXCHANGE_16KB",
+            "EXCHANGE_32KB",
+            "EXCHANGE_64KB"
+          ]
+        },
+        {
+          "displayName": "vCPUs",
+          "modelName": "vcpus",
+          "value": 80,
+          "type": "number",
+          "tooltip": {
+            "message": "Total # of Cores required for all the MS Exchange Servers, after accounting for system overhead. Intel Platinum 8164 is used as the reference CPU for Core count"
+          },
+          "className": "rawFields",
+          "readonly": false
+        },
+        {
+          "displayName": "vCPU Overprovisioning Ratio",
+          "modelName": "vcpus_per_core",
+          "value": 4,
+          "type": "number",
+          "readonly": true,
+          "className": "cpu_over",
+          "tooltip": {
+            "message": "Total number of vCPUs that can be packed per core. Recommended values are based performance tests and should be changed with care"
+          }
+        },
+        {
+          "displayName": "",
+          "modelName": "ram_size_unit",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "value": "GiB",
+          "type": "dropdown",
+          "readonly": true,
+          "className": "no-label raw-no-label",
+          "options": [
+            {
+              "key": "GiB",
+              "value": "GiB"
+            }
+          ]
+        },
+        {
+          "displayName": "Total RAM",
+          "modelName": "ram_size",
+          "value": 1280,
+          "type": "number",
+          "className": "exchangeRow rawFields column_two",
+          "tooltip": {
+            "message": "Total RAM required for all MS Exchange Servers, after accounting for system overhead"
+          },
+          "isDecimal": true,
+          "readonly": false
+        },
+        {
+          "displayName": "",
+          "modelName": "hdd_size_unit",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "value": "GB",
+          "type": "dropdown",
+          "readonly": true,
+          "className": "no-label raw-no-label",
+          "options": [
+            {
+              "key": "GB",
+              "value": "GB"
+            }
+          ]
+        },
+        {
+          "displayName": "Effective User Capacity",
+          "modelName": "hdd_size",
+          "value": 30000,
+          "type": "number",
+          "className": "exchangeRow rawFields column_two",
+          "tooltip": {
+            "message": "This assumes 0% Dedupe/Compression Savings. You can modify these settings in the Infrastructure Configuration tab."
+          },
+          "isDecimal": true,
+          "readonly": false
+        },
+        {
+          "displayName": "Cache (GB)",
+          "modelName": "ssd_size",
+          "value": 0,
+          "type": "number",
+          "hidden": true,
+          "className": "rawFields",
+          "isDecimal": true
+        },
+        {
+          "displayName": "DB IOPS",
+          "modelName": "EXCHANGE_16KB",
+          "value": 0,
+          "type": "number",
+          "className": "rawFields",
+          "tooltip": {
+            "message": "Average 16KB IOPS, with 100% random 60/40 read/write ratio, 100% Random"
+          }
+        },
+        {
+          "displayName": "Log IOPS",
+          "modelName": "EXCHANGE_32KB",
+          "value": 0,
+          "type": "number",
+          "className": "rawFields",
+          "tooltip": {
+            "message": "Average 32KB IOPS, with 100% random 60/40 read/write ratio, 100% Random"
+          }
+        },
+        {
+          "displayName": "Maintenance IOPS",
+          "modelName": "EXCHANGE_64KB",
+          "value": 0,
+          "type": "number",
+          "className": "rawFields",
+          "tooltip": {
+            "message": "Average 64KB IOPS, with 100% random 60/40 read/write ratio, 100% Random"
+          }
+        },
+        {
+          "displayName": "HIDDEN VARIABLE VALUE",
+          "modelName": "gpu_users",
+          "value": 0,
+          "type": "number",
+          "hidden": true,
+          "className": "rawFields"
+        },
+        {
+          "displayName": "Working Set Size (%)",
+          "modelName": "working_set",
+          "value": 10,
+          "type": "number",
+          "readonly": true,
+          "tooltip": {
+            "message": "Typical VMs tend to access a subset of the entire addressable storage more frequently"
+          },
+          "hidden": true,
+          "className": "rawFields"
+        },
+        {
+          "displayName": "Future growth (%)",
+          "modelName": "overhead_percentage",
+          "value": 0,
+          "min": 0,
+          "max": 500,
+          "type": "number",
+          "className": "rawFields",
+          "tooltip": {
+            "message": "Physical Cores, RAM and effective capacity is increased by the specified percentage to allow for future growth of the environment"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure Configuration",
+      "title": "Microsoft Exchange Server",
+      "fields": [
+        {
+          "displayName": "Cluster Type",
+          "modelName": "cluster_type",
+          "value": "normal",
+          "type": "radio",
+          "className": "rawFields cpuAttribute",
+          "readonly": false,
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "tooltip": {
+            "readonly": "Stretch Cluster is not supported with Fixed Config Sizing"
+          },
+          "options": [
+            {
+              "label": "Normal",
+              "value": "normal"
+            },
+            {
+              "label": "Stretch",
+              "value": "stretch"
+            }
+          ]
+        },
+        {
+          "displayName": "Data Replication Factor",
+          "modelName": "replication_factor",
+          "value": 3,
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "rawFields dataFactor",
+          "options": [
+            {
+              "key": 2,
+              "value": "RF 2"
+            },
+            {
+              "key": 3,
+              "value": "RF 3"
+            }
+          ]
+        },
+        {
+          "type": "info_icon",
+          "className": "info_details",
+          "message": "Data Replication Factor (RF) defines the number of redundant replicas of user's data maintained within a storage cluster. HX clusters support options of 2 or 3 redundant replicas. For RF=3, the cluster can sustain upto 2 failures on separate nodes (multiple failures on the same node count as a single failure) and still ensure data avilability. More than 2 failures result in cluster becoming unavailable to impacted VMs. RF3 is recommended for better availability."
+        },
+        {
+          "type": "warning",
+          "className": "info-content",
+          "model": "warning_cont",
+          "hidden": true,
+          "message": "A replication factor of three is highly recommended for all environments except HyperFlex Edge. A replication factor of two has a lower level of availability and resiliency."
+        },
+        {
+          "displayName": "Performance Headroom (# of nodes)",
+          "modelName": "fault_tolerance",
+          "value": 1,
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "rawFields dataFactor",
+          "options": [
+            {
+              "key": 0,
+              "value": "0"
+            },
+            {
+              "key": 1,
+              "value": "1"
+            },
+            {
+              "key": 2,
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "type": "info_icon",
+          "className": "info_details",
+          "message": "Performance headroom adds additional nodes to the cluster to ensure there is enough performance bandwidth in case of node failure to satisfy the workload and minimize peformance impact. This is also known as 'N+x' or 'Nodes for Fault Tolerance."
+        },
+        {
+          "displayName": "Compression Savings (%)",
+          "subDisplayName": " without Hardware Acceleration",
+          "modelName": "compression_factor",
+          "value": 1,
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "type": "number",
+          "className": "rawFields text_wrap"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "compression_saved",
+          "diskModel": "hdd_size",
+          "factorModel": "compression_factor",
+          "tooltip": "Eg: dynamicText effective capacity, with dynamicText1% compression savings will require dynamicText2 of usable space"
+        },
+        {
+          "type": "infomessage",
+          "message": "These compression savings can be increased by using the HyperFlex Acceleration Engine."
+        },
+        {
+          "displayName": "Deduplication Savings (%)",
+          "modelName": "dedupe_factor",
+          "value": 15,
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "type": "number",
+          "className": "rawFields"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "dedupe_saved",
+          "diskModel": "compression_saved",
+          "factorModel": "dedupe_factor",
+          "tooltip": "Eg: dynamicText of capacity post compression, with dynamicText1% dedupe will require dynamicText2 usable space"
+        },
+        {
+          "displayName": "Net Savings",
+          "type": "dynamic-text",
+          "model": "combined_compr_dedup",
+          "diskModel": "hdd_size",
+          "factorModel": "dedupe_saved"
+        }
+      ]
+    },
+    {
+      "name": "Backup Target",
+      "title": "Microsoft Exchange Server",
+      "fields": [
+        {
+          "className": "msg-content",
+          "model": "msg_cont",
+          "type": "backup_target"
+        }
+      ]
+    }
+  ]
+}
+

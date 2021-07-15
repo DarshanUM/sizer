@@ -1,0 +1,248 @@
+{
+  "steps": [
+    {
+      "name": "Workload Type",
+      "title": "Choose workload type",
+      "fields": [
+        {
+          "modelName": "wl_type",
+          "value": "VEEAM",
+          "type": "custom-radio-button",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "label": "VDI",
+              "value": "VDI"
+            },
+            {
+              "label": "Epic Hyperspace",
+              "value": "EPIC"
+            },
+            {
+              "label": "VDI Infrastructure VMs",
+              "value": "VDI_INFRA"
+            },
+            {
+              "label": "RDSH Workload",
+              "value": "RDSH"
+            },
+            {
+              "label": "Microsoft SQL",
+              "value": "DB"
+            },
+            {
+              "label": "Oracle",
+              "value": "ORACLE"
+            },
+            {
+              "label": "Splunk Workload",
+              "value": "SPLUNK"
+            },
+            {
+              "label": "Bulk Database Input",
+              "value": "BULK"
+            },
+            {
+              "label": "Oracle AWR File Upload",
+              "value": "AWR_FILE"
+            },
+            {
+              "label": "General Server Virtualized Environment (VSI)",
+              "value": "VSI"
+            },
+            {
+              "label": "Microsoft Exchange Server",
+              "value": "EXCHANGE"
+            },
+            {
+              "label": "HX Edge (ROBO)",
+              "value": "ROBO"
+            },
+            {
+              "label": "Compute and Capacity Sizer",
+              "value": "RAW"
+            },
+            {
+              "label": "File Upload on HX",
+              "value": "RAW_FILE"
+            },
+            {
+              "label": "Veeam Availability Solution on HX",
+              "value": "VEEAM"
+            },
+            {
+                "label": "Kubernetes Container",
+                "value": "CONTAINER"
+            },
+            {
+                "label": "Artificial Intelligence/Machine Learning",
+                "value": "AIML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Workload Profile",
+      "title": "Veeam",
+      "fields": [
+        {
+          "type": "link",
+          "message": "link",
+          "className": " info-content",
+          "link_name": "http://rps.dewin.me"
+        },
+        {
+          "displayName": "Name",
+          "modelName": "wl_name",
+          "type": "text",
+          "className": "vdiResiliency"
+        },
+        {
+          "displayName": "Total Storage Capacity Requirement",
+          "modelName": "hdd_size",
+          "value": 20,
+          "type": "number",
+          "className": "hdd_column_two",
+          "isDecimal": true
+        },
+        {
+          "displayName": "",
+          "modelName": "hdd_size_unit",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "value": "GB",
+          "type": "dropdown",
+          "className": "no-label_splunk",
+          "options": [
+            {
+              "key": "GB",
+              "value": "GB"
+            },
+            {
+              "key": "GiB",
+              "value": "GiB"
+            },
+            {
+              "key": "TB",
+              "value": "TB"
+            },
+            {
+              "key": "TiB",
+              "value": "TiB"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure Configuration",
+      "title": "Veeam",
+      "fields": [
+        {
+          "displayName": "Replication Factor",
+          "modelName": "replication_factor",
+          "value": 2,
+          "readonly": true,
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "key": 2,
+              "value": "RF 2"
+            },
+            {
+              "key": 3,
+              "value": "RF 3"
+            }
+          ],
+          "className": "vdiResiliency"
+        },
+        {
+          "displayName": "Performance Headroom (nodes)",
+          "modelName": "fault_tolerance",
+          "value": 0,
+          "type": "number",
+          "readonly": true,
+          "className": "vdiResiliency"
+        },
+        {
+          "displayName": "Compression Savings",
+          "subDisplayName": " without Hardware Acceleration",
+          "modelName": "compression_factor",
+          "value": 0,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "readonly": true,
+          "className": "vdiResiliency text_wrap" 
+        },
+        {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "The external link is already handling Compression savings"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "compression_saved",
+          "diskModel": "db_size",
+          "factorModel": "compression_factor",
+          "tooltip": "Eg: dynamicText effective capacity, with dynamicText1% compression savings will require dynamicText2 of usable space"
+        },
+        {
+          "type": "infomessage",
+          "message": "These compression savings can be increased by using the HyperFlex Acceleration Engine."
+        },
+        {
+          "displayName": "Dedupe Savings",
+          "modelName": "dedupe_factor",
+          "value": 0,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "readonly": true,
+          "className": "vdiResiliency"
+        },
+        {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "The external link is already handling Dedupe savings"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "dedupe_saved",
+          "diskModel": "compression_saved",
+          "factorModel": "dedupe_factor",
+          "tooltip": "Eg: dynamicText of capacity post compression, with dynamicText1% dedupe will require dynamicText2 usable space"
+        },
+        {
+          "displayName": "Net Savings",
+          "type": "dynamic-text",
+          "model": "combined_compr_dedup",
+          "diskModel": "db_size",
+          "factorModel": "dedupe_saved"
+        }
+      ]
+    },
+     {
+      "name": "Backup Target",
+      "title": "Veeam",
+      "fields": [ 
+        {
+          "className": "msg-content",
+          "model": "msg_cont", 
+          "type": "backup_target"        
+        }   
+      ]
+    }
+  ]
+}

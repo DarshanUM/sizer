@@ -1,0 +1,102 @@
+<div class="form-group  clear padTop10 popupTooltip" ng-class="{'has-error':(!isFileSelected || !isFileHasPrased || isFileHasPrasingError || isInvalidFileFormat || isBeyondMaxSize)}">
+    <label class="col-lg-6">&nbsp;</label>
+    <div class="col-lg-6 selectItm">
+        <form>
+        <div class="">
+            <div class="select-style wid65">
+                <select class="form-control file_select" name="filetypeInput" 
+                    ng-model="filetypeInput" style="height: 28px !important;" ng-change="onInputFileTypeChanged()"
+                    ng-options='option.key as option.value for option in fileOptions'>
+                </select>
+            </div>
+            <p class="info-block text-info no-padding margin_top5"> 
+              <img src="images/info_msg.png"> 
+              {{ "Maximum " + (filetypeInput == "csv" ? "(50 MB)" : "(50 MB)" ) }} 
+            </p>
+
+            <p class="text-danger no-padding" ng-if="filetypeInput=='csv'">
+              NOTE: The 30 Day Summary from the HX Workload Profiler only looks at compute (CPU and Memory) usage and storage capacity usage. It does not currently look at storage performance required by the workloads.
+            </p>
+
+            <p class="text-danger no-padding" ng-if="filetypeInput=='xls'">
+              NOTE: We recommend using the HX Workload Profiler to estimate the resources used by existing environments. RVTools give a point in time estimate of the usage which may lead to large errors in the estimates.
+            </p>
+           
+            </div>
+        </form>             
+    </div>
+
+
+    <label class="col-lg-6"></label>
+    <div class="col-lg-6 " style="margin-top: 5px;">
+        <!-- <button class="btn btn-primary ng-hide" ng-disabled="!isFileSelected || disableUPpload" ng-click="uploadFile()">
+            Process File
+        </button> -->
+        <input class="uploadTextfield" type="file" id="file_input" name='file' 
+            accept="{{filetypeInput=='csv' ? csvFileAccept : xlsFileAccept}}" 
+            ng-click="onClick($event)" 
+            onchange="angular.element(this).scope().onFileSelectionChanged(this)" 
+            uib-tooltip="{{filetypeInput=='csv' ? csvTooltip : xlsTooltip }}" 
+            tooltip-placement="right"/>
+    </div>
+    <p class="help-block" ng-if="!isFileSelected"> 
+        Please select {{ filetypeInput=="csv" ? "a CSV" : "an Excel" }} file to process workload inputs 
+    </p>
+    <!-- <p class="help-block" ng-if="isFileSelected && !isFileHasPrased"> 
+        Please process the file to get the workload inputs 
+    </p> -->
+    <p class="help-block" ng-if="isFileSelected && isFileHasPrasingError">
+         <span >
+            <span ng-if="hasWarning"> <img src="images/alert.png" /> <b>Warning </b> </span>
+            <span ng-if="hasError"> <img src="images/file-error.png"/> <b>Error :</b> </span>
+        </span>
+        <span ng-hide="hasWarning">Invalid {{ filetypeInput=="csv" ? "CSV" : "Excel" }} file</span> 
+    <p class="help-block errorDetails" popover-placement="right" popover-trigger="'click'" uib-popover-template="'scripts/directives/file-upload/file-upload-tooltip.html'" 
+    ng-if="fileUploadResponse && !isInvalidFileFormat && (hasError || hasWarning)">
+        Click here for Details <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+    </p>
+    </p>
+    <p class="help-block" ng-if="isFileSelected && isInvalidFileFormat">  
+     Invalid file. Please select {{ filetypeInput=="csv" ? "a CSV" : "an Excel" }} file     
+    </p>
+    <p class="help-block" ng-if="isFileSelected && isBeyondMaxSize" style="left: 31%;"> 
+        File size should be less than {{ filetypeInput=="csv" ? "50 MB" : "50 MB" }} 
+    </p>
+    
+    <div ng-if="fileUploadResponse && fileUploadResponse.status!=='error' && !hideOption" class="totalByPopover">
+        <label class="col-md-6 wid45">Total By</label>
+        <div class="col-md-6 padBottom5" popover-placement="right" popover-trigger="'mouseenter'" uib-popover-html="totalByTooltip" style="position: relative; top: 0px; width:27%">
+            <!-- <label><input type="radio" name="">Provisioned </label>&nbsp;<label><input type="radio" name="">Used </label> -->
+            <input id="type-sizing-host" class="radio-custom" name="type-sizing" type="radio"
+                ng-model="data.typeSelected" ng-value="'host'" ng-change="onTypeSizingChanged($event)" />
+            <label for="type-sizing-host" class="radio-custom-label"> Host </label>
+            <input id="type-sizing-vm" class="radio-custom" name="type-sizing" type="radio" ng-model="data.typeSelected"
+                ng-value="'vm'" ng-change="onTypeSizingChanged($event)" />
+            <label for="type-sizing-vm" class="radio-custom-label"> VM </label>
+            <!-- <img src="images/info.png"   />  -->
+        </div>
+    </div>
+    
+    <div ng-if="fileUploadResponse && fileUploadResponse.status!=='error'" class="totalByPopover">
+        <label class="col-md-6 wid45">Size for</label>
+        <div class="col-md-6 padBottom5" popover-placement="right" popover-trigger="'mouseenter'" uib-popover-html="tooltipContent" style="position: relative; top: 0px; width:27%">
+            <!-- <label><input type="radio" name="">Provisioned </label>&nbsp;<label><input type="radio" name="">Used </label> -->
+            <input id="basis-sizing-provisioned" class="radio-custom" name="basis-sizing" type="radio" ng-model="data.isProvisioned" ng-value="true" ng-change="onBasisSizingChanged($event)" />
+            <label for="basis-sizing-provisioned" class="radio-custom-label"> Provisioned </label>
+            <input id="basis-sizing-used" class="radio-custom" name="basis-sizing" type="radio"
+                ng-model="data.isProvisioned" ng-value="false"  ng-change="onBasisSizingChanged($event)"/>
+            <label for="basis-sizing-used" class="radio-custom-label"> Utilized </label>
+            <!-- <img src="images/info.png"   />  -->
+        </div>
+        
+    </div>
+
+    <div class="clear positionRelative">
+        <div class="{{'clusterView ' + filetypeInput}}" 
+            ng-if="fileUploadResponse && fileUploadResponse.status!=='error'">
+            <multi-select on-selection-changed="onClusterSelectionChanged($event)" model-data="clustersSelection"></multi-select>
+        </div>
+    </div>
+</div>
+   
+</div>

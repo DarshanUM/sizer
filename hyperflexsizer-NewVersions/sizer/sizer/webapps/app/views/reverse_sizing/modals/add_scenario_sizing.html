@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add Scenario <span class="pull-right cursor" ng-click="$dismiss()"><i class="fa fa-remove" aria-hidden="true"></i></span></h4>
+</div>
+<div class="modal-body">
+  <form name="addScenarioForm">
+    <div class="padding-15">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" name="username" placeholder="Scenario Name" ng-required="true" ng-model="reverseCtrl.scenarioObject.name" ng-pattern="/^\w(\w|-|\+)*$/" >
+      
+    </div>
+    <div class="form-group">
+      <label>Account</label>
+      <input type="text" class="form-control" name="account" placeholder="Account" ng-model="scenarioObject.settings_json.account">
+      <p class="help-block">Enter Account Name</p>
+    </div>
+  <!--   <div class="form-group">
+      <label>SFDC Deal Id</label>
+      <input type="text" class="form-control" name="sfdc_deal_id" placeholder="SFDC Deal Id" ng-model="reverseCtrl.scenarioObject.settings_json.deal_id">
+      <p class="help-block">Enter Deal Id</p>
+    </div>  -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+      <button type="button" class="btn btn-primary" ng-click="reversePopupCtrl.closeEvent();">Save </button> 
+      
+    </div>
+  </form>
+</div>

@@ -1,0 +1,392 @@
+<div>
+    <!-- header start-->
+    <div ng-include="'views/header/header.html'"></div>
+    <section>
+        <h4 class="col-lg-12 page_tiitle">
+            <span class=" ">HX Profiler </span>
+            <!--  <div class="pull-right dropdown dropdown-toggle" data-toggle="dropdown">
+             
+              <div class="lic_txt" data-toggle="dropdown">{{hxtoolsCtrl.showSelectedItems}}&nbsp;</div>
+              <i class="fa fa-caret-down arrow_up"></i>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li ng-repeat="tool in hxtoolsCtrl.hxTool" >{{tool.name}}</li> 
+                </ul>
+            </div> -->
+        </h4>
+        <div class="profile_action">
+            <label ng-click="hxtoolsCtrl.selectVcenter()">
+                <input type="radio" checked name="profile"> vCenter</label>
+            <label ng-click="hxtoolsCtrl.selectHyper()">
+                <input type="radio" name="profile"> Hyper-V</label>
+        </div>
+        <div class="overflow clear padBottom20" ng-style="{height:hxtoolsCtrl.contentHeight}">
+
+            <div>
+                <div class="col-lg-12 versionList" ng-hide="hxtoolsCtrl.viewItems1">
+                    <p class="para_text">
+                        Hx Workload Profiler is vCenter characterization tool that used to estimate the compute, storage
+                        and network usage of hosts
+                        and VMs across multiple vCenter deployments. The output of the tool can be used to feed into
+                        HxSizer
+                        to size the HyperFlex cluster required to fulfil the workload requirements as estimated by the
+                        Profiler.
+                    </p>
+
+                    <div class="downloadTxt">
+                        <u> Download Images </u>
+                    </div>
+                    <dl>
+                        <dt><a href="https://cisco.box.com/shared/static/jjv0tprx60x3gi5xir68clvs5y9z93sm.ova">V
+                                3.1.12</a></dt>
+                        <dd>
+                            <ul>
+                                <li>Profiler code migration from python2 to python3.</li>
+                                <li>Elasticsearch upgrade.</li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="downloadTxt">
+                        <u> Previous Release</u>
+                    </div>
+                    <dl>
+                        <!-- <dt><a href="https://cisco.box.com/shared/static/z8bcfcnv43zzz9oj7u8ymwowxnep8s8l.ova" >V 3.1.11</a></dt> -->
+                        <dt>
+                            <label>V 3.1.11</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Support for Profiling Linux Baremetal Servers.</li>
+                                <li>Support to Add multiple Windows Baremetal servers using IP range option.</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <!-- <a href="https://cisco.box.com/shared/static/jwaqiss3vdk6wvzujnvvmcfy8y4ovv91.ova" >V 3.1.10</a> -->
+                            <label>V 3.1.10</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>"summary report for Hx Sizer report" for VM & Host based sizing.</li>
+                                <li>Poller crash notification & auto-recovery.</li>
+                                <li>Windows baremetal add workflow enhancements</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <!-- <a href="https://cisco.box.com/shared/static/g8yn6xkwhlvl5c3rvbg2hitc727uadul.ova">V3.1.9</a> -->
+                            <label>V 3.1.9</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>label changed from "Quick Profile Summary" to "Sizer report for Hx Sizer upload".
+                                </li>
+                                <!-- <li>Hyper-V Non English OS support</li>   -->
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <!-- <a href="https://cisco.box.com/shared/static/9bu4am8nr0qba42adrurzplws6bve5hx.ova">V 3.1.8</a> -->
+                            <label>V 3.1.8</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>PDF report enhancements to represent Normalized CPU usage graph, metrics
+                                    representation in
+                                    MB/MiB & GB/GiB</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.1.7</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Updated/added lshell commands to make Profiler VM user friendly.</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.1.6</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Optimized the Profiler data download time</li>
+                            </ul>
+                        </dd>
+                        <dt>
+                            <label>V 3.1.5</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Fixed the Download time out and failure issue</li>
+                                <li>PDF report enhanced to report polling interval, CPU type and bug fixes on the
+                                    aggregate peak
+                                    values, total clock </li>
+                                <li>Default profiling option changed to detailed profile</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.1.4</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Optimized the data collection and storing of time series data</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <!-- <a href="https://cisco.box.com/shared/static/55fzl6a35rtolye9x5g8j1ypgsk4hmfz.ova" > -->
+                            <label>V 3.1.3</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>20s data is available for 3 days</li>
+                                <li>Vcenter credential check for Service Manger role to profile data</li>
+                                <li>Profiling period options changed to 1, 7, 15 and 30 days</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.1.2</label>
+                        </dt>
+                        <!-- https://cisco.box.com/shared/static/49oxsnl4t4shmywprks8iw9kfzbch50h.ova -->
+                        <dd>
+                            <ul>
+                                <li>Change polling interval to 20 seconds</li>
+                                <li>20s data is available for 7 days</li>
+                                <li>Profiler VM data disk Size is increased to 100GB (thin provisioned)</li>
+                                <li>PDF report is part of the complete data download</li>
+                                <li>PDF report is enhanced to capture the aggregate peak values in the table and to show
+                                    the
+                                    peak value in the graph</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.1.1</label>
+                        </dt>
+                        <!-- https://cisco.box.com/shared/static/o9oz72k5lu7wyxwvl3e3lcl7rio3zbws.ova -->
+                        <dd>
+                            <ul>
+                                <li>The Host and VM summary report is enhanced to have 95 percentile value for
+                                    applicable counters</li>
+                                <li>Default node view is changed to show the average value instead of peak value</li>
+                                <li>Supported and tested Windows bare metal versions updated in the Workload add UI</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.1</label>
+                        </dt>
+                        <!-- https://cisco.box.com/shared/static/7mjymxxeaz0mjz191l7z99znhat1qs1c.ova -->
+                        <dd>
+                            <ul>
+                                <li>Multi workload profiling support – added Windows Bare metal servers profiling</li>
+                                <li>Enhanced PDF report </li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.0.3</label>
+                        </dt>
+                        <!-- https://cisco.box.com/shared/static/mjxbbbpnnvtl19ubrbcfxoyx691wo4gk.ova -->
+                        <dd>
+                            <ul>
+                                <li>Ubuntu kernel of profiler VM updated with required security patches</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.0.2</label>
+                        </dt>
+                        <!-- https://cisco.box.com/shared/static/084cq24n3jmpg4vswz0p66m262an6hbs.ova -->
+                        <dd>
+                            <ul>
+                                <li>PDF report –wrong 95 percentile value</li>
+                                <li>Aggregate time series graph rendering shows average of all hosts instead of sum of
+                                    all hosts</li>
+                                <li>Profiler service start/stop script timeout error, while profiling multiple vCenter’s
+                                </li>
+                                <li>UI fixes – alignment fixes in Host and VM table, added Tooltip for table values</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="col-lg-12 versionList" ng-show="hxtoolsCtrl.viewItems2">
+                    <div>
+                        <p class="para_text">
+                            Hx Workload Profiler is Hyper-V characterization tool that used to estimate the compute,
+                            storage and network usage of hosts
+                            and VMs across multiple Hyper-V servers. The output of the tool can be used to feed into
+                            HxSizer
+                            to size the HyperFlex cluster required to fulfil the workload requirements as estimated by
+                            the
+                            Profiler.
+                        </p>
+                    </div>
+                    <div class="downloadTxt">
+                        <u>Download Images </u>
+                    </div>
+                    <dl>
+                        <dt><a href="https://cisco.box.com/shared/static/jxsra6n2iywpkx8oo41g6ziu54lrzhjc.zip">V
+                                3.1.12</a></dt>
+                        <dd>
+                            <ul>
+                                <li>Profiler code migration from python2 to python3.</li>
+                                <li>Elasticsearch upgrade.</li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+
+
+                    <div class="downloadTxt">
+                        <u>Previous Release</u>
+                    </div>
+                    <dl>
+                        <!-- <dt><a href="https://cisco.box.com/shared/static/s5yb4bpcguzohz6dgouc5fhpnd79e8h0.zip">V3.1.11</a></dt> -->
+                        <dt>
+                            <label>V 3.1.11</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Support for Profiling Linux Baremetal Servers.</li>
+                                <li>Support to Add multiple Windows Baremetal servers using IP range option.</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <!-- <a href="https://cisco.box.com/shared/static/y9hs0mczcvp2tiwighiksoornzbuuaq2.zip" >V 3.1.10</a> -->
+                            <label>V 3.1.10</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>"summary report for Hx Sizer report" for VM & Host based sizing.</li>
+                                <li>Poller crash notification & auto-recovery.</li>
+                                <li>Windows baremetal add workflow enhancements</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <!-- <a href="https://cisco.box.com/shared/static/h0utwj9sqd4x409pc6p39b69s53qkzw8.zip">V 3.1.9 -->
+                            <label>V 3.1.9</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Support for windows 2019 server.</li>
+                                <li>Support for Non-English OS.</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <!-- <a href="https://cisco.box.com/shared/static/k8lbkc5l2lgbrqzjsxv9u7w3q4itlk51.zip">V 3.1.8 </a> -->
+                            <label>V 3.1.8</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>PDF report enhancements to represent Normalized CPU usage graph, metrics
+                                    representation in
+                                    MB/MiB & GB/GiB</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.1.7</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Updated/added lshell commands to make Profiler VM user friendly.</li>
+                            </ul>
+                        </dd>
+
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.1.6</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Optimized the Profiler data download time</li>
+                            </ul>
+                        </dd>
+                        <dt>
+                            <label>V 3.1.5</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Fixed the Download time out and failure issue</li>
+                                <li>PDF report enhanced to report polling interval, CPU type and bug fixes on the
+                                    aggregate peak
+                                    values, total clock </li>
+                                <li>Default profiling option changed to detailed profile</li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>
+                            <!-- <a href="https://cisco.box.com/shared/static/igpmhjx3mfdfetsimm3v3yh8gmd624fw.zip" >V 3.1.4</a> -->
+                            <label>V 3.1.4</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Optimized the data collection and storing of time series data</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <!-- <a href="https://cisco.box.com/shared/static/i37tdcu9mvnfhwhg2qxuivulp8nuwprj.zip" > -->
+                        <dt>
+                            <label>V 3.1.3</label>
+                        </dt>
+                        <dd>
+                            <ul>
+                                <li>Change polling interval to 20 seconds</li>
+                                <li>20s data is available for 7 days</li>
+                                <li>Profiler VM data disk Size is increased to 100GB (thin provisioned)</li>
+                                <li>PDF report is not part of the complete data download</li>
+                                <li>PDF report is enhanced to capture the aggregate peak values in the table and to show
+                                    the
+                                    peak value in the graph</li>
+                                <li>Profiling period options changed to 1, 7, 15 and 30 days</li>
+                            </ul>
+                        </dd>
+
+                    </dl>
+                    <dl>
+                        <dt>
+                            <label>V 3.1.1</label>
+                        </dt>
+                        <!-- https://cisco.box.com/shared/static/gypace6g5zuiw19kblp1wkyi3q2f63oz.zip -->
+                        <dd>
+                            <ul>
+                                <li>Support Profiling Hyper-V and Windows Bare metal workloads </li>
+
+                            </ul>
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

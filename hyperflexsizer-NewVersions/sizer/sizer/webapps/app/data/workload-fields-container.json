@@ -1,0 +1,482 @@
+{
+    "steps": [
+        {
+            "name": "Workload Type",
+            "title": "Choose workload type",
+            "fields": [
+                {
+                    "modelName": "wl_type",
+                    "value": "CONTAINER",
+                    "type": "custom-radio-button",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "options": [
+                        {
+                            "label": "VDI",
+                            "value": "VDI"
+                        },
+                        {
+                            "label": "Epic Hyperspace",
+                            "value": "EPIC"
+                        },
+                        {
+                            "label": "VDI Infrastructure VMs",
+                            "value": "VDI_INFRA"
+                        },
+                        {
+                            "label": "RDSH Workload",
+                            "value": "RDSH"
+                        },
+                        {
+                            "label": "Microsoft SQL",
+                            "value": "DB"
+                        },
+                        {
+                            "label": "Oracle",
+                            "value": "ORACLE"
+                        },
+                        {
+                            "label": "Splunk Workload",
+                            "value": "SPLUNK"
+                        },
+                        {
+                            "label": "Bulk Database Input",
+                            "value": "BULK"
+                        },
+                        {
+                            "label": "Oracle AWR File Upload",
+                            "value": "AWR_FILE"
+                        },
+                        {
+                            "label": "General Server Virtualized Environment (VSI)",
+                            "value": "VSI"
+                        },
+                        {
+                            "label": "Microsoft Exchange Server",
+                            "value": "EXCHANGE"
+                        },
+                        {
+                            "label": "HX Edge (ROBO)",
+                            "value": "ROBO"
+                        },
+                        {
+                            "label": "Compute and Capacity Sizer",
+                            "value": "RAW"
+                        },
+                        {
+                            "label": "File Upload on HX",
+                            "value": "RAW_FILE"
+                        },
+                        {
+                            "label": "Veeam Availability Solution on HX",
+                            "value": "VEEAM"
+                        },
+                        {
+                            "label": "Kubernetes Container",
+                            "value": "CONTAINER"
+                        },
+                        {
+                            "label": "Artificial Intelligence/Machine Learning",
+                            "value": "AIML"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Container Profile",
+            "title": "CONTAINER",
+            "fields": [
+                {
+                    "displayName": "Workload Name",
+                    "modelName": "wl_name",
+                    "value": "",
+                    "type": "text",
+                    "placeholder": "Enter Workload Name",
+                    "events": {
+                        "blur": "WORKLOAD_FIELD_BLUR"
+                    }
+                },
+                {
+                    "displayName": "Container Type",
+                    "modelName": "container_type",
+                    "value": "Small",
+                    "type": "dropdown",
+                    "tooltip": {
+                        "message": "Templates with predefined resource consumption values. If these do not meet requirement, select Custom option and enter profile values in next screen"
+                    },
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "options": [
+                        {
+                            "value": "Small",
+                            "key": "Small"
+                        },
+                        {
+                            "value": "Medium",
+                            "key": "Medium"
+                        },
+                        {
+                            "value": "Large",
+                            "key": "Large"
+                        },
+                        {
+                            "value": "Custom",
+                            "key": "Custom"
+                        }
+                    ]
+                },
+                {
+                    "displayName": "Number of Containers",
+                    "modelName": "num_containers",
+                    "value": 1,
+                    "min": 1,
+                    "max": 10000,
+                    "type": "number",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    }
+                }
+            ],
+            "dependentFields": [
+                {
+                    "title": "Customize",
+                    "type": "edit_btn",
+                    "events": {
+                        "click": "WORKLOAD_FIELD_CLICKED"
+                    }
+                },
+                {
+                    "title": "Container Compute Profile",
+                    "type": "field-title"
+                },
+                {
+                    "displayName": "vCPUs",
+                    "modelName": "vcpus_per_container",
+                    "value": 1,
+                    "type": "number",
+                    "readonly": true,
+                    "className": "vsimarginPosition",
+                    "tooltip": {
+                        "message": "Intel Platinum 8164 is used as the reference CPU, Other CPUs are normalized to this using the relative SPECint and SPECfp ratings"
+                    }
+                },
+                {
+                    "displayName": "vCPU Overprovisioning Ratio",
+                    "modelName": "vcpus_per_core",
+                    "value": 4,
+                    "type": "number",
+                    "readonly": true,
+                    "tooltip": {
+                        "message": "Total number of vCPUs that can be packed per core. Recommended values are based performance tests and should be changed with care"
+                    }
+                },
+                {
+                    "displayName": "RAM (GiB)",
+                    "modelName": "ram_per_container",
+                    "value": 6,
+                    "type": "number",
+                    "readonly": true,
+                    "isDecimal": true
+                },
+                {
+                    "title": "Container Storage Profile",
+                    "type": "field-title"
+                },
+                {
+                    "displayName": "Average Storage IOPS",
+                    "modelName": "iops_per_container",
+                    "value": 30,
+                    "type": "number",
+                    "readonly": true,
+                    "className": "",
+                    "tooltip": {
+                        "message": "Assumes 8k IOPS with 70% Read Ratio, 100% Random"
+                    }
+                },
+                {
+                    "displayName": "",
+                    "modelName": "disk_per_container_unit",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "value": "GB",
+                    "type": "dropdown",
+                    "readonly": true,
+                    "className": "no-label",
+                    "options": [
+                        {
+                            "key": "GB",
+                            "value": "GB"
+                        },
+                        {
+                            "key": "GiB",
+                            "value": "GiB"
+                        },
+                        {
+                            "key": "TB",
+                            "value": "TB"
+                        },
+                        {
+                            "key": "TiB",
+                            "value": "TiB"
+                        }
+                    ]
+                },
+                {
+                    "displayName": "User / Application Data Size",
+                    "modelName": "disk_per_container",
+                    "value": 5,
+                    "type": "number",
+                    "readonly": true,
+                    "className": "column_two",
+                    "isDecimal": true
+                },
+                {
+                    "displayName": "",
+                    "modelName": "base_image_size_unit",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "value": "GB",
+                    "type": "dropdown",
+                    "readonly": true,
+                    "className": "no-label",
+                    "options": [
+                        {
+                            "key": "GB",
+                            "value": "GB"
+                        },
+                        {
+                            "key": "GiB",
+                            "value": "GiB"
+                        }
+                    ]
+                },
+                {
+                    "displayName": "OS Image Size",
+                    "modelName": "base_image_size",
+                    "value": 20,
+                    "type": "number",
+                    "readonly": true,
+                    "tooltip": {
+                        "message": "Size of the OS Image for Container"
+                    },
+                    "className": "column_two",
+                    "isDecimal": true
+                },
+                {
+                    "displayName": "Working Set Size (%)",
+                    "modelName": "working_set",
+                    "value": 10,
+                    "type": "number",
+                    "readonly": true,
+                    "tooltip": {
+                        "message": "Typical VMs tend to access a subset of the entire addressable storage more frequently"
+                    },
+                    "className": ""
+                }
+            ]
+        },
+        {
+            "name": "Infrastructure Configuration",
+            "title": "CONTAINER",
+            "fields": [
+                {
+                    "displayName": "Cluster Type",
+                    "modelName": "cluster_type",
+                    "value": "normal",
+                    "type": "radio",
+                    "className": "rawFields cpuAttribute",
+                    "hidden": true,
+                    "tooltip": {
+                        "readonly": "Stretch Cluster is not supported with Fixed Config Sizing"
+                    },
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "options": [
+                        {
+                            "label": "Normal",
+                            "value": "normal"
+                        },
+                        {
+                            "label": "Stretch",
+                            "value": "stretch"
+                        }
+                    ]
+                },
+                {
+                    "displayName": "Data Replication Factor",
+                    "modelName": "replication_factor",
+                    "value": 3,
+                    "type": "dropdown",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "className": "vsiResiliency dataFactor",
+                    "options": [
+                        {
+                            "key": 2,
+                            "value": "RF 2"
+                        },
+                        {
+                            "key": 3,
+                            "value": "RF 3"
+                        }
+                    ]
+                },
+                {
+                    "type": "info_icon",
+                    "className": "info_details",
+                    "message": "Data Replication Factor (RF) defines the number of redundant replicas of user's data maintained within a storage cluster. HX clusters support options of 2 or 3 redundant replicas. For RF=3, the cluster can sustain upto 2 failures on separate nodes (multiple failures on the same node count as a single failure) and still ensure data avilability. More than 2 failures result in cluster becoming unavailable to impacted VMs. RF3 is recommended for better availability."
+                },
+                {
+                    "type": "warning",
+                    "className": "info-content",
+                    "model": "warning_cont",
+                    "hidden": true,
+                    "message": "A replication factor of three is highly recommended for all environments except HyperFlex Edge. A replication factor of two has a lower level of availability and resiliency."
+                },
+                {
+                    "displayName": "Performance Headroom (nodes)",
+                    "modelName": "fault_tolerance",
+                    "value": 1,
+                    "type": "dropdown",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "className": "vsiResiliency dataFactor",
+                    "options": [
+                        {
+                            "key": 0,
+                            "value": "0"
+                        },
+                        {
+                            "key": 1,
+                            "value": "1"
+                        },
+                        {
+                            "key": 2,
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "type": "info_icon",
+                    "className": "info_details",
+                    "message": "Performance headroom adds additional nodes to the cluster to ensure there is enough performance bandwidth in case of node failure to satisfy the workload and minimize performance impact. This is also known as 'N+x' or 'Nodes for Fault Tolerance'."
+                },
+                {
+                    "displayName": "Compression Savings (%)",
+                    "subDisplayName": " without Hardware Acceleration",
+                    "modelName": "compression_factor",
+                    "value": 20,
+                    "type": "number",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "className": "vsiResiliency text_wrap"
+                },
+                {
+                    "type": "info_icon",
+                    "className": "info_details",
+                    "message": "Recommended values are based on performance tests and should be changed with care"
+                },
+                {
+                    "displayName": "",
+                    "type": "dynamic-text",
+                    "model": "compression_saved",
+                    "diskModel": "disk_per_vm",
+                    "factorModel": "compression_factor",
+                    "tooltip": "Eg: dynamicText effective capacity, with dynamicText1% compression savings will require dynamicText2 of usable space"
+                },
+                {
+                    "type": "infomessage",
+                    "message": "These compression savings can be increased by using the HyperFlex Acceleration Engine."
+                },
+                {
+                    "displayName": "Deduplication Savings (%)",
+                    "modelName": "dedupe_factor",
+                    "value": 10,
+                    "type": "number",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "className": "vsiResiliency"
+                },
+                {
+                    "type": "info_icon",
+                    "className": "info_details",
+                    "message": "Recommended values are based on performance tests and should be changed with care"
+                },
+                {
+                    "displayName": "",
+                    "type": "dynamic-text",
+                    "model": "dedupe_saved",
+                    "diskModel": "compression_saved",
+                    "factorModel": "dedupe_factor",
+                    "tooltip": "Eg: dynamicText of capacity post compression, with dynamicText1% dedupe will require dynamicText2 usable space"
+                },
+                {
+                    "displayName": "Net Savings",
+                    "type": "dynamic-text",
+                    "model": "combined_compr_dedup",
+                    "diskModel": "disk_per_vm",
+                    "factorModel": "dedupe_saved"
+                },
+                {
+                    "displayName": "Primary workload placement",
+                    "modelName": "remote",
+                    "value": false,
+                    "type": "dropdown",
+                    "className": "vdiResiliency",
+                    "options": [
+                        {
+                            "key": false,
+                            "value": "Site A"
+                        },
+                        {
+                            "key": true,
+                            "value": "Site B"
+                        }
+                    ],
+                    "hidden": true
+                },
+                {
+                    "displayName": "Site failure protection (% workload)",
+                    "modelName": "replication_amt",
+                    "value": 100,
+                    "type": "number",
+                    "min": 1,
+                    "max": 100,
+                    "className": "vdiResiliency",
+                    "hidden": true,
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    }
+                },
+                {
+                    "type": "error-message",
+                    "hidden": true,
+                    "className": "dr_errorMsg",
+                    "message": "Total number of VMs in a single DR cluster can't be greater than 1500"
+                }
+            ]
+        },
+        {
+            "name": "Backup Target",
+            "title": "CONTAINER",
+            "fields": [
+                {
+                    "className": "msg-content",
+                    "model": "msg_cont",
+                    "type": "backup_target"
+                }
+            ]
+        }
+    ]
+}
+

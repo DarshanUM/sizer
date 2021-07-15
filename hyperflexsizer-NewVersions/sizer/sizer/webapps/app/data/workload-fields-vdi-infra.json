@@ -1,0 +1,710 @@
+{
+  "steps": [
+    {
+      "name": "Workload Type",
+      "title": "Choose workload type",
+      "fields": [
+        {
+          "modelName": "wl_type",
+          "value": "VDI_INFRA",
+          "type": "custom-radio-button",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "options": [
+            {
+              "label": "VDI",
+              "value": "VDI"
+            },
+            {
+              "label": "Epic Hyperspace",
+              "value": "EPIC"
+            },
+            {
+              "label": "VDI Infrastructure VMs",
+              "value": "VDI_INFRA"
+            },
+            {
+              "label": "RDSH Workload",
+              "value": "RDSH"
+            },
+            {
+              "label": "Microsoft SQL",
+              "value": "DB"
+            },
+            {
+              "label": "Oracle",
+              "value": "ORACLE"
+            },
+            {
+              "label": "Splunk Workload",
+              "value": "SPLUNK"
+            },
+            {
+              "label": "Bulk Database Input",
+              "value": "BULK"
+            },
+            {
+              "label": "Oracle AWR File Upload",
+              "value": "AWR_FILE"
+            },
+            {
+              "label": "General Server Virtualized Environment (VSI)",
+              "value": "VSI"
+            },
+            {
+              "label": "Microsoft Exchange Server",
+              "value": "EXCHANGE"
+            },
+            {
+              "label": "HX Edge (ROBO)",
+              "value": "ROBO"
+            },
+            {
+              "label": "Compute and Capacity Sizer",
+              "value": "RAW"
+            },
+            {
+              "label": "File Upload on HX",
+              "value": "RAW_FILE"
+            },
+            {
+              "label": "Veeam Availability Solution on HX",
+              "value": "VEEAM"
+            },
+            {
+                "label": "Kubernetes Container",
+                "value": "CONTAINER"
+            },
+            {
+                "label": "Artificial Intelligence/Machine Learning",
+                "value": "AIML"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "VDI Infrastructure Profile",
+      "title": "VDI Infrastructure VMs",
+      "fields": [
+        {
+          "displayName": "Workload Name",
+          "modelName": "wl_name",
+          "value": "",
+          "type": "intra_profile",
+          "fields": {
+            "citrix": {
+              "events": {
+                "change": "WORKLOAD_FIELD_CHANGED"
+              },
+              "modelName": "citrix",
+              "label": "Citrix",
+              "rows": [
+                {
+                  "label": "Broker VM",
+                  "value": "broker",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number",
+                      "readonly": true
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number",
+                      "tooltip": "Recommended : 1 broker per 1000 desktops"
+                    }
+                  ]
+                },
+                {
+                  "label": "Provisioning VM",
+                  "value": "provisioning",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number",
+                      "tooltip": "Recommended : 1 provisioning VM per 1000 desktops"
+                    }
+                  ]
+                },
+                {
+                  "label": "License VM",
+                  "value": "license",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number",
+                      "readonly": true
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "label": "Profile Manager VM",
+                  "value": "profile_manager",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "label": "Storefront VM",
+                  "value": "storefront",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number",
+                      "readonly": true
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "label": "AD Server VM",
+                  "value": "ad_serer",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number",
+                      "readonly": true
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "label": "SQL Server VM",
+                  "value": "sql_server",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number"
+                    }
+                  ]
+                }
+              ]
+            },
+            "horizon": {
+              "label": "Horizon",
+              "modelName": "horizon",
+              "rows": [
+                {
+                  "label": "Connection VM",
+                  "value": "connection",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number",
+                      "tooltip": "Recommended : 1 connector per 1000 desktops"
+                    }
+                  ]
+                },
+                {
+                  "label": "Replica VM",
+                  "value": "replica",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "label": "Composer VM",
+                  "value": "composer",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number",
+                      "tooltip": "Recommended : 1 composer per 1000 desktops"
+                    }
+                  ]
+                },
+                {
+                  "label": "Profile Manager VM",
+                  "value": "profile_manager",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "label": "AD Server VM",
+                  "value": "ad_serer",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number",
+                      "readonly": true
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number"
+                    }
+                  ]
+                },
+                {
+                  "label": "SQL Server VM",
+                  "value": "sql_server",
+                  "columns": [
+                    {
+                      "displayName": "",
+                      "modelName": "vcpus_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "RAM",
+                      "modelName": "ram_per_vm",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Storage (GB)",
+                      "modelName": "disk_per_vm",
+                      "unit": "GB",
+                      "value": 1,
+                      "type": "number"
+                    },
+                    {
+                      "displayName": "Count",
+                      "modelName": "num_vms",
+                      "value": 1,
+                      "type": "number"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure Configuration",
+      "title": "VDI Infrastructure VMs",
+      "fields": [
+        {
+          "displayName": "Cluster Type",
+          "modelName": "cluster_type",
+          "value": "normal",
+          "type": "radio",
+          "className": "rawFields cpuAttribute",
+          "readonly": true,
+          "hidden": true,
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "tooltip": {
+            "readonly": "Stretch Cluster is not supported with Fixed Config Sizing"
+          },
+          "options": [
+            {
+              "label": "Normal",
+              "value": "normal"
+            },
+            {
+              "label": "Stretch",
+              "value": "stretch"
+            }
+          ]
+        },
+        {
+          "displayName": "Data Replication Factor",
+          "modelName": "replication_factor",
+          "value": 3,
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency dataFactor", 
+          "options": [
+            {
+              "key": 2,
+              "value": "RF 2"
+            },
+            {
+              "key": 3,
+              "value": "RF 3"
+            }
+          ]
+        },
+         {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "Data Replication Factor (RF) defines the number of redundant replicas of user's data maintained within a storage cluster. HX clusters support options of 2 or 3 redundant replicas. For RF=3, the cluster can sustain upto 2 failures on separate nodes (multiple failures on the same node count as a single failure) and still ensure data avilability. More than 2 failures result in cluster becoming unavailable to impacted VMs. RF3 is recommended for better availability."
+        },
+        {
+          "type": "warning",
+          "className": "info-content",
+          "model": "warning_cont",
+          "hidden": true,
+          "message": "A replication factor of three is highly recommended for all environments except HyperFlex Edge. A replication factor of two has a lower level of availability and resiliency."
+        },
+        {
+          "displayName": "Performance Headroom (nodes)",
+          "modelName": "fault_tolerance",
+          "value": 1,
+          "type": "dropdown",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency dataFactor", 
+          "options": [
+            {
+              "key": 0,
+              "value": "0"
+            },
+            {
+              "key": 1,
+              "value": "1"
+            },
+            {
+              "key": 2,
+              "value": "2"
+            }
+          ]
+        },
+         {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "Performance headroom adds additional nodes to the cluster to ensure there is enough performance bandwidth in case of node failure to satisfy the workload and minimize performance impact. This is also known as 'N+x' or 'Nodes for Fault Tolerance'."
+        },
+        {
+          "displayName": "Infrastructure Compression Amount (%)",
+          "subDisplayName": " without Hardware Acceleration",
+          "modelName": "compression_factor",
+          "value": 0,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          }, 
+          "className": "vdiResiliency text_wrap"
+        },
+         {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "Recommended values are based on performance tests and should be changed with care"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "compression_saved",
+          "diskModel": "db_size",
+          "factorModel": "compression_factor",
+          "tooltip": "Eg: dynamicText effective capacity, with dynamicText1% compression savings will require dynamicText2 of usable space"
+        },
+        {
+          "type": "infomessage",
+          "message": "These compression savings can be increased by using the HyperFlex Acceleration Engine."
+        },
+        {
+          "displayName": "Infrastructure Dedupe Amount (%)",
+          "modelName": "dedupe_factor",
+          "value": 20,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          }, 
+          "className": "vdiResiliency"
+        },
+         {
+          "type":"info_icon",
+          "className": "info_details",
+          "message": "Recommended values are based on performance tests and should be changed with care"
+        },
+        {
+          "displayName": "",
+          "type": "dynamic-text",
+          "model": "dedupe_saved",
+          "diskModel": "compression_saved",
+          "factorModel": "dedupe_factor",
+          "tooltip": "Eg: dynamicText of capacity post compression, with dynamicText1% dedupe will require dynamicText2 usable space"
+        },
+        {
+          "displayName": "Net Savings",
+          "type": "dynamic-text",
+          "model": "combined_compr_dedup",
+          "diskModel": "db_size",
+          "factorModel": "dedupe_saved"
+        },
+        {
+          "displayName": "CPU Overprovisioning",
+          "modelName": "vcpus_per_core",
+          "value": 1,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency dataFactor"
+        },
+        {
+          "displayName": "RAM Overprovisioning",
+          "modelName": "ram_opratio",
+          "value": 1,
+          "type": "number",
+          "events": {
+            "change": "WORKLOAD_FIELD_CHANGED"
+          },
+          "className": "vdiResiliency dataFactor"
+        }
+      ]
+    },
+     {
+      "name": "Backup Target",
+      "title": "VDI Infrastructure VMs",
+      "fields": [ 
+        {
+          "className": "msg-content",
+          "model": "msg_cont", 
+          "type": "backup_target"        
+        }   
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "hyperflex",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "1.5.3",
+    "angular-animate": "1.5.3",
+    "angular-ui-router": "~0.2.15",
+    "ngstorage": "^0.3.10",
+    "bootstrap": "3.3.4",
+    "angular-bootstrap": "~2.2.0",
+    "components-font-awesome": "^4.7.0",
+    "angular-resource": "1.5.3",
+    "chart.js": "~2.4.0",
+    "angular-chart.js": "~1.0.3",
+    "angular-svg-round-progressbar": "~0.4.8",
+    "bootstrap-slider": "*",
+    "seiyria-bootstrap-slider": "~9.4.1",
+    "ng-scrollbars": "~0.0.11",
+    "angular-sanitize": "1.5.3",
+    "bowser": "^1.6.1",
+    "nkovacs-bootstrap-datetimepicker": "^5.0.4",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {},
+  "appPath": "app",
+  "moduleName": "hyperflex"
+}

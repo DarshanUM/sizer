@@ -1,0 +1,30 @@
+<div class="col-lg-12 vdiInfra">
+	<div class="Citrix">
+		<table class="table epic_table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Total Users Supported (%)</th>
+					<th>Number of Clusters</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="row in field.fields">
+					<td>{{row.displayName}}</td>
+					<td ng-repeat="col in row.column">
+						<input type="{{col.type}}" ng-model="workload['datacentres'][$parent.$index][col.modelName]" class="form-control" ng-change="epicDCvalidation(col,row)" name="" />
+						<p class="error-div help-block" ng-if="col.outOfRangeError">
+							Allowed values are from {{col.min}} To {{col.max}}
+						</p>
+					</td>
+				</tr>
+				<!-- <tr>
+			 			<td>Datacenter 2</td>
+			 			<td><input type="number" class="form-control" name=""/></td>
+			 			<td><input type="number" class="form-control" name=""/></td>
+			 		</tr> -->
+
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,137 @@
+<span class="pull-right">
+      <a href="javascript:void(0)" class="plusBtn" data-toggle="modal" ng-click="addWorkload()" ng-class="{'noResultIndex': totalWorkloads.length === 0 && infoPageFlag}"> + </a>
+    </span>
+    <div class="begin_arrow_position" ng-if="totalWorkloads.length === 0 && infoPageFlag">
+      <div><img src="images/guide-arrow.png" /></div>
+      <p>Please add a workload to begin sizing</p>
+    </div>
+<div class="scenario_box_container">
+  <div class="scenario_box_title brd_btn workloadTitle_Shadow">
+    <span>Workloads</span>
+    
+  </div>
+  <div class="clear workloadOuter_Container" ng-scrollbars ng-style="{height:workloadContainerHeight}" ng-if="totalWorkloads.length > 0">
+    <dl class="workloadDetails" ng-repeat="workload in totalWorkloads track by $index" ng-class="{activeWorkload:workload.wl_name==selectedWorkload.wl_name || (workload.wl_name.indexOf(selectedWorkload.primary_wl_name) !== -1 || ((selectedWorkload.vdi_directory || selectedWorkload.rdsh_directory) && workload.wl_name.indexOf(selectedWorkload.wl_name + '_HOME') !== -1)), focusPanel:quickEditData[workload.wl_name].showQuickEdit, 'activeNode':(root.currentView == 'CLUSTER_VIEW' && clusterDisplayName && clusterDisplayName===workload._uiPrimaryCluster._uiDisplayName ),'disable_class':((workload.wl_type === 'VDI' || workload.wl_type === 'RDSH') && workload.hasOwnProperty('primary_wl_name'))}" uib-tooltip="{{(workload.wl_type === 'VDI' || workload.wl_type === 'RDSH') && workload.hasOwnProperty('primary_wl_name')? 'Home Directory': ''}}"
+    >
+    <div class="disable_data" ng-click="selectWorkload(workload)" style="overflow: hidden; cursor: pointer; height: 105px;">
+        <!--  <dt> Workload {{$index+1}}
+        ng-mouseover="deleteAction = true" ng-mouseleave="deleteAction = false" 
+        </dt> -->
+        <dd>
+          <div class="clear">
+            <p class="margin_bottom5">
+              <span class="workload_name"> {{workload.wl_name}} </span>
+
+              <span class="pull-right" ng-if="(workload.wl_type!=='RAW' && workload.wl_type!=='RAW_FILE' && workload.wl_type!=='EXCHANGE' && workload.wl_type!=='VDI_INFRA' && workload.wl_type!=='EPIC' && workload.wl_type !== 'VEEAM' && workload.wl_type !== 'SPLUNK' && workload.wl_type!=='AWR_FILE')">
+                <input type="number" ng-focus="enableQuickEdit($event, workload, quickEditData[workload.wl_name] )" class="editNumber"
+                  ng-model="quickEditData[workload.wl_name].value" required ng-change="onQuickEditInputChanged(quickEditData[workload.wl_name])"
+                  ng-if="!(workload.wl_type === 'VDI' && workload.hasOwnProperty('primary_wl_name')) && workload.wl_type!=='RDSH'" min="{{quickEditData[workload.wl_name].min}}"
+                  max="{{quickEditData[workload.wl_name].max}}">
+
+
+                <input type="number" class="editNumber" ng-if="(workload.wl_type === 'VDI' || workload.wl_type ==='RDSH') && workload.hasOwnProperty('primary_wl_name')"
+                  ng-model="workload.number_of_vms" disabled/>
+                <p ng-if="quickEditData[workload.wl_name].hasFloatError && !quickEditData[workload.wl_name].hasRangeError"
+                  class="fieldError">
+                  Invalid Input. Only integers are allowed </p>
+                <p ng-if="quickEditData[workload.wl_name].hasRangeError" class="fieldError">
+                  Allowed values are from {{quickEditData[workload.wl_name].min}} To
+                  {{quickEditData[workload.wl_name].max}} </p>
+              </span>
+            </p>
+            <div class="clr workloadName margin_top_10">
+
+              <span ng-if="!((workload.wl_type === 'VDI' || workload.wl_type === 'RDSH') && workload.hasOwnProperty('primary_wl_name'))"> {{ (workload.wl_type === 'ROBO' ? 'Edge' : (workload.wl_type==='VDI_INFRA'? 'VDI Infrastructure' :
+                workload.wl_type)) }} </span>
+              <span ng-if="workload.wl_type==='VDI_INFRA'">
+                {{workload.infra_type==='citrix' ? " Citrix" : "Horizon" }}
+              </span>
+
+              <span ng-if="workload.wl_type!=='RAW' && workload.wl_type!=='RAW_FILE' && workload.wl_type!=='EXCHANGE' && workload.wl_type!=='VDI_INFRA' && workload.wl_type!=='EPIC' && workload.wl_type !== 'VEEAM' && workload.wl_type!=='CONTAINER' && workload.wl_type!=='AIML' && workload.wl_type!=='AWR_FILE'">
+                {{(workload.wl_type === 'VDI' || workload.wl_type ==='RDSH') && workload.hasOwnProperty('primary_wl_name')? workload.profile + ' VM':
+                (workload.profile_type + (workload.wl_type==='VSI' ? " VM" : "")) }}
+              </span>
+
+              <span ng-if="workload.wl_type==='CONTAINER'">
+                {{workload.container_type}} Container
+              </span>
+
+              <span ng-if="workload.wl_type==='VDI' && !workload.hasOwnProperty('primary_wl_name')">
+                {{workload.provisioning_type==="Pooled Desktops" ? "Pooled" : "Persistent"}}
+              </span>
+              <span ng-if="workload.wl_type==='VDI' && !workload.hasOwnProperty('primary_wl_name')">
+                {{workload.os_type==="win_7" ? "Windows 7" : "Windows 10"}}
+              </span>
+              <span ng-if="workload.wl_type==='VDI' && workload.gpu_users "> GPU </span>
+              <span ng-if="workload.wl_type==='DB'"> {{workload.db_type}} </span>
+              <span ng-if="workload.wl_type==='ORACLE'"> {{workload.db_type}} </span>
+              <span ng-if="workload.wl_type==='RDSH' && !workload.hasOwnProperty('primary_wl_name')"> {{workload.vms_per_host}} VMs per host | {{workload.users_per_host}} Users per host</span>
+
+              <span ng-if=" workload._uiSecondayCluster && workload.replication_amt && (workload.wl_type==='ORACLE' || workload.wl_type==='DB' || workload.wl_type==='VSI')">
+                {{workload.replication_amt}}% Replicated</span>
+
+
+            </div>
+            <p class="margin_top15">
+              <div class="cluster" ng-if="workload.wl_type!=='EPIC'">
+                {{
+                workload.cluster_type === 'stretch' ? (
+                workload._uiPrimaryCluster._uiDisplayName === viewObject._uiPairDisplayName ? viewObject._uiDisplayName :
+                workload._uiPrimaryCluster._uiDisplayName
+                ) :
+                (workload._uiPrimaryCluster.isPartOfReplicationPair ? 'Primary ' : '') +
+                workload._uiPrimaryCluster._uiDisplayName +
+                ( workload._uiPrimaryCluster.isPartOfReplicationPair ?
+                ( workload.remote ? " (Site B)" : " (Site A)" ) : ""
+                )
+                }}
+              </div>
+              <div class="cluster" ng-if="workload.wl_type ==='EPIC'">
+                Cluster {{workload.clusterList.length > 1? '[' : ''}} {{workload.clusterList[0][0]}}
+                {{workload.clusterList[0].length > 1? '- '+
+                workload.clusterList[0][workload.clusterList[0].length-1]:''}}
+                {{workload.clusterList.length > 1? ' , '+ workload.clusterList[1][0] : ''}}
+                {{workload.clusterList[1].length > 1? '- '+workload.clusterList[1][workload.clusterList[1].length-1]:''}}
+                {{workload.clusterList.length > 1? ']' : ''}}
+              </div>
+              <!-- <div ng-if="workload._uiSecondayCluster">
+                  DR {{
+                    workload._uiSecondayCluster._uiDisplayName + 
+                    ( workload._uiSecondayCluster.isPartOfReplicationPair ? 
+                      (  workload.remote ? " (Site A)" : " (Site B)"  ) : "" 
+                    ) 
+                  }} 
+                </div> -->
+
+              <span class="editDeleteIcon " ng-if="!((workload.wl_type === 'VDI' || workload.wl_type === 'RDSH') && workload.hasOwnProperty('primary_wl_name'))">
+                <!-- ng-show='deleteAction'-->
+                <img src="images/clone.png" class="cursor" title="Clone" ng-click="cloneWorkload(workload)" /> |
+                <img src="images/edit.png" class="cursor" title="Edit" ng-click="editWorkload(workload)" /> |
+                <img src="images/delete.png" class="cursor" title="Delete" ng-click="deleteWorkload(workload)" />
+              </span>
+            </p>
+
+          </div>
+
+        </dd>
+        <div class="pull-right saveAction" ng-if="quickEditData[workload.wl_name].showQuickEdit">
+          <ul>
+            <li>
+              <a href="javascript:void(0)" ng-click="quickEditCancel($event, workload, quickEditData[workload.wl_name])"
+                class="grayColor"><i class="fa fa-remove red_tick" aria-hidden="true"></i> Cancel</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" ng-disabled="quickEditData[workload.wl_name].hasFloatError || quickEditData[workload.wl_name].hasRangeError"
+                ng-click="quickEditSave($event, workload, quickEditData[workload.wl_name], $index)" class="grayColor"><i
+                  class="fa fa-check green_tick" aria-hidden="true"></i> Save</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </dl>
+  </div>
+</div>
+<div ng-if="totalWorkloads.length === 0" class="emptyMsg"> 
+    <img src="images/migration1.svg" />
+    <p> Add a workload using the + button on the top.</p>
+</div>

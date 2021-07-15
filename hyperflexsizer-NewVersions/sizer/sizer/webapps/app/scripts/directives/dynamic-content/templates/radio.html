@@ -1,0 +1,19 @@
+<div class="form-group" ng-hide="field.hidden">
+  <div class="col-lg-12 radioTooltip" >
+	  <div  >
+   		 <div class="col-md-3 padLeft0 margin_top10">{{field.displayName}}</div>
+   		 <div class="radioPositionType pull-left" uib-tooltip="{{field.readonly ? field.tooltip.readonly : field.tooltip.message}}"  tooltip-placement="right" >
+   		 <div  ng-repeat="option in field.options track by $index" ng-class="{'disabled': field.readonly}">
+   		 	<input type="radio" class="radio-custom" name="{{field.modelName}}"  
+			  		id="{{field.modelName + '_' + $index}}"
+			  		group="{{field.modelName}}"
+			  		ng-model="workload[field.modelName]" 
+			  		ng-value="'{{option.value}}'"
+			  	 	ng-change="onChange()"/> 
+   		  	<label class="col-md-3 textLeft radio-custom-label padLeft0"  for="{{field.modelName + '_' + $index}}"   >  
+			  	{{option.label}}
+			</label>
+		</div>
+	  </div>
+	</div> 
+  </div> 

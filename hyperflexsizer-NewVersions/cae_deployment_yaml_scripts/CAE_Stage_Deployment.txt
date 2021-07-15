@@ -1,0 +1,234 @@
+Hyperflex Sizer deployment to Cisco CAE.
+------------------------------------------
+
+Pre-requisites:
+          Build from release-10-stage branch is deployed to Maplelabs stage server (port 8008).
+          Build is sanity tested on MapleLabs stage server. If there are any database schema changes, these are verified and noted down.
+
+
+Deployment Steps to CAE stage server.
+	1. Build the Docker image.
+	2. Push the Docker image to Cisco repository.
+	3. Make database schema changes in mysql POD
+	4. Deploy the latest image to web server POD.
+	5. Sanity test the deployment.
+
+
+STEP 1: Build the Docker image
+This Docker image is built on VM (Oracle VirtualBox VM - Sizer_Ubuntu)
+Username/password: sizer/sp123
+
+	a. Make sure Maplelabs stage server is running with stable code
+	b. Remove the previous code/files from folder: /home/sizer/CAE_STAGE_DEPLOYMENT
+	c. Download the latest hyperflexsizer.tar.gz from Jenkins to /home/sizer/CAE_STAGE_DEPLOYMENT
+
+		LINK: http://10.11.0.248:9090/view/All/job/Build_Hyperflexsizer_release-10-stage/
+
+		$ pwd
+		/home/sizer/CAE_STAGE_DEPLOYMENT
+	 
+		$ ls
+		hyperflexsizer.tar.gz
+
+		#Now will untar the file
+		$ tar -xvf hyperflexsizer.tar.gz	
+
+		$ ls
+		hyperflexsizer.tar.gz  sizer
+
+		$ cd sizer
+		$ ls
+		apache_config  buildfiles  docker-entrypoint.sh  Dockerfile  python_test.py  requirements.txt  sizer
+
+		# Here make sure the build has proper Dockerfile for build by checking the diff with Stage_Dockerfile present in buildfiles directory. 
+		# Both the Dockerfile and Stage_Dockerfile should be same.
+
+		$ diff Dockerfile buildfiles/Stage_Dockerfile
+		$
+		
+
+	d. Build the hxsizer_stage docker image
+	
+	#To know the existing docker images 
+	$ sudo docker images
+	REPOSITORY                                    TAG                 IMAGE ID            CREATED             SIZE
+	containers.cisco.com/savramap/hxsizer_prod    latest              9ce4b588038c        5 days ago          844MB
+	containers.cisco.com/savramap/hxsizer_stage   latest              3fe27f9e4e37        5 days ago          844MB
+	ubuntu                                        14.04               c32fae490809        2 months ago        188MB
+	mysql                                         latest              6a834f03bd02        2 months ago        484MB
+	
+	#To Remove any dangling images, if any present
+	$sudo docker images -q --filter dangling=true | xargs docker rmi 
+
+	#Build the stage docker image
+	$ pwd
+	/home/sizer/CAE_STAGE_DEPLOYMENT/sizer
+
+	$ sudo docker build -t containers.cisco.com/savramap/hxsizer_stage .
+	Sending build context to Docker daemon  8.768MB
+	Step 1/35 : FROM ubuntu:14.04
+	 ---> c32fae490809
+	Step 2/35 : USER root
+	 ---> Using cache
+	 ---> 0116c8653b4b
+
+	THIS WILL TAKE COUPLE OF MINUTES TO BUILD THE IMAGE...
+
+	#Notice the latest image build with tag - latest
+	$ sudo docker images
+	REPOSITORY                                    TAG                 IMAGE ID            CREATED             SIZE
+	containers.cisco.com/savramap/hxsizer_stage   latest              0d427d1fd028        15 minutes ago      844MB
+	containers.cisco.com/savramap/hxsizer_prod    latest              9ce4b588038c        5 days ago          844MB
+	containers.cisco.com/savramap/hxsizer_stage   <none>              3fe27f9e4e37        5 days ago          844MB
+	ubuntu                                        14.04               c32fae490809        2 months ago        188MB
+	mysql                                         latest              6a834f03bd02        2 months ago        484MB
+
+	#To Test the image in local VM
+
+	# Remove stopped containers, if any
+	$ sudo docker ps -a
+	CONTAINER ID        IMAGE                                         COMMAND                  CREATED             STATUS                    PORTS               NAMES
+	77d38bf41dd7        containers.cisco.com/savramap/hxsizer_prod    "docker-entrypoint.s…"   5 days ago          Exited (137) 5 days ago                       zealous_keldysh
+	b3f2df919591        containers.cisco.com/savramap/hxsizer_stage   "docker-entrypoint.s…"   5 days ago          Exited (137) 5 days ago                       lucid_mclean
+
+
+	$ sudo docker ps -aq --no-trunc -f status=exited | xargs docker rm
+	
+	$ sudo docker run containers.cisco.com/savramap/hxsizer_stage
+	 * Restarting web server apache2
+	   ...done.
+
+	# In new terminal Login to docker container to check the latest modified file chages/known fix.
+	$ sudo docker ps -a
+	CONTAINER ID        IMAGE                                         COMMAND                  CREATED             STATUS              PORTS               NAMES
+	6bb9383c550b        containers.cisco.com/savramap/hxsizer_stage   "docker-entrypoint.s…"   13 seconds ago      Up 12 seconds       8080/tcp            festive_bhaskara
+
+	# The code is present in /sizer folder in docker container to check the changes. [Note here 6bb9 is container ID] 
+	$ sudo docker exec -it 6bb9 bash
+	root@6bb9383c550b:/# 
+	root@6bb9383c550b:/# ls
+	bin  boot  dev  docker-entrypoint.sh  etc  home  lib  lib64  media  mnt  opt  proc  python_test.py  requirements.txt  root  run  sbin  sizer  srv  sys  tmp  usr  var
+	root@6bb9383c550b:/#
+	root@6bb9383c550b:/# exit
+	
+  	#Stop the running container & go back to previous terminal.
+	$ sudo docker stop 6bb9
+
+
+STEP 2: Push the Docker image to Cisco repository.
+
+	a. To push the image login to containers.cisco.com console. [At present only mwang3 (Michael) and savramap (Savitha) user id's have access to repository]
+
+	# Make sure you are connected to Cisco VPN to access the Cisco repository.
+
+	$ sudo docker login -u="savramap" -p="ABL/4aWrdN3E4FVaHn/KHmsrEcLweAKT5nGrExOPX9i772tlpJUYsXMZ8m70ba4T" containers.cisco.com
+	Login Succeeded
+
+	# Push the hxsizer_stage image to repository
+	$ sudo docker push containers.cisco.com/savramap/hxsizer_stage:latest
+
+	#THIS WILL TAKE COUPLE OF MINUTES TO PUSH THE IMAGE
+
+	LOGIN to https://containers.cisco.com/ using mwang3 or savramap credentials to check the updated image
+
+	[ Username/Password: savramap/Benz123$ ]
+
+	Go to hxsizer_stage repository -> Tags -> LAST MODIFIED [Will be showing recent time right after update]
+	
+	
+STEP 3: Make database schema changes in mysql POD (If any)
+	
+	There are two ways to access the mysql database, use any whichever convenient:
+		1. Login to Openshift Containter using Cluster url.
+		2. Login to CAE environment using OC Tool.  -> Recommended
+
+	1. Login to Openshift Containter using RTP Cluster URL (Non-Prod)
+		https://cae-np-rtp.cisco.com
+	
+		Use mwang3 or savramap credentials to login.
+
+		My Projects -> hxsizerstage-stg-ext-rtp -> Applications -> Pods
+
+		This will be showing two pods: 1-Apache Web Server Pod, 2-Mysql Pod
+
+		Click on -> mysqldbstg -> Terminal
+
+		To Access database:
+			sh-4.2$> mysql -hsizerstgdb -uadminX1WERfE -p39Xn7h-mayJF sizerstg
+
+		DO THE REQUIRED DATABASE SCHEMA CHANGES. EXIT DB.
+
+	2. Login to CAE environment using OC Tool.
+
+		# OC tool is at /home/sizer/OC_TOOL  
+		# or can be downloaded from -- https://wiki.cisco.com/display/CAEUSER/Download+oc+client
+
+		$ ./oc login https://cae-np-rtp.cisco.com
+		Authentication required for https://cae-np-rtp.cisco.com:443 (openshift)
+		Username: savramap
+		Password: Benz123$
+		Login successful.
+
+		You have one project on this server: "hxsizerstage-stg-ext-rtp"
+
+		Using project "hxsizerstage-stg-ext-rtp".
+
+		$ ./oc project hxsizerstage-stg-ext-rtp
+
+		# To get list of PODS
+
+		$ ./oc get pod
+		NAME                                       READY     STATUS    RESTARTS   AGE
+		hxsizerstage-stg-ext-rtp-c4f59864f-qdfs9   1/1       Running   0          5d
+		mysqldbstg                                 1/1       Running   1          10d
+
+        # Keep the database changes ready in single file. ex: mod_version.sql
+        # Copy the file to mysql pod using oc command
+
+        $ ./oc cp mod_version.sql mysqldbstg:/opt/app-root/src/.
+
+		# To access Mysql POD, this will open up the terminal.
+		$ ./oc rsh mysqldbstg
+
+		To Access database:
+			sh-4.2$> mysql -hsizerstgdb -uadminX1WERfE -p39Xn7h-mayJF sizerstg
+
+		# Always take the database dump before modification:
+			sh-4.2$> mysqldump -hsizerstgdb -uadminX1WERfE -p39Xn7h-mayJF sizerstg > stagedb_23_Sep_2019.sql
+
+        To Modify database:
+			sh-4.2$> mysql -hsizerstgdb -uadminX1WERfE -p39Xn7h-mayJF sizerstg < mod_version.sql
+
+		DO THE REQUIRED DATABASE SCHEMA CHANGES. EXIT from DB and Pod.
+
+STEP 4: Deploy the latest image to web server POD.
+
+	Two simple steps to update the latest uploaded docker image to container.
+
+	1. Login to https://containers.cisco.com/
+	2. Repository -> hxsizer_stage -> Tags -> Fetch Tag (Small arrow download icon)
+	3. Image format: Docker pull (by digest) -> Copy the command as below from @sha:
+		
+		@sha256:4392c9d2a913aaebaefaeb84c207b6e7fc41e2771a65683904311653c31fc54d
+
+	4. Login to Openshift container - https://cae-np-rtp.cisco.com
+	5. My Projects -> hxsizerstage-stg-ext-rtp -> Applications -> Deployments -> hxsizerstage-stg-ext-rtp
+	6. Actions (button on right-hand side) -> Edit Yaml -> Replace string value with copied HASH string like below:
+	
+		image: >-
+            containers.cisco.com/savramap/hxsizer_stage@sha256:4392c9d2a913aaebaefaeb84c207b6e7fc41e2771a65683904311653c31fc54d
+
+	7. Save
+
+	THIS WILL TAKE COUPLE OF MINUTES TO CREATE CONTAINER AND TERMINATE THE OLDER CONTAINER. 
+
+	8. Go to Applications -> Pods to check, both web server and mysql pod should be up and running. 
+
+
+STEP 5: Sanity test the deployment.
+
+	Access the Stage server with below link, and do sanity testing.
+
+	https://hyperflexsizer-stage.cloudapps.cisco.com/
+
+

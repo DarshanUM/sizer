@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ctrl.modalTitle}}</h4>
+</div>
+<div class="modal-body">
+	<form name="cloneWorkloadForm" ng-submit="ctrl.cloneWorkload(ctrl.workload)" novalidate 	mpl-form-validation>
+		<div class="form-group text-left padding-15">
+      <label>Workload Name</label>
+	    <input type="text" class="form-control" name="workloadName" placeholder="Workload Name" required ng-model="ctrl.workload.wl_name">
+	    <p class="help-block">Enter valid workload name</p>
+    </div>
+    
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+  		<input type="submit" value="Clone" class="btn btn-primary">
+    </div>
+
+  </form>
+</div>
+<!-- <div class="modal-footer">
+  <button type="button" class="btn btn-default width80" ng-click="$dismiss()">Cancel</button>
+  <input type="submit" value="Clone" class="btn btn-primary" />
+</div>
+ -->

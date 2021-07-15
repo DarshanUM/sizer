@@ -1,0 +1,26 @@
+<table class="table brd" style="margin-top: 30px;  width: 98%;">
+	<thead>
+		<tr>
+			<th rowspan="2"></th>
+			<th colspan="3" style="text-align:center;">VM Type</th>
+		</tr>
+		<tr>
+			<th class="wid20">Indexer</th>
+			<th class="wid20">Admin</th>
+			<th class="wid20">Search</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="col in [0,1,2,3]">
+			<th style="border-right: 1px solid #ddd">{{field.rows[0].columns[col].displayName}}</th>
+			<td ng-repeat="row in [0,1,2]">
+				<input style="width: 66px; border: 1px solid #ddd; font-size: 12px; text-align: left; padding-left: 8px;" type="{{field.rows[row].columns[col].type}}"
+				 ng-model="workload[field.rows[row].value][field.rows[row].columns[col].modelName]" ng-readonly="field.rows[row].columns[col].readonly"
+				 ng-change="splunkValidation(field.rows[row].columns[col], field.rows[row])" />
+				<p class="splunk_help-block font10" ng-if="field.rows[row].columns[col].outOfRangeError">
+					Allowed values are from {{field.rows[row].columns[col].min}} To {{field.rows[row].columns[col].max}}
+				</p>
+			</td>
+		</tr>
+	</tbody>
+</table>

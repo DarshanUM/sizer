@@ -1,0 +1,9 @@
+<div class="form-group">
+  <div class="col-lg-6 checkbox_position"  
+   		 uib-tooltip="{{field.readonly ? field.tooltip.readonly : field.tooltip.message}}" tooltip-placement="right" >
+	  <label ng-readonly="field.readonly" >
+   		 {{field.displayName}} &nbsp;&nbsp;&nbsp;<input type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="workload[field.modelName]" ng-change="onChange()" 
+   		 ng-disabled="field.readonly" ng-readonly="field.readonly" />
+	  </label>
+  </div>
+</div>

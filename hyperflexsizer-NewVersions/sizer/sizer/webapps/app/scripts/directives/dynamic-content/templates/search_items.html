@@ -1,0 +1,9 @@
+<div class="form-group" ng-hide="field.hidden" ng-class="{'has-error':field.hasError}">
+  <label class="col-lg-6"> {{field.displayName}} </label>
+  <div class="col-lg-6">
+  	<search-box on-select="onSearchSelectionChanged(selectedOption)" value="workload[field.modelName]" options="field.options"></search-box> 
+  	<p class="help-block" ng-if="field.hasError">
+ 		{{field.errorMessage}}
+ 	</p>
+  </div>   
+</div>

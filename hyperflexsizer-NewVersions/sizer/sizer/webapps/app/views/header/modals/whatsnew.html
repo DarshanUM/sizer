@@ -1,0 +1,462 @@
+<style>
+@font-face {
+    font-family:OpenSans-Regular;
+    src: url(../sizer/sizer/webapps/app/fonts/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family:OpenSans-Bold;
+    src: url(../sizer/sizer/webapps/app/fonts/OpenSans-Bold.ttf);
+}
+body{
+  margin: 0px;
+  padding: 0px;
+}
+
+.notesText ul{
+    padding: 0px 0px 0px 10px;
+    margin: 0px;
+    padding-bottom: 8px;
+    margin-left: -2px;
+    color: #7b7b7b;
+
+}
+.notesText ul li{
+  list-style-type: none;
+  padding: 0px 3px;
+  }
+.notesContainer
+{
+  width:100%;
+  margin-left: auto;
+  margin-top:0;
+  padding:0px 10px 10px 10px;
+  margin-right: auto;
+  background: #fff;
+}
+.notesText::-webkit-scrollbar{
+    width: 8px;
+}
+.notesText::-webkit-scrollbar-thumb{
+    background-color: #ccc !important;
+    border-radius: 0px !important;
+}
+.notesText:-webkit-scrollbar-thumb{
+    background:#c3c3c3 !important;
+}
+.notesText
+{
+    font-size: 13px;
+    font-family: OpenSans-Regular;
+    letter-spacing: 0.5px;
+    line-height: 20px;
+    margin: 10px 0px 0px 0px;
+    padding: 10px;
+}
+.page-titleBox
+{
+  width:100%;
+  line-height:40px;
+  background-color:#fff;
+}
+.page-titleText
+{
+  color:#58585b;
+  font-size:16px;
+  border-bottom: 1px solid #ddd;
+  text-align:left;
+  padding-left: 6px;
+  font-family:OpenSans-Bold;;
+}
+.releaseVersion{
+  color:#58585b;
+   font-size:14px;
+   font-family:OpenSans-Bold;
+   padding: 15px 0px 5px 0px;
+}
+.releaseVersionBig{
+  color: #333;
+  font-size: 26px;
+}
+.releaseHeader{
+  color:#336666;
+  padding: 12px 0px;
+  display: none;
+  font-size:24px;
+}
+.overflow{
+  overflow-y: auto;
+}
+</style>
+
+<div class="modal-header">
+  <h4 class="modal-title">What's New
+    <span class="pull-right cursor" ng-click="$dismiss()"><i class="fa fa-remove" aria-hidden="true"></i></span>
+  </h4>
+</div>
+<div class="modal-body">
+<div class="notesContainer">
+<div class="page-titleBox">
+  <div class="page-titleText">What's New in HyperFlex Sizer</div>
+</div>
+<div class="notesText overflow" id="release-notes" style="height: 500px" >
+
+<div class="releaseHeader"><strong>Changes</strong></div>
+              <div class="releaseVersion" >Release 9.7</div>
+<div>
+  <ul>
+      <li> - Support for CTO only option in Customize window</li>
+      <li> - Increase in VM limit for DR validation from 200 to 1500<li>
+  </ul>
+</div>
+            <div class="releaseVersion" >Release 9.6</div>
+<div>
+  <ul>
+      <li> - Support for Hardware acceleration for Stretch configurations</li>
+      <li> - Support for All NVMe node to maximum cluster size of 32<li>
+  </ul>
+</div>
+          <div class="releaseVersion" >Release 9.5</div>
+<div>
+  <ul>
+      <li> - Support for HyperFlex Boost Mode</li>
+      <li> - Support for Stretch Cluster with All-NVMe<li>
+      <li> - Sizer VM Summary integration</li>
+  </ul>
+</div>
+          <div class="releaseVersion" >Release 9.4</div>
+<div>
+  <ul>
+      <li> - Decreased the number of node options in fixed config</li>
+      <li> - Support to download report in Japanese language<li>
+      <li> - GPU refactor for supported frame buffer</li>
+  </ul>
+</div>
+        <div class="releaseVersion" >Release 9.3</div>
+<div>
+  <ul>
+      <li> - Support for Artificial Intelligence/Machine Learning workload<li>
+      <li> - Support for fuzzy matching of CPU SKUs for HX Profiler file uploads<li>
+      <li> - Added HyperFlex Sizer Japanese Getting Started Guide</li>
+  </ul>
+</div>
+      <div class="releaseVersion" >Release 9.2</div>
+<div>
+  <ul>
+      <li> - Merged Fixed config sizing and Sizing calculator<li>
+      <li> - Support for Cascade Lake CPUs<li>
+  </ul>
+</div>
+      <div class="releaseVersion" >Release 9.1</div>
+<div>
+  <ul>
+      <li> - Filter options for Cache disks<li>
+      <li> - Lazy loading of homepage<li>
+      <li> - Recent Scenarios section in homepage<li>
+      <li> - A new style customise window for easier setting changes<li>
+  </ul>
+</div>
+      <div class="releaseVersion" >Release 9.0</div>
+<div>
+  <ul>
+      <li> - Support for Container workload<li>
+      <li> - Support for Single Cluster<li>
+      <li> - HX Edge 2 node and 4 node configurations<li>
+      <li> - HX Network Topology changes<li>
+      <li> - NVMe support for Hyper-V<li>
+      <li> - Support for All NVMe and 12 TB LFF<li>
+      <li> - BOM changes to include default parts</li>
+      <li> - Removal of M4 nodes and reset CPU reference to Intel Platinum 8164</li>
+  </ul>
+</div>
+    <div class="releaseVersion" >Release 8.4</div>
+<div>
+  <ul>
+      <li> - Support for RDSH workload<li>
+      <li> - Support for Fixed Sizing to Optimal Sizing<li>
+      <li> - Deprecated M4 nodes<li>
+      <li> - Support to Auto-Archive older Scenarios<li>
+      <li> - Support to Multi-select delete Scenarios<li>
+  </ul>
+</div>
+    <div class="releaseVersion" >Release 8.3</div>
+<div>
+  <ul>
+      <li> - Support for Bulk Database Input workload<li>
+      <li> - Sizing report now consists of Rack layout and Wiring Images<li>
+  </ul>
+</div>
+  <div class="releaseVersion" >Release 8.2</div>
+<div>
+  <ul>
+      <li> - Hyperflex Acceleration Engine Support<li>
+      <li> - VDI Home Directory Support<li>
+      <li> - Long name tooltips for front page<li>
+      <li> - Favorite and Archive Tabs<li>
+  </ul>
+</div>
+  <div class="releaseVersion" >Release 8.1</div>
+<div>
+  <ul>
+      <li> - Support for Splunk workload<li>
+      <li> - Support for Veeam workload<li>
+      <li> - VDI Infrastructure VM IOPS reservations have been added<li>
+      <li> - Workload groupings added in the UI<li>
+      <li> - Adjustments to the Sizing Report<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 8.0</div>
+<div>
+  <ul>
+      <li> - Support for VDI Infrastructure workload<li>
+      <li> - Support for Epic Hyperspace workload<li>
+      <li> - Support for LFF nodes in Stretch Clusters<li>
+      <li> - Support for Compute nodes in Stretch Clusters<li>
+      <li> - Support for LFF nodes in Hyper-V environment with a cluster maximum of 8<li>
+      <li> - Increase of cluster maximums to 16 for LFF nodes in ESXi environment<li>
+      <li> - Support for V100 GPUs in M5 HX240<li>
+      <li> - Support for Dual Switch, 10G/40G modular LANs in Edge clusters<li>
+      <li> - Added CPU specs into Fixed Config selection<li>
+      <li> - Added additional filters to the compute nodes, to allow selection between bundle and CTO compute nodes<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 7.7</div>
+<div>
+  <ul>
+      <li> - Support for 6144, 6146 and 5117 M5 CPUs<li>
+      <li> - Price updated for M4 CTO nodes<li>
+      <li> - Description by example for Compression and Deduplication savings<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 7.6</div>
+<div>
+  <ul>
+      <li> - New Landing Page for HX Profiler and HX Bench<li>
+      <li> - CPU Customization for manual Compute and Capacity workload inputs<li>
+      <li> - RAM Overprovisioning in Compute and Capacity workloads<li>
+      <li> - Cores and Clock Speed added to the CPUs in Customize Tab<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 7.5</div>
+<div>
+  <ul>
+      <li> - Enabled 1:2 HX to Compute clusters<li>
+      <li> - Added GiB and TiB to input fields and report<li>
+      <li> - Added Total Usable Capacity in Sizing Calculator<li>
+      <li> - Removed Warning in UI for switching from ESX to Hyper-V<li>
+      <li> - Scenario Sharing changes, for performance and security reasons<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 7.4</div>
+<div>
+  <ul>
+      <li> - Filter options for Processor clock speed<li>
+      <li> - Toggle switch for users to select software license term<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 7.3</div>
+<div>
+  <ul>
+      <li> - Support for Hyper-V<li>
+      <li> - Cluster Selection for Compute and Capacity workloads<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 7.2</div>
+<div>
+  <ul>
+      <li> - Support for 1.8 TB drives in M5 ROBO nodes<li>
+      <li> - PID changes for M5 ROBO nodes<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 7.1</div>
+<div>
+  <ul>
+      <li> - Deprecation of M4 Bundle Nodes<li>
+      <li> - Addition of M5 Bundle Compute Nodes<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 7.0</div>
+<div>
+  <ul>
+      <li> - Support for Stretch Cluster<li>
+      <li> - Raw workload option for user to enter GHz or Cores, and set CPU Overprovisioning<li>
+      <li> - Increase of cluster maximums to 32/32 for HX and Compute<li>
+      <li> - Addition of HX LFF Node<li>
+      <li> - Addition of Coldstream cache drive<li>
+      <li> - Update of Win 10 Knowledge Worker and Power User default RAM to 4 GB per Desktop<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 6.2</div>
+<div>
+  <ul>
+      <li> - Fixed Config Sizing<li>
+      <li> - Addition of Bundle nodes in Sizing Calculator<li>
+      <li> - Download Sizing Calculator report<li>
+      <li> - Support for 1.8 TB drives for M5 Bundle Nodes<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 6.1</div>
+<div>
+  <ul>
+      <li> - Filter Options for GPUs<li>
+      <li> - Support for 6144, 6146 M5 CPUs<li>
+      <li> - Sizing Calculations in Sizing Report<li>
+      <li> - M10 GPU 1 TB RAM Limitation<li>
+      <li> - Support for List Pricing Discounts<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 6.0</div>
+<div>
+  <ul>
+      <li> - Preamble updated in Sizing Report<li>
+      <li> - Changed Edge and SED Node Labeling for better visibility<li>
+      <li> - Adjusted general CPU and RAM Thresholds<li>
+      <li> - Sizing Optimization<li>
+      <li> - Option for users to choose units (GB vs TB) for certain fields<li>
+      <li> - Addition of Compute nodes in Sizing Calculator<li>
+      <li> - Max number of VDI desktops per cluster in Sizing Report<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 5.53</div>
+<div>
+  <ul>
+      <li> - Small fix in the Reverse Sizer for the 1.8 TB Drives<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 5.52</div>
+<div>
+  <ul>
+      <li> - Data fix adding CPU cores to the descriptions of M5 CPUs<li>
+      <li> - Allow HX Tools download to all users<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 5.51</div>
+<div>
+  <ul>
+      <li> - Support for 1.8 TB drives for Hybrid Nodes<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 5.5</div>
+<div>
+  <ul>
+      <li> - Support for Microsoft Exchange Server workload<li>
+      <li> - Sizing Calculator<li>
+      <li> - Support for M5 Bundle Nodes<li>
+      <li> - Filter options for Capacity disk drives<li>
+      <li> - Support for 960GB & 3.8 TB SED drives for M4 CTO nodes<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 5.4</div>
+<div>
+  <ul>
+      <li> - Support for M5 CTO nodes<li>
+      <li> - Option to download HyperFlex Bench OVA<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 5.3</div>
+<div>
+  <ul>
+      <li> - Video RAM option in VDI workload<li>
+      <li> - Growth (%) rate for Compute and Capacity Sizer<li>
+      <li> - User selected FI in BOM report<li>
+      <li> - Support for new cache / WriteLog devices for Hybrid and All Flash nodes<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 5.2</div>
+<div>
+  <ul>
+      <li> - Support for Replication<li>
+      <li> - Support for uploading RVTools output for Compute & Capacity Sizer<li>
+      <li> - Options to include/exclude Software Cost, NVME & Modular LAN<li>
+      <li> - Email notification when a scenario is shared<li>
+      <li> - User defined FI # in BOM report<li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 5.1</div>
+<div>
+  <ul>
+      <li> - Support 19 CPU models</li>
+      <li> - Dual GPU for SED Configs</li>
+      <li> - With HXAF240 model – Remove the 10 drive limitation and Use all 23 drive slots</li>
+      <li> - M10 GPUs for HX240</li>
+      <li> - NVMe and 40G support</li>
+  </ul>
+</div>
+<div class="releaseVersion" >Release 5.0</div>
+<div>
+  <ul>
+      <li> - Support for Oracle workload</li>
+      <li> - Sharing of scenarios between users</li>
+      <li> - Addition of Concurrency % for VDI workload</li>
+  </ul>
+</div>
+<div class="releaseVersion">Release 4.6</div>
+<div>
+    <ul>
+      <li> - Support for upload of HX Workload Profiler output</li>
+      <li> - UI changes to match HXConnect</li>
+  </ul>
+</div>
+<div class="releaseVersion">Release 4.5</div>
+<div>
+    <ul>
+      <li> - Support for SED</li>
+      <li> - Support for normalization across CPU families</li>
+      <li> - Improvements in Sizing algorithm performance</li>
+  </ul>
+</div>
+<div class="releaseVersion">Release 4.1</div>
+<div>
+    <ul>
+      <li> - Memory matching on both Bundle and CTO Hyper-Converged & Compute Nodes</li>
+      <li> - Display if a result is Bundle or CTO option</li>
+      <li> - Online help document and training videos</li>
+  </ul>
+</div>
+<div class="releaseVersion">Release 4.0</div>
+<div>
+    <ul>
+      <li> - Support for HxEdge (ROBO) workload</li>
+      <li> - Increase in cluster size for All-Flash nodes from 16 to 32</li>
+  </ul>
+</div>
+<div class="releaseVersion">Release 3.0</div>
+<div>
+    <ul>
+      <li> - Support All Flash nodes</li>
+      <li> - All flash and low cost result option</li>
+      <li> - Support CTO nodes</li>
+      <li> - Download BOM Excel</li>
+  </ul>
+</div>
+<div class="releaseVersion">Release 2.0</div>
+<div>
+    <ul>
+      <li> - Database workload</li>
+      <li> - Compute and Capacity workload</li>
+      <li> - Clone Scenario</li>
+      <li> - Fine tune the default values of VDI workload attributes</li>
+      <li> - Download PPT report</li>
+  </ul>
+</div>
+<div class="releaseVersion">Release 1.0</div>
+<div>
+    <ul>
+      <li> - VDI  workload</li>
+      <li> - VSI  workload</li>
+  </ul>
+</div>
+</div>
+</div>
+  </div>
+  <!-- This is to set the content to full height of the parent view -->
+  <script type="text/javascript">
+    $(function(){
+      setTimeout(function(){
+        var container = $("#release-notes");
+        var ht = $(window).height() - container.offset().top - 180;
+        container.height( ht );
+      }, 100)
+    })
+  </script>
+
+</div>

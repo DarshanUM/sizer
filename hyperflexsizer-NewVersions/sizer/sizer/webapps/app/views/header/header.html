@@ -1,0 +1,160 @@
+<header ng-controller="NavbarController as navCtrl">
+  <a id="hidden-download-trigger" class="ng-hide" href="#" download> TEST </a>
+  <a id="hidden-profiler_download-trigger" class="ng-hide" href="#" download> TEST </a>
+  <a id="hidden-hxbench_download-trigger" class="ng-hide" href="#" download> TEST </a>
+  <div class="headContainer navbar">
+    <span><a  ng-click="navCtrl.navigateRefresh()"><img src="images/logo.png"/></a> <span class="logo_title">HyperFlex Sizer</span></span>
+    <span class="versionTitle">{{navCtrl.sizerVersion + " / HXDP " + navCtrl.hxVersion}}</span>
+    
+    <div class="pull-right main-menu">  
+      <!-- <a class="menu-item pull-left gettingStart" ng-if="navCtrl.shouldEnableRecommendedSettingsTab" href="#/settings">
+         <span class="icon-elem">HxBench Recommended Settings</span>
+      </a>  -->
+     
+      <!-- <a class="menu-item pull-left gettingStart" href="#/reverse_sizing">
+         <span class="icon-elem">Sizing Calculator</span>
+      </a>  --> 
+     <a href="javascript:void(0)" class="download_list menu-item pull-left hx_class dropdown ">
+        <label  data-toggle="dropdown" class="cursor-pointer" >HX Tools&nbsp;&nbsp; 
+      <i class="fa fa-angle-down" aria-hidden="true"></i>
+    </label>
+      <ul class="dropdown-menu menu_items">
+            <li>
+              <span > <!--ng-click="navCtrl.downloadHXBench($event)"   (or)  ng-click="navCtrl.ovaPopup()"-->
+                 <span class="icon-elem" ng-click="navCtrl.hxBench()">HX Bench</span>
+              </span>  
+            </li>
+            <li>  
+              <span ><!--ng-click="navCtrl.downloadProfiler($event)"-->
+                <span class="icon-elem" ng-click="navCtrl.hxprofiler()">HX Profiler</span>
+              </span>
+            </li> 
+        </ul>
+     </a>
+ 
+
+   <!--  <a class="menu-item pull-left gettingStart" href="#" ng-click="navCtrl.downloadHXBench($event)">
+         <span class="icon-elem">Download HX Bench</span>
+      </a>  
+      <a class="menu-item pull-left gettingStart" href="#" ng-click="navCtrl.downloadProfiler($event)">
+         <span class="icon-elem">Download Profiler</span>
+      </a> -->
+     <!--  <a ng-href="{{navCtrl.helpLink|trustUrl}}" target="_blank" class="menu-item pull-left gettingStart">
+         <span class="icon-elem" >Getting started</span>
+      </a>
+
+      <a href="javascript:void(0)" ng-click="navCtrl.whatsnewPopup()" class="menu-item pull-left gettingStart">
+         <span class="icon-elem" >What's New?</span>
+      </a>
+ -->
+
+
+
+      <!-- <verion-indicator ng-if="root.currentState=='scenariodetails' && !root.isCurrentScenarioUptodate"  tooltip-position="bottom"></verion-indicator> -->
+      
+      <a class="cursor-default menu-item pull-left" href="mailto:{{navCtrl.feedbackEmail}}?subject=Hyperflex Sizer {{navCtrl.sizerVersion}} / HXDP {{navCtrl.hxVersion}} Feedback&body=Hi,%0A%09 Below are the list of feedback/issues faced while using Hyperflex sizer." uib-tooltip="Send Feedback" tooltip-placement="bottom"><span class="icon-container"><span class="icon-elem feedback-icon" ></span></span> </a>
+
+         <div class="download_list menu-item pull-left dropdown">
+          <label  style="padding: 0px 10px" data-toggle="dropdown" class="cursor-pointer" > <i class="fa fa-reorder" aria-hidden="true"></i>   
+          </label>
+          <ul class="dropdown-menu getiting_start_items">
+            <li>
+                 <a class="menu-item pull-left gettingStart" href="#/iops_table" ng-if="navCtrl.iopsAccess">
+                   <span class="icon-elem">IOPS Table</span>
+                </a>  
+            </li>
+              <li> 
+                <a ng-href="{{navCtrl.helpLink|trustUrl}}" target="_blank" class="menu-item pull-left gettingStart">
+                 <span class="icon-elem" >Getting started</span>
+              </a>
+              </li>
+              <li>  
+                   <a href="javascript:void(0)" ng-click="navCtrl.whatsnewPopup()" class="menu-item pull-left gettingStart">
+                  <span class="icon-elem" >What's New?</span>
+              </a>
+
+              </li> 
+              <li>
+                <a href="javascript:void(0)" class="menu-item pull-left gettingStart">
+                    <span class="icon-elem">Language : EN</span>
+                </a>
+              </li>
+          </ul>
+     </div>
+      <!-- <a class="cursor-pointer menu-item" href="javascript:void(0);" 
+          uib-tooltip="Download Sizing Report" tooltip-placement="bottom"
+           ng-if="root.currentState=='scenariodetails'" ng-click="navCtrl.downloadReport($event)">
+        <span class="icon-container"><span class="icon-elem download-icon" ></span></span> 
+      </a>
+      <a class="cursor-pointer menu-item" href="javascript:void(0);" 
+          uib-tooltip="Download BOM" tooltip-placement="bottom"
+           ng-if="root.currentState=='scenariodetails'" ng-click="navCtrl.downloadBOM($event)">
+        <span class="icon-container"><span class="icon-elem download-icon" ></span></span> 
+      </a> 
+ -->      
+<!--  <div class="dropdown pull-left download">
+    <a class="cursor-pointer menu-item  dropdown-toggle" href="javascript:void(0);"   id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-if="root.currentState=='scenariodetails'">
+     <span class="icon-container"><span class="icon-elem download-icon" ></span></span> 
+      </a>
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <div class="dropdown_arrow"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
+          <li>
+              <a class="cursor-pointer menu-item" href="javascript:void(0);"  
+           ng-click="navCtrl.downloadReport($event)">Download Sizing Report
+          </a>
+          </li>
+          <li>
+            <a class="cursor-pointer menu-item" href="javascript:void(0);"  
+            ng-click="navCtrl.downloadBOM($event)">Download BOM  </a> 
+          </li> 
+        </ul>
+   
+</div> -->
+ 
+
+<!--  <a href="javascript:void(0);" class="cursor-default menu-item"><span class="icon-container"><span class="icon-elem user-icon" ></span></span><span class="welcomeMsg"></span> </a> -->
+ <!-- {{ navCtrl.userInfo.name }}-->
+   <!--    <a href="javascript:void(0);" ng-click="navCtrl.gotoHomePage()" class="menu-item">
+        <span class="home-icon"></span>
+      </a> -->
+    
+      <!-- <div class="menu-item dropdown">
+
+        <span class="menu-icon dropdown-toggle cursor-pointer" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></span> 
+        <ul class="dropdown-menu dropdown-menu-right sub-menu" aria-labelledby="dropdownMenu1">
+        <div class="headerMenuArrow"><i class=""></i></div>
+          <li class="sub-menu-item" ng-if="root.currentState=='scenariodetails'" ng-click="navCtrl.downloadReport($event)">
+            <a href="javascript:void(0);"> <span class="icon-container"><span class="icon-elem download-icon" ></span></span> Download Report</a>
+          </li>
+          <li class="sub-menu-item">
+            <a href="mailto:{{navCtrl.feedbackEmail}}?subject=Hyperflex Sizer Feedback&body=Hi,%0A%09 Below are the list of feedback/issues faced while using Hyperflex sizer."><span class="icon-container"><span class="icon-elem feedback-icon" ></span></span> Send Feedback</a>
+          </li>
+          <li class="sub-menu-item">
+            <a href="javascript:void(0);" class="cursor-default"><span class="icon-container"><span class="icon-elem user-icon" ></span></span> {{ navCtrl.userInfo.name }} </a>
+          </li>
+        </ul>
+      </div> 
+      <a href="#/scenario" class="menu-item">
+        <span class="home-icon"></span>
+      </a>
+      -->
+
+        
+      <!-- 
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Dropdown
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div> -->
+    </div>
+  </div>
+</header>

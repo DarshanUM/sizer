@@ -1,0 +1,58 @@
+<div class="form-group  clear padTop5 popupTooltip" ng-class="{'has-error':(!isFileSelected || !isFileHasPrased || isFileHasPrasingError || isInvalidFileFormat || isBeyondMaxSize)}">
+    <label class="col-lg-6">&nbsp;</label>
+    <div class="col-lg-6 selectItm">
+        <form>
+        <div class="">
+            <div class="select-style wid65" style="display: none;">
+                <select class="form-control file_select" name="filetypeInput" 
+                    ng-model="filetypeInput" style="height: 28px !important;"
+                    ng-options='option.key as option.value for option in fileOptions'>
+                </select>
+            </div>
+            <p class="text-danger no-padding" style="display: block;">
+              NOTE: Download Exchange workload modeling spreadsheet from   
+              <a href=" https://aka.ms/Exchange2019Calc" target="_blank">  https://aka.ms/Exchange2019Calc </a>. 
+              Refer to the Cisco HyperFlex Exchange <a href="./videos/ExchangeCalculatorUserGuide.pdf" target="_blank">help documentation</a> to ensure the Microsoft Exchange Sizing Calculator is filled out properly before uploading. Upload the completed spreadsheet.
+            </p>
+            </div>
+        </form>             
+    </div>
+
+
+    <label class="col-lg-6" style="margin-top: 15px;"> Workload Input</label>
+    <div class="col-lg-6 " style="margin-top: 15px;">
+        <!-- <button class="btn btn-primary ng-hide" ng-disabled="!isFileSelected || disableUPpload" ng-click="uploadFile()">
+            Process File
+        </button> -->
+        <input class="uploadTextfield" type="file" id="file" name='file' 
+            accept="{{fileAccept}}" 
+            ng-click="onClick($event)" 
+            onchange="angular.element(this).scope().onFileSelectionChanged(this)" />
+    </div>
+    <p class="help-block" ng-if="!isFileSelected"> 
+        Please select an XLSM file to process workload inputs 
+    </p>
+    <!-- <p class="help-block" ng-if="isFileSelected && !isFileHasPrased"> 
+        Please process the file to get the workload inputs 
+    </p> -->
+    <p class="help-block" ng-if="isFileSelected && isFileHasPrasingError">
+         <span >
+            <span ng-if="hasWarning"> <img src="images/alert.png" /> <b>Warning </b> </span>
+            <span ng-if="hasError"> <img src="images/file-error.png"/> <b>Error :</b> </span>
+        </span>
+        <span ng-hide="hasWarning">Invalid XLSM file</span> 
+    <p class="help-block errorDetails" popover-placement="right" popover-trigger="'click'" uib-popover-template="'scripts/directives/file-upload/file-upload-tooltip.html'" 
+    ng-if="!isInvalidFileFormat && (hasError || hasWarning)">
+        Click here for Details <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+    </p>
+    </p>
+    <p class="help-block" ng-if="isFileSelected && isInvalidFileFormat">  
+     Invalid file. Please select an XLSM file     
+    </p>
+    <p class="help-block" ng-if="isFileSelected && isBeyondMaxSize" style="left: 31%;"> 
+        File size should be less than 5 MB 
+    </p>
+    
+
+   
+</div>

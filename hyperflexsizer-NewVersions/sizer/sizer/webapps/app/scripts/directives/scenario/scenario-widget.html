@@ -1,0 +1,147 @@
+<div class="col-lg-3 col-md-6 col-sm-12" ng-class="{'activePanel': model.selected}">
+    <div class="box_container">
+        <div class="scenario_box_title actionPopup">
+            <span class="scenario-name" title="{{model.name}}" >
+                <label>
+                    <input type="checkbox" name="" ng-model="model.selected" ng-click="onClick({scenario:model})" ng-if="'SHARED' !== currentOwnership"/>{{model.name}}
+                </label>
+            </span>
+            <Span class="fixedConfig" ng-if="model.sizing_type==='fixed'"
+                uib-tooltip="Fixed Config" tooltip-placement="bottom"><img src="images/fixed-config.png"/></Span>
+            <div class="pull-right">
+                <div class="dropdown">
+                    <i class="fa fa-ellipsis-v dotted_v"  data-toggle="dropdown"></i>  
+                 
+                  <ul class="dropdown-menu">
+                    <li  ng-click="onShare({scenario:model})" ng-if="currentOwnership==='ACTIVE' || currentOwnership==='FAVORITE'">
+                            <a href="javascript:void(0)">
+                                <i title="Share"> <img src="images/share.png"/> 
+                                </i>      
+                                Share                
+                            </a> 
+                    </li>
+                    <li  ng-click="onClone({scenario:model})">
+                        <a href="javascript:void(0)">
+                            <i title="Clone Scenario">
+                                <img src="images/clone.png" title="Clone" />
+                            </i> 
+                            Clone
+                        </a>
+                    </li>
+                    <li ng-click="onEdit({scenario:model})">
+                        <a href="javascript:void(0)">
+                             <i title="Edit Scenario" >
+                                  <img src="images/edit.png" title="Edit" />
+                            </i> 
+                            Edit
+                        </a>
+                   </li>
+                      <li  ng-click="onDelete({scenario:model})" ng-if="currentOwnership==='ACTIVE' || currentOwnership==='FAVORITE'">
+                            <a href="javascript:void(0)">
+                                <i title="Delete Scenario">
+                                <img src="images/delete.png" title="Delete" />
+                               </i>
+                               Delete
+                            </a>
+                        </li>
+                         <li ng-click="onArchive({flag:true,scenario:model})" ng-if="(currentOwnership==='ACTIVE' || currentOwnership==='FAVORITE') && 'archive' !== model.scen_label">
+                            <a href="javascript:void(0)">
+                                <i title="Archive Scenario">
+                                    <img src="images/archive -icon.png" title="Archive"/>
+                               </i>
+                               Archive
+                            </a>
+                        </li>
+                        <li ng-click="onArchive({flag:false,scenario:model})" ng-if="currentOwnership==='ARCHIVE' && 'archive' === model.scen_label">
+                            <a href="javascript:void(0)">
+                                <i title="Archive Scenario">
+                                    <img src="images/un-archive -icon.png" title="Archive"/>
+                               </i>
+                               Un-archive
+                            </a>
+                        </li>
+                  </ul>
+                </div>
+
+             <!--  <i title="Share" ng-click="onShare({scenario:model})" ng-if="currentOwnership==='OWNED'">
+                  <img src="images/share.png"/>
+              </i>            
+              <i title="Clone Scenario" ng-click="onClone({scenario:model})">
+                <img src="images/clone.png" title="Clone" />
+               </i> 
+              <i title="Edit Scenario" ng-click="onEdit({scenario:model})">
+               <img src="images/edit.png" title="Edit" />
+               </i> 
+              <i title="Delete Scenario" ng-click="onDelete({scenario:model})" ng-if="currentOwnership==='OWNED'">
+               	<img src="images/delete.png" title="Delete" />
+               </i>-->
+            </div> 
+        </div>
+        <div class="clear height290">
+            <dl class="scenario_list">
+                <dd>
+                    <label>{{model.wl_count || 0}}</label>
+                    <div>Workloads</div>
+                </dd>
+                <dd>
+                    <label>{{model.cluster_count || 0}}</label>
+                    <div>Clusters</div>
+                </dd>
+                <dd>
+                    <label>{{model.node_count || 0}}</label>
+                    <div>Nodes</div>
+                </dd>
+            </dl>
+            <ul class="scenario_pro">
+                <li>
+                    <div>Account</div> <div title="{{model.settings_json[0].account}}" class="accountName"> : &nbsp;&nbsp;{{model.settings_json[0].account}}</div>
+                </li>
+                <li>
+                    <div>Version </div> 
+                    <div class="versionDetails"> 
+                   <span class="pull-left" ng-class="{'ellipsis_active': !model.isUptodate}" title="model.settings_json[0].sizer_version">:  &nbsp;&nbsp;{{model.settings_json[0].sizer_version || "NA"}} / 
+                    {{model.settings_json[0].hx_version ? ("HXDP "+ model.settings_json[0].hx_version) : "NA"}}</span>
+
+                    <verion-indicator ng-if="!model.isUptodate" class="pull-left"></verion-indicator>
+
+                    <resize-scenario-widget scenario-id="{{model.id}}" 
+                        loader-id="scenario-resize-request" ng-if="!model.isUptodate" class="pull-left">
+                    </resize-scenario-widget>
+                    </div>
+                    <!-- <span class="pull-right" ng-if="!model.isUptodate">
+                        <img src="images/info.png" 
+                            tooltip-placement="top" 
+                            uib-tooltip="{{tooltipText}}" />
+                    </span> --> 
+                </li>
+                <li ng-if="currentOwnership==='ACTIVE' || currentOwnership==='FAVORITE'">
+                    <div>Share Settings </div> 
+                    <div> : &nbsp;&nbsp;{{ model.isshared ? "" : "Not Shared"  }} 
+                    <img src="images/share-in.png" ng-show="model.isshared" title="Shared" /></div>                    
+                </li>
+                <li ng-if="currentOwnership==='SHARED'">
+                    <div>Owner </div> 
+                    <div> : &nbsp;&nbsp;{{ model.username }} 
+                </li>
+
+            </ul>
+           <!--  <div class="clear col-md-12" ng-click="onView({id:model.id})" style="padding: 18px;">
+               
+            </div> -->
+
+            <dl class="feed_list">
+                <dd ng-if="'SHARED' !== currentOwnership && 'ARCHIVE' !== currentOwnership">
+                       <input type="image" src="images/heart.png" name="" ng-click="onHeartClick({flag:true,scenario:model})" ng-hide="'fav' === model.scen_label">
+                       <input type="image" src="images/heart_active.png" ng-click="onHeartClick({flag:false,scenario:model})" name=""  ng-show="'fav' === model.scen_label">
+
+                </dd>
+
+                <dd>
+                          <span ng-click="onView({id:model.id})">
+                                  <a class="viewSource"><img src="images/view-icon.png" class="fa-eye" /> VIEW SCENARIO</a>
+                          </span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>

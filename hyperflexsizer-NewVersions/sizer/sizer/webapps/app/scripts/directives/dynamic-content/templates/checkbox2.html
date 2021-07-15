@@ -1,0 +1,10 @@
+<div class="form-group chkBox brd-top" ng-hide="field.hidden" >
+  <div class="col-lg-6 textRight padding-right0" ng-readonly="field.readonly">{{field.displayName}}</div>
+  <div class="col-lg-6" >  
+  	<span class="padRight10" uib-tooltip-html="field.readonly ? field.tooltip.readonly : field.tooltip.message" tooltip-placement="right">
+  	<label class="textLeft" style="top: 0px;"  ng-readonly="field.readonly" >
+   		 <input ng-disabled="field.readonly" ng-readonly="field.readonly" type="checkbox" ng-true-value="true" ng-false-value="false" ng-model="workload[field.modelName]" ng-change="onChange()"  /> 
+	  </label>
+	</span>
+	 </div>
+</div>

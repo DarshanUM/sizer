@@ -1,0 +1,147 @@
+Hyperflex Sizer Analytics Cron Job deployment to Cisco CAE.
+------------------------------------------
+This will be carried out when there is any change in export_analytics.py to update the Sizer Analytics.
+
+Pre-requisites:
+     Build from release-10 branch is deployed to Maplelabs Production server (port 8080).
+
+Steps:
+	1. Build the Analytics Docker image.
+	2. Push the Analytics Docker image to Cisco repository.
+
+More Info:
+    1. Cron job setup [Not required as its already been setup]
+
+
+STEP 1: Build the Docker image
+This Docker image is built on VM (Oracle VirtualBox VM - Sizer_Ubuntu)
+Username/password: sizer/sp123
+
+Note: Make sure the Cisco Production Server is already updated with the latest release-10 build.
+
+	a. Remove the previous code/files from folder: /home/sizer/CAE_ANALYTICS_DEPLOYMENT
+	b. Once the release-10 build is ready,
+	    Download the latest hyperflexsizer.tar.gz from Jenkins to /home/sizer/CAE_ANALYTICS_DEPLOYMENT
+
+		LINK: http://10.11.0.248:9090/view/All/job/Build_Hyperflexsizer_release-10/
+
+		$ pwd
+		/home/sizer/CAE_ANALYTICS_DEPLOYMENT
+	 
+		$ ls
+		hyperflexsizer.tar.gz
+
+		#Now will untar the file
+		$ tar -xvf hyperflexsizer.tar.gz	
+
+		$ ls
+		hyperflexsizer.tar.gz  sizer
+
+		$ cd sizer
+		$ ls
+		apache_config  buildfiles  docker-entrypoint.sh  Dockerfile  python_test.py  requirements.txt  sizer
+
+        # COPY THE CRON JOB DOCKERFILE PRESENT IN GIT REPOSITORY
+        $ cp ~/RepoSizer/hyperflexsizer/cae_deployment_yaml_scripts/Analytics/Cronjob/Dockerfile .
+
+
+	d. Build the "containers.cisco.com/savramap/analytics_cronjob" docker image
+
+	    $ pwd
+	    $ /home/sizer/CAE_ANALYTICS_DEPLOYMENT/sizer
+    	$ sudo docker build -t containers.cisco.com/savramap/analytics_cronjob .
+            Sending build context to Docker daemon  8.768MB
+            Step 1/35 : FROM ubuntu:14.04
+             ---> c32fae490809
+            Step 2/35 : USER root
+             ---> Using cache
+             ---> 0116c8653b4b
+
+	    THIS WILL TAKE COUPLE OF MINUTES TO BUILD THE IMAGE...
+
+	#Notice the latest image build with tag - latest
+	$ sudo docker images
+	REPOSITORY                                              TAG                 IMAGE ID            CREATED             SIZE
+	containers.cisco.com/savramap/analytics_cronjob         latest              f3cb1c4720fd        25 minutes ago        823MB
+	containers.cisco.com/savramap/hxsizer_prod              latest              e6933ac3dbc7        12 days ago         868MB
+    containers.cisco.com/savramap/hxsizer_stage             latest              16afa1544fca        2 months ago        868MB
+    containers.cisco.com/savramap/analytics_grafana         latest              6d4e74d579b9        9 months ago        240MB
+    containers.cisco.com/savramap/analytics_elasticsearch   latest              c949a78508c0        9 months ago        707MB
+
+
+STEP 2: Push the Docker image to Cisco repository.
+
+	a. To push the image login to containers.cisco.com console.
+	[At present only mwang3 (Michael) and savramap (Savitha) user id's have access to repository]
+
+	# Make sure you are connected to Cisco VPN to access the Cisco repository.
+
+	$ sudo docker login -u="savramap" -p="ABL/4aWrdN3E4FVaHn/KHmsrEcLweAKT5nGrExOPX9i772tlpJUYsXMZ8m70ba4T" containers.cisco.com
+	Login Succeeded
+
+	# Push the analytics_cronjob image to repository
+	$ sudo docker push containers.cisco.com/savramap/analytics_cronjob:latest
+
+	#THIS WILL TAKE COUPLE OF MINUTES TO PUSH THE IMAGE
+
+	LOGIN to https://containers.cisco.com/ using mwang3 or savramap credentials to check the updated image
+
+	[ Username/Password: savramap/Benz123$ ]
+
+	Go to analytics_cronjob repository -> Tags -> LAST MODIFIED [Will be showing recent time right after update]
+	
+STEP 3: The Cron job which is set to run every sunday, picks up the updated analytics_cronjob image and runs.
+
+To Login to Sizer Analytics:
+
+	Access the Analytics server with below link:
+
+	https://hyperflexsizer-analytics.cisco.com/
+
+    Credentials: admin/admin
+
+
+===========================================================================================
+
+Cron job setup [Not required as its already been setup]:
+
+Login to CAE environment using OC Tool.
+
+    # OC tool is at /home/sizer/OC_TOOL
+    # or can be downloaded from -- https://wiki.cisco.com/display/CAEUSER/Download+oc+client
+
+    $ ./oc login https://cae-prd-alln.cisco.com
+    Authentication required for https://cae-prd-alln.cisco.com:443 (openshift)
+    Username: savramap
+    Password:
+    Login successful.
+
+    You have one project on this server: "hyperflexsizer-prod-ext-alln"
+
+    Using project "hyperflexsizer-prod-ext-alln".
+
+    $ ./oc project hyperflexsizer-prod-ext-alln
+
+    # To get list of PODS
+    $ ./oc get pod
+    NAME                                            READY     STATUS      RESTARTS   AGE
+    analytics-elasticsearch-787ff49657-bt45w        1/1       Running     0          19d
+    analytics-grafana-6768fdc998-xccnx              1/1       Running     0          19d
+    hyperflexsizer-prod-ext-alln-586d4b5d55-mxzr8   1/1       Running     0          13d
+    mysqldbprod                                     1/1       Running     0          18d
+    sizercronjob-1574586000-tgw9l                   0/1       Completed   0          5d
+
+    # The Analytics pods belong to elasticsearch and Grafana.
+    # The sizercronjob- is the cron job which runs every sunday.
+
+    # To get list of Cronjobs
+    $ oct get cronjobs
+    NAME           SCHEDULE    SUSPEND   ACTIVE    LAST SCHEDULE   AGE
+    sizercronjob   0 9 * * 0   False     0         5d              140d
+
+    # To create a Cronjob
+    # The analytics_cronjob.yaml file consists of Schedule details about the job.
+    $ ~/OC_TOOL/oc create -f analytics_cronjob.yaml
+
+    # To delete a Cronjob
+    $ ~/OC_TOOL/oc delete -f analytics_cronjob.yaml

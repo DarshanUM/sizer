@@ -1,0 +1,135 @@
+ <div class="thresholdSec"> 
+              <div class="col-lg-3">
+                <div class="filterContainer">
+              <div class="innerFont thresholdCls">
+                <span>Threshold <label class="infoIcon" style="margin-top: -4px;" uib-tooltip="The threshold setting controls the target utilization of clusters being sized."
+                  tooltip-placement="bottom" tooltip-container="body" tooltip-append-to-body="true" tooltip-class="thresholdTip"></label></span> 
+                
+              </div> 
+              <div class="clear modal-open">
+                  <div class="pad_right10 pull-left">
+                    <input id="radio-1" class="radio-custom" name="threshold-radio-group" type="radio"  ng-model="scenario.aggregate.settings.threshold" ng-value="0" ng-change="onThresholdChanged()">
+                    <label for="radio-1" class="radio-custom-label">Conservative</label>
+                  </div>
+                  <div class="pad_right10 pull-left">
+                    <input id="radio-2" class="radio-custom" name="threshold-radio-group" type="radio" ng-model="scenario.aggregate.settings.threshold" ng-value="1" ng-change="onThresholdChanged()">
+                    <label for="radio-2" class="radio-custom-label">Standard</label>
+                  </div>
+                  <div class="pad_right10 pull-left">
+                    <input id="radio-3" class="radio-custom" name="threshold-radio-group" type="radio"  ng-model="scenario.aggregate.settings.threshold" ng-value="2" ng-change="onThresholdChanged()">
+                    <label for="radio-3" class="radio-custom-label">Aggressive</label>
+                  </div> 
+              </div>
+             
+              </div>
+              </div>
+              <div class="col-lg-3 padding-left0" ng-show="scenario.sizing_type==='optimal'"> 
+              <div class="filterContainer">
+                <div class="innerFont">Node Choice</div> 
+                   <div class="clear modal-open filter-options-category">
+                       
+                        <div class=" pull-left">
+                          <input id="radio-5" class="radio-custom" name="heterogenous-radio-group" type="radio" ng-model="scenario.aggregate.settings.heterogenous" ng-value="false" ng-change="onHeterogenousChanged()">
+                          <label for="radio-5" class="radio-custom-label pad_right10">HyperFlex  only</label>
+                        </div>  
+                        <div class="pull-left">
+                          <input id="radio-4" class="radio-custom" name="heterogenous-radio-group" type="radio" ng-model="scenario.aggregate.settings.heterogenous" ng-value="true" ng-change="onHeterogenousChanged()">
+                          <label for="radio-4" class="radio-custom-label">HyperFlex & Compute </label>
+                        </div>
+                  </div>
+                 <!--  <div class="col-lg-4 col-md-4"> Node Choice </div>
+                  <div class="col-lg-8 col-md-8">
+                      <div class="select-style">
+                          <select class='form-control' 
+                            ng-model="scenario.aggregate.settings.heterogenous" 
+                            ng-options='option.key as option.value for option in nodeChoiceOtions' 
+                            ng-change="onHeterogenousChanged()">
+                          </select>
+                      </div>
+                  </div> -->
+              </div>
+              </div>
+
+
+              <div class="col-lg-2 padding-left0" ng-show="{{FEATURES.isHypervisorEnabled}}">  
+                 <div class="filterContainer">
+                   <div class="innerFont">  Hypervisor </div>
+                 <div class="clear modal-open">
+                       
+                        <div class="pull-left" ng-click="onHypervisorOptionClicked($event, 'esxi')">
+                          <input class="radio-custom" name="hypervisor-radio-group-main"
+                            type="radio" ng-value="'esxi'" 
+                            ng-checked="scenario.aggregate.settings.hypervisor==='esxi'" />
+                          <label class="radio-custom-label">ESXi</label>
+                        </div> 
+                        <div class="pull-left padLeft5" 
+                          ng-click="isHyperVSelectionAllowed && onHypervisorOptionClicked($event, 'hyperv')" ng-class="{'disabled':!isHyperVSelectionAllowed}" 
+                          uib-tooltip="{{isHyperVSelectionAllowed ? '' : tooltips.hypervDisabled}}"  tooltip-placement="bottom">
+                          <input class="radio-custom" name="hypervisor-radio-group-main" 
+                            type="radio"  ng-value="'hyperv'" ng-disabled="!isHyperVSelectionAllowed"
+                            ng-checked="scenario.aggregate.settings.hypervisor==='hyperv'" />
+                          <label class="hyperv radio-custom-label">Hyper-V</label>
+                        </div> 
+                  </div> 
+                  </div> 
+              </div>
+                <!-- <div class="filterContainer">ng-show="scenario.sizing_type==='optimal'"
+                  <div class="innerFont"> Disk Option </div> 
+                    <div class="clear modal-open">
+                      <div class="pull-left">
+                        <input id="disk-option-radio-5" class="radio-custom" name="disk-option-group" type="radio" ng-model="scenario.aggregate.settings.disk_option" ng-value="'ALL'" ng-change="onDiskOptionChanged()">
+                        <label for="disk-option-radio-5" class="radio-custom-label pad_right10">All</label>
+                      </div> 
+                      <div class="pull-left">
+                        <input id="disk-option-radio-6" class="radio-custom" name="disk-option-group" type="radio" ng-model="scenario.aggregate.settings.disk_option" ng-value="'SED'" ng-change="onDiskOptionChanged()">
+                        <label for="disk-option-radio-6" class="radio-custom-label">SED Only</label>
+                      </div> 
+
+                       <div class="">
+                        <input id="disk-option-radio-7" class="radio-custom" name="disk-option-group" type="radio" ng-model="scenario.aggregate.settings.disk_option" ng-value="'NVME'" ng-change="onDiskOptionChanged()">
+                        <label for="disk-option-radio-7" class="radio-custom-label">NVMe</label>
+                      </div> 
+
+                    </div>
+                  </div>  -->
+                
+                 <div class="col-lg-1 padding-left0" style=" margin-left: 5px; position: absolute; right: 20px;"> 
+                <div class="filterContainer pull-right">
+                  <div class="clear">
+                    <span class="custom_btn  customizeBtn_position" ng-show="scenario.sizing_type==='optimal'" ng-click="showFilterNodesPopup()">
+                      Customize
+                    </span> 
+
+                    <span class="custom_btn  customizeBtn_position" ng-show="scenario.sizing_type!=='optimal'" ng-click="showFixedPopup()">
+                      Customize
+                    </span> 
+                  </div>
+                </div>  
+              </div>
+              </div>
+ 
+             
+           <!--    <div class="col-lg-2">
+                <div class="txtCenter">
+                 <div class="active-primary wid100" ng-hide="moreSelection" ng-click="showFilterNodesPopup()">
+                   Customize
+                </div>  
+                <div class="clear btn btn-default wid100" ng-hide="selectionCancel" ng-click="onClosingCustomResultsPopup()">
+                   Close
+                </div>  
+                </div>
+              </div> -->
+              
+            <div  ng-if="scenario.aggregate.error" class="errer_panel_padding">
+              <div class="error_panel">
+                <div class="pull-left" >
+                <img src="images/error.png" style="position: relative;top: -3px;" /> 
+                </div>
+                <div class="pull-left errorpopup_msg" ng-bind-html="scenario.aggregate.error.message"></div> 
+              </div>
+            </div>
+              
+
+            </div>
+
+          

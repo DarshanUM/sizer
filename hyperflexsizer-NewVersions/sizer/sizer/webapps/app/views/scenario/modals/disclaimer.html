@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h4 class="modal-title">Disclaimer </h4>
+</div>
+<div class="modal-body" style="height: auto">
+  <form name="disclaimerForm" novalidate mpl-form-validation>
+    <div class="padding-15">
+      <p>
+        The Hyperflex Sizer tool is designed to provide general guidance in evaluating the optimum solution for using
+        selected Cisco products, services and/or solutions. The tool is not intended to provide business, legal,
+        accounting, tax or professional advice. The tool is not intended as a substitute for User's own judgment or for
+        that of User's own professional advisors. The tool may not contain complete, accurate or timely data. (For
+        example, reference tables and other information embedded in the tool may require occasional updating, and may
+        not be up-to-date.) Use of the tool may not be error-free. While Cisco, its licensors or suppliers have
+        attempted to include useful data, assumptions and formulae in the tool, Cisco, its licensors or suppliers are
+        not responsible for any results from using or misusing the tool.
+      </p>
+
+      <p>
+        Use of the Tool is subject to our cisco.com Site terms at: <a target="_blank"
+          href="https://www.cisco.com/c/en/us/about/legal/terms-conditions.html">https://www.cisco.com/c/en/us/about/legal/terms-conditions.html.</a>
+        IN ADDITION, THE TOOL IS PROVIDED "AS IS," WITH NO WARRANTIES OF ANY KIND, INCLUDING BUT NOT LIMITED TO THE
+        WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT OR FITNESS FOR A PARTICULAR PURPOSE. ANY USE OF THE TOOL IS AT
+        THE USER’S SOLE RISK. DO NOT USE THE TOOL UNLESS YOU AGREE TO THESE TERMS AND CONDITIONS.
+      </p>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="$close({confirm: false})">Disagree</button>
+      <button type="submit" class="btn btn-primary" ng-click="$close({confirm: true})">Agree</button>
+    </div>
+  </form>
+</div>

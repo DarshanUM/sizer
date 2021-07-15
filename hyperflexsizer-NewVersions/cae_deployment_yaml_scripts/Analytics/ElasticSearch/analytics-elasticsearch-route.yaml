@@ -1,0 +1,19 @@
+---
+kind: "Route"
+apiVersion: "v1"
+metadata:
+  name: "analytics-elasticsearch-test"
+  labels:
+     component: "analytics-elasticsearch-test"
+  annotations: 
+    haproxy.router.openshift.io/timeout: 60s
+spec:
+   host: "hyperflexsizer-elasticsearch.cisco.com"
+   to:
+     kind: "Service"
+     name: "analytics-elasticsearch-svc"
+   port:
+     targetPort: "web"
+   tls:
+     insecureEdgeTerminationPolicy: Allow
+     termination: edge

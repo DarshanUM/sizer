@@ -1,0 +1,19 @@
+---
+kind: "Route"
+apiVersion: "v1"
+metadata:
+  name: "hxsizerstage-stg-ext-rtp-test"
+  labels:
+     component: "hxsizerstage-stg-ext-rtp-test"
+  annotations: 
+    haproxy.router.openshift.io/timeout: 60s
+spec:
+   host: "cae-hyperflexsizer-stage.cisco.com"
+   to:
+     kind: "Service"
+     name: "hxsizerstage-stg-ext-rtp-svc"
+   port:
+     targetPort: "web"
+   tls:
+     insecureEdgeTerminationPolicy: Allow
+     termination: edge

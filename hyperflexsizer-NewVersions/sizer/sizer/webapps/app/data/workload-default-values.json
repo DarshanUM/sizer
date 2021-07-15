@@ -1,0 +1,3745 @@
+{
+  "VDI": {
+    "TASK_WORKER": {
+      "POOLED_DESKTOPS": {
+        "WIN_7": {
+          "vcpus_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 325,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 20,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 6,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 0,
+            "min": 0,
+            "max": 30
+          }
+        },
+        "WIN_10": {
+          "vcpus_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 370,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 40,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 6,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 0,
+            "min": 0,
+            "max": 30
+          }
+        }
+      },
+      "PERSISTENT_DESKTOPS": {
+        "WIN_7": {
+          "vcpus_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 325,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 20,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 6,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 5,
+            "min": 0,
+            "max": 30
+          }
+        },
+        "WIN_10": {
+          "vcpus_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 370,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 40,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 6,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 5,
+            "min": 0,
+            "max": 30
+          }
+        }
+      }
+    },
+    "KNOWLEDGE_WORKER": {
+      "POOLED_DESKTOPS": {
+        "WIN_7": {
+          "vcpus_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 400,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 20,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 8,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 0,
+            "min": 0,
+            "max": 30
+          }
+        },
+        "WIN_10": {
+          "vcpus_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 500,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 4,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 40,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 8,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 0,
+            "min": 0,
+            "max": 30
+          }
+        }
+      },
+      "PERSISTENT_DESKTOPS": {
+        "WIN_7": {
+          "vcpus_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 400,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 20,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 8,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 5,
+            "min": 0,
+            "max": 30
+          }
+        },
+        "WIN_10": {
+          "vcpus_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 500,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 4,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 40,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 8,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 25,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 5,
+            "min": 0,
+            "max": 30
+          }
+        }
+      }
+    },
+    "POWER_USER": {
+      "POOLED_DESKTOPS": {
+        "WIN_7": {
+          "vcpus_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 400,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 20,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 10,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 0,
+            "min": 0,
+            "max": 30
+          }
+        },
+        "WIN_10": {
+          "vcpus_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 500,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 4,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 40,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 10,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 0,
+            "min": 0,
+            "max": 30
+          }
+        }
+      },
+      "PERSISTENT_DESKTOPS": {
+        "WIN_7": {
+          "vcpus_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 400,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 20,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 10,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 5,
+            "min": 0,
+            "max": 30
+          }
+        },
+        "WIN_10": {
+          "vcpus_per_desktop": {
+            "value": 2,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 500,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 4,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 40,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 10,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 25,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 5,
+            "min": 0,
+            "max": 30
+          }
+        }
+      }
+    },
+    "CUSTOM_USER": {
+      "POOLED_DESKTOPS": {
+        "WIN_7": {
+          "vcpus_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 400,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 20,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 6,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 0,
+            "min": 0,
+            "max": 30
+          }
+        },
+        "WIN_10": {
+          "vcpus_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 500,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 40,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 6,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 0,
+            "min": 0,
+            "max": 30
+          }
+        }
+      },
+      "PERSISTENT_DESKTOPS": {
+        "WIN_7": {
+          "vcpus_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 400,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 20,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 6,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 5,
+            "min": 0,
+            "max": 30
+          }
+        },
+        "WIN_10": {
+          "vcpus_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 32
+          },
+          "clock_per_desktop": {
+            "value": 500,
+            "min": 1,
+            "max": 4000
+          },
+          "ram_per_desktop": {
+            "value": 1,
+            "min": 1,
+            "max": 128
+          },
+          "gold_image_size_unit": {
+            "value": "GB"
+          },
+          "gold_image_size": {
+            "value": 40,
+            "min": 1,
+            "max": 200
+          },
+          "avg_iops_per_desktop": {
+            "value": 6,
+            "min": 1,
+            "max": 200
+          },
+          "working_set": {
+            "value": 10,
+            "min": 0,
+            "max": 20
+          },
+          "dedupe_factor": {
+            "value": 30,
+            "min": 0,
+            "max": 99
+          },
+          "compression_factor": {
+            "value": 10,
+            "min": 0,
+            "max": 99
+          },
+          "snapshots": {
+            "value": 5,
+            "min": 0,
+            "max": 30
+          }
+        }
+      }
+    }
+  },
+  "VDI_INFRA": {
+    "citrix": {
+      "broker": {
+        "vcpus_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 32,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 2,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "provisioning": {
+        "vcpus_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 12,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 200,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 0,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "license": {
+        "vcpus_per_vm": {
+          "value": 2,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 2,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 32,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 1,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "profile_manager": {
+        "vcpus_per_vm": {
+          "value": 2,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 200,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 0,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "storefront": {
+        "vcpus_per_vm": {
+          "value": 2,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 32,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 2,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "ad_serer": {
+        "vcpus_per_vm": {
+          "value": 2,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 32,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 2,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "sql_server": {
+        "vcpus_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 100,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 2,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "dedupe_factor": {
+        "value": 30,
+        "min": 0,
+        "max": 99
+      },
+      "compression_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 1,
+        "min": 1,
+        "max": 50
+      },
+      "ram_opratio": {
+        "value": 1,
+        "min": 1,
+        "max": 50
+      }
+    },
+    "horizon": {
+      "dedupe_factor": {
+        "value": 30,
+        "min": 0,
+        "max": 99
+      },
+      "compression_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 1,
+        "min": 1,
+        "max": 50
+      },
+      "ram_opratio": {
+        "value": 1,
+        "min": 1,
+        "max": 50
+      },
+      "connection": {
+        "vcpus_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 12,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 60,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 1,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "replica": {
+        "vcpus_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 12,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 60,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 1,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "composer": {
+        "vcpus_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 12,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 60,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 0,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "profile_manager": {
+        "vcpus_per_vm": {
+          "value": 2,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 200,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 0,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "ad_serer": {
+        "vcpus_per_vm": {
+          "value": 2,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 60,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 2,
+          "min": 0,
+          "max": 100
+        }
+      },
+      "sql_server": {
+        "vcpus_per_vm": {
+          "value": 4,
+          "min": 1,
+          "max": 32
+        },
+        "ram_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 256
+        },
+        "disk_per_vm": {
+          "value": 100,
+          "min": 0,
+          "max": 1000
+        },
+        "num_vms": {
+          "value": 2,
+          "min": 0,
+          "max": 100
+        }
+      }
+    }
+  },
+  "VSI": {
+    "SMALL": {
+      "vcpus_per_vm": {
+        "value": 2,
+        "min": 1,
+        "max": 16
+      },
+      "ram_per_vm": {
+        "value": 8,
+        "min": 1,
+        "max": 64
+      },
+      "avg_iops_per_vm": {
+        "value": 50,
+        "min": 1,
+        "max": 18000
+      },
+      "disk_per_vm_unit": {
+        "value": "GB"
+      },
+      "disk_per_vm": {
+        "value": 50,
+        "min": 0,
+        "max": 3000000
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "snapshots": {
+        "value": 5,
+        "min": 0,
+        "max": 30
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    },
+    "MEDIUM": {
+      "vcpus_per_vm": {
+        "value": 4,
+        "min": 1,
+        "max": 24
+      },
+      "ram_per_vm": {
+        "value": 16,
+        "min": 1,
+        "max": 96
+      },
+      "avg_iops_per_vm": {
+        "value": 100,
+        "min": 1,
+        "max": 18000
+      },
+      "disk_per_vm_unit": {
+        "value": "GB"
+      },
+      "disk_per_vm": {
+        "value": 200,
+        "min": 0,
+        "max": 3000000
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "snapshots": {
+        "value": 5,
+        "min": 0,
+        "max": 30
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    },
+    "LARGE": {
+      "vcpus_per_vm": {
+        "value": 8,
+        "min": 1,
+        "max": 32
+      },
+      "ram_per_vm": {
+        "value": 32,
+        "min": 1,
+        "max": 128
+      },
+      "avg_iops_per_vm": {
+        "value": 200,
+        "min": 1,
+        "max": 18000
+      },
+      "disk_per_vm_unit": {
+        "value": "GB"
+      },
+      "disk_per_vm": {
+        "value": 750,
+        "min": 0,
+        "max": 3000000
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "snapshots": {
+        "value": 5,
+        "min": 0,
+        "max": 30
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    },
+    "CUSTOM": {
+      "vcpus_per_vm": {
+        "value": 2,
+        "min": 1,
+        "max": 48
+      },
+      "ram_per_vm": {
+        "value": 8,
+        "min": 1,
+        "max": 256
+      },
+      "avg_iops_per_vm": {
+        "value": 50,
+        "min": 1,
+        "max": 18000
+      },
+      "disk_per_vm_unit": {
+        "value": "GB"
+      },
+      "disk_per_vm": {
+        "value": 50,
+        "min": 0,
+        "max": 3000000
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "snapshots": {
+        "value": 5,
+        "min": 0,
+        "max": 30
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    }
+  },
+  "RAW": {
+    "vcpus_per_core": {
+      "value": 1,
+      "min": 1,
+      "max": 8
+    },
+    "cpu_attribute": {
+      "value": "vcpus"
+    },
+    "cpu_clock": {
+      "value": 35,
+      "min": 1,
+      "max": 11000
+    },
+    "vcpus": {
+      "value": 2,
+      "min": 1,
+      "max": 5000
+    },
+    "ram_size": {
+      "value": 128,
+      "min": 1,
+      "max": 188416
+    },
+    "hdd_size": {
+      "value": 1000,
+      "min": 1,
+      "max": 3000000
+    },
+    "ssd_size": {
+      "value": 0,
+      "min": 0,
+      "max": 64000
+    },
+    "iops": {
+      "value": 0,
+      "min": 0,
+      "max": 500000
+    },
+    "dedupe_factor": {
+      "value": 0,
+      "min": 0,
+      "max": 99
+    },
+    "compression_factor": {
+      "value": 0,
+      "min": 0,
+      "max": 99
+    },
+    "ram_opratio": {
+      "value": 1,
+      "min": 1,
+      "max": 50
+    }
+  },
+  "EXCHANGE": {
+    "vcpus": {
+      "value": 16,
+      "min": 1,
+      "max": 5000
+    },
+    "ram_size": {
+      "value": 128,
+      "min": 1,
+      "max": 64000
+    },
+    "hdd_size": {
+      "value": 1000,
+      "min": 1,
+      "max": 1000000
+    },
+    "ssd_size": {
+      "value": 0,
+      "min": 0,
+      "max": 64000
+    },
+    "iops": {
+      "value": 0,
+      "min": 0,
+      "max": 500000
+    },
+    "dedupe_factor": {
+      "value": 15,
+      "min": 0,
+      "max": 99
+    },
+    "compression_factor": {
+      "value": 15,
+      "min": 0,
+      "max": 99
+    }
+  },
+  "DB": {
+    "OLAP": {
+      "SMALL": {
+        "block_size": {
+          "value": 512,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "num_db_instances": {
+          "value": 1,
+          "min": 1,
+          "max": 2000
+        },
+        "db_size": {
+          "value": 400,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 8,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 1000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 100,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 45,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 50,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "MEDIUM": {
+        "block_size": {
+          "value": 512,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 1000,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 4,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 16,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 3000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 200,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 40,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 50,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "LARGE": {
+        "block_size": {
+          "value": 512,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 4000,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 8,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 32,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 10000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 800,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 50,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "CUSTOM": {
+        "block_size": {
+          "value": 512,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 400,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 8,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 1000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 100,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 45,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 50,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      }
+    },
+    "OLTP": {
+      "SMALL": {
+        "block_size": {
+          "value": 8,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 400,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 8,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 1000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 100,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 45,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 70,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "MEDIUM": {
+        "block_size": {
+          "value": 8,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 1000,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 4,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 16,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 3000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 200,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 40,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 70,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "LARGE": {
+        "block_size": {
+          "value": 8,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 4000,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 8,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 32,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 10000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 800,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 70,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "CUSTOM": {
+        "block_size": {
+          "value": 8,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 400,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 8,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 1000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 100,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 45,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 70,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      }
+    }
+  },
+  "ROBO": {
+    "SMALL": {
+      "vcpus_per_vm": {
+        "value": 2,
+        "min": 1,
+        "max": 16
+      },
+      "ram_per_vm": {
+        "value": 8,
+        "min": 1,
+        "max": 128
+      },
+      "avg_iops_per_vm": {
+        "value": 50,
+        "min": 1,
+        "max": 3200
+      },
+      "disk_per_vm_unit": {
+        "value": "GB"
+      },
+      "disk_per_vm": {
+        "value": 50,
+        "min": 0,
+        "max": 109951
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "snapshots": {
+        "value": 5,
+        "min": 0,
+        "max": 30
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    },
+    "MEDIUM": {
+      "vcpus_per_vm": {
+        "value": 4,
+        "min": 1,
+        "max": 16
+      },
+      "ram_per_vm": {
+        "value": 16,
+        "min": 1,
+        "max": 128
+      },
+      "avg_iops_per_vm": {
+        "value": 100,
+        "min": 1,
+        "max": 3200
+      },
+      "disk_per_vm_unit": {
+        "value": "GB"
+      },
+      "disk_per_vm": {
+        "value": 200,
+        "min": 0,
+        "max": 109951
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "snapshots": {
+        "value": 5,
+        "min": 0,
+        "max": 30
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    },
+    "LARGE": {
+      "vcpus_per_vm": {
+        "value": 8,
+        "min": 1,
+        "max": 16
+      },
+      "ram_per_vm": {
+        "value": 32,
+        "min": 1,
+        "max": 128
+      },
+      "avg_iops_per_vm": {
+        "value": 200,
+        "min": 1,
+        "max": 3200
+      },
+      "disk_per_vm_unit": {
+        "value": "GB"
+      },
+      "disk_per_vm": {
+        "value": 750,
+        "min": 0,
+        "max": 109951
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "snapshots": {
+        "value": 5,
+        "min": 0,
+        "max": 30
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    },
+    "CUSTOM": {
+      "vcpus_per_vm": {
+        "value": 2,
+        "min": 1,
+        "max": 16
+      },
+      "ram_per_vm": {
+        "value": 8,
+        "min": 1,
+        "max": 128
+      },
+      "avg_iops_per_vm": {
+        "value": 50,
+        "min": 1,
+        "max": 3200
+      },
+      "disk_per_vm_unit": {
+        "value": "GB"
+      },
+      "disk_per_vm": {
+        "value": 50,
+        "min": 0,
+        "max": 109951
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "snapshots": {
+        "value": 5,
+        "min": 0,
+        "max": 30
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    }
+  },
+  "ORACLE": {
+    "OLAP": {
+      "SMALL": {
+        "block_size": {
+          "value": 512,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "num_db_instances": {
+          "value": 1,
+          "min": 1,
+          "max": 2000
+        },
+        "db_size": {
+          "value": 400,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 4,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 16,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 6000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 200,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 45,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 50,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "MEDIUM": {
+        "block_size": {
+          "value": 512,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 1000,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 8,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 64,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 10000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 400,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 40,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 50,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "LARGE": {
+        "block_size": {
+          "value": 512,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 4000,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 16,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 96,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 30000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 1000,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 50,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "CUSTOM": {
+        "block_size": {
+          "value": 512,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 400,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 4,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 16,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 6000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 200,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 45,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 50,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      }
+    },
+    "OLTP": {
+      "SMALL": {
+        "block_size": {
+          "value": 8,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 400,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 4,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 16,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 6000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 200,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 45,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 70,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "MEDIUM": {
+        "block_size": {
+          "value": 8,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 1000,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 8,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 64,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 10000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 400,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 40,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 70,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "LARGE": {
+        "block_size": {
+          "value": 8,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 4000,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 16,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 96,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 30000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 1000,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 70,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      },
+      "CUSTOM": {
+        "block_size": {
+          "value": 8,
+          "min": 1,
+          "max": 1024
+        },
+        "vcpus_per_core": {
+          "value": 2,
+          "min": 1,
+          "max": 100
+        },
+        "db_size": {
+          "value": 400,
+          "min": 1,
+          "max": 3000000
+        },
+        "vcpus_per_db": {
+          "value": 4,
+          "min": 1,
+          "max": 100
+        },
+        "ram_per_db": {
+          "value": 16,
+          "min": 1,
+          "max": 512
+        },
+        "avg_iops_per_db": {
+          "value": 6000,
+          "min": 1,
+          "max": 100000
+        },
+        "avg_mbps_per_db": {
+          "value": 200,
+          "min": 1,
+          "max": 100000
+        },
+        "metadata_size": {
+          "value": 45,
+          "min": 0,
+          "max": 99
+        },
+        "working_set": {
+          "value": 70,
+          "min": 0,
+          "max": 100
+        },
+        "dedupe_factor": {
+          "value": 0,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        }
+      }
+    }
+  },
+  "EPIC": {
+    "datacentres": {
+      "DC1": {
+        "concurrent_user_pcnt": {
+          "value": 100,
+          "min": 0,
+          "max": 200
+        },
+        "num_clusters": {
+          "value": 1,
+          "min": 1,
+          "max": 6
+        }
+      },
+      "DC2": {
+        "concurrent_user_pcnt": {
+          "value": 0,
+          "min": 0,
+          "max": 200
+        },
+        "num_clusters": {
+          "value": 1,
+          "min": 1,
+          "max": 6
+        }
+      }
+    },
+    "total_users": {
+      "value": 1,
+      "min": 1,
+      "max": 100000
+    },
+    "users_per_host": {
+      "value": 1,
+      "min": 1,
+      "max": 500
+    },
+    "ram_per_guest": {
+      "value": 30,
+      "min": 1,
+      "max": 32
+    },
+    "guests_per_host": {
+      "value": 12,
+      "min": 1,
+      "max": 32
+    },
+    "expected_hosts": {
+      "value": 10,
+      "min": 1,
+      "max": 200
+    },
+    "fault_tolerance": {
+      "value": 0,
+      "min": 0,
+      "max": 32
+    },
+    "compression_factor": {
+      "value": 40,
+      "min": 0,
+      "max": 99
+    },
+    "dedupe_factor": {
+      "value": 40,
+      "min": 0,
+      "max": 99
+    }
+  },
+  "VEEAM": {
+    "hdd_size": {
+      "value": 400,
+      "min": 1,
+      "max": 3000000
+    },
+    "fault_tolerance": {
+      "value": 0,
+      "min": 0,
+      "max": 32
+    },
+    "compression_factor": {
+      "value": 0,
+      "min": 0,
+      "max": 99
+    },
+    "dedupe_factor": {
+      "value": 0,
+      "min": 0,
+      "max": 99
+    }
+  },
+  "SPLUNK": {
+    "max_vol_ind": {
+      "value": 20,
+      "min": 1,
+      "max": 1000
+    },
+    "max_vol_ind_unit": {
+      "value": "GB"
+    },
+    "daily_data_ingest": {
+      "value": 1,
+      "min": 1,
+      "max": 3000000
+    },
+    "daily_data_ingest_unit": {
+      "value": "TB"
+    },
+    "hot": {
+      "value": 10,
+      "min": 1,
+      "max": 180
+    },
+    "cold": {
+      "value": 10,
+      "min": 1,
+      "max": 1000
+    },
+    "warm": {
+      "value": 30,
+      "min": 1,
+      "max": 1000
+    },
+    "frozen": {
+      "value": 10,
+      "min": 1,
+      "max": 1000
+    },
+    "indexer": {
+      "vcpus_per_vm": {
+        "value": 12,
+        "min": 1,
+        "max": 50
+      },
+      "ram_per_vm": {
+        "value": 64,
+        "min": 4,
+        "max": 256
+      },
+      "avg_iops_per_vm": {
+        "value": 1600,
+        "min": 6,
+        "max": 5000
+      },
+      "num_vms": {
+        "value": 10,
+        "min": 1,
+        "max": 1000
+      }
+    },
+    "admin": {
+      "vcpus_per_vm": {
+        "value": 4,
+        "min": 1,
+        "max": 50
+      },
+      "ram_per_vm": {
+        "value": 16,
+        "min": 4,
+        "max": 256
+      },
+      "avg_iops_per_vm": {
+        "value": 100,
+        "min": 6,
+        "max": 5000
+      },
+      "num_vms": {
+        "value": 4,
+        "min": 1,
+        "max": 1000
+      }
+    },
+    "search": {
+      "vcpus_per_vm": {
+        "value": 12,
+        "min": 1,
+        "max": 50
+      },
+      "ram_per_vm": {
+        "value": 64,
+        "min": 4,
+        "max": 256
+      },
+      "avg_iops_per_vm": {
+        "value": 100,
+        "min": 6,
+        "max": 5000
+      },
+      "num_vms": {
+        "value": 10,
+        "min": 1,
+        "max": 1000
+      }
+    },
+    "fault_tolerance": {
+      "value": 1,
+      "min": 0,
+      "max": 32
+    },
+    "compression_factor": {
+      "value": 0,
+      "min": 0,
+      "max": 99
+    },
+    "dedupe_factor": {
+      "value": 0,
+      "min": 0,
+      "max": 99
+    }
+  },
+  "RDSH": {
+    "TASK_WORKER": {
+      "citrix": {
+        "vcpus_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 16
+        },
+        "total_users": {
+          "value": 100,
+          "min": 1,
+          "max": 30000
+        },
+        "clock_per_session": {
+          "value": 325,
+          "min": 1,
+          "max": 4000
+        },
+        "ram_per_vm": {
+          "value": 32,
+          "min": 1,
+          "max": 128
+        },
+        "working_set": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        },
+        "os_per_vm": {
+          "value": 50,
+          "min": 1,
+          "max": 1000
+        },
+        "max_vcpus_per_core": {
+          "value": 2,
+          "min": 0.1,
+          "max": 4
+        },
+        "sessions_per_vm": {
+          "value": 30,
+          "min": 0,
+          "max": 2000
+        },
+        "dedupe_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 10,
+          "min": 0,
+          "max": 99
+        },
+        "snapshots": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        }
+      },
+      "horizon": {
+        "vcpus_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 16
+        },
+        "total_users": {
+          "value": 100,
+          "min": 1,
+          "max": 30000
+        },
+        "clock_per_session": {
+          "value": 325,
+          "min": 1,
+          "max": 4000
+        },
+        "ram_per_vm": {
+          "value": 32,
+          "min": 1,
+          "max": 128
+        },
+        "working_set": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        },
+        "os_per_vm": {
+          "value": 50,
+          "min": 1,
+          "max": 1000
+        },
+        "max_vcpus_per_core": {
+          "value": 2,
+          "min": 0.1,
+          "max": 4
+        },
+        "sessions_per_vm": {
+          "value": 30,
+          "min": 0,
+          "max": 2000
+        },
+        "dedupe_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 10,
+          "min": 0,
+          "max": 99
+        },
+        "snapshots": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        }
+      }
+    },
+    "KNOWLEDGE_WORKER": {
+      "citrix": {
+        "vcpus_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 16
+        },
+        "total_users": {
+          "value": 100,
+          "min": 1,
+          "max": 30000
+        },
+        "clock_per_session": {
+          "value": 375,
+          "min": 1,
+          "max": 4000
+        },
+        "ram_per_vm": {
+          "value": 32,
+          "min": 1,
+          "max": 128
+        },
+        "working_set": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        },
+        "os_per_vm": {
+          "value": 50,
+          "min": 1,
+          "max": 1000
+        },
+        "max_vcpus_per_core": {
+          "value": 2,
+          "min": 0.1,
+          "max": 4
+        },
+        "sessions_per_vm": {
+          "value": 30,
+          "min": 0,
+          "max": 2000
+        },
+        "dedupe_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 10,
+          "min": 0,
+          "max": 99
+        },
+        "snapshots": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        }
+      },
+      "horizon": {
+        "vcpus_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 16
+        },
+        "total_users": {
+          "value": 100,
+          "min": 1,
+          "max": 30000
+        },
+        "clock_per_session": {
+          "value": 375,
+          "min": 1,
+          "max": 4000
+        },
+        "ram_per_vm": {
+          "value": 32,
+          "min": 1,
+          "max": 128
+        },
+        "working_set": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        },
+        "os_per_vm": {
+          "value": 50,
+          "min": 1,
+          "max": 1000
+        },
+        "max_vcpus_per_core": {
+          "value": 2,
+          "min": 0.1,
+          "max": 4
+        },
+        "sessions_per_vm": {
+          "value": 30,
+          "min": 0,
+          "max": 2000
+        },
+        "dedupe_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 10,
+          "min": 0,
+          "max": 99
+        },
+        "snapshots": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        }
+      }
+    },
+    "POWER_USER": {
+      "citrix": {
+        "vcpus_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 16
+        },
+        "total_users": {
+          "value": 100,
+          "min": 20,
+          "max": 30000
+        },
+        "clock_per_session": {
+          "value": 400,
+          "min": 1,
+          "max": 4000
+        },
+        "ram_per_vm": {
+          "value": 32,
+          "min": 1,
+          "max": 128
+        },
+        "working_set": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        },
+        "os_per_vm": {
+          "value": 50,
+          "min": 1,
+          "max": 1000
+        },
+        "max_vcpus_per_core": {
+          "value": 2,
+          "min": 0.1,
+          "max": 4
+        },
+        "sessions_per_vm": {
+          "value": 30,
+          "min": 0,
+          "max": 2000
+        },
+        "dedupe_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 10,
+          "min": 0,
+          "max": 99
+        },
+        "snapshots": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        }
+      },
+      "horizon": {
+        "vcpus_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 16
+        },
+        "total_users": {
+          "value": 100,
+          "min": 1,
+          "max": 30000
+        },
+        "clock_per_session": {
+          "value": 400,
+          "min": 1,
+          "max": 4000
+        },
+        "ram_per_vm": {
+          "value": 32,
+          "min": 1,
+          "max": 128
+        },
+        "working_set": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        },
+        "os_per_vm": {
+          "value": 50,
+          "min": 1,
+          "max": 1000
+        },
+        "max_vcpus_per_core": {
+          "value": 2,
+          "min": 0.1,
+          "max": 4
+        },
+        "sessions_per_vm": {
+          "value": 30,
+          "min": 0,
+          "max": 2000
+        },
+        "dedupe_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 10,
+          "min": 0,
+          "max": 99
+        },
+        "snapshots": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        }
+      }
+    },
+    "CUSTOM_USER": {
+      "citrix": {
+        "vcpus_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 16
+        },
+        "total_users": {
+          "value": 100,
+          "min": 20,
+          "max": 30000
+        },
+        "clock_per_session": {
+          "value": 400,
+          "min": 1,
+          "max": 4000
+        },
+        "ram_per_vm": {
+          "value": 32,
+          "min": 1,
+          "max": 128
+        },
+        "working_set": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        },
+        "os_per_vm": {
+          "value": 50,
+          "min": 1,
+          "max": 1000
+        },
+        "max_vcpus_per_core": {
+          "value": 2,
+          "min": 0.1,
+          "max": 4
+        },
+        "sessions_per_vm": {
+          "value": 30,
+          "min": 0,
+          "max": 2000
+        },
+        "dedupe_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 10,
+          "min": 0,
+          "max": 99
+        },
+        "snapshots": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        }
+      },
+      "horizon": {
+        "vcpus_per_vm": {
+          "value": 8,
+          "min": 1,
+          "max": 16
+        },
+        "total_users": {
+          "value": 100,
+          "min": 20,
+          "max": 30000
+        },
+        "clock_per_session": {
+          "value": 400,
+          "min": 1,
+          "max": 4000
+        },
+        "ram_per_vm": {
+          "value": 32,
+          "min": 1,
+          "max": 128
+        },
+        "working_set": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        },
+        "os_per_vm": {
+          "value": 50,
+          "min": 1,
+          "max": 1000
+        },
+        "max_vcpus_per_core": {
+          "value": 2,
+          "min": 0.1,
+          "max": 4
+        },
+        "sessions_per_vm": {
+          "value": 30,
+          "min": 0,
+          "max": 2000
+        },
+        "dedupe_factor": {
+          "value": 30,
+          "min": 0,
+          "max": 99
+        },
+        "compression_factor": {
+          "value": 10,
+          "min": 0,
+          "max": 99
+        },
+        "snapshots": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        }
+      }
+    }
+  },
+  "BULK": {},
+  "CONTAINER": {
+    "SMALL": {
+      "vcpus_per_container": {
+        "value": 2,
+        "min": 1,
+        "max": 16
+      },
+      "ram_per_container": {
+        "value": 8,
+        "min": 1,
+        "max": 64
+      },
+      "iops_per_container": {
+        "value": 50,
+        "min": 1,
+        "max": 18000
+      },
+      "disk_per_container_unit": {
+        "value": "GB"
+      },
+      "disk_per_container": {
+        "value": 50,
+        "min": 0,
+        "max": 3000000
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    },
+    "MEDIUM": {
+      "vcpus_per_container": {
+        "value": 4,
+        "min": 1,
+        "max": 24
+      },
+      "ram_per_container": {
+        "value": 16,
+        "min": 1,
+        "max": 96
+      },
+      "iops_per_container": {
+        "value": 100,
+        "min": 1,
+        "max": 18000
+      },
+      "disk_per_container_unit": {
+        "value": "GB"
+      },
+      "disk_per_container": {
+        "value": 200,
+        "min": 0,
+        "max": 3000000
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    },
+    "LARGE": {
+      "vcpus_per_container": {
+        "value": 8,
+        "min": 1,
+        "max": 32
+      },
+      "ram_per_container": {
+        "value": 32,
+        "min": 1,
+        "max": 128
+      },
+      "iops_per_container": {
+        "value": 200,
+        "min": 1,
+        "max": 18000
+      },
+      "disk_per_container_unit": {
+        "value": "GB"
+      },
+      "disk_per_container": {
+        "value": 750,
+        "min": 0,
+        "max": 3000000
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    },
+    "CUSTOM": {
+      "vcpus_per_container": {
+        "value": 2,
+        "min": 1,
+        "max": 48
+      },
+      "ram_per_container": {
+        "value": 8,
+        "min": 1,
+        "max": 256
+      },
+      "iops_per_container": {
+        "value": 50,
+        "min": 1,
+        "max": 18000
+      },
+      "disk_per_container_unit": {
+        "value": "GB"
+      },
+      "disk_per_container": {
+        "value": 50,
+        "min": 0,
+        "max": 3000000
+      },
+      "base_image_size_unit": {
+        "value": "GB"
+      },
+      "base_image_size": {
+        "value": 20,
+        "min": 1,
+        "max": 400
+      },
+      "compression_factor": {
+        "value": 20,
+        "min": 0,
+        "max": 99
+      },
+      "dedupe_factor": {
+        "value": 10,
+        "min": 0,
+        "max": 99
+      },
+      "vcpus_per_core": {
+        "value": 4,
+        "min": 1,
+        "max": 20
+      },
+      "working_set": {
+        "value": 10,
+        "min": 0,
+        "max": 50
+      }
+    }
+  },
+  "RAW_FILE": {
+    "vcpus_per_core": {
+      "value": 1,
+      "min": 1,
+      "max": 8
+    },
+    "cpu_attribute": {
+      "value": "vcpus"
+    },
+    "cpu_clock": {
+      "value": 35,
+      "min": 1,
+      "max": 11000
+    },
+    "vcpus": {
+      "value": 2,
+      "min": 1,
+      "max": 5000
+    },
+    "ram_size": {
+      "value": 128,
+      "min": 1,
+      "max": 188416
+    },
+    "hdd_size": {
+      "value": 1000,
+      "min": 1,
+      "max": 3000000
+    },
+    "ssd_size": {
+      "value": 0,
+      "min": 0,
+      "max": 64000
+    },
+    "iops": {
+      "value": 0,
+      "min": 0,
+      "max": 500000
+    },
+    "dedupe_factor": {
+      "value": 0,
+      "min": 0,
+      "max": 99
+    },
+    "compression_factor": {
+      "value": 0,
+      "min": 0,
+      "max": 99
+    },
+    "ram_opratio": {
+      "value": 1,
+      "min": 1,
+      "max": 50
+    }
+  },
+  "AIML": {
+    "Text Input": {
+      "PoC": {
+        "vcpus_per_ds": {
+          "value": 4,
+          "min": 0,
+          "max": 1000
+        },
+        "ram_per_ds": {
+          "value": 64,
+          "min": 0,
+          "max": 1000
+        },
+        "gpu_per_ds": {
+          "value": 1,
+          "min": 0,
+          "max": 1000
+        }
+      },
+      "Serious Development": {
+        "vcpus_per_ds": {
+          "value": 8,
+          "min": 0,
+          "max": 1000
+        },
+        "ram_per_ds": {
+          "value": 128,
+          "min": 0,
+          "max": 1000
+        },
+        "gpu_per_ds": {
+          "value": 1,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    },
+    "Video": {
+      "PoC": {
+        "vcpus_per_ds": {
+          "value": 8,
+          "min": 0,
+          "max": 1000
+        },
+        "ram_per_ds": {
+          "value": 128,
+          "min": 0,
+          "max": 1000
+        },
+        "gpu_per_ds": {
+          "value": 1,
+          "min": 0,
+          "max": 1000
+        }
+      },
+      "Serious Development": {
+        "vcpus_per_ds": {
+          "value": 8,
+          "min": 0,
+          "max": 1000
+        },
+        "ram_per_ds": {
+          "value": 128,
+          "min": 0,
+          "max": 1000
+        },
+        "gpu_per_ds": {
+          "value": 8,
+          "min": 0,
+          "max": 1000
+        }
+      }
+    }
+  },
+  "AWR_FILE": {
+    "OLAP": {
+      "block_size": {
+        "value": 512,
+        "min": 1,
+        "max": 1024
+      },
+      "num_db_instances": {
+        "value": 1,
+        "min": 1,
+        "max": 2000
+      },
+      "db_size": {
+        "value": 400,
+        "min": 1,
+        "max": 3000000
+      },
+      "metadata_size": {
+        "value": 45,
+        "min": 0,
+        "max": 99
+      },
+      "working_set": {
+        "value": 50,
+        "min": 0,
+        "max": 100
+      },
+      "dedupe_factor": {
+        "value": 0,
+        "min": 0,
+        "max": 99
+      },
+      "compression_factor": {
+        "value": 30,
+        "min": 0,
+        "max": 99
+      }
+    },
+    "OLTP": {
+      "block_size": {
+        "value": 8,
+        "min": 1,
+        "max": 1024
+      },
+      "db_size": {
+        "value": 400,
+        "min": 1,
+        "max": 3000000
+      },
+      "metadata_size": {
+        "value": 45,
+        "min": 0,
+        "max": 99
+      },
+      "working_set": {
+        "value": 70,
+        "min": 0,
+        "max": 100
+      },
+      "dedupe_factor": {
+        "value": 0,
+        "min": 0,
+        "max": 99
+      },
+      "compression_factor": {
+        "value": 30,
+        "min": 0,
+        "max": 99
+      }
+    }
+  }
+}
+

@@ -1,0 +1,22 @@
+<div class="mpl-progress-bar transform-center" ng-if="canShow">
+	<div class="backdrop" ng-if="::backDrop"></div>
+	<div class="mpl-content transform-vcenter">
+		
+		<div class="mpl-header">
+			Error
+			<div ng-if="::closeBtn" class="pull-right close_icon">
+				<a href="javascript:void(0)" class="close pull-right" ng-click="close()"><img src="images/close-icon.png" /></a>
+			</div>
+		</div>
+		
+		<div class="mpl-progress progress_load" ><img src="images/loading.gif"></div>
+		<span class="mpl-progress txt-progress progress_load"  ng-bind-html="progressMessage"></span>
+		<span class="mpl-error txt-error padding-10">
+			<div style="width: 55px; float: left; position: relative; top: -6px;"><img src="images/error-icon.png" /></div>
+			<div style="line-height: 18px;" ng-bind-html="errorMessage" class="pull-left"> </div>
+		</span>
+		<span class="mpl-success txt-success padding-10" ng-bind-html="successMessage">  </span>
+
+		<div class="ok_btn"><input type="button" class="" value="OK"  ng-click="close()"/></div>
+	</div>
+</div>

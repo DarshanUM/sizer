@@ -1,0 +1,10 @@
+#!/usr/bin/python
+
+#import openshift.wsgi
+#from sizer import sizer.wsgi
+#import  sizer.sizer.wsgi
+import sizer.sizer.wsgi
+
+# reuse the application callable from openshift.wsgi
+application = sizer.sizer.wsgi.application
+#application = openshift.wsgi.application

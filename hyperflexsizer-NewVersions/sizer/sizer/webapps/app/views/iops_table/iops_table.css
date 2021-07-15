@@ -1,0 +1,28 @@
+.table{
+	border: 1px solid #ddd;
+}
+.table thead tr th{
+	background: #fff;
+	vertical-align: middle;
+}
+.overflow_Y{
+	overflow: auto;
+}
+.table tr th{
+	text-align: center;
+}
+.blueTDColor{
+	background: #4472c4 !important;
+	color: #fff!important;
+}
+.greenTDColor{
+	background: #548235 !important;
+	color: #fff !important
+}
+.orangeTDColor{
+	background: #c65911 !important;
+	color: #fff !important
+}
+.vAlign{
+	vertical-align: middle !important;
+}

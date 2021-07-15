@@ -1,0 +1,62 @@
+apiVersion: "v1"
+kind: "DeploymentConfig"
+metadata:
+  name: "mysqldbprod"
+  labels:
+    app: "mysqldbprod"
+spec:
+  template:
+    metadata:
+      labels:
+        name: "mysqldbprod"
+        deploymentconfig: "mysqldbprod"
+      annotations:
+        app_version: 'latest'
+    spec:
+      volumes:
+        - name: "pvol"
+          persistentVolumeClaim:
+            claimName: "dbprod50g"
+      containers:
+        - name: "mysqldbprod"
+          image: "containers.cisco.com/aws_managed/mysql-5.7"
+          ports:
+            - 
+              containerPort: 3306
+              protocol: "TCP"
+          env:
+            - name: "MYSQL_DATABASE"
+              value: "sizerprod"
+            - name: "MYSQL_PASSWORD"
+              value: "9IyY5nwXn9tK"
+            - name: "MYSQL_USER"
+              value: "adminex5VY5t"
+            - name: "APP_NAME"
+              value: "mysqldbprod"
+          resources:
+              limits:
+                  memory: 8Gi
+              requests:
+                  cpu: 200m
+          volumeMounts:
+            - name: "pvol"
+              mountPath: "/var/lib/mysql/data"
+          terminationMessagePath: /dev/termination-log
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+    dnsPolicy: "ClusterFirst"
+  replicas: 1
+  selector:
+    name: "mysqldbprod"
+  triggers:
+    -
+      type: "ConfigChange"
+  strategy:
+    type: "Rolling"
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 120

@@ -1,0 +1,132 @@
+<div>
+  <!-- header start-->
+  <div ng-include="'views/header/header.html'"></div> 
+  <section class="sectionContainer">  
+  	<div class="reverseContainer">
+  	<div class="appendFilter">
+  		<h4>HxBench Recommended Settings</h4>
+  	</div>
+    <div class="col-lg-12 padLeft0 reverseSizer">
+    	<div class="col-lg-7 col-md-7 ">
+    		<div class="bodyScroll" ng-style="{height: settingsCtrl.settingHeight}">
+    			<fieldset>
+    				 <div class="fieldset_title">Node Properties</div> 
+    				<div class="clear">
+	    				
+	    				<mpl-dropdown label="HyperFlex Node Type"	options="settingsCtrl.options.hxNodeTypes"
+	    					on-change="settingsCtrl.onHXNodeTypeChanged(selectedOption)" value="settingsCtrl.inputs.node">
+	    				</mpl-dropdown>
+
+	    				<mpl-dropdown label="No. of HyperFlex Nodes" options="settingsCtrl.options.hxNumNodes" value="settingsCtrl.inputs.no_of_nodes" 
+	    				on-change="settingsCtrl.onHxNodeCountChanged(selectedOption)" >
+	    				</mpl-dropdown> 	
+
+	    				<mpl-dropdown label="No. of Disk Drives per Node" options="settingsCtrl.options.diskDrives" value="settingsCtrl.inputs.disks_per_node" on-change="settingsCtrl.onInputChanged(selectedOption)">
+	    				</mpl-dropdown>
+
+
+	    				<mpl-dropdown label="Disk Drive Size (GB)" options="settingsCtrl.options.diskSizes" value="settingsCtrl.inputs.disk_capacity" on-change="settingsCtrl.onInputChanged(selectedOption)">
+	    				</mpl-dropdown>
+
+	    				<mpl-dropdown label="Cache Disk Capacity (GB)" options="settingsCtrl.options.cacheDiskSizes" value="settingsCtrl.inputs.cache_size" on-change="settingsCtrl.onInputChanged(selectedOption)">
+	    				</mpl-dropdown> 
+	    			</div>
+    			</fieldset>
+
+    			<fieldset>
+    				 <div class="fieldset_title">Cluster Properties</div> 
+    				<div class="clear">	 
+	    				<mpl-dropdown label="Replication Factor" options="settingsCtrl.options.rf" value="settingsCtrl.inputs.rf">
+	    				</mpl-dropdown> 
+	    			</div>
+	    			 
+    			</fieldset>
+    			<fieldset>
+    				 <div class="fieldset_title">VM Configuration</div> 
+    				 <div class="clear">	     
+						<div class="col-md-6 paddingLeft10">
+							<div class="radioFields padTop10"> 
+								<label ng-click="settingsCtrl.toggleVMsInputType(false)">
+									<input id="vm-input-auto"  class="radio-custom" checked="checked" type="radio" name="vm-input-type" ng-model="settingsCtrl.isManualVMsInupt" ng-value="false" />  
+									<label for="vm-input-auto" class="radio-custom-label">Auto </label>
+								 </label>
+								 <label   ng-click="settingsCtrl.toggleVMsInputType(true)" class="paddingLeft10">
+									<input id="vm-input-manual" class="radio-custom" type="radio" name="vm-input-type"  ng-value="true" ng-model="settingsCtrl.isManualVMsInupt" />  
+									<label for="vm-input-manual" class="radio-custom-label">Manual</label>
+								 </label>
+							</div>  
+							<div ng-show="settingsCtrl.isManualVMsInupt">
+							<div class="dropdown_label">Number of VMs per Node</div>
+								<div class=""> 
+									<input type="number" class="form-control" min="{{settingsCtrl.minNumVMs}}" max="{{settingsCtrl.maxNumVMs}}" 
+										ng-model="settingsCtrl.inputs.no_of_vms" ng-keyup="settingsCtrl.onNumVMsChanged($event)">
+									<span ng-if="settingsCtrl.numVMsError" class="inputError"> Allowed values are {{settingsCtrl.minNumVMs}} to {{settingsCtrl.maxNumVMs}}</span>
+								</div>
+							</div>
+						</div>
+    				</div>
+    			</fieldset>
+    			<div class="padTop15" align="center">
+	    			<input type="button" class="primaryBtn" value="Calculate" name="" 
+	    				ng-disabled="!settingsCtrl.canEnableApply" ng-click="settingsCtrl.onApply()" />
+	    		</div>
+    		</div>
+    			
+    	</div>
+    	<div class="col-lg-5 col-md-5 padding-right0 padLeft0">
+			<h5>Results 
+			<small class="versionTitle" style="top: -1px">
+				(HXBench {{settingsCtrl.versionData.hxbench_version_str}} / HXDP {{settingsCtrl.versionData.hx_version_str}})
+			</small>
+			</h5>
+			<hr/>
+
+			<div class="col-md-12 legendChart padding-right0 padLeft0 " ><!--bodyScroll-->
+				<div class="col-md-6 iconPosition">
+					 <img src="images/info.png"  popover-placement="left" popover-trigger="'mouseenter'" uib-popover="Multiplication of total number of nodes & input VMs (input VMs by default is 3 , if not provided by manual)"/> 
+					<div class="big_value">{{settingsCtrl.result.no_of_vms}}&nbsp;</div>
+					<div>Total Number of VMs</div>
+					<!-- <div>&nbsp;</div> -->
+				</div>
+				<div class="col-md-6 iconPosition" >
+						 <img src="images/info.png" popover-placement="left" popover-trigger="'mouseenter'" uib-popover="Total Disk capacity required" /> 
+						<div class="big_value">{{settingsCtrl.result.vm_size}}&nbsp;<span class="small_text"> {{settingsCtrl.result.vm_size_unit}}</span></div>
+						<div>Total VM Size</div>
+						<!-- <div>&nbsp;</div> -->
+				</div>
+				<div class="col-md-6 iconPosition" >
+						 <img src="images/info.png" popover-placement="left" popover-trigger="'mouseenter'" uib-popover="Compression Savings" /> 
+						<div class="big_value">{{settingsCtrl.result.compression}}</div>
+						<div>Compression Savings (%)</div>
+						<!-- <div>&nbsp;</div> -->
+				</div>
+				<div class="col-md-6 iconPosition" >
+						 <img src="images/info.png" popover-placement="left" popover-trigger="'mouseenter'" uib-popover="Dedupe Savings" /> 
+						<div class="big_value">{{settingsCtrl.result.dedupe}}</div>
+						<div>Dedupe Savings (%)</div>
+						<!-- <div>&nbsp;</div> -->
+				</div> 
+
+				<div class="col-md-6 iconPosition" >
+						 <img src="images/info.png"   popover-placement="left" popover-trigger="'mouseenter'" uib-popover="Amount of cache in use"/> 
+						 <div class="big_value">{{settingsCtrl.result.working_set_percent}}</div> 
+						<div>Total Working Set (%)</div>
+						<!-- <div>&nbsp;</div> 	 -->
+				</div>
+				<div class="col-md-6 iconPosition" >
+						 <img src="images/info.png"   popover-placement="left" popover-trigger="'mouseenter'" uib-popover=""/> 
+						 <div class="big_value">{{settingsCtrl.result.threads || '--'}}</div> 
+						<div>Thread Count per VM</div> 
+						<!-- <div>&nbsp;</div> 	 -->
+				</div>
+			 		
+			</div>
+
+    	</div>
+    </div>
+
+    <div mpl-progress id="settings-node-options-request"></div>
+    <div mpl-progress id="recommended-settings-request"></div>
+   </div>
+ </section>
+</div>

@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ctrl.modalTitle}}</h4>
+</div>
+<div class="modal-body delPopup_padding">
+  <form name="asavefilterForm"   novalidate mpl-form-validation>
+    <div class="form-group"> 
+      <input type="text" class="form-control" name="name" placeholder="Name" required /> 
+    </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default width80" ng-click="$dismiss()">No</button>
+  <button type="button" class="btn btn-primary width80" ng-click="$dismiss()">Yes</button>
+</div>

@@ -1,0 +1,403 @@
+{
+    "steps": [
+        {
+            "name": "Workload Type",
+            "title": "Choose workload type",
+            "fields": [
+                {
+                    "modelName": "wl_type",
+                    "value": "AIML",
+                    "type": "custom-radio-button",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "options": [
+                        {
+                            "label": "VDI",
+                            "value": "VDI"
+                        },
+                        {
+                            "label": "Epic Hyperspace",
+                            "value": "EPIC"
+                        },
+                        {
+                            "label": "VDI Infrastructure VMs",
+                            "value": "VDI_INFRA"
+                        },
+                        {
+                            "label": "RDSH Workload",
+                            "value": "RDSH"
+                        },
+                        {
+                            "label": "Microsoft SQL",
+                            "value": "DB"
+                        },
+                        {
+                            "label": "Oracle",
+                            "value": "ORACLE"
+                        },
+                        {
+                            "label": "Splunk Workload",
+                            "value": "SPLUNK"
+                        },
+                        {
+                            "label": "Bulk Database Input",
+                            "value": "BULK"
+                        },
+                        {
+                            "label": "Oracle AWR File Upload",
+                            "value": "AWR_FILE"
+                        },
+                        {
+                            "label": "General Server Virtualized Environment (VSI)",
+                            "value": "VSI"
+                        },
+                        {
+                            "label": "Microsoft Exchange Server",
+                            "value": "EXCHANGE"
+                        },
+                        {
+                            "label": "HX Edge (ROBO)",
+                            "value": "ROBO"
+                        },
+                        {
+                            "label": "Compute and Capacity Sizer",
+                            "value": "RAW"
+                        },
+                        {
+                            "label": "File Upload on HX",
+                            "value": "RAW_FILE"
+                        },
+                        {
+                            "label": "Veeam Availability Solution on HX",
+                            "value": "VEEAM"
+                        },
+                        {
+                            "label": "Kubernetes Container",
+                            "value": "CONTAINER"
+                        },
+                        {
+                            "label": "Artificial Intelligence/Machine Learning",
+                            "value": "AIML"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Workload Profile",
+            "title": "Artificial Intelligence/Machine Learning",
+            "fields": [
+                {
+                    "displayName": "Name",
+                    "modelName": "wl_name",
+                    "value": "",
+                    "type": "text",
+                    "placeholder": "Enter Name",
+                    "events": {
+                        "blur": "WORKLOAD_FIELD_BLUR"
+                    }
+                },
+                {
+                    "displayName": "Number of Data Scientists",
+                    "modelName": "num_data_scientists",
+                    "value": 1,
+                    "min": 1,
+                    "max": 10000,
+                    "type": "number",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    }
+                },
+                {
+                    "displayName": "",
+                    "modelName": "vcpus_per_core",
+                    "value": 1,
+                    "type": "number",
+                    "hidden": true
+                },
+                {
+                    "displayName": "Input Source",
+                    "modelName": "input_type",
+                    "value": "Text Input",
+                    "type": "dropdown",
+                    "className": "aimlDropdown",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "options": [
+                        {
+                            "value": "Text Input",
+                            "key": "Text Input"
+                        },
+                        {
+                            "value": "Video, Voice, Images",
+                            "key": "Video"
+                        }
+                    ]
+                },
+                {
+                    "displayName": "Expected Utilization",
+                    "modelName": "expected_util",
+                    "value": "PoC",
+                    "type": "dropdown",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "className": "aimlDropdown",
+                    "options": [
+                        {
+                            "value": "PoC",
+                            "key": "PoC"
+                        },
+                        {
+                            "value": "Serious Development",
+                            "key": "Serious Development"
+                        }
+                    ]
+                },
+                {
+                    "displayName": "Storage on HX cluster ?",
+                    "modelName": "enablestorage",
+                    "value": 0,
+                    "className": "hxCluster_class",
+                    "type": "checkbox",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    }
+                },
+                {
+                    "displayName": "",
+                    "modelName": "disk_per_ds_unit",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "value": "GB",
+                    "type": "dropdown",
+                    "hidden": true,
+                    "className": "no-label aiml_unit",
+                    "options": [
+                        {
+                            "key": "GB",
+                            "value": "GB"
+                        },
+                        {
+                            "key": "GiB",
+                            "value": "GiB"
+                        },
+                        {
+                            "key": "TB",
+                            "value": "TB"
+                        },
+                        {
+                            "key": "TiB",
+                            "value": "TiB"
+                        }
+                    ]
+                },
+                {
+                    "displayName": "Capacity per Data Scientist",
+                    "modelName": "disk_per_ds",
+                    "value": 0,
+                    "min": 0,
+                    "hidden": true,
+                    "max": 1000,
+                    "type": "number",
+                    "className": "column_two help_error_message user_data",
+                    "isDecimal": true
+                }
+            ],
+            "dependentFields": [
+                {
+                    "title": "Compute Profile (Per Data Scientist)",
+                    "type": "field-title"
+                },
+                {
+                    "displayName": "CPU Cores",
+                    "modelName": "vcpus_per_ds",
+                    "value": 1,
+                    "className": "dataScience",
+                    "type": "number",
+                    "readonly": true
+                },
+                {
+                    "displayName": "System RAM",
+                    "modelName": "ram_per_ds",
+                    "value": 1,
+                    "type": "number",
+                    "readonly": true
+                },
+                {
+                    "displayName": "GPUs",
+                    "modelName": "gpu_per_ds",
+                    "unit": "GB",
+                    "value": 1,
+                    "type": "number",
+                    "readonly": true
+                }
+            ]
+        },
+        {
+            "name": "Infrastructure Configuration",
+            "title": "Artificial Intelligence/Machine Learning",
+            "fields": [
+                {
+                    "displayName": "Cluster Type",
+                    "modelName": "cluster_type",
+                    "value": "normal",
+                    "type": "radio",
+                    "className": "rawFields cpuAttribute",
+                    "readonly": true,
+                    "hidden": true,
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "tooltip": {
+                        "readonly": "Stretch Cluster is not supported with Fixed Config Sizing"
+                    },
+                    "options": [
+                        {
+                            "label": "Normal",
+                            "value": "normal"
+                        },
+                        {
+                            "label": "Stretch",
+                            "value": "stretch"
+                        }
+                    ]
+                },
+                {
+                    "displayName": "Data Replication Factor",
+                    "modelName": "replication_factor",
+                    "value": 3,
+                    "type": "dropdown",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "className": "vdiResiliency dataFactor",
+                    "options": [
+                        {
+                            "key": 2,
+                            "value": "RF 2"
+                        },
+                        {
+                            "key": 3,
+                            "value": "RF 3"
+                        }
+                    ]
+                },
+                {
+                    "type": "info_icon",
+                    "className": "info_details",
+                    "message": "Data Replication Factor (RF) defines the number of redundant replicas of user's data maintained within a storage cluster. HX clusters support options of 2 or 3 redundant replicas. For RF=3, the cluster can sustain upto 2 failures on separate nodes (multiple failures on the same node count as a single failure) and still ensure data avilability. More than 2 failures result in cluster becoming unavailable to impacted VMs. RF3 is recommended for better availability."
+                },
+                {
+                    "type": "warning",
+                    "className": "info-content",
+                    "model": "warning_cont",
+                    "hidden": true,
+                    "message": "A replication factor of three is highly recommended for all environments except HyperFlex Edge. A replication factor of two has a lower level of availability and resiliency."
+                },
+                {
+                    "displayName": "Performance Headroom (nodes)",
+                    "modelName": "fault_tolerance",
+                    "value": 1,
+                    "type": "dropdown",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "className": "vdiResiliency dataFactor",
+                    "options": [
+                        {
+                            "key": 0,
+                            "value": "0"
+                        },
+                        {
+                            "key": 1,
+                            "value": "1"
+                        },
+                        {
+                            "key": 2,
+                            "value": "2"
+                        }
+                    ]
+                },
+                {
+                    "type": "info_icon",
+                    "className": "info_details",
+                    "message": "Performance headroom adds additional nodes to the cluster to ensure there is enough performance bandwidth in case of node failure to satisfy the workload and minimize performance impact. This is also known as 'N+x' or 'Nodes for Fault Tolerance'."
+                },
+                {
+                    "displayName": "Compression Savings (%)",
+                    "subDisplayName": " without Hardware Acceleration",
+                    "modelName": "compression_factor",
+                    "value": 0,
+                    "type": "number",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "className": "vdiResiliency text_wrap"
+                },
+                {
+                    "type": "info_icon",
+                    "className": "info_details",
+                    "message": "Recommended values are based on performance tests and should be changed with care."
+                },
+                {
+                    "displayName": "",
+                    "type": "dynamic-text",
+                    "model": "compression_saved",
+                    "diskModel": "disk_per_desktop",
+                    "factorModel": "compression_factor",
+                    "tooltip": "Eg: dynamicText effective capacity, with dynamicText1% compression savings will require dynamicText2 of usable space"
+                },
+                {
+                    "type": "infomessage",
+                    "message": "These compression savings can be increased by using the HyperFlex Acceleration Engine."
+                },
+                {
+                    "displayName": "Dedupe Savings (%)",
+                    "modelName": "dedupe_factor",
+                    "value": 20,
+                    "type": "number",
+                    "events": {
+                        "change": "WORKLOAD_FIELD_CHANGED"
+                    },
+                    "className": "vdiResiliency"
+                },
+                {
+                    "type": "info_icon",
+                    "className": "info_details",
+                    "message": "Recommended values are based on performance tests and should be changed with care"
+                },
+                {
+                    "displayName": "",
+                    "type": "dynamic-text",
+                    "model": "dedupe_saved",
+                    "diskModel": "compression_saved",
+                    "factorModel": "dedupe_factor",
+                    "tooltip": "Eg: dynamicText of capacity post compression, with dynamicText1% dedupe will require dynamicText2 usable space"
+                },
+                {
+                    "displayName": "Net Savings",
+                    "type": "dynamic-text",
+                    "model": "combined_compr_dedup",
+                    "diskModel": "disk_per_desktop",
+                    "factorModel": "dedupe_saved"
+                }
+            ]
+        },
+        {
+            "name": "Backup Target",
+            "title": "Artificial Intelligence/Machine Learning",
+            "fields": [
+                {
+                    "className": "msg-content",
+                    "model": "msg_cont",
+                    "type": "backup_target"
+                }
+            ]
+        }
+    ]
+}
+

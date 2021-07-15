@@ -1,0 +1,76 @@
+<div class="modal-header">
+  <h4 class="modal-title"> {{ctrl.modalTitle}} - {{ctrl.workloadFields.steps[ctrl.currentStep-1].title}} <span class="pull-right cursor"
+      ng-click="$dismiss()"><i class="fa fa-remove" aria-hidden="true"></i></span></h4>
+</div>
+
+<div class="modal-body">
+  <form class="form-horizontal" workload-type="{{ctrl.workload.wl_type}}">
+    <!-- STEPS INDICATOR -->
+  <!--   <ul class="nav nav-tabs" ng-class="{editMode: ctrl.isEditRequest}">
+      <li ng-repeat="step in ctrl.workloadFields.steps track by $index" ng-hide="ctrl.isEditRequest && $index==0" ng-class="{'visitedActive': $index<ctrl.currentStep, 'currentActive': $index==ctrl.currentStep-1}">
+        <a ng-disabled="(ctrl.isWorkloadFormInvalid && $index > ctrl.errorStepIndex || ctrl.workload.wl_type === 'BULK' && ($index === 2 || $index === 3) || ctrl.workload.wl_type === 'VEEAM' && $index === 3)" ng-click="ctrl.currentStep=$index+1">
+          <div class="stepsList">{{step.name}}</div>
+        </a>
+      </li>
+    </ul>
+ -->
+
+      <ul class="nav nav-tabs" ng-class="{editMode: ctrl.isEditRequest}">
+      <li ng-click="ctrl.selectTab($index)"  ng-repeat="step in ctrl.workloadFields.steps track by $index" ng-hide="ctrl.isEditRequest && $index==0" ng-class="{'visitedActive': $index<ctrl.currentStep, 'currentActive': $index==ctrl.currentStep-1}" > 
+          <div ng-class="{'active':ctrl.currentStep-1==$index}" ng-disabled="(ctrl.isWorkloadFormInvalid && $index > ctrl.errorStepIndex || ctrl.workload.wl_type === 'BULK' && ($index === 2 || $index === 3) || ctrl.workload.wl_type === 'VEEAM' && $index === 3)" ng-hide="ctrl.currentStep-1>$index">
+            <span >{{$index+1}}</span> 
+          </div> 
+          <div class="activePreview_div" ng-hide="ctrl.currentStep-1 <= $index"  >
+            <i class="fa fa-check"  ng-class="{'activePreview':ctrl.currentStep-1>$index}"></i>
+          </div>
+          <a href="javascript:void(0)" ng-class="{'active':ctrl.currentStep-1==$index}" ng-disabled="(ctrl.isWorkloadFormInvalid && $index > ctrl.errorStepIndex || ctrl.workload.wl_type === 'BULK' && ($index === 2 || $index === 3) || ctrl.workload.wl_type === 'VEEAM' && $index === 3)" ng-click="ctrl.currentStep=$index+1">{{step.name}}</a>
+      </li>
+    </ul>
+    <div  class="borderRight"></div> 
+    <!-- STEPS CONTENT -->
+    <div class="steps-content">
+      <div ng-class="{'main-fields':ctrl.workloadFields.steps[ctrl.currentStep-1].dependentFields}">
+        <div ng-repeat="field in ctrl.workloadFields.steps[ctrl.currentStep-1].fields">
+          <div ng-if="field.type !== 'intra_profile'">
+            <dynamic-content workload="ctrl.workload" field="field" type="{{field.type}}">
+            </dynamic-content>
+          </div>
+          <div ng-if="field.type === 'intra_profile'">
+            <intra-type-content workload="ctrl.workload" field="field" type="{{field.type}}">
+            </intra-type-content>
+          </div>
+           
+        </div>
+
+      </div>
+
+      <div ng-class="{'dependent-fields':ctrl.workloadFields.steps[ctrl.currentStep-1].dependentFields}" ng-if="ctrl.workloadFields.steps[ctrl.currentStep-1].dependentFields">
+        <dynamic-content workload="ctrl.workload" field="field" type="{{field.type}}" ng-repeat="field in ctrl.workloadFields.steps[ctrl.currentStep-1].dependentFields">
+        </dynamic-content>
+      </div>
+      <div class="notes" ng-if="ctrl.scenario.sizing_type==='fixed' && ctrl.currentStep==1"><b>Note:</b> Grayed out workloads
+        are not supported in the chosen Fixed Config. Please change settings accordingly.</div>
+
+    </div>
+    <br>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <div class="pull-left">
+    <button type="button" class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+  </div>
+  <div class="pull-right">
+    <button type="button" class="btn btn-primary width80" ng-hide="ctrl.isEditRequest || ctrl.currentStep == 1" ng-click="ctrl.currentStep=ctrl.currentStep-1">←
+      Prev
+    </button>
+    <button type="button" class="btn btn-primary width80" ng-disabled="ctrl.isWorkloadFormInvalid" ng-show="ctrl.isEditRequest || ctrl.currentStep == ctrl.workloadFields.steps.length || (ctrl.workload.wl_type === 'BULK' && ctrl.currentStep === 2) || (ctrl.workload.wl_type === 'VEEAM' && ctrl.currentStep === 3)"
+      ng-click="ctrl.saveWorkload(ctrl.workload)">Save</button>
+    <button type="button" class="btn btn-primary width80" ng-hide="ctrl.isEditRequest || ctrl.currentStep === ctrl.workloadFields.steps.length || (ctrl.workload.wl_type === 'BULK' && ctrl.currentStep === 2) ||  (ctrl.workload.wl_type === 'VEEAM' && ctrl.currentStep === 3)"
+      ng-disabled=" ctrl.currentStep>1 && ( ctrl.isWorkloadFormInvalid && ctrl.currentStep > ctrl.errorStepIndex)" ng-click="ctrl.currentStep=ctrl.currentStep+1">Next
+      →
+    </button>
+  </div>
+</div>
+<div mpl-progress id="file-upload-request"></div>
+<!-- <div mpl-progress id="scenario-request-update"></div> -->

@@ -1,0 +1,25 @@
+<div class="nodeResultPopup" >
+<div class="box_container">
+  <div class="scenario_node_title">
+    Node Results 
+  </div>
+  <div class="clear row padding-15 nodeResult"  ng-scrollbars>
+    <table class="table brd aggClr" cellspacing="0" cellpadding="0">
+      <thead>
+        <tr>
+          <th class="part-col">Part</th>
+          <th>Description</th>
+          <th nowrap class="count-col">Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="node in tempScenario.aggregate.nodesList">
+          <td nowrap>{{node.name}}</td>
+          <td ng-bind-html="node.description"></td>
+          <td >{{node.numOfNodes}}</td>
+        </tr>
+      </tbody>
+    </table> 
+  </div>
+  </div>
+</div>

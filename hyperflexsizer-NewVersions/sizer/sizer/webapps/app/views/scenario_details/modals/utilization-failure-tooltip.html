@@ -1,0 +1,22 @@
+<div class="clr padding-10" ng-if="node.tag_name === 'Storage Capacity'">
+  <div ng-if="node.usable!==undefined">
+   Total Usable Capacity Available:
+   {{node.usable | number : 2}} TB / {{node.usable_binarybyte | number : 2 }} {{node.binarybyte_unit}}
+   </div>
+  <div> 
+  Total Effective Capacity Available:
+   {{node.node_val | number : 2}} TB / {{node.node_val_binarybyte | number : 2 }} {{node.binarybyte_unit}}
+  </div>
+  <div> 
+  Best Practice Threshold: 
+  {{node.best_practice | number : 2}} TB / {{node.best_practice_binarybyte | number : 2}} {{node.binarybyte_unit}}
+  </div>
+  <div ng-if="viewObject.herculesConf">Effective capacity has been increased from Hardware Acceleration</div>
+  <b>Note:</b> The storage capacity shows the same utilization with and without failures. This is because node failures do not change the cluster utilization unless the failure is a long lived failure and the cluster undergoes a rebalance to regenerate the lost copies of the data due to node failures.
+
+</div>
+<div class="clr padding-10 iops" ng-if="node.tag_name === 'Storage IOPS'">
+  <div>
+    Total IOPS in the system has been increased from Hardware Acceleration
+  </div>
+</div>

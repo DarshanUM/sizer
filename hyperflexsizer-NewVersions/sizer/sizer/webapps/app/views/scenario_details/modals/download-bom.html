@@ -1,0 +1,100 @@
+<div class="modal-header">
+	<h4 class="modal-title"> Download {{title}} <span class="pull-right cursor" ng-click="$dismiss()"><i
+				class="fa fa-remove" aria-hidden="true"></i></span></h4>
+</div>
+<div class="modal-body delPopup_padding downloadPop" style="text-align: left;overflow:visible">
+	<form>
+		<div class="row " ng-hide="title !== 'BOM'">
+			<div class="form-group">
+				<div class="col-md-6 col-sm-6 ">
+					<label for="exampleInputEmail1" class="textLeft">Fabric Interconnect Pairs</label>
+				</div>
+				<div class="col-md-6 col-sm-6 padLeft0">
+					<div class="select-style1">
+						<select class='form-control' ng-model="fiPackagesCount"
+							ng-options='option for option in fiOptions'>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-hide="title !== 'BOM'">
+			<div class="form-group">
+				<div class="col-md-6 col-sm-6 textLeft">
+					<label>Select FI Package</label>
+				</div>
+				<div class="col-md-6 col-sm-6 padLeft0">
+					<div class="select-style1">
+						<select class='form-control' ng-disabled="fiPackagesCount==0" ng-model="fiPackageName" ng-change="packageUpdate()"
+							ng-options='option.value as option.label for option in fiPackageOptions'>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 
+  	 	 <div class="form-group">
+		    <p class="fi-label" for="exampleInputEmail1"> Select number of Fabric Interconnect Pairs</p>
+			    <div class="select-style1 fi-select">
+				   <select class='form-control' ng-model="fiPackagesCount" 
+				   		ng-options='option for option in fiOptions'>
+	    		   </select>	
+    		  </div>
+		  </div>
+
+		  <div class="form-group">
+		    <p class="fi-label"> Select FI Package</p>
+			    <div class="">
+					<select class='form-control' ng-model="fiPackageName" ng-options='option.value as option.label for option in fiPackageOptions'>
+    				</select>	
+    		  </div>
+		  </div> -->
+		<div class="row" ng-hide="title === 'BOM'">
+			<div class="form-group">
+				<div class="col-md-6 col-sm-6 textLeft">
+					<label>Language</label>
+				</div>
+				<div class="col-md-6 col-sm-6 padLeft0">
+					<div class="select-style1">
+						<select class='form-control' ng-model="language" ng-change="languageSelect(language)">
+							<option value="english">English</option>
+							<option value="japanese">Japanese</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-hide="(title === 'BOM' || !showLableRC)">
+			<div class="form-group">
+				<div class="col-md-6 col-sm-6 textLeft">
+					<label>Report Contents</label>
+				</div>
+				<div class="col-md-6 col-sm-6 padLeft0">
+					<div class="select-style1">
+						<multi-select-dropdown class="input-xlarge" multiple="true" ng-model="selectedItems"
+							options="i for i in ItemPages" change="selected()">
+						</multi-select-dropdown>
+					</div>
+					<div class="itemize_container">
+						<ng-container ng-repeat="sel in selectedItems">
+							<span class="itemize_tags">
+								{{sel}}
+								<i class="fa fa-times" ng-click="deleteSelection(sel)"></i>
+							</span>
+						</ng-container>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-if="title === 'BOM' && errorMsg !== ''" style="font-size: 11px; color: #daa608;">
+			{{errorMsg}}
+		</div>
+		<div>
+			<button type="button" class="btn btn-primary width100 margin_top10" ng-disabled="enableCheck()"
+				ng-click="$close({'fiPackagesCount':fiPackagesCount, 'fiPackageName':fiPackageName, 'language':language, 'selectedItems':selectedItems})">Start
+				Download</button />
+		</div>
+	</form>
+</div>
+
+<div mpl-progress id="scenario-request-delete"></div>

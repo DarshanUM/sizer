@@ -1,0 +1,47 @@
+<div class="box_container filterSec box_Shadow">  
+      <ul class="threshold_list"> 
+         <li>
+              <div class="filterContainer">
+              <div class="innerFont thresholdCls">
+                <span>Threshold</span>
+                <label class="infoIcon" style="margin-top: -6px;"  aria-hidden="true" popover-placement="right" popover-trigger="'mouseenter'" uib-popover-template="'views/scenario_details/modals/threshold-tooltip.html'"  ></label>
+              </div>
+              <div class="clear margin_top5">
+                  <span>
+                    <input id="radio-1" class="radio-custom" name="threshold-radio-group" type="radio"  ng-model="scenario.aggregate.settings.threshold" ng-value="0" ng-change="onThresholdChanged()">
+                    <label for="radio-1" class="radio-custom-label">Conservative</label>
+                  </span>
+                  <span>
+                    <input id="radio-2" class="radio-custom" name="threshold-radio-group" type="radio" ng-model="scenario.aggregate.settings.threshold" ng-value="1" ng-change="onThresholdChanged()">
+                    <label for="radio-2" class="radio-custom-label">Standard</label>
+                  </span>
+                  <span>
+                    <input id="radio-3" class="radio-custom" name="threshold-radio-group" type="radio"  ng-model="scenario.aggregate.settings.threshold" ng-value="2" ng-change="onThresholdChanged()">
+                    <label for="radio-3" class="radio-custom-label">Aggressive</label>
+                  </span> 
+              </div>
+              </div>
+          </li>
+          <li>
+                <div class="filterContainer">
+                <div class="innerFont">Node Choice</div> 
+                   <div class="clear margin_top5">
+                       <span>
+                          <input id="radio-4" class="radio-custom" name="heterogenous-radio-group" type="radio" ng-model="scenario.aggregate.settings.heterogenous" ng-value="true" ng-change="onHeterogenousChanged()">
+                          <label for="radio-4" class="radio-custom-label">HyperFlex & Compute</label>
+                        </span> 
+                        <span class="pull-right">
+                          <input id="radio-5" class="radio-custom" name="heterogenous-radio-group" type="radio" ng-model="scenario.aggregate.settings.heterogenous" ng-value="false" ng-change="onHeterogenousChanged()">
+                          <label for="radio-5" class="radio-custom-label">HyperFlex only</label>
+                        </span>  
+                  </div>
+              </div>
+          </li>
+        
+          <li>
+            <div class="filter_section">
+                 Filter Nodes
+              </div> 
+          </li>
+      </ul>
+ </div>

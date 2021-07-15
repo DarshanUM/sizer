@@ -1,0 +1,36 @@
+<div class="form-group clear padTop5 popupTooltip oracleFileUpload" ng-class="{'has-error':(!isFileSelected || !isFileHasPrased || isFileHasPrasingError || isInvalidFileFormat || isBeyondMaxSize)}">
+    <div class="clear">
+
+        <label class="col-lg-6">AWR File Input</label>
+        <div class="col-lg-6">
+
+            <input class="uploadTextfield" type="file" id="file" name='file' accept="{{fileAccept}}" ng-click="onClick($event)"
+                onchange="angular.element(this).scope().onFileSelectionChanged(this)" />
+            
+
+        </div>
+        <p class="help-block" style="width: 93%;">
+            Please upload an Oracle AWR file. Note that this feature is in beta, and is not fully qualified as of
+            yet.
+        </p>
+        <p class="help-block pull-left" ng-if="isFileSelected && isFileHasPrasingError" style="width: 60%; padding-right:0px; margin-left: -45px;">
+            <span>
+                <span ng-if="hasWarning"> <img src="images/alert.png" /> <b>Warning </b> </span>
+                <span ng-if="hasError"> <img src="images/file-error.png" /> <b>Error :</b> </span>
+            </span>
+            <p class="help-block errorDetails pull-left" popover-placement="right" popover-trigger="'click'"
+                uib-popover-template="'scripts/directives/file-upload/file-upload-tooltip.html'" ng-if="!isInvalidFileFormat && (hasError || hasWarning)">
+                Click here for Details <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            </p>
+            <p class="help-block" ng-if="isFileSelected && isInvalidFileFormat">
+                Invalid file. Please select text file
+            </p>
+        </p>
+        <!-- <p class="help-block" ng-if="isFileSelected && !isFileHasPrased"> 
+        Please process the file to get the workload inputs 
+    </p> -->
+
+    </div>
+
+
+</div>

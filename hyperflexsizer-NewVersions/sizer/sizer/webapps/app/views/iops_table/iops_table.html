@@ -1,0 +1,42 @@
+<div>
+	<div ng-include="'views/header/header.html'"></div>
+	<div class="col-lg-12">
+		<div class="page_tiitle">IOPS Table (per Node) in {{iopsCtrl.serverType[0].hypervisor_name}} for {{iopsCtrl.serverType[0].server_type}} node</div>
+		<div class="overflow_Y iops_table">
+
+			<table class="table" cellpadding="0" cellspacing="0">
+				<thead>
+					<!-- <tr>
+						<th colspan="3"></th>
+						<th ng-repeat="hypv in iopsCtrl.hypervisor" colspan="{{hypv.hListLength}}">{{hypv.hypervisor_name}}</th>
+					</tr>
+					<tr>
+						<th colspan="3"></th>
+						<th ng-repeat="server in iopsCtrl.serverType" colspan="{{server.sListLength}}">{{server.server_type}}</th>
+					</tr> -->
+					<tr>
+						<th colspan="3"></th>
+						<th ng-repeat="wl in iopsCtrl.workloadIops"><div>{{wl.wl_type}},</div> <div> {{wl.iops_type}}</div></th>
+					</tr>
+					<tr>
+						<th class="vAlign"></th>
+						<th class="vAlign">Use Case</th>
+						<th class="vAlign">Replication Factor</th>
+						<th class="vAlign" ng-repeat="threshold in iopsCtrl.thresholdHeader track by $index">{{threshold}}</th>
+					</tr>
+
+				</thead>
+				<tbody>
+					<tr ng-repeat="node in iopsCtrl.nodeStr" class="textCenter">
+						<td ng-if="node.isFirstNode" rowspan="{{node.ssd_count}}">{{node.node_substring}}</td>
+						<td ng-if="node.isFirstSsd" rowspan="1">{{node.ssd_string}}</td>
+						<td>{{node.repl_factor}}</td>
+						<td ng-repeat="rf in node.rfList track by $index">{{!(rf)?'N/A':rf.iops_value}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div mpl-progress id="iops-table-request"></div>
+
+</div>
